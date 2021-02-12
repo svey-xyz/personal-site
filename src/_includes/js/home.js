@@ -46,7 +46,6 @@ class Section {
 
 function blob() {
 
-	var section;
 	var renderer, scene, camera, clock, uniforms;
 
 	var self = this;
@@ -87,7 +86,7 @@ function blob() {
 			},
 			u_posSeed: {
 				type: "v2",
-				value: 1.0
+				value: new THREE.Vector2(0, 0)
 			}
 		};
 
@@ -123,8 +122,10 @@ function blob() {
 	}
 
 	self.handleInput = function handleInput(e) {
-		uniforms.u_posSeed.value += (randomBetween(), randomBetween());
+		uniforms.u_posSeed.value.set(randomBetween(), randomBetween());
 	}
+
+	
 
 	function randomBetween(min = 1000, max = 10000) { // min and max included 
 		var randBetween = Math.floor(Math.random() * (max - min + 1) + min);

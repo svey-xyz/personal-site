@@ -1,7 +1,7 @@
 #define GLSLIFY 1
 // Common uniforms
 uniform float u_time;
-uniform float u_posSeed;
+uniform vec2 u_posSeed;
 
 /*
  * GLSL textureless classic 2D noise "cnoise",
@@ -84,7 +84,7 @@ void main() {
 	float scale = 0.000055;
 	float m = 0.8; // amount of movement between phases
 
-	float noise = mixNoiseVals(m, vec2((gl_FragCoord.xy + u_posSeed) * scale), cos(vec2(t)));
+	float noise = mixNoiseVals(m, vec2((gl_FragCoord.xy + u_posSeed.xy) * scale), cos(vec2(t)));
 
 	float steps = 2.0; // how many layers
 	float brightness = 2.2; // controls how much of the canvas is white

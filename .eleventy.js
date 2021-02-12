@@ -2,6 +2,7 @@
 const markdownify = require("./lib/filters/markdownfilter")
 
 module.exports = (eleventyConfig) => {
+	// all the minify code is enabled when set to 'production'
 	process.env.ELEVENTY_ENV = 'development'
 
 	eleventyConfig.setLibrary("md", markdownify.markdownLib);

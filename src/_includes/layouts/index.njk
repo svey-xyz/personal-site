@@ -4,6 +4,7 @@ page_scripts: [js/home.js,js/three.js]
 permalink: index.html
 ---
 
+{# The glsl files need to be inline for THREE.js, but using nunjucks includes makes for easier editing, could also pass these through their own minify filter in the future #}
 <script type="x-shader/x-vertex" id="vertexShader">
 	{% include 'src/_includes/shaders/vert-Abstract.glsl' %}        
 </script>
