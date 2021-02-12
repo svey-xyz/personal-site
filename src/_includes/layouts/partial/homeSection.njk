@@ -1,0 +1,23 @@
+
+{% macro homeSection(sectionName, type="home-content-section", height = "100", colour = "#fff", text = "") %}
+	{% set style %}
+		background-color: {{ colour }};
+		height: {{ height }}vh;
+		height: calc(var(--vh, 1vh) * {{ height }});
+	{% endset %}
+
+  <div id="{{ sectionName }}" class="{{ type }} shadow centre-content" style="{{ style }}" sectionheight="{{ height }}">
+
+	{% if type == "home-content-section" %}
+		{% set canvasid = sectionName + "-canvas" %}
+		{# <canvas id="{{ canvasid }}" class="home-canvas" style="{{style}}"></canvas> #}
+	{% endif %}
+
+	{% if text !== "" %}
+		<div class="main-padding centre-content">
+			{% markdown text %}
+		</div>
+	{% endif %}
+
+  </div>
+{% endmacro %}

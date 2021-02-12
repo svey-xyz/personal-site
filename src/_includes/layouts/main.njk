@@ -1,0 +1,30 @@
+---
+
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>{{ site.title }}</title>
+
+		<link rel="stylesheet" href="{{ 'css/style.css' | minify }}">
+		<script src="{{ 'js/main.js' | minify }}" language="JavaScript" type="text/javascript"></script>
+		<script src="assets/js/libraries/anime.min.js"></script>
+
+		{# Load JS for each page, defined on page template. Is this the right way to do this? #}
+		{% for page_script in page_scripts %}
+			<script src="{{ page_script | minify }}" type="text/javascript"></script>
+		{% endfor %}
+
+	</head>
+	<body>
+		<div class="main-content">
+			<div class="header shadow">
+			{% include './partial/header.njk' %}
+			</div>
+			{{ content | safe }}
+		</div>
+	</body>
+</html>

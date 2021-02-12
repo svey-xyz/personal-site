@@ -1,0 +1,17 @@
+---
+layout: layouts/main.njk
+page_scripts: []
+---
+<div class='project-description-container'>
+	{{ content | safe }}
+</div>
+{% set imagetypes = ["png"] %}
+
+<div class='project-content-container'>
+	{% for file in title | projectglob %}
+		{% if file.filetype in imagetypes %}
+			{% image file.path, title, file.filename %}
+			<br>
+		{% endif %}
+	{% endfor %}
+</div>

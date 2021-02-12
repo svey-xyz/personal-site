@@ -1,0 +1,39 @@
+---
+layout: layouts/main.njk
+page_scripts: [js/home.js,js/three.js]
+permalink: index.html
+---
+
+<script type="x-shader/x-vertex" id="vertexShader">
+	{% include 'src/_includes/shaders/vert-Abstract.glsl' %}        
+</script>
+
+<script type="x-shader/x-fragment" id="fragmentShader">
+	{% include 'src/_includes/shaders/frag-Abstract.glsl' %}       
+</script>
+
+
+{% from "./partial/homeSection.njk" import homeSection %}
+
+{{ homeSection("Section-1", "home-content-section", "60", "var(--secondaryColour)") }}
+{{ homeSection("textSection-1", "home-text-section", "50", "#fff",
+	"## This is some text on the home page w0w.
+	**Bold text too**
+
+	:)"
+) }}
+{{ homeSection("Section-2", "home-content-section", "100", "var(--secondaryColour)") }}
+{{ homeSection("textSection-1", "home-text-section", "20", "#fff",
+	":/"
+) }}
+
+{# <h3>Projects: </h3>
+
+{% for post in collections.projects %}
+    <p>
+    <a href="{{ post.url }}">{{ post.data.title }}</a>
+    </p>
+{% endfor %} #}
+
+
+
