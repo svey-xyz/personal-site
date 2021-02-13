@@ -5,6 +5,8 @@ window.onload = function () {
 	initSections()
 };
 
+var b2, b1
+
 function initSections() {
 	// sections = [
 	// 	// new Section('Section-1', new blob()),
@@ -12,13 +14,12 @@ function initSections() {
 	// 	new balls('Section-2'),
 	// ];
 
-	const b1 = new blob('Section-1')
-	const b2 = new balls('Section-2')
+	b1 = new blob('Section-1')
+	b2 = new balls('Section-2')
 	// sections[0].test("my data")
 }
 
 class Section {
-	// self = this;
 
 	constructor(containerName) {
 		// console.log(self)
@@ -28,30 +29,41 @@ class Section {
 		this.height = this.heightPercent * vh;
 		this.container.classList.add('clickable');
 
-
-		window.addEventListener("resize", this.resize, false);
-		this.container.addEventListener("mousedown", this.handleInput, false);
-		// self.func = func;
-
-		
-
-		// self.func.init(self);
+		// window.addEventListener("resize", this.resize);
+		this.mousedownHandler = this.onmousedown.bind(this);
+		window.addEventListener('resize', this.mousedownHandler);
+		// this.container.addEventListener("mousedown", this.handleInput, false);
 	}
 
-	resize(e) {
-		this.height = this.heightPercent * vh;
-		// this.func.resize(e);
-		// console.log(`${self.name} has resized`)
-	}
+	// resize = (e) => {
+	// 	console.log('main resize')
+	// 	// heightPercent = b2.self.heightPercent;
+	// 	// this.resizeSection(e);
+	// 	return b1.heightPercent * vh;
+	// 	// console.log(this.height)
+
+	// 	// this.func.resize(e);
+	// 	// console.log(`${self.name} has resized`)
+	// }
+
+	// resizeSection(e) {}
+
 	handleInput(e) { 
 
-		console.log(`main class`)
+		console.log(`${_self.name} clicked`);
 		// self.func.handleInput(e);
 	}
 }
 
+Section.prototype.onmousedown = function (event) {
+	this.height = this.heightPercent * vh;
+	// console.log(this)
+
+	// window.addEventListener('mousemove', this.mousemoveHandler);
+	// window.addEventListener('mouseup', this.mouseupHandler);
+};
+
 class balls extends Section {
-	self = this;
 
 	constructor(containerName) {
 		super(containerName);
@@ -65,9 +77,6 @@ class balls extends Section {
 	handleInput(e) { 
 		super.handleInput(e);
 		console.log(this)
-		// console.log(`${this.name} has been clicked`)
-		
-		// console.log(this)
 	}
 }
 
@@ -80,7 +89,9 @@ class blob extends Section {
 	// Initializes the sketch
 	constructor(containerName) {
 		super(containerName);
+		// this.resize();
 		self = this;
+		
 
 		// Initialize the WebGL renderer
 		this.renderer = new THREE.WebGLRenderer({ alpha: true });
@@ -125,8 +136,8 @@ class blob extends Section {
 		// Create the mesh and add it to the scene
 		var mesh = new THREE.Mesh(geometry, material);
 		this.scene.add(mesh);
-
 		this.animate();
+		// self = this;
 	}
 
 	// Animates the sketch
@@ -141,7 +152,12 @@ class blob extends Section {
 		this.renderer.render(this.scene, this.camera);
 	}
 
-	resize(e) {
+	onmousedown(e) {
+		super.onmousedown(e)
+		console.log(this)
+		// var h = super.resize(e);
+		//broken
+		// console.log(self.renderer.size)
 		this.renderer.setSize(window.innerWidth, this.height);
 	}
 
