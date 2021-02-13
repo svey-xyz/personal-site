@@ -6,37 +6,68 @@ window.onload = function () {
 };
 
 function initSections() {
-	sections = [
-		new Section('Section-1', new blob()),
-	];
+	// sections = [
+	// 	// new Section('Section-1', new blob()),
+	// 	new balls('Section-1'),
+	// 	new balls('Section-2'),
+	// ];
+
+	const b1 = new blob('Section-1')
+	const b2 = new balls('Section-2')
 	// sections[0].test("my data")
 }
 
 class Section {
-	self = this;
+	// self = this;
 
-	constructor(containerName, func) {
-		self.name = containerName;
-		self.container = document.getElementById(containerName);
-		self.heightPercent = self.container.getAttribute('sectionheight');
-		self.height = self.heightPercent * vh;
-		self.container.classList.add('clickable');
-		self.func = func;
+	constructor(containerName) {
+		// console.log(self)
+		this.containerName = containerName;
+		this.container = document.getElementById(containerName);
+		this.heightPercent = this.container.getAttribute('sectionheight');
+		this.height = this.heightPercent * vh;
+		this.container.classList.add('clickable');
+
 
 		window.addEventListener("resize", this.resize, false);
-		self.container.addEventListener("mousedown", this.handleInput, false);
+		this.container.addEventListener("mousedown", this.handleInput, false);
+		// self.func = func;
 
-		self.func.init(self);
+		
+
+		// self.func.init(self);
 	}
 
 	resize(e) {
-		self.height = self.heightPercent * vh;
-		self.func.resize(e);
-		console.log(`${self.name} has resized`)
+		this.height = this.heightPercent * vh;
+		// this.func.resize(e);
+		// console.log(`${self.name} has resized`)
+	}
+	handleInput(e) { 
+
+		console.log(`main class`)
+		// self.func.handleInput(e);
+	}
+}
+
+class balls extends Section {
+	self = this;
+
+	constructor(containerName) {
+		super(containerName);
+
+		console.log(containerName)
+
+		// super.initListeners(this)
+		
 	}
 
 	handleInput(e) { 
-		self.func.handleInput(e);
+		super.handleInput(e);
+		console.log(this)
+		// console.log(`${this.name} has been clicked`)
+		
+		// console.log(this)
 	}
 }
 
@@ -44,42 +75,35 @@ class Section {
 * Section-1 Canvas
 */
 
-function blob() {
-
-	var renderer, scene, camera, clock, uniforms;
-
-	var self = this;
-	
-	self.test = function test(data) {
-		console.log(`logging ${data}`)
-	}
+class blob extends Section {
 	
 	// Initializes the sketch
-	self.init = function init(section) {
-		self.section = section;
+	constructor(containerName) {
+		super(containerName);
+		self = this;
 
 		// Initialize the WebGL renderer
-		renderer = new THREE.WebGLRenderer({ alpha: true });
-		renderer.setPixelRatio(window.devicePixelRatio);
-		renderer.setSize(window.innerWidth, section.height);
+		this.renderer = new THREE.WebGLRenderer({ alpha: true });
+		this.renderer.setPixelRatio(window.devicePixelRatio);
+		this.renderer.setSize(window.innerWidth, this.height);
 
 		// Add the renderer to the sketch container
-		section.container.appendChild(renderer.domElement);	
+		this.container.appendChild(this.renderer.domElement);	
 
 		// Initialize the scene
-		scene = new THREE.Scene();
+		this.scene = new THREE.Scene();
 
 		// Initialize the camera
-		camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+		this.camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
 
 		// Initialize the clock
-		clock = new THREE.Clock(true);
+		this.clock = new THREE.Clock(true);
 
 		// Create the plane geometry
 		var geometry = new THREE.PlaneBufferGeometry(2, 2);
 
 		// Define the shader uniforms
-		uniforms = {
+		this.uniforms = {
 			u_time: {
 				type: "f",
 				value: 0.0
@@ -92,7 +116,7 @@ function blob() {
 
 		// Create the shader material
 		var material = new THREE.ShaderMaterial({
-			uniforms: uniforms,
+			uniforms: this.uniforms,
 			transparent: true,
 			vertexShader: document.getElementById("vertexShader").textContent,
 			fragmentShader: document.getElementById("fragmentShader").textContent
@@ -100,34 +124,36 @@ function blob() {
 
 		// Create the mesh and add it to the scene
 		var mesh = new THREE.Mesh(geometry, material);
-		scene.add(mesh);
+		this.scene.add(mesh);
 
-		animate();
+		this.animate();
 	}
 
 	// Animates the sketch
-	function animate() {
-		requestAnimationFrame(animate);
-		render();
+	animate = () => {
+		requestAnimationFrame(this.animate);
+		this.render();
 	}
 
 	// Renders the sketch
-	function render() {
-		uniforms.u_time.value = clock.getElapsedTime();
-		renderer.render(scene, camera);
+	render() {
+		this.uniforms.u_time.value = this.clock.getElapsedTime();
+		this.renderer.render(this.scene, this.camera);
 	}
 
-	self.resize = function resize(e) {
-		renderer.setSize(window.innerWidth, self.section.height);	
+	resize(e) {
+		this.renderer.setSize(window.innerWidth, this.height);
 	}
 
-	self.handleInput = function handleInput(e) {
-		uniforms.u_posSeed.value.set(randomBetween(), randomBetween());
+	handleInput(e) {
+		super.handleInput(e);
+		console.log(self)
+		self.uniforms.u_posSeed.value.set(self.randomBetween(), self.randomBetween());
 	}
 
 	
 
-	function randomBetween(min = 1000, max = 10000) { // min and max included 
+	randomBetween(min = 1000, max = 10000) { // min and max included 
 		var randBetween = Math.floor(Math.random() * (max - min + 1) + min);
 		return (Math.random() > 0.5 ? randBetween : -randBetween);
 	}

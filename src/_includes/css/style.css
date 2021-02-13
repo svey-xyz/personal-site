@@ -102,12 +102,6 @@ div.header {
 	height: calc(var(--vh, 1vh) * 100);
 }
 
-.cover {
-	width: 100vw;
-	background-color: #fff;
-	/* opacity: 0.5; */
-}
-
 .home-canvas {
 	min-width: 100vw;
 }
