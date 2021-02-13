@@ -22,6 +22,7 @@
     "markdown-it-emoji": "^2.0.0",
     "prettier": "^2.2.1",
     "terser": "^5.5.1",
+    "three": "^0.125.2",
     "twemoji": "^13.0.1"
   }
 }

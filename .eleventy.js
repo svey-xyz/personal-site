@@ -1,4 +1,3 @@
-// Import fast-glob package
 const markdownify = require("./lib/filters/markdownfilter")
 
 module.exports = (eleventyConfig) => {
@@ -17,7 +16,7 @@ module.exports = (eleventyConfig) => {
 	eleventyConfig.addFilter("minify", require("./lib/minifies/minify"));
 	
 	eleventyConfig.addPassthroughCopy({ 'node_modules/animejs/lib/anime.min.js': '/assets/js/libraries/anime.min.js' });
-	eleventyConfig.addPassthroughCopy({ 'src/_includes/shaders/*': '/assets/shaders/' });
+	eleventyConfig.addPassthroughCopy({ 'node_modules/three/build/three.min.js': '/assets/js/libraries/three.min.js' });
 
 	if (process.env.ELEVENTY_ENV != 'production') {
 		eleventyConfig.addPassthroughCopy({'src/_includes/js/*': '/assets/js/'});

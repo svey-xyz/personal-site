@@ -80,11 +80,11 @@ float mixNoiseVals(float m, vec2 p, vec2 t) {
 
 // The main stuff
 void main() {
-	float t = u_time * 0.012;
+	float t = u_time* 0.012;
 	float scale = 0.000055;
 	float m = 0.8; // amount of movement between phases
 
-	float noise = mixNoiseVals(m, vec2((gl_FragCoord.xy + u_posSeed.xy) * scale), cos(vec2(t)));
+	float noise = mixNoiseVals(m, vec2((gl_FragCoord.xy + u_posSeed.xy) * scale), vec2(cos(t)));
 
 	float steps = 2.0; // how many layers
 	float brightness = 2.2; // controls how much of the canvas is white

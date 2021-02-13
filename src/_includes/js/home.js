@@ -1,82 +1,58 @@
-var wH;
 var sections = [];
 
 window.onload = function () {
 	initSections()
 };
 
-var b2, b1
-
 function initSections() {
-	// sections = [
-	// 	// new Section('Section-1', new blob()),
-	// 	new balls('Section-1'),
-	// 	new balls('Section-2'),
-	// ];
-
-	b1 = new blob('Section-1')
-	b2 = new balls('Section-2')
-	// sections[0].test("my data")
+	sections = [
+		new blob('Section-1'),
+		new balls('Section-2'),
+	];
 }
 
 class Section {
+	containerName; container; heightPercent; height;
 
 	constructor(containerName) {
-		// console.log(self)
+		// define universal section variables
 		this.containerName = containerName;
 		this.container = document.getElementById(containerName);
 		this.heightPercent = this.container.getAttribute('sectionheight');
 		this.height = this.heightPercent * vh;
 		this.container.classList.add('clickable');
 
-		// window.addEventListener("resize", this.resize);
-		this.mousedownHandler = this.onmousedown.bind(this);
-		window.addEventListener('resize', this.mousedownHandler);
-		// this.container.addEventListener("mousedown", this.handleInput, false);
-	}
+		// initialize listeners
+		this.inputHandler = this.handleInput.bind(this);
+		this.container.addEventListener('mousedown', this.inputHandler);
 
-	// resize = (e) => {
-	// 	console.log('main resize')
-	// 	// heightPercent = b2.self.heightPercent;
-	// 	// this.resizeSection(e);
-	// 	return b1.heightPercent * vh;
-	// 	// console.log(this.height)
-
-	// 	// this.func.resize(e);
-	// 	// console.log(`${self.name} has resized`)
-	// }
-
-	// resizeSection(e) {}
-
-	handleInput(e) { 
-
-		console.log(`${_self.name} clicked`);
-		// self.func.handleInput(e);
+		this.resizeHandler = this.resize.bind(this);
+		window.addEventListener('resize', this.resizeHandler);
 	}
 }
 
-Section.prototype.onmousedown = function (event) {
-	this.height = this.heightPercent * vh;
-	// console.log(this)
+Section.prototype.handleInput = function (e) {
+	// Handle click
+	console.log(`${this.containerName} has been clicked`)
+};
 
-	// window.addEventListener('mousemove', this.mousemoveHandler);
-	// window.addEventListener('mouseup', this.mouseupHandler);
+Section.prototype.resize = function (e) {
+	this.height = this.heightPercent * vh;
 };
 
 class balls extends Section {
 
 	constructor(containerName) {
 		super(containerName);
+	}
 
-		console.log(containerName)
-
-		// super.initListeners(this)
-		
+	resize(e) {
+		super.resize(e)
 	}
 
 	handleInput(e) { 
 		super.handleInput(e);
-		console.log(this)
+		// console.log(this)
 	}
 }
 
@@ -90,8 +66,7 @@ class blob extends Section {
 	constructor(containerName) {
 		super(containerName);
 		// this.resize();
-		self = this;
-		
+		self = this;	
 
 		// Initialize the WebGL renderer
 		this.renderer = new THREE.WebGLRenderer({ alpha: true });
@@ -121,7 +96,7 @@ class blob extends Section {
 			},
 			u_posSeed: {
 				type: "v2",
-				value: new THREE.Vector2(0, 0)
+				value: new THREE.Vector2(this.randomBetween(), this.randomBetween())
 			}
 		};
 
@@ -152,24 +127,17 @@ class blob extends Section {
 		this.renderer.render(this.scene, this.camera);
 	}
 
-	onmousedown(e) {
-		super.onmousedown(e)
-		console.log(this)
-		// var h = super.resize(e);
-		//broken
-		// console.log(self.renderer.size)
+	resize(e) {
+		super.resize(e)
 		this.renderer.setSize(window.innerWidth, this.height);
 	}
 
 	handleInput(e) {
 		super.handleInput(e);
-		console.log(self)
-		self.uniforms.u_posSeed.value.set(self.randomBetween(), self.randomBetween());
+		this.uniforms.u_posSeed.value.set(this.randomBetween(), this.randomBetween());
 	}
 
-	
-
-	randomBetween(min = 1000, max = 10000) { // min and max included 
+	randomBetween(min = -100000, max = 100000) { // min and max included 
 		var randBetween = Math.floor(Math.random() * (max - min + 1) + min);
 		return (Math.random() > 0.5 ? randBetween : -randBetween);
 	}
