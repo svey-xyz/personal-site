@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"rootDir": "./src/_ts/",
+		"target": "ESNEXT",
+		"module": "ESNEXT",
+		"moduleResolution": "node", // required for THREE.js
+		"strict": true,
+		"outDir": "./src/_includes/js"
+	},
+	"include": [
+		// ".node_modules/three/src/**/*.ts",
+		"./src/_ts/*"
+	],
+	"exclude": [
+		"node_modules"
+	]
+}

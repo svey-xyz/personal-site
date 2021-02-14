@@ -80,7 +80,7 @@ float mixNoiseVals(float m, vec2 p, vec2 t) {
 
 // The main stuff
 void main() {
-	float t = u_time* 0.012;
+	float t = u_time * 0.012;
 	float scale = 0.000055;
 	float m = 0.8; // amount of movement between phases
 
