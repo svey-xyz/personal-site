@@ -1,30 +1,23 @@
-// declare let THREE: ''
-// import * as THREE from 'three';
-// import THREE = require('three');
-
 var sections = [];
 
-window.onload = function () {
+window.onload = function () : void {
 	initSections()
 };
 
-function initSections() {
+function initSections() : void {
 	sections = [
 		new blob('Section-1'),
 		new balls('Section-2'),
 	];
 }
-
 class Section {
-	containerName:string;
-	container:HTMLElement;
-	heightPercent:number;
-	height:number;
+	containerName : string;
+	container : HTMLElement;
+	heightPercent : number;
+	height : number;
 
-	inputHandler:any;
-	
-
-	resizeHandler:any;
+	inputHandler : (e: Event) => void;
+	resizeHandler : (e: Event) => void;
 
 	constructor(containerName:string) {
 		// define universal section variables
@@ -43,7 +36,7 @@ class Section {
 	}
 
 	handleInput(e:Event): void {};
-	resize(e: Event): void { };
+	resize(e: Event): void {};
 }
 
 Section.prototype.handleInput = function (e:Event) {
@@ -62,7 +55,8 @@ class balls extends Section {
 	}
 
 	resize(e:Event) {
-		
+		super.resize(e);
+		console.log(`${this.containerName} has been resized to ${this.height}`)
 	}
 
 	handleInput(e:Event) { 
@@ -76,17 +70,15 @@ class balls extends Section {
 */
 
 class blob extends Section {
-	renderer:THREE.WebGLRenderer;
-	scene:any;
-	camera:THREE.OrthographicCamera;
-	clock:any;
-	uniforms:any;
+	renderer : THREE.WebGLRenderer;
+	scene : THREE.Scene;
+	camera : THREE.OrthographicCamera;
+	clock : THREE.Clock;
+	uniforms: any;
 
-	
 	// Initializes the sketch
 	constructor(containerName:string) {
 		super(containerName);
-		// this.resize();
 
 		// Initialize the WebGL renderer
 		this.renderer = new THREE.WebGLRenderer({ alpha: true });

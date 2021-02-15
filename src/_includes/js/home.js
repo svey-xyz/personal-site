@@ -1,7 +1,4 @@
 "use strict";
-// declare let THREE: ''
-// import * as THREE from 'three';
-// import THREE = require('three');
 var sections = [];
 window.onload = function () {
     initSections();
@@ -43,6 +40,8 @@ class balls extends Section {
         super(containerName);
     }
     resize(e) {
+        super.resize(e);
+        console.log(`${this.containerName} has been resized to ${this.height}`);
     }
     handleInput(e) {
         super.handleInput(e);
@@ -61,7 +60,6 @@ class blob extends Section {
             requestAnimationFrame(this.animate);
             this.render();
         };
-        // this.resize();
         // Initialize the WebGL renderer
         this.renderer = new THREE.WebGLRenderer({ alpha: true });
         this.renderer.setPixelRatio(window.devicePixelRatio);

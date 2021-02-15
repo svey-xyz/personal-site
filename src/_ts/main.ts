@@ -1,5 +1,5 @@
 /******** VARIABLES ********/
-var ver = '0.0.1';
+var ver = '0.0.2';
 var mobile = false;
 var height:number;
 var vh:number;
@@ -16,6 +16,7 @@ const prevPage = document.referrer;
 	window.addEventListener("resize", resize);
 
 	resize();
+	console.log(`JS Version is: ${ver}`);
 })();
 
 function resize() {

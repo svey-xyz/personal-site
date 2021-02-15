@@ -1,6 +1,6 @@
 "use strict";
 /******** VARIABLES ********/
-var ver = '0.0.1';
+var ver = '0.0.2';
 var mobile = false;
 var height;
 var vh;
@@ -15,6 +15,7 @@ const prevPage = document.referrer;
     vh = height * 0.01;
     window.addEventListener("resize", resize);
     resize();
+    console.log(`JS Version is: ${ver}`);
 })();
 function resize() {
     if (!mobile) {
