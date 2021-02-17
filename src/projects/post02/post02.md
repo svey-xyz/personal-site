@@ -1,7 +1,7 @@
 ---
 layout: layouts/project.njk
-title: post01
-tags: [test, web_dev]
+title: post02
+tags: [test, writing]
 ---
 
 ## {{ title }}

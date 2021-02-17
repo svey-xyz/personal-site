@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "./parrallel-build-command.sh 'npx tsc --watch' 'npx @11ty/eleventy --serve'"
+    "serve": "./parallel-build-command.sh 'npx tsc --watch' 'npx @11ty/eleventy --serve'"
   },
   "keywords": [],
   "author": "",

@@ -3,7 +3,7 @@
 	--primaryColour: #fff;
 	--secondaryColour: #3B454E;
 	--accentColour: #a84d73;
-	--text-colour: #000;
+	--text-colour: #3B454E;
 
 	--inset: 100px;
 	--content-width: 1200px;
@@ -148,19 +148,27 @@ canvas {
 	text-decoration: none !important;
 }
 
-div.project-description-container {
+.project-description-container {
 	padding-top: 50px;
 	position: fixed;
 }
 
-div.project-content-container {
+.project-content-container {
 	float: right;
 	padding-top: 200px;
 	padding-bottom: 100px;
 }
 
-div.project-about-card {
+.card-holder {
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 2rem;
+}
 
+.project-card {
+	width: 25%;
+	align-self: stretch;
+	border-radius: .25rem;
 }
 
 .project-img {

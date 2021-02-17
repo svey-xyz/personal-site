@@ -20,6 +20,9 @@ module.exports = (eleventyConfig) => {
 	eleventyConfig.addPassthroughCopy({ 'node_modules/animejs/lib/anime.min.js': '/assets/js/libraries/anime.min.js' });
 	eleventyConfig.addPassthroughCopy({ 'node_modules/three/build/three.min.js': '/assets/js/libraries/three.min.js' });
 
+	eleventyConfig.addCollection('projects', require('./lib/collections/projects'));
+	eleventyConfig.addCollection('tagList', require('./lib/collections/tagList'));
+
 	if (process.env.ELEVENTY_ENV != 'production') {
 		eleventyConfig.addPassthroughCopy({'src/_includes/js/*': '/assets/js/'});
 		eleventyConfig.addPassthroughCopy({ 'src/_includes/css/*': '/assets/css/' });

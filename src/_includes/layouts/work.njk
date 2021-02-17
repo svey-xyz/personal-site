@@ -1,0 +1,28 @@
+---
+layout: layouts/main.njk
+title: Work
+page_scripts: [js/workSort.js]
+---
+
+<div class="main-padding">
+
+<h1 class="content-centre">{{ title }}</h1>
+<div class="flex justify-center flex-wrap">
+    {% for name, length in collections.tagList %}
+    <a class="tag-button" tag="{{ name }}">
+        {{ name | capitalize }}
+		{# {{ length }} #}
+    </a>, &nbsp
+    {% endfor %}
+
+</div>
+	{# <h3>Projects: </h3>#}
+
+<div class="card-holder">
+	{% for post in collections.projects %}
+		<div class="project-card shadow" tags="{{ post.data.tags }}">
+			<a href="{{ post.url }}">{{ post.data.title }}</a>
+		</div>
+	{% endfor %}
+</div>
+</div>
