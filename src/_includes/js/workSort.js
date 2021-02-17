@@ -10,13 +10,7 @@ window.onload = function () {
         console.log(`url has ${loadedTag}`);
         tagSort(loadedTag);
     }
-    window.addEventListener('hashchange', backPage);
 };
-function backPage() {
-    console.log('back pressed');
-    console.log(window.history);
-    // window.location.href = prevPage
-}
 function initTagSort() {
     var buttons = document.getElementsByClassName('tag-button');
     for (let b of buttons) {
@@ -35,9 +29,15 @@ function tagClick(e) {
     tagSort(tag);
 }
 function tagSort(tag) {
-    history.replaceState(undefined, '', "#" + tag);
+    let all = false;
+    let hashState = '#' + tag;
+    if (tag == 'all') {
+        all = true;
+        hashState = '/work/';
+    }
+    history.replaceState(undefined, '', hashState);
     for (let card of projectCards) {
-        if (card.tags.includes(tag)) {
+        if (card.tags.includes(tag) || all) {
             card.container.style.display = "flex";
         }
         else {

@@ -12,14 +12,6 @@ window.onload = function (): void {
 		console.log(`url has ${loadedTag}`);
 		tagSort(loadedTag);
 	}
-
-	window.addEventListener('hashchange', backPage)
-}
-
-function backPage() : void {
-	console.log('back pressed')
-	console.log(window.history)
-	// window.location.href = prevPage
 }
 
 function initTagSort() : void {
@@ -47,10 +39,18 @@ function tagClick(e : Event) : void {
 
 function tagSort(tag : string) {
 
-	history.replaceState(undefined, '', "#" + tag)
+	let all = false;
+	let hashState = '#' + tag;
+	
+	if (tag == 'all') {
+		all = true;
+		hashState = '/work/';
+	}
+
+	history.replaceState(undefined, '', hashState)
 
 	for (let card of projectCards) {
-		if (card.tags.includes(tag)) {
+		if (card.tags.includes(tag) || all) {
 			card.container.style.display = "flex";
 		} else {
 			card.container.style.display = "none";

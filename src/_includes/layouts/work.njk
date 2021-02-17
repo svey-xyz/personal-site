@@ -8,6 +8,11 @@ page_scripts: [js/workSort.js]
 
 <h1 class="content-centre">{{ title }}</h1>
 <div class="flex justify-center flex-wrap">
+	 <a class="tag-button" tag="all">
+        All
+		{# {{ length }} #}
+    </a>, &nbsp
+
     {% for name, length in collections.tagList %}
     <a class="tag-button" tag="{{ name }}">
         {{ name | capitalize }}
