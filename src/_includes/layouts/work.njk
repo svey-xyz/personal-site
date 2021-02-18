@@ -14,10 +14,14 @@ page_scripts: [js/workSort.js]
     </a>, &nbsp
 
     {% for name, length in collections.tagList %}
-    <a class="tag-button" tag="{{ name }}">
-        {{ name | capitalize }}
-		{# {{ length }} #}
-    </a>, &nbsp
+		<a class="tag-button" tag="{{ name }}">
+			{{ name | capitalize }}
+			{# {{ length }} #}
+		</a>
+
+		{% if not loop.last %}
+			, &nbsp
+		{% endif %}
     {% endfor %}
 
 </div>
@@ -25,9 +29,12 @@ page_scripts: [js/workSort.js]
 
 <div class="card-holder">
 	{% for post in collections.projects %}
-		<div class="project-card shadow" tags="{{ post.data.tags }}">
-			<a href="{{ post.url }}">{{ post.data.title }}</a>
+		<div class="project-card" tags="{{ post.data.tags }}">
+			<div class="project-card-info shadow">
+				<a href="{{ post.url }}">{{ post.data.title }}</a>
+			</div>
 		</div>
 	{% endfor %}
 </div>
+
 </div>

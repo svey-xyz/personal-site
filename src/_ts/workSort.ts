@@ -41,7 +41,7 @@ function tagSort(tag : string) {
 
 	let all = false;
 	let hashState = '#' + tag;
-	
+
 	if (tag == 'all') {
 		all = true;
 		hashState = '/work/';
