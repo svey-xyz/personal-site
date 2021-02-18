@@ -2,7 +2,7 @@
 :root {
 	--primaryColour: #fff;
 	--secondaryColour: #3B454E;
-	--accentColour: #a84d73;
+	--accentColour: #b42a00;
 	--text-colour: #3B454E;
 
 	--inset: 100px;
@@ -65,18 +65,47 @@ div.main-content {
 	min-height: 100%;
 }
 
-div.header {
+.header-padding {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.header {
 	position: sticky;
 	top: 0;
 	left: 0;
 	right: 0;
 	z-index: 10;
 
-	padding-top: 20px;
-	padding-bottom: 20px;
-    background-color: var(--primaryColour);
+    
 	font-family: Helvetica, sans-serif;
-	
+	vertical-align: center;
+}
+
+.filler {
+	display: block;
+	position: absolute;
+	background-color: var(--primaryColour);
+	opacity: 1;
+	min-width: 100%;
+	min-height: 100%;
+	z-index: -10;
+}
+
+.header-title {
+	/* H1 margin pushes header down */
+	margin: 0;
+	padding-right: 2rem;
+	display: inline;
+	color: var(--secondaryColour);
+	text-decoration: none !important;
+}
+
+#scrollProgressBar {
+	height: 4px;
+	background: var(--secondaryColour);
+	opacity: 0.5;
+	width: 0%;
 }
 
 .centre-content {
@@ -143,37 +172,17 @@ canvas {
 	cursor: pointer;
 }
 
-.header-title {
-	/* H1 margin pushes header down */
-	margin: 0;
-	display: inline;
-	color: var(--secondaryColour);
-	text-decoration: none !important;
-}
-
-.project-description-container {
-	padding-top: 50px;
-	position: fixed;
-}
-
-.project-content-container {
-	float: right;
-	padding-top: 200px;
-	padding-bottom: 100px;
-}
-
 .card-holder {
 	display: flex;
 	flex-wrap: wrap;
-	margin-top: 2rem;
+	margin: 2rem -1%;
 }
 
 .project-card {
 	display: flex;
 	width: var(--card-width);
 	box-sizing: border-box;
-	padding-left: 1%;
-	padding-right: 1%;
+	padding: 0 1%;
 	margin-bottom: 1rem;
 
 	align-self: stretch;
@@ -183,18 +192,54 @@ canvas {
 .project-card-info {
 	background-color: var(--primaryColour);
 	width: 100%;
-	padding: 1rem;
 	border-radius: .25rem;
-	white-space: nowrap;
+}
+
+.project-card-padding {
+	padding: 1rem;
+}
+
+.thumbnail {
+	max-width: 100%;
+	height: auto;
+	border-top-left-radius: .25rem;
+	border-top-right-radius: .25rem;
+}
+
+.blurb {
+	white-space: initial;
   	overflow: hidden;
   	text-overflow: ellipsis;
 }
 
 .project-img {
-	padding-top: 15px;
+	/* padding-top: 15px; */
 }
 
-#navigation {
-	float: right;
+.tag-button {
+	display: inline-flex;
+  	flex-direction: column;
+	font-weight: 400;
+}
+.tag-button:hover {
+	font-weight: 900;
 }
 
+.tag-button::after {
+	content: attr(tag);
+  	content: attr(tag) / "";
+	height: 0;
+	visibility: hidden;
+	overflow: hidden;
+	user-select: none;
+	pointer-events: none;
+	font-weight: 900;
+
+	  @media speech {
+    display: none;
+  }
+}
+
+.selected {
+	font-weight: 900;
+}

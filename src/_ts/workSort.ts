@@ -15,9 +15,10 @@ window.onload = function (): void {
 }
 
 function initTagSort() : void {
-	var buttons = document.getElementsByClassName('tag-button');
+	var buttonElements = document.getElementsByClassName('tag-button');
 
-	for (let b of buttons) {
+	for (let b of buttonElements) {
+		tagButtons.push(<HTMLElement>b);
 		b.addEventListener('mousedown', tagClick);
 	}
 }
@@ -34,11 +35,17 @@ function tagClick(e : Event) : void {
 	const target = e.target as HTMLElement
 	const tag = target.getAttribute('tag')!;
 
+	for (let b of tagButtons) {
+		b.style.setProperty('font-weight', '400');
+	}
+
+	target.style.setProperty('font-weight', '900');
+	
+
 	tagSort(tag)
 }
 
 function tagSort(tag : string) {
-
 	let all = false;
 	let hashState = '#' + tag;
 

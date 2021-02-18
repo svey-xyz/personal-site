@@ -34,9 +34,6 @@ module.exports = (eleventyConfig) => {
 		debugger;
 	});
 
-	// Glob
-	eleventyConfig.addFilter("projectglob", require("./lib/filters/globfilter"));
-
 	return {
 		dir: {
 			input: "src",

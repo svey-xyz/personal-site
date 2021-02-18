@@ -3,10 +3,10 @@ layout: layouts/project.njk
 
 title: post01
 tags: [test, web_dev]
-blurb: ""
+blurb: "A test project to test different things on."
 # src: './src/content/' + title + '/'
 
-images: ['1-Screenshot.png']
+images: ['2-Another.png']
 ---
 
 ## {{ title }}

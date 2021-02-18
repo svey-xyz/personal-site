@@ -12,8 +12,9 @@ window.onload = function () {
     }
 };
 function initTagSort() {
-    var buttons = document.getElementsByClassName('tag-button');
-    for (let b of buttons) {
+    var buttonElements = document.getElementsByClassName('tag-button');
+    for (let b of buttonElements) {
+        tagButtons.push(b);
         b.addEventListener('mousedown', tagClick);
     }
 }
@@ -26,6 +27,10 @@ function initCards() {
 function tagClick(e) {
     const target = e.target;
     const tag = target.getAttribute('tag');
+    for (let b of tagButtons) {
+        b.style.setProperty('font-weight', '400');
+    }
+    target.style.setProperty('font-weight', '900');
     tagSort(tag);
 }
 function tagSort(tag) {
