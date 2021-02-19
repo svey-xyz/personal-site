@@ -21,7 +21,7 @@ function initTagSort() {
     }
 }
 function initCards() {
-    var htmlCards = document.getElementsByClassName('project-card');
+    var htmlCards = document.getElementsByName('project-card');
     for (let card of htmlCards) {
         projectCards.push(new projectCard(card));
     }

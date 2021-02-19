@@ -552,8 +552,7 @@ video {
 }
 
 .main-padding {
-  align-self: center;
-  max-width: 976px;
+  max-width: 1440px;
   padding-left: 1.5rem;
   padding-right: 1.5rem
 }
@@ -569,6 +568,18 @@ video {
   .main-padding {
     padding-left: 14rem;
     padding-right: 14rem;
+  }
+}
+
+.padding-top {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+@media (min-width: 768px) {
+  .padding-top {
+    padding-top: 9rem;
+    padding-bottom: 9rem;
   }
 }
 
@@ -24256,7 +24267,7 @@ canvas {
 }
 
 .tag-button:hover {
-  font-weight: 900;
+  font-weight: 900!important;
 }
 
 .tag-button::after {

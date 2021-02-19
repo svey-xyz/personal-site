@@ -3,21 +3,21 @@ layout: layouts/main.njk
 title: Work
 page_scripts: [js/workSort.js]
 ---
-<div class="main-padding py-24 md:py-36">
+<div class="main-padding padding-top">
 	<h1 class="text-3xl font-bold mb-7 text-center">{{ title }}</h1>
 
-	<div class="flex justify-center flex-wrap">
+	<div class="flex justify-center flex-wrap select-none">
 		<a class="tag-button cursor-pointer" tag="all">
 			all
 		</a>
-		, &nbsp
+		<span>, &nbsp</span>
 
 		{% for name, length in collections.tagList %}
 			<a class="tag-button cursor-pointer" tag="{{ name }}">
 				{{ name }}
 			</a>
 			{% if not loop.last %}
-				, &nbsp
+				<span>, &nbsp</span>
 			{% endif %}
 
 		{# {{ length }} #}
@@ -28,7 +28,7 @@ page_scripts: [js/workSort.js]
 
 	{% from "./partial/project-card.njk" import projectCard %}
 
-	<div class="flex flex-wrap -mx-2">
+	<div class="flex flex-grow justify-center -mx-6">
 		{% for post in collections.projects %}
 			{{ projectCard(post) }}
 		{% endfor %}

@@ -4,7 +4,10 @@
 
 @layer base {
 	.main-padding {
-		@apply max-w-screen-lg px-6 self-center sm:px-24 md:px-56
+		@apply max-w-screen-xl px-6 sm:px-24 md:px-56
+	}
+	.padding-top {
+		@apply py-28 md:py-36;
 	}
 }
 
@@ -34,7 +37,7 @@ canvas {
 }
 
 .tag-button:hover {
-	font-weight: 900;
+	font-weight: 900!important;
 }
 
 .tag-button::after {
