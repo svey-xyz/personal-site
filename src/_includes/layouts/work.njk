@@ -28,7 +28,7 @@ page_scripts: [js/workSort.js]
 
 	{% from "./partial/project-card.njk" import projectCard %}
 
-	<div class="flex flex-grow justify-center -mx-6">
+	<div class="flex flex-wrap justify-center -mx-6">
 		{% for post in collections.projects %}
 			{{ projectCard(post) }}
 		{% endfor %}
