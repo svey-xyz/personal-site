@@ -2,7 +2,7 @@ const markdownify = require("./lib/filters/markdownfilter")
 
 module.exports = (eleventyConfig) => {
 	// all the minify code is enabled when set to 'production'
-	process.env.ELEVENTY_ENV = 'development'
+	// process.env.ELEVENTY_ENV = 'development'
 	eleventyConfig.setQuietMode(true);
 	eleventyConfig.setWatchThrottleWaitTime(200);
 
@@ -12,7 +12,7 @@ module.exports = (eleventyConfig) => {
 	eleventyConfig.setDataDeepMerge(true);
 
 	// Pass through and minify related config
-	eleventyConfig.addNunjucksAsyncShortcode("image", require("./lib/filters/imagefilter"));
+	eleventyConfig.addNunjucksShortcode("image", require("./lib/filters/imagefilter"));
 
 	eleventyConfig.addTransform("htmlmin", require("./lib/minifies/htmlmin"))
 	eleventyConfig.addFilter("minify", require("./lib/minifies/minify"));

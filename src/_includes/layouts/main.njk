@@ -17,6 +17,10 @@
 			<script src="{{ page_script | minify }}" type="text/javascript"></script>
 		{% endfor %}
 
+		{% for page_library in page_libraries %}
+			<script src="{{ page_library }}" type="text/javascript"></script>
+		{% endfor %}
+
 	</head>
 	<body>
 		<div class="main-content">		

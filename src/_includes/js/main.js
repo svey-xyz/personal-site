@@ -1,6 +1,6 @@
 "use strict";
 /******** VARIABLES ********/
-var ver = '0.0.3';
+var ver = '0.0.4';
 var mobile = false;
 var height;
 var vh;
