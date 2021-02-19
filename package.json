@@ -6,7 +6,7 @@
   "scripts": {
     "develop": "eleventy --serve & postcss src/style/tailwind.css --o src/_includes/css/style.css --watch & tsc --watch",
     "build": "NODE_ENV=production postcss src/style/tailwind.css --o src/_includes/css/style.css & ELEVENTY_ENV=production eleventy",
-	"serve": "eleventy --serve"
+    "serve": "eleventy --serve"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +14,7 @@
   "devDependencies": {
     "@11ty/eleventy": "^0.11.1",
     "@types/three": "^0.125.1",
+    "autoprefixer": "^10.2.4",
     "postcss": "^8.2.6",
     "postcss-cli": "^8.3.1",
     "tailwindcss": "^2.0.3",

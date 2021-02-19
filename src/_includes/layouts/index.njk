@@ -1,7 +1,7 @@
 ---
 layout: layouts/main.njk
 page_scripts: [js/home.js]
-page_libraries: [js/libraries/anime.min.js, js/libraries/three.min.js]
+page_libraries: [assets/js/libraries/anime.min.js, assets/js/libraries/three.min.js]
 permalink: index.html
 ---
 
@@ -14,28 +14,22 @@ permalink: index.html
 	{% include 'src/_includes/shaders/frag-Abstract.glsl' %}       
 </script>
 
+<div id="container" class="pt-12">
+	{% from "./partial/home-section.njk" import homeSection %}
 
-{% from "./partial/homeSection.njk" import homeSection %}
+	{{ homeSection("Section-1", "bg-accentColour", "60", "var(--secondaryColour)") }}
+	{{ homeSection("textSection-1", "z-10", "50", "#fff",
+		"## This is some text on the home page w0w.
+		**Bold text too**
 
-{{ homeSection("Section-1", "home-content-section", "60", "var(--secondaryColour)") }}
-{{ homeSection("textSection-1", "home-text-section", "50", "#fff",
-	"## This is some text on the home page w0w.
-	**Bold text too**
+		:)"
+	) }}
+	{{ homeSection("Section-2", "bg-accentColour", "100", "var(--secondaryColour)") }}
+	{{ homeSection("textSection-1", "", "20", "#fff",
+		":/"
+	) }}
+</div>
 
-	:)"
-) }}
-{{ homeSection("Section-2", "home-content-section", "100", "var(--secondaryColour)") }}
-{{ homeSection("textSection-1", "home-text-section", "20", "#fff",
-	":/"
-) }}
-
-{# <h3>Projects: </h3>
-
-{% for post in collections.projects %}
-    <p>
-    <a href="{{ post.url }}">{{ post.data.title }}</a>
-    </p>
-{% endfor %} #}
 
 
 

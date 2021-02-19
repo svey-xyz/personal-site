@@ -7,8 +7,10 @@ window.onload = function () {
     var loadedTag = window.location.hash;
     if (loadedTag) {
         loadedTag = loadedTag.replace('#', '');
-        console.log(`url has ${loadedTag}`);
-        tagSort(loadedTag);
+        tagSelect(loadedTag);
+    }
+    else {
+        tagSelect('all');
     }
 };
 function initTagSort() {
@@ -27,10 +29,15 @@ function initCards() {
 function tagClick(e) {
     const target = e.target;
     const tag = target.getAttribute('tag');
+    tagSelect(tag);
+}
+function tagSelect(tag) {
     for (let b of tagButtons) {
-        b.style.setProperty('font-weight', '400');
+        if (b.getAttribute('tag') != tag)
+            b.style.setProperty('font-weight', '400');
+        else
+            b.style.setProperty('font-weight', '900');
     }
-    target.style.setProperty('font-weight', '900');
     tagSort(tag);
 }
 function tagSort(tag) {

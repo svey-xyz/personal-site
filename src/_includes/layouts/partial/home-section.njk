@@ -1,0 +1,16 @@
+
+{% macro homeSection(sectionName, classes, height = "100", colour = "#fff", text = "") %}
+	{% set style %}
+		min-height: {{ height }}vh;
+		min-height: calc(var(--vh, 1vh) * {{ height }}) !important;
+	{% endset %}
+
+  <div id="{{ sectionName }}" class="{{ classes }} shadow flex justify-center" style="{{ style }}" sectionheight="{{ height }}">
+	{% if text !== "" %}
+		<div class="main-padding text-center">
+			{% markdown text %}
+		</div>
+	{% endif %}
+
+  </div>
+{% endmacro %}

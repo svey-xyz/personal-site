@@ -1,10 +1,10 @@
 {% macro projectCard(post) %}
 
 	<div class="p-6 max-w-sm mx-auto flex space-x-4" tags="{{ post.data.tags }}">
-		<div class="bg-white rounded shadow-md h-full">
+		<div class="bg-white rounded shadow h-full">
 			{% image 'thumb.png', post.data.title, 'thumbnail-alt', 'w-full m-0 rounded-t lazy' %}
 			<div class="p-4">
-				<a href="{{ post.url }}">{{ post.data.title }}</a>
+				<a class="font-bold" href="{{ post.url }}">{{ post.data.title }}</a>
 				<p class="blurb">{{ post.data.blurb }}</p>
 			</div>
 		</div>

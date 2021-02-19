@@ -9,8 +9,9 @@ window.onload = function (): void {
 	if (loadedTag) {
 		loadedTag = loadedTag.replace('#', '');
 
-		console.log(`url has ${loadedTag}`);
-		tagSort(loadedTag);
+		tagSelect(loadedTag)
+	} else {
+		tagSelect('all')
 	}
 }
 
@@ -34,14 +35,17 @@ function initCards(): void {
 function tagClick(e : Event) : void {
 	const target = e.target as HTMLElement
 	const tag = target.getAttribute('tag')!;
-
-	for (let b of tagButtons) {
-		b.style.setProperty('font-weight', '400');
-	}
-
-	target.style.setProperty('font-weight', '900');
 	
+	tagSelect(tag)
+}
 
+function tagSelect(tag : string) : void {
+	
+	for (let b of tagButtons) {
+		if (b.getAttribute('tag') != tag) b.style.setProperty('font-weight', '400');
+		else b.style.setProperty('font-weight', '900');
+	}
+	
 	tagSort(tag)
 }
 
