@@ -552,6 +552,8 @@ video {
 }
 
 .main-padding {
+  margin-left: auto;
+  margin-right: auto;
   max-width: 1440px;
   padding-left: 1.5rem;
   padding-right: 1.5rem
@@ -561,13 +563,6 @@ video {
   .main-padding {
     padding-left: 6rem;
     padding-right: 6rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .main-padding {
-    padding-left: 14rem;
-    padding-right: 14rem;
   }
 }
 

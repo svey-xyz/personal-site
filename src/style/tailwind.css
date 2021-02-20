@@ -4,7 +4,7 @@
 
 @layer base {
 	.main-padding {
-		@apply max-w-screen-xl px-6 sm:px-24 md:px-56
+		@apply max-w-screen-xl mx-auto px-6 sm:px-24
 	}
 	.padding-top {
 		@apply py-28 md:py-36;

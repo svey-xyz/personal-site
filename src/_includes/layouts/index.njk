@@ -17,15 +17,15 @@ permalink: index.html
 <div id="container" class="pt-12">
 	{% from "./partial/home-section.njk" import homeSection %}
 
-	{{ homeSection("Section-1", "bg-accentColour", "60", "var(--secondaryColour)") }}
-	{{ homeSection("textSection-1", "z-10", "50", "#fff",
+	{{ homeSection("Section-1", "bg-accentColour", "60") }}
+	{{ homeSection("textSection-1", "z-10", "50",
 		"## This is some text on the home page w0w.
 		**Bold text too**
 
 		:)"
 	) }}
-	{{ homeSection("Section-2", "bg-accentColour", "100", "var(--secondaryColour)") }}
-	{{ homeSection("textSection-1", "", "20", "#fff",
+	{{ homeSection("Section-2", "bg-accentColour", "100") }}
+	{{ homeSection("textSection-1", "z-10", "20",
 		":/"
 	) }}
 </div>

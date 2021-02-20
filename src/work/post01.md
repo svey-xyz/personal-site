@@ -7,6 +7,7 @@ blurb: "A test project to test different things on."
 # src: './src/content/' + title + '/'
 
 images: ['2-Another.png']
+thumb: ['thumb.png']
 ---
 
 ## {{ title }}

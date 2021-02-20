@@ -6,6 +6,7 @@ tags: [web_dev]
 blurb: "Look I made a website, it's new!"
 
 images: ['3-BabyATriple.png']
+thumb: ['thumb.png']
 ---
 
 ## {{ title }}

@@ -2,7 +2,7 @@
 
 	<div class="p-6 max-w-xs mx-0 flex" name="project-card" tags="{{ post.data.tags }}">
 		<div class="bg-white rounded shadow h-full">
-			<a href="{{ post.url }}"> {% image 'thumb.png', post.data.title, 'thumbnail-alt', 'w-full m-0 rounded-t lazy' %} </a>
+			<a href="{{ post.url }}"> {% image post.data.thumb, post.data.title, 'thumbnail-alt', 'w-full m-0 rounded-t lazy' %} </a>
 			<div class="p-4">
 				<a class="font-bold" href="{{ post.url }}">{{ post.data.title }}</a>
 				<p class="mt-4">{{ post.data.blurb }}</p>
