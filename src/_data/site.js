@@ -1,15 +1,17 @@
+const sanityFetch = require("../../lib/utils/sanityFetch");
 const groq = require('groq')
-const client = require('../../lib/utils/sanityClient.js')
 
-module.exports =  async function() {
-  let siteSettings =  await client.fetch(groq`
-    *[_id == "siteSettings"]{
-      title,
-	  description,
-	  keywords,
-	  author
-    }[0]
-  `)
+module.exports = async () => {
+	const filter = groq`*[_id == "siteSettings"]`
+	const projection = groq`{
+			title,
+	 		description,
+	  		keywords,
+	  		author
+		}[0]`
 
-  return siteSettings
+	const query = [filter, projection].join(' ').toString()
+	const data = sanityFetch('siteSettings', query)
+
+	return data;
 }
