@@ -3,6 +3,13 @@ layout: layouts/main.njk
 page_scripts: []
 ---
 
-<div class="main-padding padding-top">
+{# <div class="main-padding padding-top">
 	{{ content | safe }}
+</div> #}
+
+<div class="main-padding padding-top flex-wrap justify-center">
+  <h1 >{{ project.title }}</h1>
+  {# <p>Written by {% for author in post.authors %}{{author.name}}{% endfor %}  </p> #}
+  {{ project.content | markdownify | safe }}
+  <p><a href="{{ '/' | url }}">← Home</a></p>
 </div>

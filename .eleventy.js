@@ -1,13 +1,15 @@
 const markdownify = require("./lib/filters/markdownfilter")
+// const sanity = require("./src/_data/sanity")
 
 module.exports = (eleventyConfig) => {
+
 	// all the minify code is enabled when set to 'production'
 	// process.env.ELEVENTY_ENV = 'development'
 	eleventyConfig.setQuietMode(true);
 	eleventyConfig.setWatchThrottleWaitTime(200);
 
 	eleventyConfig.setLibrary("md", markdownify.markdownLib);
-	eleventyConfig.addNunjucksShortcode("markdown", markdownify);
+	eleventyConfig.addFilter("markdownify", markdownify);
 
 	eleventyConfig.setDataDeepMerge(true);
 
@@ -19,9 +21,6 @@ module.exports = (eleventyConfig) => {
 	
 	eleventyConfig.addPassthroughCopy({ 'node_modules/animejs/lib/anime.min.js': '/assets/js/libraries/anime.min.js' });
 	eleventyConfig.addPassthroughCopy({ 'node_modules/three/build/three.min.js': '/assets/js/libraries/three.min.js' });
-
-	eleventyConfig.addCollection('projects', require('./lib/collections/projects'));
-	eleventyConfig.addCollection('tagList', require('./lib/collections/tagList'));
 
 	if (process.env.ELEVENTY_ENV != 'production') {
 		eleventyConfig.addPassthroughCopy({'src/_includes/js/*': '/assets/js/'});

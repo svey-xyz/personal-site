@@ -8,7 +8,7 @@
   <div id="{{ sectionName }}" class="{{ classes }} relative shadow flex justify-center" style="{{ style }}" sectionheight="{{ height }}">
 	{% if text !== "" %}
 		<div class="main-padding text-center self-center ">
-			{% markdown text %}
+			{{ text | markdownify | safe }}
 		</div>
 	{% endif %}
 

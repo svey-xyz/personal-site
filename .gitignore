@@ -7,3 +7,6 @@ package-lock.json
 
 ## Ignore MacOS files.
 .DS_Store
+
+.env.development
+cachedContent.json

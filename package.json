@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "develop": "eleventy --serve & postcss src/style/tailwind.css --o src/_includes/css/style.css --watch & tsc --watch",
+    "develop": "NODE_ENV=development eleventy --serve & postcss src/style/tailwind.css --o src/_includes/css/style.css --watch & tsc --watch",
     "build": "NODE_ENV=production postcss src/style/tailwind.css --o src/_includes/css/style.css & ELEVENTY_ENV=production eleventy",
-    "serve": "eleventy --serve"
+    "serve": "NODE_ENV=development eleventy --serve"
   },
   "keywords": [],
   "author": "",
@@ -22,8 +22,11 @@
   },
   "dependencies": {
     "@11ty/eleventy-img": "^0.7.8",
+    "@sanity/block-content-to-markdown": "^0.0.5",
+    "@sanity/client": "^2.2.6",
     "animejs": "^3.2.1",
     "clean-css": "^4.2.3",
+    "groq": "^2.2.6",
     "html-minifier": "^4.0.0",
     "markdown-it": "^10.0.0",
     "markdown-it-emoji": "^2.0.0",
