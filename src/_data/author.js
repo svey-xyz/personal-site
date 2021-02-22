@@ -6,7 +6,12 @@ module.exports = async () => {
 	const projection = groq`{
 			name,
 	 		bio,
-	  		content,
+	  		content[]{
+				...,
+				children[]{
+					...
+				}
+			},
 	  		avatar,
 			email,
 			social

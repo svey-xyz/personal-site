@@ -1,11 +1,15 @@
-{% macro projectCard(post) %}
+{% macro projectCard(project) %}
 
-	<div class="p-6 max-w-xs mx-0 flex" name="project-card" tags="{{ post.data.tags }}">
+	
+
+	<div class="p-6 max-w-xs mx-0 flex" name="project-card" tags="{% for tag in project.tags %}{{ tag | slug }}{% if not loop.last %},{% endif %}{% endfor %}">
 		<div class="bg-white rounded shadow h-full">
-			<a href="{{ post.url }}"> {% image post.data.thumb, post.data.title, 'thumbnail-alt', 'w-full m-0 rounded-t lazy' %} </a>
+			<a href="/work/{{ project.title | slug }}">
+				<img src="{{ project.thumbnail }}" alt="{{ project.title }} Project Thumbnail" class="w-full m-0 rounded-t lazy"/>
+			</a>
 			<div class="p-4">
-				<a class="font-bold" href="{{ post.url }}">{{ post.data.title }}</a>
-				<p class="mt-4">{{ post.data.blurb }}</p>
+				<a class="font-bold" href="/work/{{ project.title | slug }}">{{ project.title }}</a>
+				<p class="mt-4">{{ project.description }}</p>
 			</div>
 		</div>
 	</div>

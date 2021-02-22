@@ -7,9 +7,30 @@ page_scripts: []
 	{{ content | safe }}
 </div> #}
 
+{% set previousPost = collections.projects | getPreviousCollectionItem(page) %}
+
+
 <div class="main-padding padding-top flex-wrap justify-center">
-  <h1 >{{ project.title }}</h1>
-  {# <p>Written by {% for author in post.authors %}{{author.name}}{% endfor %}  </p> #}
-  {{ project.content | markdownify | safe }}
-  <p><a href="{{ '/' | url }}">← Home</a></p>
+  <h1 class="text-3xl font-bold mb-7">{{ project.title }}</h1>
+
+   {# <h2 class="text-lg font-bold mb-3">Tags:</h2> #}
+  
+  	<div id="{{ project.title | slug}}-content" class="grid gap-y-6 max-w-screen-md mb-7">
+		{{ project.content | markdownify | safe }}
+	</div>
+
+	<p class="mb-24">
+		<span class="font-bold mb-3">Tags:</span>&nbsp;
+		
+		{% for tag in project.tags %}
+			<a href="/work/#{{ tag | slug}}" class="hover:underline">{{ tag }}</a>
+			{% if not loop.last %}
+			,&nbsp;
+			{% endif %}
+		{% endfor %}
+	</p>
+
+	{% if previousPost %}
+		  	<p>← <a href="{{ previousPost.url }}" class="hover:underline"> {{ previousPost.data.project.title }}</a></p>
+	{% endif %} 
 </div>

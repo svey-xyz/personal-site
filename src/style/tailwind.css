@@ -3,13 +3,20 @@
 @tailwind utilities;
 
 @layer base {
+	img {
+		width: 100%;
+	}
 	.main-padding {
 		@apply max-w-screen-xl mx-auto px-6 sm:px-24
 	}
 	.padding-top {
 		@apply py-28 md:py-36;
 	}
+	.project-text {
+		@apply max-w-prose inline-block
+	}
 }
+
 
 .emoji {
 	height: 1.2em;
@@ -41,8 +48,8 @@ canvas {
 }
 
 .tag-button::after {
-	content: attr(tag);
-  	content: attr(tag) / "";
+	content: attr(title);
+  	content: attr(title) / "";
 	height: 0;
 	visibility: hidden;
 	overflow: hidden;

@@ -1,7 +1,9 @@
 const markdownify = require("./lib/filters/markdownfilter")
+const embedEverything = require("eleventy-plugin-embed-everything");
 // const sanity = require("./src/_data/sanity")
 
 module.exports = (eleventyConfig) => {
+	eleventyConfig.addPlugin(embedEverything);
 
 	// all the minify code is enabled when set to 'production'
 	// process.env.ELEVENTY_ENV = 'development'
@@ -12,9 +14,6 @@ module.exports = (eleventyConfig) => {
 	eleventyConfig.addFilter("markdownify", markdownify);
 
 	eleventyConfig.setDataDeepMerge(true);
-
-	// Pass through and minify related config
-	eleventyConfig.addNunjucksShortcode("image", require("./lib/filters/imagefilter"));
 
 	eleventyConfig.addTransform("htmlmin", require("./lib/minifies/htmlmin"))
 	eleventyConfig.addFilter("minify", require("./lib/minifies/minify"));

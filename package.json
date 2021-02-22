@@ -21,11 +21,11 @@
     "typescript": "^4.1.5"
   },
   "dependencies": {
-    "@11ty/eleventy-img": "^0.7.8",
     "@sanity/block-content-to-markdown": "^0.0.5",
     "@sanity/client": "^2.2.6",
     "animejs": "^3.2.1",
     "clean-css": "^4.2.3",
+    "eleventy-plugin-embed-everything": "^1.11.0",
     "groq": "^2.2.6",
     "html-minifier": "^4.0.0",
     "markdown-it": "^10.0.0",

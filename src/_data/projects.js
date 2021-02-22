@@ -1,13 +1,19 @@
 const sanityFetch = require("../../lib/utils/sanityFetch");
 const groq = require('groq')
 
+const serializers = require('../../lib/utils/serializers')
+const BlocksToMarkdown = require('@sanity/block-content-to-markdown')
+const imageURL = require('../../lib/utils/imageURL')
+const client = require('../../lib/utils/sanityClient.js')
+
 module.exports = async () => {
 	const filter = groq`*[_type == "project"]`
 	const projection = groq`{
 			title,
 			date,
 			description,
-			tags,
+			"tags":projectTags[]->title,
+			thumbnail,
 			content[]{
 				...,
 				children[]{
@@ -18,7 +24,17 @@ module.exports = async () => {
 
 	const order = `| order(publishedAt asc)`
 	const query = [filter, projection, order].join(' ').toString()
-	const data = sanityFetch('projects', query)
+	const data = await sanityFetch('projects', query)
 
-	return data;
+	const preparePosts = data.map(generateContent);
+	
+	return preparePosts;
+}
+
+function generateContent(post) {
+	return {
+		...post,
+		thumbnail: imageURL(post.thumbnail),
+		content: BlocksToMarkdown(post.content, { serializers, imageOptions: { w: 1080, h: 1080, fit: 'max' }, ...client.config() })
+	}
 }
