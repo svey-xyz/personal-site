@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "develop": "NODE_ENV=development eleventy --serve & postcss src/style/tailwind.css --o src/_includes/css/style.css --watch & tsc --watch",
-    "build": "NODE_ENV=production postcss src/style/tailwind.css --o src/_includes/css/style.css & ELEVENTY_ENV=production eleventy",
-    "serve": "NODE_ENV=development eleventy --serve"
+    "develop": "eleventy --serve & postcss src/style/tailwind.css --o src/_includes/css/style.css --watch & tsc --watch",
+    "build": "tsc && NODE_ENV=production postcss src/style/tailwind.css --o src/_includes/css/style.css && NODE_ENV=production eleventy",
+    "serve": "NODE_ENV=production eleventy --serve"
   },
   "keywords": [],
   "author": "",

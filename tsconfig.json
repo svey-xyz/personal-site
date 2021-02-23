@@ -8,7 +8,6 @@
 		"outDir": "./src/_includes/js"
 	},
 	"include": [
-		// ".node_modules/three/src/**/*.ts",
 		"./src/_ts/*"
 	],
 	"exclude": [

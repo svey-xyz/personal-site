@@ -19,18 +19,14 @@ page_scripts: [js/workSort.js]
 			{% if not loop.last %}
 				<span>, &nbsp</span>
 			{% endif %}
-
-		{# {{ length }} #}
 		{% endfor %}
 
 	</div>
-		{# <h3>Projects: </h3>#}
 
 	{% from "./_includes/layouts/partial/project-card.njk" import projectCard %}
 
 	<div class="flex flex-wrap justify-center -mx-6">
 		{% for project in projects %}
-			{# {{ project.thumbnail | debugger }} #}
 			{{ projectCard(project) }}
 		{% endfor %}
 	</div>

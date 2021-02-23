@@ -1,19 +1,13 @@
 ---
+title: {{ project.titles }}
 layout: layouts/main.njk
 page_scripts: []
 ---
 
-{# <div class="main-padding padding-top">
-	{{ content | safe }}
-</div> #}
-
 {% set previousPost = collections.projects | getPreviousCollectionItem(page) %}
-
 
 <div class="main-padding padding-top flex-wrap justify-center">
   <h1 class="text-3xl font-bold mb-7">{{ project.title }}</h1>
-
-   {# <h2 class="text-lg font-bold mb-3">Tags:</h2> #}
   
   	<div id="{{ project.title | slug}}-content" class="grid gap-y-6 max-w-screen-md mb-7">
 		{{ project.content | markdownify | safe }}
