@@ -16,7 +16,6 @@ class Section {
         this.container = document.getElementById(containerName);
         this.heightPercent = parseInt(this.container.getAttribute('sectionheight'));
         this.height = this.heightPercent * vh;
-        this.container.classList.add('clickable');
         // initialize listeners
         this.inputHandler = this.handleInput.bind(this);
         this.container.addEventListener('mousedown', this.inputHandler);

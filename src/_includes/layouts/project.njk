@@ -1,30 +1,45 @@
 ---
-title: {{ project.titles }}
+title: {{ project.title }}
 layout: layouts/main.njk
 page_scripts: []
 ---
 
 {% set previousPost = collections.projects | getPreviousCollectionItem(page) %}
+{% set nextPost = collections.projects | getNextCollectionItem(page) %}
 
 <div class="main-padding padding-top flex-wrap justify-center">
-  <h1 class="text-3xl font-bold mb-7">{{ project.title }}</h1>
-  
-  	<div id="{{ project.title | slug}}-content" class="grid gap-y-6 max-w-screen-md mb-7">
-		{{ project.content | markdownify | safe }}
+  	<div class="m-auto max-w-screen-lg relative">
+
+		<h1 class="text-3xl font-bold mb-7">{{ project.title }}</h1>
+
+		<div id="{{ project.title | slug}}-content" class="grid gap-y-6 mb-24">
+			<div id="{{ project.title | slug}}-description" class="max-w-prose inline-block">
+				{{ project.description | markdownify | safe }}
+			</div>
+
+			<p>
+				<span class="font-bold mb-3">Tags:</span>&nbsp;
+				
+				{% for tag in project.tags %}
+					<a href="/work/#{{ tag | slug}}" class="hover:underline">{{ tag }}</a>
+					{% if not loop.last %}
+					,&nbsp;
+					{% endif %}
+				{% endfor %}
+			</p>
+
+			{{ project.content | markdownify | safe }}
+		</div>
+
+		{% if previousPost %}
+				<p class="absolute left-0 inline">← <a href="{{ previousPost.url }}" class="hover:underline">
+					{{ previousPost.data.project.title }}
+				</a></p>	
+		{% endif %} 
+		{% if nextPost %}
+				<p class="absolute right-0 inline"><a href="{{ nextPost.url }}" class="hover:underline">
+					{{ nextPost.data.project.title }}
+				</a> →</p>	
+		{% endif %} 
 	</div>
-
-	<p class="mb-24">
-		<span class="font-bold mb-3">Tags:</span>&nbsp;
-		
-		{% for tag in project.tags %}
-			<a href="/work/#{{ tag | slug}}" class="hover:underline">{{ tag }}</a>
-			{% if not loop.last %}
-			,&nbsp;
-			{% endif %}
-		{% endfor %}
-	</p>
-
-	{% if previousPost %}
-		  	<p>← <a href="{{ previousPost.url }}" class="hover:underline"> {{ previousPost.data.project.title }}</a></p>
-	{% endif %} 
 </div>

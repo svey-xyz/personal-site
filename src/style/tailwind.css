@@ -3,20 +3,21 @@
 @tailwind utilities;
 
 @layer base {
-	img {
-		width: 100%;
-	}
 	.main-padding {
 		@apply max-w-screen-xl mx-auto px-6 sm:px-24
 	}
 	.padding-top {
 		@apply py-28 md:py-36;
 	}
-	.project-text {
-		@apply max-w-prose inline-block
+
+	h2 {
+		@apply text-2xl font-bold;
 	}
 }
 
+.project-img {
+		width: 100%;
+}
 
 .emoji {
 	height: 1.2em;

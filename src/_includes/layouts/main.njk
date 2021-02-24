@@ -8,8 +8,10 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<title>{{ title }}</title>
-		<meta name="description" content="Hayden Soule's portfolio site.">
+		{% block customHeader %}
+			<title>{{ site.title }}</title>
+			<meta name="description" content="Hayden Soule's portfolio site.">
+		{% endblock %}
 
 		<link rel="stylesheet" href="{{ 'css/style.css' | minify }}">
 		<script src="{{ 'js/main.js' | minify }}" language="JavaScript" type="text/javascript"></script>	
@@ -22,7 +24,7 @@
 		</div>
 	</body>
 	<footer>
-		{# Load JS for each page, defined on page template. Is this the right way to do this? #}
+		{# Load JS for each page, defined on page template. Could also do this with blocks #}
 		{% for page_library in page_libraries %}
 			<script src="{{ page_library }}" type="text/javascript"></script>
 		{% endfor %}

@@ -516,10 +516,6 @@ video {
   height: auto;
 }
 
-img {
-  width: 100%;
-}
-
 .main-padding {
   margin-left: auto;
   margin-right: auto;
@@ -545,6 +541,12 @@ img {
     padding-top: 9rem;
     padding-bottom: 9rem;
   }
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .container {
@@ -603,6 +605,14 @@ img {
   cursor: pointer;
 }
 
+.block {
+  display: block;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
 .inline {
   display: inline;
 }
@@ -651,11 +661,6 @@ img {
   height: 100vh;
 }
 
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-}
-
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
@@ -668,6 +673,10 @@ img {
 
 .m-0 {
   margin: 0px;
+}
+
+.m-auto {
+  margin: auto;
 }
 
 .mx-0 {
@@ -700,8 +709,12 @@ img {
   max-width: 20rem;
 }
 
-.max-w-screen-md {
-  max-width: 768px;
+.max-w-prose {
+  max-width: 65ch;
+}
+
+.max-w-screen-lg {
+  max-width: 976px;
 }
 
 .min-w-full {
@@ -733,8 +746,20 @@ img {
   position: fixed;
 }
 
+.absolute {
+  position: absolute;
+}
+
 .relative {
   position: relative;
+}
+
+.right-0 {
+  right: 0px;
+}
+
+.left-0 {
+  left: 0px;
 }
 
 * {
@@ -788,6 +813,10 @@ img {
 
 .gap-y-6 {
   row-gap: 1.5rem;
+}
+
+.project-img {
+  width: 100%;
 }
 
 .emoji {

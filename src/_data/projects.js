@@ -11,9 +11,10 @@ module.exports = async () => {
 	const projection = groq`{
 			title,
 			date,
-			description,
+			blurb,
 			"tags":projectTags[]->title,
 			thumbnail,
+			description,
 			content[]{
 				...,
 				children[]{
@@ -35,6 +36,7 @@ function generateContent(post) {
 	return {
 		...post,
 		thumbnail: imageURL(post.thumbnail),
+		description: BlocksToMarkdown(post.description, { serializers, ...client.config() }),
 		content: BlocksToMarkdown(post.content, { serializers, imageOptions: { w: 1080, h: 1080, fit: 'max' }, ...client.config() })
 	}
 }

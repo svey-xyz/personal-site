@@ -1,5 +1,5 @@
 ---
-title: {{ site.title }}
+pageTitle: {{site.title}}
 layout: layouts/main.njk
 page_scripts: [js/home.js]
 page_libraries: [assets/js/libraries/anime.min.js, assets/js/libraries/three.min.js]
@@ -18,7 +18,7 @@ permalink: index.html
 <div id="container" class="pt-12">
 	{% from "./partial/home-section.njk" import homeSection %}
 
-	{{ homeSection("Section-1", "bg-accentColour", "60") }}
+	{{ homeSection("Section-1", "bg-accentColour cursor-pointer", "60") }}
 	{{ homeSection("textSection-1", "z-10", "50",
 		"## This is some text on the home page w0w.
 		**Bold text too**
