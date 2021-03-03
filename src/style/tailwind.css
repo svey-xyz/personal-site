@@ -10,14 +10,16 @@
 		@apply py-28 md:py-36;
 	}
 
-	h2 {
+	.project-img {
+		@apply w-full;
+	}
+
+	.project-highlight-text {
 		@apply text-2xl font-bold;
 	}
 }
 
-.project-img {
-		width: 100%;
-}
+
 
 .emoji {
 	height: 1.2em;
