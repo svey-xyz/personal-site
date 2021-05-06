@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "develop": "eleventy --serve & postcss src/style/tailwind.css --o src/_includes/css/style.css --watch & tsc --watch",
-    "build": "tsc && NODE_ENV=production postcss src/style/tailwind.css --o src/_includes/css/style.css && NODE_ENV=production eleventy",
+    "develop": "eleventy --serve & postcss src/style/tailwind.css --o www/assets/css/style.css --watch & webpack --config webpack.config.js --watch --progress",
+    "build": "webpack --config webpack.config.js && NODE_ENV=production postcss src/style/tailwind.css --o www/assets/css/style.css && NODE_ENV=production eleventy",
     "serve": "NODE_ENV=production eleventy --serve"
   },
   "keywords": [],
@@ -15,10 +15,15 @@
     "@11ty/eleventy": "^0.12.1",
     "@types/three": "^0.125.1",
     "autoprefixer": "^10.2.4",
-    "postcss": "^8.2.6",
+    "cssnano": "^5.0.2",
+    "postcss": "^8.2.14",
     "postcss-cli": "^8.3.1",
     "tailwindcss": "^2.0.3",
-    "typescript": "^4.1.5"
+    "terser-webpack-plugin": "^5.1.1",
+    "ts-loader": "^9.1.2",
+    "typescript": "^4.1.5",
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.6.0"
   },
   "dependencies": {
     "@sanity/block-content-to-markdown": "^0.0.5",

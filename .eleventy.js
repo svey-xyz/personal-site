@@ -22,8 +22,8 @@ module.exports = (eleventyConfig) => {
 	eleventyConfig.addPassthroughCopy({ 'node_modules/three/build/three.min.js': '/assets/js/libraries/three.min.js' });
 
 	if (process.env.NODE_ENV != 'production') {
-		eleventyConfig.addPassthroughCopy({'src/_includes/js/*': '/assets/js/'});
-		eleventyConfig.addPassthroughCopy({ 'src/_includes/css/*': '/assets/css/' });
+		// eleventyConfig.addPassthroughCopy({'src/_includes/js/*': '/assets/js/'});
+		// eleventyConfig.addPassthroughCopy({ 'src/_includes/css/*': '/assets/css/' });
 	}
 
 	// debugger

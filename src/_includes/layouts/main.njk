@@ -13,8 +13,8 @@
 			<meta name="description" content="Hayden Soule's portfolio site.">
 		{% endblock %}
 
-		<link rel="stylesheet" href="{{ 'css/style.css' | minify }}">
-		<script src="{{ 'js/main.js' | minify }}" language="JavaScript" type="text/javascript"></script>	
+		<link rel="stylesheet" href="/assets/css/style.css">
+		<script src="/assets/js/main.js" language="JavaScript" type="text/javascript"></script>	
 
 	</head>
 	<body>
@@ -26,11 +26,11 @@
 	<footer>
 		{# Load JS for each page, defined on page template. Could also do this with blocks #}
 		{% for page_library in page_libraries %}
-			<script src="{{ page_library }}" type="text/javascript"></script>
+			<script src="/assets/js/libraries/{{ page_library }}" type="text/javascript"></script>
 		{% endfor %}
 
 		{% for page_script in page_scripts %}
-			<script src="{{ page_script | minify }}" type="text/javascript"></script>
+			<script src="/assets/js/{{ page_script }}" type="text/javascript"></script>
 		{% endfor %}
 	</footer>
 </html>

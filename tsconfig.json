@@ -1,16 +1,21 @@
 {
 	"compilerOptions": {
-		"rootDir": "./src/_ts/",
+		// "rootDir": "./src/_includes/ts/",
 		"target": "ESNEXT",
-		"module": "ESNEXT",
+		"module": "commonjs",
 		"moduleResolution": "node", // required for THREE.js
-		"strict": true,
-		"outDir": "./src/_includes/js"
+		"strict": false,
+		// "noImplicitAny": true,
+		// "sourceMap": true,
+		// "outFile": "./src/_includes/js/bundle.js"
+		// "outDir": "./www/assets/js/"
 	},
-	"include": [
-		"./src/_ts/*"
-	],
+	// "include": [
+	// 	"./src/_includes/ts/*",
+	// 	"./src/_includes/ts/pages/*"
+	// ],
 	"exclude": [
-		"node_modules"
+		"node_modules",
+		// "./src/_ts/blocks/*"
 	]
 }

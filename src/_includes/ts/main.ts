@@ -2,7 +2,7 @@
 var ver = '0.0.4';
 var mobile = false;
 var height:number;
-var vh:number;
+declare var vh:number;
 const prevPage = document.referrer;
 
 /******** INITIALIZATION ********/
@@ -12,7 +12,7 @@ const prevPage = document.referrer;
 	}
 
 	height = window.innerHeight;
-	vh = height * 0.01;
+	window.vh = height * 0.01;
 	window.addEventListener("resize", resize);
 	window.onscroll = function () { ScrollIndicator() };
 

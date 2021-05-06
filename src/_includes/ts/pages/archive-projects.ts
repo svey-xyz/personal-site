@@ -1,3 +1,7 @@
+/*
+*  Add sorting of projects
+*/
+
 var projectCards = Array<projectCard>();
 var tagButtons = Array<HTMLElement>();
 
@@ -17,7 +21,6 @@ window.onload = function (): void {
 
 function initTagSort() : void {
 	var buttonElements = document.getElementsByClassName('tag-button');
-
 	for (let b of buttonElements) {
 		tagButtons.push(<HTMLElement>b);
 		b.addEventListener('mousedown', tagClick);
