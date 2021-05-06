@@ -22,8 +22,8 @@ module.exports = {
 			pink: colors.fuchsia,
 
 			primaryColour: '#fff',
-			secondaryColour: '#3B454E',
-			accentColour: '#b42a00',
+			secondaryColour: '#2D3047',
+			charcoal: '#3B454E',
 			textColour: '#3B454E'
 		},
 		boxShadow: {
