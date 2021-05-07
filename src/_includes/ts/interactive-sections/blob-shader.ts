@@ -2,7 +2,7 @@
 * Section-1 Canvas
 */
 
-import { Section } from "./interactive-section";
+import { Section } from "../blocks/interactive-section";
 
 export class blobShader extends Section {
 	renderer: THREE.WebGLRenderer;
@@ -12,8 +12,8 @@ export class blobShader extends Section {
 	uniforms: any;
 
 	// Initializes the sketch
-	constructor(containerName: string) {
-		super(containerName);
+	constructor(container: any) {
+		super(container);
 
 		// Initialize the WebGL renderer
 		this.renderer = new (<any>window).THREE.WebGLRenderer({ alpha: true });

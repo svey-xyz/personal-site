@@ -1,6 +1,6 @@
 
 export class Section {
-	containerName: string;
+	// containerName: string;
 	container: HTMLElement;
 	heightPercent: number;
 	height: number;
@@ -8,10 +8,11 @@ export class Section {
 	inputHandler: (e: Event) => void;
 	resizeHandler: (e: Event) => void;
 
-	constructor(containerName: string) {
+	constructor(container: any) {
 		// define universal section variables
-		this.containerName = containerName;
-		this.container = document.getElementById(containerName)!;
+		// this.containerName = containerName;
+		// this.container = document.getElementById(containerName)!;
+		this.container = container;
 		this.heightPercent = parseInt(this.container.getAttribute('sectionheight')!);
 		this.height = this.heightPercent * vh;
 

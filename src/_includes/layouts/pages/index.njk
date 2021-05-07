@@ -16,19 +16,26 @@ permalink: index.html
 </script>
 
 <div id="container" class="pt-12">
-	{% from "layouts/partial/blocks/home-section.njk" import homeSection %}
+	{% from "layouts/partial/blocks/_block.njk" import block %}
 
-	{{ homeSection("Section-1", "bg-secondaryColour cursor-pointer", "60") }}
-	{{ homeSection("textSection-1", "z-10", "50",
-		"## This is some text on the home page w0w.
-		**Bold text too**
+	{{ block("interactive-section", specialClasses="bg-secondaryColour cursor-pointer",
+		properties={height:"60", script:"blobShader"}) }}
 
-		:)"
-	) }}
-	{{ homeSection("Section-2", "bg-secondaryColour", "100") }}
-	{{ homeSection("textSection-1", "z-10", "20",
-		":/"
-	) }}
+	{{ block("text-section", specialClasses="block-padding shadow",
+		properties={text:"Howdy y'all this is my block structure."}) }}
+
+	{{ block("interactive-section", specialClasses="bg-secondaryColour cursor-pointer",
+		properties={height:"60", script:""}) }}
+
+	{{ block("text-section", specialClasses="block-padding shadow",
+		properties={text:
+			"## This is some text on the home page w0w.
+			**Bold text too**
+
+			:)"
+		})
+	}}
+
 </div>
 
 

@@ -6,6 +6,11 @@
 	.main-padding {
 		@apply max-w-screen-xl mx-auto px-6 sm:px-24
 	}
+
+	.block-padding {
+		@apply py-24 sm:py-32;
+	}
+
 	.padding-top {
 		@apply py-28 md:py-36;
 	}

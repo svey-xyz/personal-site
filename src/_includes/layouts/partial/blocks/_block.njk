@@ -1,0 +1,18 @@
+
+{% macro block(blockType, specialClasses = "", properties = []) %}
+	{% set style %}
+		{% if properties.height == null %}
+			min-height: auto;
+		{% else %}
+			min-height: {{ properties.height }}vh;
+			min-height: calc(var(--vh, 1vh) * {{ properties.height }}) !important;
+		{% endif %}
+	{% endset %}
+
+  <div id="{{ sectionName }}" class="{{ blockType }} {{ specialClasses }} relative flex" style="{{ style }}">
+	{% set blockTemplate = ("layouts/partial/blocks/" + blockType + ".njk") %}
+
+	{% from blockTemplate import block %}
+	{{ block(properties) }}
+  </div>
+{% endmacro %}

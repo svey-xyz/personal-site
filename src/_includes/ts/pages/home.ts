@@ -1,18 +1,25 @@
-import { blobShader } from "../blocks/interactive-sections/blob-shader";
+import { blobShader } from "../interactive-sections/blob-shader";
+let ineractiveScripts = { 'blobShader' : blobShader }
 // const blobShader = require("../blocks/interactive-sections/blob-shader");
 
 
 var sections = [];
 
 window.onload = function () : void {
-	initSections()
+	initSections();
 };
 
 function initSections() : void {
-	sections = [
-		new blobShader('Section-1'),
-		// new balls('Section-2'),
-	];
+	var interactiveSections = document.getElementsByClassName('interactive-section');
+	for (var i = 0; i < interactiveSections.length; ++i) {
+		var scriptType = interactiveSections[i].children[0].getAttribute('interactivescript');
+		sections.push(new ineractiveScripts[scriptType](interactiveSections[i].children[0]));
+
+	}
+	// sections = [
+	// 	new blobShader('Section-1'),
+	// 	// new balls('Section-2'),
+	// ];
 }
 
 // class balls extends Section {
