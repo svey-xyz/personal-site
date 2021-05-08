@@ -6,20 +6,11 @@ page_libraries: [anime.min.js, three.min.js]
 permalink: index.html
 ---
 
-{# The glsl files need to be inline for THREE.js, but using nunjucks includes makes for easier editing, could also pass these through their own minify filter in the future #}
-<script type="x-shader/x-vertex" id="vertexShader">
-	{% include 'src/_includes/shaders/vert-Abstract.glsl' %}        
-</script>
-
-<script type="x-shader/x-fragment" id="fragmentShader">
-	{% include 'src/_includes/shaders/frag-Abstract.glsl' %}       
-</script>
-
 <div id="container" class="pt-12">
 	{% from "layouts/partial/blocks/_block.njk" import block %}
 
 	{{ block("interactive-section", specialClasses="bg-secondaryColour cursor-pointer",
-		properties={height:"60", script:"blobShader"}) }}
+		properties={height:"60", script:"blob-shader"}) }}
 
 	{{ block("text-section", specialClasses="block-padding shadow",
 		properties={text:"Howdy y'all this is my block structure."}) }}

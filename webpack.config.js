@@ -21,10 +21,10 @@ module.exports = {
 		filename: '[name].js',
 	},
 
-	// optimization: {
-	// 	minimize: true,
-	// 	minimizer: [new TerserPlugin()],
-	// },
+	optimization: {
+		minimize: true,
+		minimizer: [new TerserPlugin()],
+	},
 
 	// file resolutions
 	resolve: {
@@ -48,7 +48,17 @@ module.exports = {
 					}
 				}],
 				exclude: /node_modules/,
-			}
+			},
+			{
+				test: /\.glsl$/,
+				use: [{
+					loader: 'raw-loader',
+					options: {
+						esModule: false,
+					}
+				}],
+				exclude: /node_modules/,
+			},
 		]
 	}
 };

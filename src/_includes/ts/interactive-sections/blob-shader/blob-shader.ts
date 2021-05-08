@@ -2,7 +2,10 @@
 * Section-1 Canvas
 */
 
-import { Section } from "../blocks/interactive-section";
+import { Section } from "../section-base";
+
+const vertShader: String = require('./shaders/vert-Abstract.glsl');
+const fragShader: String = require('./shaders/frag-Abstract.glsl');
 
 export class blobShader extends Section {
 	renderer: THREE.WebGLRenderer;
@@ -12,7 +15,7 @@ export class blobShader extends Section {
 	uniforms: any;
 
 	// Initializes the sketch
-	constructor(container: any) {
+	constructor(container: Element) {
 		super(container);
 
 		// Initialize the WebGL renderer
@@ -51,8 +54,9 @@ export class blobShader extends Section {
 		var material = new (<any>window).THREE.ShaderMaterial({
 			uniforms: this.uniforms,
 			transparent: true,
-			vertexShader: document.getElementById("vertexShader")!.textContent!,
-			fragmentShader: document.getElementById("fragmentShader")!.textContent!
+			vertexShader: vertShader,
+			fragmentShader: fragShader,
+			// fragmentShader: document.getElementById("fragmentShader")!.textContent!
 		});
 
 		// Create the mesh and add it to the scene
@@ -70,6 +74,7 @@ export class blobShader extends Section {
 
 	// Renders the sketch
 	render() {
+
 		this.uniforms.u_time.value = this.clock.getElapsedTime();
 		this.renderer.render(this.scene, this.camera);
 	}
