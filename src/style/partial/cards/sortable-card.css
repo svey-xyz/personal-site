@@ -1,0 +1,83 @@
+/*
+* Styling for sortable cards
+*/
+
+.sortable-card {
+	@apply rounded;
+
+	position: relative;
+	display: flex;
+	overflow: hidden;
+	margin-left: 0px;
+    margin-right: 0px;
+	padding-top: 1.5rem;
+
+	@media (min-width: 480px) {
+        height: 24rem/* 384px */;
+		margin: 1.5rem/* 24px */;
+		max-width: 20rem/* 320px */;
+		padding-top: 0rem;
+    }
+
+	& > .content {
+		@apply rounded shadow;
+
+		display: block;
+		position: relative;
+		height: 100%;
+
+		&:hover img {
+			transform: scale(1.05);
+		}
+
+		&:hover .info {
+			& > h4 {
+				&::after {
+					width: 70%;
+				}
+			}
+		}
+
+		& > img {
+			margin: 0;
+			height: 100%;
+			object-fit: cover;
+
+			transition-duration: 250ms;
+			transition-timing-function: ease-in-out;
+		}
+
+		& > .info {
+			position: absolute;
+			bottom: 0px;
+			width: 100%;
+			padding: 1rem/* 16px */;
+
+			z-index: 10;
+			color: white;
+
+			background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8) 40%, rgba(0, 0, 0, 1) 95%);
+
+			& > h4 {
+				position: relative;
+				font-weight: 700;
+
+				&::after {
+					content: '';
+					position: absolute;
+					height: 3px;
+					width: 0%;
+					left: -1rem;
+					bottom: -0.5rem;
+					background: white;
+
+					transition-duration: 200ms;
+				}
+			}
+
+			& > p {
+				margin-top: 1.5rem;
+			}	
+		}
+	}
+}

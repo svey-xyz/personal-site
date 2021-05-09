@@ -16,6 +16,7 @@ module.exports = {
 		},
 		colors: {
 			white: colors.white,
+			black: colors.black,
 			grey: colors.coolGray,
 			blue: colors.lightBlue,
 			red: colors.rose,
@@ -37,6 +38,7 @@ module.exports = {
 	variants: {
 		extend: {
 			fontWeight: ['hover'],
+
 		}
 	},
 	plugins: [],

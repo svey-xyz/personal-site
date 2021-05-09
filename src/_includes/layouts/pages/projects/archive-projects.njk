@@ -26,7 +26,7 @@ page_scripts: [archive-projects.js]
 
 	{% from "layouts/partial/cards/project-card.njk" import projectCard %}
 
-	<div class="flex flex-wrap justify-center -mx-6">
+	<div class="flex flex-wrap justify-center sm:-mx-6">
 		{% for project in projects %}
 			{{ projectCard(project) }}
 		{% endfor %}

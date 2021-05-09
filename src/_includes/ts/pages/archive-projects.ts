@@ -2,7 +2,7 @@
 *  Add sorting of projects
 */
 
-var projectCards = Array<projectCard>();
+var sortableCards = Array<projectCard>();
 var tagButtons = Array<HTMLElement>();
 
 window.onload = function (): void {
@@ -28,10 +28,10 @@ function initTagSort() : void {
 }
 
 function initCards(): void {
-	var htmlCards = document.getElementsByName('project-card');
+	var htmlCards = document.getElementsByName('sortable-card');
 
 	for (let card of htmlCards) {
-		projectCards.push(new projectCard(<HTMLElement>card));
+		sortableCards.push(new projectCard(<HTMLElement>card));
 	}
 }
 
@@ -63,7 +63,7 @@ function tagSort(tag : string) {
 
 	history.replaceState(undefined, '', hashState)
 
-	for (let card of projectCards) {
+	for (let card of sortableCards) {
 		if (card.tags.includes(tag) || all) {
 			card.container.style.display = "flex";
 		} else {

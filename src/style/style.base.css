@@ -1,0 +1,42 @@
+@tailwind base;
+
+@layer base {
+	.main-padding {
+		@apply max-w-screen-xl mx-auto px-6 sm:px-24
+	}
+
+	.block-padding {
+		@apply py-24 sm:py-32;
+	}
+
+	.padding-top {
+		@apply py-28 md:py-36;
+	}
+
+	.project-img {
+		@apply w-full;
+	}
+
+	.project-highlight-text {
+		@apply text-2xl font-bold;
+	}
+}
+
+.emoji {
+	height: 1.2em;
+	display: inline
+}
+
+.screen-height-section {
+	left: 0;
+	right: 0;
+	height: 100vh;
+	height: calc(var(--vh, 1vh) * 100);
+}
+
+canvas {
+	min-width: 100vw;
+	position: absolute;
+	display: block;
+	z-index: 0;
+}
