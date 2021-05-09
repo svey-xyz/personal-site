@@ -52,9 +52,11 @@ module.exports = {
 			{
 				test: /\.glsl$/,
 				use: [{
-					loader: 'raw-loader',
+					loader: 'webpack-glsl-minify',
 					options: {
+						output: 'source',
 						esModule: false,
+						preserveAll: true
 					}
 				}],
 				exclude: /node_modules/,

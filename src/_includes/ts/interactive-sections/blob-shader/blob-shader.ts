@@ -8,10 +8,6 @@ const vertShader: String = require('./shaders/vert-Abstract.glsl');
 const fragShader: String = require('./shaders/frag-Abstract.glsl');
 
 export class blobShader extends shader {
-	renderer: THREE.WebGLRenderer;
-	scene: THREE.Scene;
-	camera: THREE.OrthographicCamera;
-	clock: THREE.Clock;
 	uniforms: any;
 
 	// Initializes the sketch
