@@ -6,7 +6,7 @@
 	"scripts": {
 		"clean": "rimraf www",
 		"dev:eleventy": "eleventy --serve",
-		"dev:postcss": "postcss src/style/tailwind.css --o www/assets/css/style.css --watch",
+		"dev:postcss": "postcss src/style/tailwind.css --o www/assets/css/style.css --watch --verbose",
 		"dev:webpack": "webpack --config webpack.config.js --watch --progress",
 		"develop": "npm-run-all clean --parallel dev:*",
 		"build:eleventy": "NODE_ENV=production eleventy",
