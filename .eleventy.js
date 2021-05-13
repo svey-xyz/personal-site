@@ -6,7 +6,6 @@ module.exports = (eleventyConfig) => {
 	eleventyConfig.addPlugin(embedEverything);
 
 	// all the minify code is enabled when set to 'production'
-	// process.env.ELEVENTY_ENV = 'development'
 	eleventyConfig.setQuietMode(true);
 	eleventyConfig.setWatchThrottleWaitTime(1000);
 
@@ -20,11 +19,6 @@ module.exports = (eleventyConfig) => {
 	
 	eleventyConfig.addPassthroughCopy({ 'node_modules/animejs/lib/anime.min.js': '/assets/js/libraries/anime.min.js' });
 	eleventyConfig.addPassthroughCopy({ 'node_modules/three/build/three.min.js': '/assets/js/libraries/three.min.js' });
-
-	if (process.env.NODE_ENV != 'production') {
-		// eleventyConfig.addPassthroughCopy({'src/_includes/js/*': '/assets/js/'});
-		// eleventyConfig.addPassthroughCopy({ 'src/_includes/css/*': '/assets/css/' });
-	}
 
 	// debugger
 	eleventyConfig.addFilter("debugger", (...args) => {
