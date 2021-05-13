@@ -1,6 +1,22 @@
 const path = require('path');
 const TerserPlugin = require("terser-webpack-plugin");
 
+const GLSLMinifyLoader = [{
+	loader: 'webpack-glsl-minify',
+	options: {
+		output: 'source',
+		esModule: false,
+		preserveAll: true
+	}
+}];
+
+const GLSLLoader = [{
+	loader: 'webpack-glsl-loader',
+	options: {
+		esModule: false
+	}
+}]
+
 module.exports = {
 
 	// bundling mode
@@ -21,8 +37,8 @@ module.exports = {
 	},
 
 	optimization: {
-		minimize: true,
-		minimizer: [new TerserPlugin()],
+		minimize: (process.env.NODE_ENV === 'production' ? true : false),
+		minimizer: (process.env.NODE_ENV === 'production' ? [new TerserPlugin()] : []),
 	},
 
 	// file resolutions
@@ -52,14 +68,7 @@ module.exports = {
 			},
 			{
 				test: /\.glsl$/,
-				use: [{
-					loader: 'webpack-glsl-minify',
-					options: {
-						output: 'source',
-						esModule: false,
-						preserveAll: true
-					}
-				}],
+				use: (process.env.NODE_ENV === 'production' ? GLSLMinifyLoader : GLSLLoader),
 				exclude: /node_modules/,
 			}
 		]

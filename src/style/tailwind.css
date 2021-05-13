@@ -1,4 +1,4 @@
-@import "tailwindcss/base";
+@import "tailwindcss/base"; /* tailwindcss recomends \@import over \@tailwind when using other \@import statements */
 @import "./style.base.css";
 @import-glob "./partial/**/*.css";
 
