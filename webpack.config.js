@@ -7,17 +7,16 @@ module.exports = {
 	mode: 'production',
 
 	// entry files
-	// entry: './src/_ts/pages/home.ts',
 	entry: {
-		main: "./src/_includes/ts/main.ts",
-		home: "./src/_includes/ts/pages/home.ts",
-		"archive-projects": "./src/_includes/ts/pages/archive-projects.ts"
+		'js/main': "./src/_includes/ts/main.ts",
+		'js/pages/home': "./src/_includes/ts/pages/home.ts",	
+		'js/pages/archive-projects': "./src/_includes/ts/pages/archive-projects.ts"
 	},
 	// devtool: 'inline-source-map',
 
 	// output bundles (location)
 	output: {
-		path: path.resolve(__dirname, 'www/assets/js'),
+		path: path.resolve(__dirname, 'www/assets/'),
 		filename: '[name].js',
 	},
 
@@ -35,6 +34,8 @@ module.exports = {
 		aggregateTimeout: 600,
 		ignored: /node_modules/,
 	},
+
+	stats: 'minimal',
 
 	// loaders
 	module: {
@@ -60,7 +61,7 @@ module.exports = {
 					}
 				}],
 				exclude: /node_modules/,
-			},
+			}
 		]
 	}
 };

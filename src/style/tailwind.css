@@ -1,6 +1,7 @@
-
+@import "tailwindcss/base";
 @import "./style.base.css";
 @import-glob "./partial/**/*.css";
+
 
 @tailwind components;
 @tailwind utilities;

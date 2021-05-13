@@ -1,5 +1,3 @@
-@tailwind base;
-
 @layer base {
 	.main-padding {
 		@apply max-w-screen-xl mx-auto px-6 sm:px-24

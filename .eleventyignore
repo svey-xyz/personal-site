@@ -1,1 +1,13 @@
-src/_includes/_ts/*.ts
+src/_includes/ts/*.ts
+
+## Ignore build files
+www/
+
+## Ignore node dependencies
+node_modules/
+package-lock.json
+
+## Ignore MacOS files.
+.DS_Store
+._*
+._.*

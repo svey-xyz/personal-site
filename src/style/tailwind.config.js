@@ -1,6 +1,7 @@
 const colors = require('tailwindcss/colors')
 
 module.exports = {
+	mode: 'jit',
 	purge: {
 		content: ["./src/_includes/layouts/**/*.njk", "./src/*.njk"],
 		options: {
