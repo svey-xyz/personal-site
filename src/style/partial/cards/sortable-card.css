@@ -11,19 +11,32 @@
 	z-index: 10;
 	display: flex;
 	overflow: hidden;
+	margin: 1.5rem;
 	margin-left: 0px;
     margin-right: 0px;
-	padding-top: 1.5rem;
+	padding-top: 0rem;
+	width: 100%;
+	min-width: 18rem;
+	height: 24rem/* 384px */;
+
+	flex-grow: 1;
 
 	transition-duration: 250ms;
 	transition-timing-function: ease-in-out;
 
 	@media (min-width: 480px) {
-        height: 24rem/* 384px */;
-		margin: 1.5rem/* 24px */;
-		max-width: 20rem/* 320px */;
-		padding-top: 0rem;
+       
+		margin-left: 1.5rem;
+    	margin-right: 1.5rem;
+		width: 31% /* 20rem */;
+		
     }
+
+	/* @media (min-width: 768px) {
+		margin-left: 1%;
+    	margin-right: 1%;
+		max-width: 31%;
+	} */
 
 	&:hover {
 		transform: rotate3d(1, 0, 0.05, 0.015turn);
@@ -37,6 +50,7 @@
 		display: block;
 		position: relative;
 		height: 100%;
+		width: 100%;
 
 		/* animating opacity on pseudo element is faster than animating box-shadow */
 		&::after {
@@ -62,7 +76,7 @@
 		&:hover .info {
 			& > h4 {
 				&::after {
-					width: 70%;
+					width: calc(100% + 1rem);
 				}
 			}
 		}
@@ -70,8 +84,15 @@
 		& > img {
 			position: relative;
 			margin: 0;
+			display: inline-block;
+			
+			width: 100%;
 			height: 100%;
+			min-width: 100%;
+			min-height: 100%;
+			object-position: center;
 			object-fit: cover;
+			
 			z-index: -10;
 
 			transition-duration: 250ms;
@@ -91,6 +112,7 @@
 
 			& > h4 {
 				position: relative;
+				width: max-content;
 				font-weight: 700;
 
 				&::after {

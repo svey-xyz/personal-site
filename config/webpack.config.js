@@ -61,7 +61,7 @@ module.exports = {
 				use: [{
 					loader: 'ts-loader',
 					options: {
-						configFile: "dev-config/tsconfig.json"
+						configFile: "config/tsconfig.json"
 					}
 				}],
 				exclude: /node_modules/,
