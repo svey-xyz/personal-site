@@ -11,8 +11,8 @@ export class shader extends Section {
 	clock: THREE.Clock;
 	uniforms: any;
 
-	vertShader: String;
-	fragShader: String;
+	vertShader: String = '';
+	fragShader: String = '';
 
 	// Initializes the sketch
 	constructor(container: Element) {

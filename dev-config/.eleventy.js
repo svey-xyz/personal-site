@@ -1,4 +1,4 @@
-const markdownify = require("./lib/filters/markdownfilter")
+const markdownify = require("../lib/filters/markdownfilter")
 const embedEverything = require("eleventy-plugin-embed-everything");
 // const sanity = require("./src/_data/sanity")
 
@@ -14,8 +14,7 @@ module.exports = (eleventyConfig) => {
 
 	eleventyConfig.setDataDeepMerge(true);
 
-	eleventyConfig.addTransform("htmlmin", require("./lib/minifies/htmlmin"))
-	eleventyConfig.addFilter("minify", require("./lib/minifies/minify"));
+	eleventyConfig.addTransform("htmlmin", require("../lib/transforms/htmlmin"))
 	
 	eleventyConfig.addPassthroughCopy({ 'node_modules/animejs/lib/anime.min.js': '/assets/js/libraries/anime.min.js' });
 	eleventyConfig.addPassthroughCopy({ 'node_modules/three/build/three.min.js': '/assets/js/libraries/three.min.js' });
@@ -25,6 +24,8 @@ module.exports = (eleventyConfig) => {
 		console.log(...args)
 		debugger;
 	});
+
+	eleventyConfig.addWatchTarget("../src/style/**/*");
 
 	return {
 		dir: {

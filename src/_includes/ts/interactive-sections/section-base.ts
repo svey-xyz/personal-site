@@ -27,7 +27,7 @@ export class Section {
 
 Section.prototype.handleInput = function (e: Event) {
 	// Handle click
-	console.log(`${this.containerName} has been clicked`)
+	console.log(`${this.container} has been clicked`)
 };
 
 Section.prototype.resize = function (e: Event) {

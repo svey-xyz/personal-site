@@ -1,6 +1,6 @@
 {% macro projectCard(project) %}
 
-	<div class="sortable-card" name="sortable-card" tags="{% for tag in project.tags %}{{ tag | slug }}{% if not loop.last %},{% endif %}{% endfor %}">
+	<div class="sortable-card" test="test-3" name="sortable-card" tags="{% for tag in project.tags %}{{ tag | slug }}{% if not loop.last %},{% endif %}{% endfor %}">
 		<a class="content" href="/work/{{ project.title | slug }}" >
 			<img src="{{ project.thumbnail }}" alt="{{ project.title }} Project Thumbnail" class="lazy"/>
 			<div class="info">

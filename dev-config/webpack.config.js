@@ -32,7 +32,7 @@ module.exports = {
 
 	// output bundles (location)
 	output: {
-		path: path.resolve(__dirname, 'www/assets/'),
+		path: path.resolve(__dirname, '../www/assets/'),
 		filename: '[name].js',
 	},
 
@@ -61,7 +61,7 @@ module.exports = {
 				use: [{
 					loader: 'ts-loader',
 					options: {
-						configFile: "tsconfig.json"
+						configFile: "dev-config/tsconfig.json"
 					}
 				}],
 				exclude: /node_modules/,
