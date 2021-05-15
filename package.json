@@ -6,11 +6,11 @@
 	"scripts": {
 		"clean": "rimraf www",
 		"dev:eleventy": "NODE_ENV=development eleventy --serve",
-		"dev:postcss": "NODE_ENV=development postcss --config ./config/postcss.config.js src/style/tailwind.css --o www/assets/css/style.css --watch --verbose",
+		"dev:postcss": "NODE_ENV=development postcss --config ./config/postcss.config.js src/style/style.css --o www/assets/css/style.css --watch --verbose",
 		"dev:webpack": "NODE_ENV=development webpack --config ./config/webpack.config.js --watch --progress",
 		"develop": "npm-run-all clean --parallel dev:*",
 		"build:eleventy": "NODE_ENV=production eleventy",
-		"build:postcss": "NODE_ENV=production postcss --config ./config/postcss.config.js src/style/tailwind.css --o www/assets/css/style.css",
+		"build:postcss": "NODE_ENV=production postcss --config ./config/postcss.config.js src/style/style.css --o www/assets/css/style.css",
 		"build:webpack": "NODE_ENV=production webpack --config ./config/webpack.config.js",
 		"build": "run-s clean build:*",
 		"serve": "eleventy --serve"
@@ -30,7 +30,7 @@
 		"postcss-import": "^14.0.1",
 		"postcss-import-ext-glob": "^2.0.1",
 		"postcss-loader": "^5.2.0",
-		"postcss-nesting": "^8.0.1",
+		"postcss-preset-env": "^6.7.0",
 		"tailwindcss": "^2.0.3",
 		"terser-webpack-plugin": "^5.1.1",
 		"ts-loader": "^9.1.2",

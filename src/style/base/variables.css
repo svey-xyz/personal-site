@@ -1,0 +1,11 @@
+:root {
+	--sm-screen: 480px;
+	--md-screen: 768px;
+	--lg-screen: 976px;
+	--xl-screen: 1440px;
+}
+
+@custom-media --sm-screen (min-width: 480px);
+@custom-media --md-screen (min-width: 768px);
+@custom-media --lg-screen (min-width: 976px);
+@custom-media --xl-screen (min-width: 1440px);
