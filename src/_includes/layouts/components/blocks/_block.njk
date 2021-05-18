@@ -10,7 +10,7 @@
 	{% endset %}
 
   <div id="{{ sectionName }}" class="{{ blockType }} {{ specialClasses }} relative flex" style="{{ style }}">
-	{% set blockTemplate = ("layouts/partial/blocks/" + blockType + ".njk") %}
+	{% set blockTemplate = ("layouts/components/blocks/" + blockType + ".njk") %}
 
 	{% from blockTemplate import block %}
 	{{ block(properties) }}
