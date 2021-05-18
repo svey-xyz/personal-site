@@ -2,6 +2,10 @@ const markdownify = require("./lib/filters/markdownfilter")
 const embedEverything = require("eleventy-plugin-embed-everything");
 // const sanity = require("./src/_data/sanity")
 
+const serializers = require('./lib/utils/serializers')
+const client = require('./lib/utils/sanityClient')
+const BlocksToMarkdown = require('@sanity/block-content-to-markdown')
+
 module.exports = (eleventyConfig) => {
 	eleventyConfig.addPlugin(embedEverything);
 
@@ -23,6 +27,10 @@ module.exports = (eleventyConfig) => {
 	eleventyConfig.addFilter("debugger", (...args) => {
 		console.log(...args)
 		debugger;
+	});
+
+	eleventyConfig.addFilter("sanityBlocksToMarkdown", (sanityBlcoks) => {
+		return BlocksToMarkdown(sanityBlcoks, { serializers, ...client.config() })
 	});
 
 	eleventyConfig.addWatchTarget("./src/style/**/*"); // need to fix this after moving config file

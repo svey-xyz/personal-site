@@ -1,9 +1,12 @@
 ---
-layout: layouts/pages/page
 pagination:
   data: pages
   alias: pageData
   size: 1
   addAllPagesToCollections: true
+layout: layouts/main.njk
+page_scripts: []
 permalink: /{{ pageData.slug | slug }}/index.html
 ---
+
+{% extends "./_includes/layouts/templates/" + pageData.template + ".njk" %}

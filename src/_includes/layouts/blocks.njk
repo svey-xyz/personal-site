@@ -1,0 +1,13 @@
+---
+permalink: false
+---
+
+{% from "layouts/partial/blocks/_block.njk" import block %}
+
+{% macro blocks(blocks) %}
+	{% if blocks | length > 0 %}
+		{% for section in blocks %}
+			{{ block(section._type, specialClasses="", properties=section) }}
+		{% endfor %}
+	{% endif %}
+{% endmacro %}

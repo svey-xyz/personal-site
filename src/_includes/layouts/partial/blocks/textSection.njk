@@ -1,0 +1,5 @@
+{% macro block(properties) %}
+	<div class="main-padding text-center self-center py-16">
+		{{ properties.text | sanityBlocksToMarkdown | markdownify | safe }}
+	</div>
+{% endmacro %}
