@@ -8,7 +8,7 @@ permalink: false
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		{% block customHeader %}
+		{% block pageHeader %}
 			<title>{{ site.title }}</title>
 			<meta name="description" content="Hayden Soule's portfolio site.">
 		{% endblock %}
@@ -32,5 +32,10 @@ permalink: false
 		{% for page_script in page_scripts %}
 			<script src="/assets/js/pages/{{ page_script }}" type="text/javascript"></script>
 		{% endfor %}
+
+		{% for script in page.scripts %}
+			<script src="/assets/js/pages/{{ script }}" type="text/javascript"></script>
+		{% endfor %}
+
 	</footer>
 </html>

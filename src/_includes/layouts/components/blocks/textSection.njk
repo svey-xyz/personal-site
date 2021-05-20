@@ -2,6 +2,9 @@
 	Basic Text Section Block.
 #}
 
+{% addScriptsToPage ['anotherScript'] %}
+{% addScriptsToPage ['anotherScript'] %}
+
 <div class="main-padding text-center self-center py-16">
 	{{ section.text | sanityBlocksToMarkdown | markdownify | safe }}
 </div>

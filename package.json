@@ -9,7 +9,7 @@
 		"dev:eleventy": "NODE_ENV=development eleventy --serve",
 		"dev:postcss": "NODE_ENV=development postcss --config ./config/postcss.config.js src/style/style.css --o www/assets/css/style.css --watch --verbose",
 		"dev:webpack": "NODE_ENV=development webpack --config ./config/webpack.config.js --watch --progress",
-		"develop": "npm-run-all clean --parallel dev:*",
+		"develop": "npm-run-all clean:build --parallel dev:*",
 		"build:eleventy": "NODE_ENV=production eleventy",
 		"build:postcss": "NODE_ENV=production postcss --config ./config/postcss.config.js src/style/style.css --o www/assets/css/style.css",
 		"build:webpack": "NODE_ENV=production webpack --config ./config/webpack.config.js",

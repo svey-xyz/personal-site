@@ -5,7 +5,8 @@ pagination:
   size: 1
   addAllPagesToCollections: true
 layout: layouts/main.njk
-page_scripts: ['archive-projects.js']
+tags: pages
+
 permalink: "{{ pageData.slug | slug }}/index.html"
 ---
 
@@ -13,9 +14,12 @@ permalink: "{{ pageData.slug | slug }}/index.html"
 	Root for all dynamic Sanity pages
 #}
 
-{% set scripts = collections.pages %}
+{# {% set myData = collections.pages | getCollectionItem(page) %} #}
+{# {{ collections.posts | getCollectionItem(page) }} #}
+{# {{ page.url = }} #}
+{# {% endaddScripts %} #}
 
 <article id="{{ pageData.title | slug }}">
-	{{ scripts | debugger }}
-	{% include "./_includes/layouts/templates/" + pageData.template + ".njk" %}
+	{# {{ myData.data.page_scripts | debugger }} #}
+	{% extends "./_includes/layouts/templates/" + pageData.template + ".njk" %}
 </article>

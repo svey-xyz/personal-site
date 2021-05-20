@@ -46,6 +46,13 @@ module.exports = (eleventyConfig) => {
 
 	eleventyConfig.addWatchTarget("./src/style/**/*"); // need to fix this after moving config file
 
+	eleventyConfig.addNunjucksShortcode("addScriptsToPage", function (scripts = []) {
+		if (!this.page.scripts) this.page.scripts = [];
+		this.page.scripts.push(...scripts);
+		this.page.scripts = [...new Set(this.page.scripts)]; // removes duplicates
+		console.log(this.page);
+	});
+
 	return {
 		dir: {
 			input: "src",

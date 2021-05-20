@@ -7,7 +7,7 @@ page_scripts: []
 {% set previousPost = collections.projects | getPreviousCollectionItem(page) %}
 {% set nextPost = collections.projects | getNextCollectionItem(page) %}
 
-<div class="main-padding padding-top flex-wrap justify-center">
+{# <div class="main-padding padding-top flex-wrap justify-center">
   	<div class="m-auto max-w-screen-lg relative">
 
 		<h1 class="text-3xl font-bold mb-7">{{ project.title }}</h1>
@@ -28,7 +28,7 @@ page_scripts: []
 				{% endfor %}
 			</p>
 
-			{# markdownify needed for embeds which aren't returned as stragiht markdown like the rest of the objects #}
+			markdownify needed for embeds which aren't returned as stragiht markdown like the rest of the objects
 			{{ project.content | markdownify | safe }}
 
 			{% if project.links | length > 0 %}
@@ -52,4 +52,4 @@ page_scripts: []
 				</a> →</p>	
 		{% endif %} 
 	</div>
-</div>
+</div> #}
