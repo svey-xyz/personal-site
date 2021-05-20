@@ -1,5 +1,5 @@
 ---
-
+permalink: false
 ---
 
 <!doctype html>
@@ -18,10 +18,10 @@
 
 	</head>
 	<body>
-		<div class="h-screen bg-white">		
+		<main id="pageContent" class="h-screen bg-white">		
 			{% include './components/headers/header.njk' %}
 			{{ content | safe }}
-		</div>
+		</main>
 	</body>
 	<footer>
 		{# Load JS for each page, defined on page template. Could also do this with blocks #}

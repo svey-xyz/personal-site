@@ -1,12 +1,8 @@
----
-layout: layouts/main.njk
-title: Work
-page_scripts: [archive-projects.js]
----
+{#
+	Projects Archive Block
+#}
 
-<div class="main-padding padding-top flex-wrap justify-center">
-	<h1 class="text-3xl font-bold mb-7 text-center">{{ title }}</h1>
-
+<div class="main-padding flex-wrap justify-center">
 	<div class="flex flex-wrap justify-center select-none">
 		<a class="tag-button cursor-pointer" tag="all" title="All">
 			All
@@ -24,11 +20,9 @@ page_scripts: [archive-projects.js]
 
 	</div>
 
-	{% from "layouts/components/cards/project-card.njk" import projectCard %}
-
 	<div class="flex flex-wrap justify-center sm:-mx-6">
 		{% for project in projects %}
-			{{ projectCard(project) }}
+			{% include "../cards/project-card.njk" %}
 		{% endfor %}
 	</div>
 </div>

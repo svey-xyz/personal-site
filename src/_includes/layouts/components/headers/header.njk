@@ -1,11 +1,19 @@
+{#
+	Main header component used across the site.
+#}
 
-
-<div class="bg-primaryColour header shadow fixed z-20 min-w-full">
+<div id="header" class="bg-primaryColour header shadow fixed z-20 min-w-full">
 
 	<div class="main-padding py-6">
-		<a class="inline" href="/"><h1 class="inline pr-8 text-xl font-bold">{{ site.title }}</h1></a>
-		<a class="inline hover:underline" href="/work">Work</a>	
+		<a id="siteTitle" class="inline-block" href="/"><h1 class="inline-block pr-8 text-xl font-bold">{{ site.siteSettings.title }}</h1></a>
+		<div id="siteNavigation" class="inline-block">
+			{% for navItem in site.navigation.primaryNavigation %}
+				<a class="inline-block hover:underline" href="/{{ navItem.slug | slug }}">{{ navItem.title }}</a>	
+			{% endfor %}
+			
+		</div>
 	</div>
 
 	<div id="scrollProgressBar" class="h-0.5 w-0"></div>
 </div>
+<div class="py-10"></div> {# Temporary padding fix #}

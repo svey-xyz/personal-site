@@ -5,8 +5,17 @@ pagination:
   size: 1
   addAllPagesToCollections: true
 layout: layouts/main.njk
-page_scripts: []
-permalink: /{{ pageData.slug | slug }}/index.html
+page_scripts: ['archive-projects.js']
+permalink: "{{ pageData.slug | slug }}/index.html"
 ---
 
-{% extends "./_includes/layouts/templates/" + pageData.template + ".njk" %}
+{#
+	Root for all dynamic Sanity pages
+#}
+
+{% set scripts = collections.pages %}
+
+<article id="{{ pageData.title | slug }}">
+	{{ scripts | debugger }}
+	{% include "./_includes/layouts/templates/" + pageData.template + ".njk" %}
+</article>

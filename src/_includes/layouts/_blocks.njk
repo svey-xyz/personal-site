@@ -1,0 +1,12 @@
+{% from "layouts/components/blocks/_block.njk" import block with context %}
+
+{% macro blocks(blocks) %}
+	{% if blocks | length > 0 %}
+		{% for section in blocks %}
+			{# {{ block(section._type, specialClasses="", properties=section) }} #}
+			<div id="{{ sectionName }}" class="{{ blockType }} {{ specialClasses }} relative flex" style="{{ style }}">
+				{% include ("layouts/components/blocks/" + section._type + ".njk") %}
+			</div>
+		{% endfor %}
+	{% endif %}
+{% endmacro %}

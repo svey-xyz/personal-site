@@ -12,7 +12,7 @@
   <div id="{{ sectionName }}" class="{{ blockType }} {{ specialClasses }} relative flex" style="{{ style }}">
 	{% set blockTemplate = ("layouts/components/blocks/" + blockType + ".njk") %}
 
-	{% from blockTemplate import block %}
+	{% from blockTemplate import block with context %}
 	{{ block(properties) }}
   </div>
 {% endmacro %}

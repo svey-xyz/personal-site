@@ -22,6 +22,26 @@ module.exports = async () => {
 			}
 		}`
 
+	const query = groq`{
+		"work":*[_type == "project"]{
+			title,
+			date,
+			blurb,
+			"tags":projectTags[]->title,
+			thumbnail,
+			description,
+			content[],
+			links[] {
+				title,
+				url
+			}
+		},
+		"tags":*[_type == "projectTag"]{
+			title,
+			description
+		}
+	}`
+
 	const order = `| order(publishedAt asc)`
 	const query = [filter, projection, order].join(' ').toString()
 	const data = await sanityFetch('projects', query)

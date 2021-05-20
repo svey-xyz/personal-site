@@ -5,7 +5,13 @@ module.exports = async () => {
 	const filter = groq`*[_type == "page"]`
 	const projection = groq`{
 			title,
-			slug,
+			"slug":select(
+				*[_id == "navigation"]{
+					"_id":homePage->_id
+				}[0]._id == _id => "/",
+				defined(slug) => slug,
+				title
+			),
 			blurb,
 			...pageContent {
 				"template":condition,
@@ -20,5 +26,12 @@ module.exports = async () => {
 	const query = [filter, projection].join(' ').toString()
 	const data = await sanityFetch('pages', query)
 
-	return data;
+	return data.map(preProcessData);
+}
+
+function preProcessData(data) {
+	return {
+		...data,
+		slug: data.slug == "/" ? "" : `/${data.slug}`
+	}
 }
