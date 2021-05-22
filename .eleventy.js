@@ -2,6 +2,7 @@ const markdownify = require("./lib/filters/markdownfilter")
 const embedEverything = require("eleventy-plugin-embed-everything");
 // const sanity = require("./src/_data/sanity")
 const slugify = require("slugify");
+const sanityImage = require('eleventy-plugin-sanity-image');
 
 const serializers = require('./lib/utils/serializers')
 const client = require('./lib/utils/sanityClient')
@@ -41,7 +42,12 @@ module.exports = (eleventyConfig) => {
 		return slugify(input, options);
 	});
 
-	eleventyConfig.addWatchTarget("./src/style/**/*"); // need to fix this after moving config file
+	eleventyConfig.addWatchTarget("./src/style/**/*"); // doesn't work with eleventy config not at root
+
+	eleventyConfig.addPlugin(sanityImage, {
+		client: client
+	})
+	
 
 	return {
 		dir: {

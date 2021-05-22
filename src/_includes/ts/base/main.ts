@@ -1,4 +1,4 @@
-import { loadBlockFunctions } from '../utilities/helpers'
+import { loadModules } from '../utilities/helpers'
 import * as header from '../components/headers/header'
 
 /******** VARIABLES ********/
@@ -18,12 +18,11 @@ declare global {
 
 	height = window.innerHeight;
 	global.vh = height * 0.01;
+	
 	window.addEventListener("resize", resize);
-
 	resize();
-	console.log(`JS Version is: ${ver}`);
 
-	window.onscroll = function () { header.ScrollIndicator() }
+	console.log(`JS Version is: ${ver}`);
 
 })();
 
@@ -40,10 +39,18 @@ function resize() {
 document.addEventListener(
 	'DOMContentLoaded',
 	() => {
-		loadBlockFunctions([
+		loadModules([
+			{
+				selector: '#header',
+				script: import('../components/headers/header')
+			},
 			{
 				selector: '.interactiveSection > .blobShader',
 				script: import('../components/blocks/interactiveSections/blobShader')
+			},
+			{
+				selector: '.projectsArchive',
+				script: import('../components/blocks/projectsArchive/projectsArchive')
 			},
 		])
 	}

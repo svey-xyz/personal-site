@@ -1,0 +1,60 @@
+/*
+* Styling for site wide header
+*/
+
+#header {
+	@apply shadow bg-primaryColour;
+	position: fixed;
+	z-index: 100;
+	min-width: 100%;
+
+	&.collapsed {
+		background-color: red;
+	}
+
+	& > .container {
+		@apply main-padding py-6 relative;
+		display: flex;
+		flex-flow: row nowrap;
+		overflow: hidden;
+		max-width: 100vw;
+
+		& > .site-title {
+			display: flex;
+			& > h1 {
+				font-size: 1.25rem/* 20px */;
+				line-height: 1.75rem/* 28px */;
+				font-weight: 700;
+				white-space: nowrap;
+			}
+		}
+
+		& > .header-sizer {
+			display: flex;
+			flex-grow: 2;
+		}
+
+		& > .site-navigation {
+			display: flex;
+			flex-flow: row nowrap;
+			overflow: hidden;
+			opacity: 0;
+
+			transition: opacity 0.5s ease-out;
+
+			&.loaded {
+				opacity: 1;
+			}
+
+			& > .nav-item {
+				padding-left: 4rem;
+				align-self: flex-end; /* move to bottom */
+				white-space: nowrap;
+
+				&:hover {
+    				text-decoration: underline;
+				}
+			}
+		}
+	}
+}

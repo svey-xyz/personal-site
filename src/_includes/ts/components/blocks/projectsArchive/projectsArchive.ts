@@ -5,7 +5,11 @@
 var sortableCards = Array<projectCard>();
 var tagButtons = Array<HTMLElement>();
 
-window.onload = function (): void {
+export const mount = (container: Element) => {
+	initializeArchive();
+}
+
+function initializeArchive(): void {
 	initTagSort();
 	initCards();
 

@@ -2,13 +2,14 @@
 	Main header component used across the site.
 #}
 
-<div id="header" class="bg-primaryColour header shadow fixed z-20 min-w-full">
+<div id="header" class="collapsed">
 
-	<div class="main-padding py-6">
-		<a id="siteTitle" class="inline-block" href="/"><h1 class="inline-block pr-8 text-xl font-bold">{{ site.siteSettings.title }}</h1></a>
-		<div id="siteNavigation" class="inline-block">
+	<div class="container">
+		<a class="site-title" href="/"><h1>{{ site.siteSettings.title }}</h1></a>
+		<div class="header-sizer"></div>
+		<div class="site-navigation">
 			{% for navItem in site.navigation.primaryNavigation %}
-				<a class="inline-block hover:underline" href="/{{ navItem.slug | slug }}">{{ navItem.title }}</a>	
+				<a class="nav-item" href="/{{ navItem.slug | slug }}">{{ navItem.title }}</a>	
 			{% endfor %}
 			
 		</div>
