@@ -3,6 +3,7 @@
 */
 
 import { Section } from "./section-base";
+import * as THREE from 'three';
 
 export class shader extends Section {
 	renderer: THREE.WebGLRenderer;
@@ -11,15 +12,15 @@ export class shader extends Section {
 	clock: THREE.Clock;
 	uniforms: any;
 
-	vertShader: String = '';
-	fragShader: String = '';
+	vertShader: string = '';
+	fragShader: string = '';
 
 	// Initializes the sketch
 	constructor(container: Element) {
 		super(container);
 
 		// Initialize the WebGL renderer
-		this.renderer = new (<any>window).THREE.WebGLRenderer({ alpha: true });
+		this.renderer = new THREE.WebGLRenderer({ alpha: true });
 		this.renderer.setPixelRatio(window.devicePixelRatio);
 		this.renderer.setSize(window.innerWidth, this.height);
 
@@ -27,13 +28,13 @@ export class shader extends Section {
 		this.container.appendChild(this.renderer.domElement);
 
 		// Initialize the scene
-		this.scene = new (<any>window).THREE.Scene();
+		this.scene = new THREE.Scene();
 
 		// Initialize the camera
-		this.camera = new (<any>window).THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+		this.camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
 
 		// Initialize the clock
-		this.clock = new (<any>window).THREE.Clock(true);
+		this.clock = new THREE.Clock(true);
 	}
 
 	initializeShader(uniforms:any, shaders:any) {
@@ -42,10 +43,10 @@ export class shader extends Section {
 		this.fragShader = shaders.frag;
 
 		// Create the plane geometry
-		var geometry = new (<any>window).THREE.PlaneBufferGeometry(2, 2);
+		var geometry = new THREE.PlaneBufferGeometry(2, 2);
 
 		// Create the shader material
-		var material = new (<any>window).THREE.ShaderMaterial({
+		var material = new THREE.ShaderMaterial({
 			uniforms: this.uniforms,
 			transparent: true,
 			vertexShader: this.vertShader,
@@ -54,7 +55,7 @@ export class shader extends Section {
 		});
 
 		// Create the mesh and add it to the scene
-		var mesh = new (<any>window).THREE.Mesh(geometry, material);
+		var mesh = new THREE.Mesh(geometry, material);
 		this.scene.add(mesh);
 		this.animate();
 	}

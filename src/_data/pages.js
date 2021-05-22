@@ -9,8 +9,7 @@ module.exports = async () => {
 				*[_id == "navigation"]{
 					"_id":homePage->_id
 				}[0]._id == _id => "/",
-				defined(slug) => slug,
-				title
+				slug.current
 			),
 			blurb,
 			...pageContent {

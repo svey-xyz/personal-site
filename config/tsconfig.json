@@ -1,8 +1,8 @@
 {
 	"compilerOptions": {
 		"target": "ESNEXT",
-		"module": "commonjs",
-		"moduleResolution": "node", // required for THREE.js
+		"module": "esnext",
+		// "moduleResolution": "node", // required for THREE.js
 		"strict": true,
 		"noImplicitAny": true,
 	},

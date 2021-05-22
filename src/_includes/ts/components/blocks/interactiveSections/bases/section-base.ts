@@ -10,8 +10,8 @@ export class Section {
 	constructor(container: any) {
 		// define universal section variables
 		this.container = container;
-		this.heightPercent = parseInt(this.container.getAttribute('sectionheight')!);
-		this.height = this.heightPercent * vh;
+		this.heightPercent = parseInt(this.container.getAttribute('data-sectionheight')!);
+		this.height = this.heightPercent * global.vh;
 
 		// initialize listeners
 		this.inputHandler = this.handleInput.bind(this);
@@ -31,6 +31,6 @@ Section.prototype.handleInput = function (e: Event) {
 };
 
 Section.prototype.resize = function (e: Event) {
-	this.height = this.heightPercent * vh;
+	this.height = this.heightPercent * global.vh;
 };
 

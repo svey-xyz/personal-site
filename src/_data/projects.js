@@ -10,6 +10,7 @@ module.exports = async () => {
 	const query = groq`{
 		"work":*[_type == "project"]{
 			title,
+			"slug":slug.current,
 			date,
 			blurb,
 			"tags":projectTags[]->title,

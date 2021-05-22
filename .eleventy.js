@@ -20,9 +20,6 @@ module.exports = (eleventyConfig) => {
 	eleventyConfig.setDataDeepMerge(true);
 
 	eleventyConfig.addTransform("htmlmin", require("./lib/transforms/htmlmin"))
-	
-	eleventyConfig.addPassthroughCopy({ 'node_modules/animejs/lib/anime.min.js': '/assets/js/libraries/anime.min.js' });
-	eleventyConfig.addPassthroughCopy({ 'node_modules/three/build/three.min.js': '/assets/js/libraries/three.min.js' });
 
 	// debugger
 	eleventyConfig.addFilter("debugger", (...args) => {
@@ -45,13 +42,6 @@ module.exports = (eleventyConfig) => {
 	});
 
 	eleventyConfig.addWatchTarget("./src/style/**/*"); // need to fix this after moving config file
-
-	eleventyConfig.addNunjucksShortcode("addScriptsToPage", function (scripts = []) {
-		if (!this.page.scripts) this.page.scripts = [];
-		this.page.scripts.push(...scripts);
-		this.page.scripts = [...new Set(this.page.scripts)]; // removes duplicates
-		console.log(this.page);
-	});
 
 	return {
 		dir: {

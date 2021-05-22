@@ -2,18 +2,22 @@
 * Blobby Shader
 */
 
-import { shader } from "../shader-base";
+import { shader } from "./bases/shader-base";
+import * as THREE from 'three';
 
-const vertShader: String = require('./shaders/vert-Abstract.glsl');
-const fragShader: String = require('./shaders/frag-Abstract.glsl');
+const vertShader: String = require('./blobShader/shaders/vert-Abstract.glsl');
+const fragShader: String = require('./blobShader/shaders/frag-Abstract.glsl');
 
-export class blobShader extends shader {
+export const mount = (container:Element) => {
+	new blobShader(container);
+}
+
+class blobShader extends shader {
 	uniforms: any;
 
 	// Initializes the sketch
 	constructor(container: Element) {
 		super(container);
-
 		this.uniforms = {
 			u_time: {
 				type: "f",
@@ -21,7 +25,7 @@ export class blobShader extends shader {
 			},
 			u_posSeed: {
 				type: "v2",
-				value: new (<any>window).THREE.Vector2(this.randomBetween(), this.randomBetween())
+				value: new THREE.Vector2(this.randomBetween(), this.randomBetween())
 			}
 		};
 

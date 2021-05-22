@@ -4,7 +4,7 @@
 	{% if blocks | length > 0 %}
 		{% for section in blocks %}
 			{# {{ block(section._type, specialClasses="", properties=section) }} #}
-			<div id="{{ sectionName }}" class="{{ blockType }} {{ specialClasses }} relative flex" style="{{ style }}">
+			<div id="{{ sectionName }}" class="{{ section._type }} {{ specialClasses }} relative flex" style="{{ style }}">
 				{% include ("layouts/components/blocks/" + section._type + ".njk") %}
 			</div>
 		{% endfor %}

@@ -24,19 +24,24 @@ module.exports = {
 
 	// entry files
 	entry: {
-		'js/main': "./src/_includes/ts/main.ts",
-		'js/pages/home': "./src/_includes/ts/pages/home.ts",	
-		'js/pages/archive-projects': "./src/_includes/ts/pages/archive-projects.ts"
+		main: "./src/_includes/ts/base/main.ts",
 	},
 	// devtool: 'inline-source-map',
 
 	// output bundles (location)
 	output: {
-		path: path.resolve(__dirname, '../www/assets/'),
+		path: path.resolve(__dirname, '../www/assets/js'),
 		filename: '[name].js',
 	},
+	experiments: {
+		topLevelAwait: true
+	},
 
-	optimization: {
+	optimization: {	
+		runtimeChunk: 'single',
+		splitChunks: {
+			chunks: 'all',
+		},
 		minimize: (process.env.NODE_ENV === 'production' ? true : false),
 		minimizer: (process.env.NODE_ENV === 'production' ? [new TerserPlugin()] : []),
 	},
