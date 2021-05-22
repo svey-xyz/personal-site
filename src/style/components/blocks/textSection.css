@@ -1,0 +1,22 @@
+/*
+* Styling for different types of text sections
+*/
+
+.textSection {
+	& > .text-type-container {
+		width: 100%;
+
+		&.plain {}
+
+		&.highlighted {}
+
+		&.block {
+			@apply shadow bg-primaryColour;
+			z-index: 1;
+			padding-top: 8rem;
+			padding-bottom: 8rem;
+
+			& > .text-container {}
+		}
+	}
+}

@@ -2,6 +2,8 @@
 	Basic Text Section Block.
 #}
 
-<div class="main-padding text-center self-center py-16">
-	{{ section.text | sanityBlocksToMarkdown | markdownify | safe }}
+<div class="text-type-container {{ section.textType }}">
+	<div class="text-container main-padding text-center self-center py-16">
+		{{ section.text | sanityBlocksToMarkdown | markdownify | safe }}
+	</div>
 </div>
