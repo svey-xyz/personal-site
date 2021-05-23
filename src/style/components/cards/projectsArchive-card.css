@@ -2,7 +2,7 @@
 * Styling for sortable cards
 */
 
-.sortable-card {
+.projectsArchive-card {
 	@apply rounded-md my-6 mx-0;
 
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -10,18 +10,29 @@
 	position: relative;
 	z-index: 10;
 	display: flex;
-	overflow: hidden;
 	width: 100%;
 	min-width: 18rem;
 	height: 24rem/* 384px */;
 
 	flex-grow: 1;
 
-	transition-duration: 250ms;
-	transition-timing-function: ease-in-out;
+	transition: transform 250ms ease-in-out;
 
 	&:nth-child(2n), &:nth-child(3n){
 		flex-grow: 2.0;
+	}
+
+	&::after {
+		@apply rounded transition-fast;
+
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		box-shadow: -4px 8px 8px 0 rgba(0, 0, 0, 0.2), -4px 8px 20px 0 rgba(0, 0, 0, 0.19);
+		opacity: 0;
 	}
 
 	@media (--sm-screen) {
@@ -32,13 +43,32 @@
 
 	&:hover {
 		transform: rotate3d(1, 0, 0.05, 0.015turn);
-		box-shadow: -4px 8px 8px 0 rgba(0, 0, 0, 0.2), -4px 8px 20px 0 rgba(0, 0, 0, 0.19);
 
+		&::after {
+			opacity: 1;
+		}
+
+		& > .content {
+			&::after{
+				opacity: 1;
+			}
+
+			& > img {
+				transform: scale(1.03);
+			}
+
+			& > .info > h4::after {
+				
+
+				width: calc(100% + 1rem);
+			}
+		}
 	}
 
 	& > .content {
 		@apply rounded;
 
+		overflow: hidden;
 		display: block;
 		position: relative;
 		height: 100%;
@@ -46,6 +76,8 @@
 
 		/* animating opacity on pseudo element is faster than animating box-shadow */
 		&::after {
+			@apply transition-fast;
+
 			content: '';
 			position: absolute;
 			width: 100%;
@@ -54,26 +86,11 @@
 			left: 0;
 			box-shadow: inset -4px 4px 6px -2px rgba(255,255,255,0.8);
 			opacity: 0;
-			transition: opacity 200ms ease-in-out;
-		}
-
-		&:hover::after{
-			opacity: 1;
-		}
-
-		&:hover img {
-			transform: scale(1.03);
-		}
-
-		&:hover .info {
-			& > h4 {
-				&::after {
-					width: calc(100% + 1rem);
-				}
-			}
 		}
 
 		& > img {
+			@apply transition-fast;
+
 			position: relative;
 			margin: 0;
 			display: inline-block;
@@ -86,9 +103,6 @@
 			object-fit: cover;
 			
 			z-index: -10;
-
-			transition-duration: 250ms;
-			transition-timing-function: ease-in-out;
 		}
 
 		& > .info {
@@ -108,6 +122,8 @@
 				font-weight: 700;
 
 				&::after {
+					@apply transition-medium;
+
 					content: '';
 					position: absolute;
 					height: 3px;
@@ -115,8 +131,6 @@
 					left: -1rem;
 					bottom: -0.5rem;
 					background: white;
-
-					transition-duration: 200ms;
 				}
 			}
 

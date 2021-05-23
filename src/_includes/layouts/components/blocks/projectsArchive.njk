@@ -4,13 +4,13 @@
 
 <div class="main-padding flex-wrap justify-center">
 	<div class="flex flex-wrap justify-center select-none">
-		<a class="tag-button cursor-pointer" tag="all" title="All">
+		<a class="tag-button cursor-pointer" data-tag="all" title="All">
 			All
 		</a>
 		<span>, &nbsp</span>
 
 		{% for tag in projects.tags %}
-			<a class="tag-button cursor-pointer" tag="{{ tag.title | slug }}" title="{{ tag.title }}">
+			<a class="tag-button cursor-pointer" data-tag="{{ tag.title | slug }}" title="{{ tag.title }}">
 				{{ tag.title }}
 			</a>
 			{% if not loop.last %}
@@ -22,7 +22,7 @@
 
 	<div class="flex flex-wrap justify-center sm:-mx-6">
 		{% for project in projects.work %}
-			{% include "../cards/project-card.njk" %}
+			{% include "../cards/projectsArchive-card.njk" %}
 		{% endfor %}
 	</div>
 </div>

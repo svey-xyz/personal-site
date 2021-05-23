@@ -5,6 +5,7 @@
 		// "moduleResolution": "node", // required for THREE.js
 		"strict": true,
 		"noImplicitAny": true,
+		"sourceMap": true 
 	},
 	"exclude": [
 		"../node_modules",

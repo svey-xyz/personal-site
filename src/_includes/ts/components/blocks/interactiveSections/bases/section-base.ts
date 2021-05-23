@@ -8,9 +8,11 @@ export class Section {
 	resizeHandler: (e: Event) => void;
 
 	constructor(container: any) {
+		container.parentElement.classList.add('loaded');
+
 		// define universal section variables
 		this.container = container;
-		this.heightPercent = parseInt(this.container.getAttribute('data-sectionheight')!);
+		this.heightPercent = parseInt(container.parentElement.style.getPropertyValue('--section-height')!);
 		this.height = this.heightPercent * global.vh;
 
 		// initialize listeners

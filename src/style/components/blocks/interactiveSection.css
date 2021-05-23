@@ -1,0 +1,23 @@
+/*
+* Styling for indivudal interactive sections
+*/
+
+.interactiveSection {
+	& > .section-container {
+		width: 100%;
+		min-height: calc(var(--vh, 1vh) * var(--section-height));
+
+		& > .script-container {
+			@apply transition-fast;
+			opacity: 0;
+		}
+
+		&.loaded > .script-container {
+			opacity: 1;
+		}
+
+		&.blobShader {
+			@apply bg-secondaryColour w-full cursor-pointer;
+		}
+	}
+}

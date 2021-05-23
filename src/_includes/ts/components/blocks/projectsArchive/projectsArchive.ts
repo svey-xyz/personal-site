@@ -32,7 +32,7 @@ function initTagSort() : void {
 }
 
 function initCards(): void {
-	var htmlCards = document.getElementsByName('sortable-card');
+	var htmlCards = document.getElementsByClassName('sortable-card');
 
 	for (let card of htmlCards) {
 		sortableCards.push(new projectCard(<HTMLElement>card));
@@ -41,7 +41,7 @@ function initCards(): void {
 
 function tagClick(e : Event) : void {
 	const target = e.target as HTMLElement
-	const tag = target.getAttribute('tag')!;
+	const tag = target.getAttribute('data-tag')!;
 	
 	tagSelect(tag)
 }
@@ -49,7 +49,7 @@ function tagClick(e : Event) : void {
 function tagSelect(tag : string) : void {
 	
 	for (let b of tagButtons) {
-		if (b.getAttribute('tag') != tag) b.style.setProperty('font-weight', '400');
+		if (b.getAttribute('data-tag') != tag) b.style.setProperty('font-weight', '400');
 		else b.style.setProperty('font-weight', '900');
 	}
 	
@@ -82,6 +82,6 @@ class projectCard {
 
 	constructor(dom : HTMLElement) {
 		this.container = dom;
-		this.tags = dom.getAttribute('tags')!.split(',');
+		this.tags = dom.getAttribute('data-tags')!.replace(/\s/g, "").split(',');
 	}
 }

@@ -18,7 +18,7 @@ declare global {
 
 	height = window.innerHeight;
 	global.vh = height * 0.01;
-	
+
 	window.addEventListener("resize", resize);
 	resize();
 
@@ -45,7 +45,7 @@ document.addEventListener(
 				script: import('../components/headers/header')
 			},
 			{
-				selector: '.interactiveSection > .blobShader',
+				selector: '.interactiveSection > .section-container > .blobShader',
 				script: import('../components/blocks/interactiveSections/blobShader')
 			},
 			{

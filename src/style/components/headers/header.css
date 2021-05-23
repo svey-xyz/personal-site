@@ -3,58 +3,224 @@
 */
 
 #header {
-	@apply shadow bg-primaryColour;
-	position: fixed;
-	z-index: 100;
-	min-width: 100%;
+	--header-item-height: 25px;
+	--menu-button-width: 30px;
+	--header-padding: 25px;
 
 	&.collapsed {
-		background-color: red;
-	}
+		& > .header-sticky > .header-container > .site-navigation {
+			& > .nav-item {
+				opacity: 0;
+				pointer-events: none;
+			}
 
-	& > .container {
-		@apply main-padding py-6 relative;
-		display: flex;
-		flex-flow: row nowrap;
-		overflow: hidden;
-		max-width: 100vw;
-
-		& > .site-title {
-			display: flex;
-			& > h1 {
-				font-size: 1.25rem/* 20px */;
-				line-height: 1.75rem/* 28px */;
-				font-weight: 700;
-				white-space: nowrap;
+			& > .header-menu-button {
+				opacity: 1;
+				pointer-events: auto;
 			}
 		}
+	}
 
-		& > .header-sizer {
-			display: flex;
-			flex-grow: 2;
-		}
+	& > .header-sticky {
+		@apply shadow bg-primaryColour;
+		position: fixed;
+		top: 0;
+		z-index: 100;
+		min-width: 100%;
 
-		& > .site-navigation {
+		& > .header-container {
+			@apply main-padding;
+			position: relative;
 			display: flex;
 			flex-flow: row nowrap;
 			overflow: hidden;
-			opacity: 0;
+			width: 100vw;
 
-			transition: opacity 0.5s ease-out;
+			padding-top: var(--header-padding);
+			padding-bottom: var(--header-padding);
 
-			&.loaded {
-				opacity: 1;
+			& > .site-title {
+				display: flex;
+				& > h1 {
+					font-size: var(--header-item-height);
+					line-height: var(--header-item-height);
+					font-weight: 700;
+					white-space: nowrap;
+				}
 			}
 
-			& > .nav-item {
-				padding-left: 4rem;
-				align-self: flex-end; /* move to bottom */
-				white-space: nowrap;
+			& > .header-sizer {
+				display: flex;
+				flex-grow: 2;
+			}
 
-				&:hover {
-    				text-decoration: underline;
+			& > .site-navigation {
+				position: relative;
+				display: flex;
+				flex-flow: row nowrap;
+				overflow: hidden;
+				opacity: 0;
+
+				transition: opacity 0.5s ease-out;
+
+				&.loaded {
+					opacity: 1;
+				}
+
+				& > .nav-item {
+					pointer-events: auto;
+					padding-left: 4rem;
+					align-self: flex-end; /* move to bottom */
+					white-space: nowrap;
+
+					&:hover {
+						text-decoration: underline;
+					}
+				}
+
+				
+				& > .header-menu-button {
+					pointer-events: none;
+					opacity: 0;
+					position: absolute;
+					right: 0;
+					width: var(--menu-button-width);
+					height: var(--header-item-height);
+					padding: 2px;
+					display: block;
+					cursor: pointer;
+
+					& > .menu-bar {
+						@apply rounded transition-medium;
+
+						display: block;
+						width: 100%;
+						height: 20%;
+						background: black;
+						transform: translate(0, 200%);
+
+
+						&::before {
+							@apply rounded transition-fast;
+							content: '';
+							display: block;
+							width: 100%;
+							height: 100%;
+							background: black;
+							transform: translate(0, -200%);
+						}
+
+						&::after {
+							@apply rounded transition-fast;
+							content: '';
+							display: block;
+							width: 100%;
+							height: 100%;
+							background: black;
+
+							transform: translate(0, 100%);
+
+
+						}
+					}
 				}
 			}
 		}
+
+		& > .header-scrollbar {
+			@apply bg-secondaryColour;
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 0;
+			height: 2px;
+			display: none; /* remove to enable scrollbar */
+		}
+	}
+
+	& > .navigation-dropdown {
+		z-index: 90;
+		position: fixed;
+		left: 0;
+		right: 0;
+		width: 100vw;
+
+		transition: transform 500ms ease-in-out;
+		transform: translate(0, -105%);
+
+		& > .dropdown-item-container > .nav-dropdown-item {
+			display: block;
+			margin-top: 1.5rem;
+		}
+	}
+
+	/* Dropdown rules for mobile */
+	@media (--max-sm-screen) {
+		& > .navigation-dropdown {
+			@apply shadow bg-primaryColour;
+				
+			& > .dropdown-item-container {
+				@apply main-padding;
+
+				position: relative;
+				display: flex;
+				flex-flow: column nowrap;
+				align-items: center;
+				justify-content: center;
+				padding-bottom: 1.5rem;
+			}
+		}
+	}
+
+	/* Dropdown rules for desktop */
+	@media (--md-screen) {
+		& > .navigation-dropdown {
+			@apply main-padding;
+				
+			& > .dropdown-item-container {
+				@apply shadow bg-primaryColour;
+				
+				position: relative;
+				display: inline-block;
+				float: right;
+				padding-bottom: 1.5rem;
+				padding: 0rem 3rem 1.5rem 3rem;
+			}
+		}
+    }
+
+	&.menu-open {
+		& > .navigation-dropdown{
+			transform: translate(0, 0);
+			opacity: 1;
+		}
+
+		& > .header-sticky > .header-container > .site-navigation > .header-menu-button > .menu-bar {
+
+			transition: none;
+			background: rgba(0,0,0,0);
+			&::before {
+
+				transform: translate(0, 0) rotate(-45deg);
+			}
+
+			&::after {
+
+				transform: translate(0, -100%) rotate(45deg);
+				opacity: 0.6;
+
+			}
+
+		}
+	}
+	
+	/* Padding to align rest of page */
+	& > .header-padding {
+		position: relative;
+		width: 100%;
+		height: var(--header-item-height);
+		min-height: var(--header-item-height);
+		margin-top: var(--header-padding);
+		margin-bottom: var(--header-padding);
 	}
 }

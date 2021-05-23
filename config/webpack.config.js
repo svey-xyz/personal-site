@@ -26,15 +26,12 @@ module.exports = {
 	entry: {
 		main: "./src/_includes/ts/base/main.ts",
 	},
-	// devtool: 'inline-source-map',
+	devtool: (process.env.NODE_ENV === 'production' ? '' : 'inline-source-map'),
 
 	// output bundles (location)
 	output: {
 		path: path.resolve(__dirname, '../www/assets/js'),
 		filename: '[name].js',
-	},
-	experiments: {
-		topLevelAwait: true
 	},
 
 	optimization: {	

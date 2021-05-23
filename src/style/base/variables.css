@@ -6,6 +6,7 @@
 }
 
 @custom-media --sm-screen (min-width: 480px);
+@custom-media --max-sm-screen (max-width: 768px);
 @custom-media --md-screen (min-width: 768px);
 @custom-media --lg-screen (min-width: 976px);
 @custom-media --xl-screen (min-width: 1440px);

@@ -4,17 +4,29 @@
 
 <div id="header" class="collapsed">
 
-	<div class="container">
-		<a class="site-title" href="/"><h1>{{ site.siteSettings.title }}</h1></a>
-		<div class="header-sizer"></div>
-		<div class="site-navigation">
-			{% for navItem in site.navigation.primaryNavigation %}
-				<a class="nav-item" href="/{{ navItem.slug | slug }}">{{ navItem.title }}</a>	
-			{% endfor %}
-			
+	<div class="header-sticky">
+		<div class="header-container">
+			<a class="site-title" href="/"><h1>{{ site.siteSettings.title }}</h1></a>
+			<div class="header-sizer"></div>
+			<div class="site-navigation">	
+				{% for navItem in site.navigation.primaryNavigation %}
+					<a class="nav-item" href="/{{ navItem.slug | slug }}">{{ navItem.title }}</a>	
+				{% endfor %}
+
+				<div class="header-menu-button"><div class="menu-bar"></div></div>	
+			</div>
 		</div>
+
+		<div id="scrollProgressBar" class="header-scrollbar"></div>
 	</div>
 
-	<div id="scrollProgressBar" class="h-0.5 w-0"></div>
+	<div class="header-padding"></div>
+
+	<div class="navigation-dropdown">
+		<div class="dropdown-item-container">
+			{% for navItem in site.navigation.primaryNavigation %}
+				<a class="nav-dropdown-item" href="/{{ navItem.slug | slug }}">{{ navItem.title }}</a>	
+			{% endfor %}
+		</div>
+	</div>
 </div>
-<div class="py-10"></div> {# Temporary padding fix #}
