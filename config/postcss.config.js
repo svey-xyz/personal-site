@@ -1,7 +1,11 @@
-
 const cssnano = require('cssnano')({
 	preset: 'default'
 });
+const csshash = require('postcss-hash')({
+	algorithm: 'sha256',
+	trim: 20,
+	manifest: './www/assets/css/manifest.json'
+})
 
 module.exports = {
 	plugins: [
@@ -16,6 +20,6 @@ module.exports = {
 			}
 		}),
 		require('autoprefixer'),	
-		...(process.env.NODE_ENV === 'production' ? [cssnano] : []),
+		...(process.env.NODE_ENV === 'production' ? [cssnano, csshash] : []),
 	],
 };

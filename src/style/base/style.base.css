@@ -1,4 +1,11 @@
 @layer base {
+	h1 {
+		@apply text-2xl font-extrabold text-grey-900;
+	}
+	h2 {
+		@apply text-xl font-light text-grey-900;
+	}
+
 	.main-padding {
 		@apply max-w-screen-xl mx-auto px-6 sm:px-24;
 		transition: padding 0.5s ease-out;
@@ -9,15 +16,6 @@
 	}
 	.transition-medium {
 		transition: all 500ms ease-in-out;
-	}
-
-	.bar {
-		@apply rounded;
-		content: '';
-		display: block;
-		width: 100%;
-		height: 5px;
-		background: grey;
 	}
 }
 

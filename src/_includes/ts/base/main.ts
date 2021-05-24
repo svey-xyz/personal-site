@@ -1,8 +1,7 @@
 import { loadModules } from '../utilities/helpers'
-import * as header from '../components/headers/header'
 
 /******** VARIABLES ********/
-var ver = '0.1.0';
+var ver = '0.1.2';
 var mobile = false;
 var height:number;
 const prevPage = document.referrer;

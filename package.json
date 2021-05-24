@@ -6,15 +6,15 @@
 	"scripts": {
 		"clean:build": "rimraf www",
 		"clean:cache": "rimraf cache/*",
-		"dev:eleventy": "NODE_ENV=development eleventy --serve",
-		"dev:postcss": "NODE_ENV=development postcss --config ./config/postcss.config.js src/style/style.css --o www/assets/css/style.css --watch --verbose",
 		"dev:webpack": "NODE_ENV=development webpack --config ./config/webpack.config.js --watch --progress",
+		"dev:postcss": "NODE_ENV=development postcss --config ./config/postcss.config.js src/style/style.css --o www/assets/css/style.css --watch --verbose",
+		"dev:eleventy": "NODE_ENV=development eleventy --serve",
 		"develop": "npm-run-all clean:build --parallel dev:*",
-		"build:eleventy": "NODE_ENV=production eleventy",
-		"build:postcss": "NODE_ENV=production postcss --config ./config/postcss.config.js src/style/style.css --o www/assets/css/style.css",
 		"build:webpack": "NODE_ENV=production webpack --config ./config/webpack.config.js",
+		"build:postcss": "NODE_ENV=production postcss --config ./config/postcss.config.js src/style/style.css --o www/assets/css/style.css",
+		"build:eleventy": "NODE_ENV=production eleventy",
 		"build": "run-s clean:* build:*",
-		"serve": "eleventy --serve",
+		"serve": "NODE_ENV=production eleventy --serve",
 		"fetch": "run-s clean:cache build:eleventy"
 	},
 	"keywords": [],
@@ -30,6 +30,7 @@
 		"npm-run-all": "^4.1.5",
 		"postcss": "^8.2.14",
 		"postcss-cli": "^8.3.1",
+		"postcss-hash": "^2.0.0",
 		"postcss-import": "^14.0.1",
 		"postcss-import-ext-glob": "^2.0.1",
 		"postcss-loader": "^5.2.0",
@@ -41,7 +42,8 @@
 		"webpack": "^5.36.2",
 		"webpack-cli": "^4.6.0",
 		"webpack-glsl-loader": "^1.0.1",
-		"webpack-glsl-minify": "^1.4.2"
+		"webpack-glsl-minify": "^1.4.2",
+		"webpack-manifest-plugin": "^3.1.1"
 	},
 	"dependencies": {
 		"@sanity/block-content-to-markdown": "^0.0.5",

@@ -23,8 +23,9 @@ module.exports = {
 			red: colors.rose,
 			pink: colors.fuchsia,
 
-			primaryColour: '#fff',
-			secondaryColour: '#2D3047',
+			primaryColour: 'var(--primary-colour)',
+			secondaryColour: 'var(--secondary-colour)',
+			accentColour: 'var(--accent-colour)',
 			charcoal: '#3B454E',
 			textColour: '#3B454E'
 		},
