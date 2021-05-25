@@ -2,27 +2,40 @@
 	Projects Archive Block
 #}
 
-<div class="main-padding flex-wrap justify-center">
-	<div class="flex flex-wrap justify-center select-none">
-		<a class="tag-button cursor-pointer" data-tag="all" title="All">
-			All
-		</a>
-		<span>, &nbsp</span>
+{% if section.allTags %}
+	{% set filterTags = projects.tags %}
+{% else %}
+	{% set filterTags = section.tags %}
+{% endif %}
 
-		{% for tag in projects.tags %}
-			<a class="tag-button cursor-pointer" data-tag="{{ tag.title | slug }}" title="{{ tag.title }}">
-				{{ tag.title }}
+<div data-filterable="{{ section.filterTags }}" class="main-padding flex-wrap justify-center">
+	<div class="flex flex-wrap justify-center select-none">
+
+		{% if (section.filterTags) %}
+			<a class="tag-button cursor-pointer" data-tag="all" title="All">
+				All
 			</a>
-			{% if not loop.last %}
-				<span>, &nbsp</span>
-			{% endif %}
-		{% endfor %}
+			<span>, &nbsp</span>
+
+			{% for tag in filterTags %}
+				<a class="tag-button cursor-pointer" data-tag="{{ tag.title | slug }}" title="{{ tag.title }}">
+					{{ tag.title }}
+				</a>
+				{% if not loop.last %}
+					<span>, &nbsp</span>
+				{% endif %}
+			{% endfor %}
+		{% endif %}
 
 	</div>
 
 	<div class="flex flex-wrap justify-center sm:-mx-6">
 		{% for project in projects.work %}
-			{% include "../cards/projectsArchive-card.njk" %}
+			{% set includeProject %}{% includeProjects filterTags, project.tags %}{% endset %}
+			
+			{% if includeProject == "true" %}
+				{% include "../cards/projectsArchive-card.njk" %}
+			{%endif%}
 		{% endfor %}
 	</div>
 </div>

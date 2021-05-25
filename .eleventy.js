@@ -77,9 +77,21 @@ module.exports = (eleventyConfig) => {
 		return `<link rel="stylesheet" href="/assets/css/${styleManifest['style.css']}">`;
 	});
 
+	eleventyConfig.addShortcode("includeProjects", function (activeTags, projectTags) {
+			for (let i = 0; i < activeTags.length; i++) {
+				for (let j = 0; j < projectTags.length; j++) {
+					// compare the entire object
+					if (JSON.stringify(activeTags[i]) == JSON.stringify(projectTags[j])) {
+						// Return if common element found
+						return 'true';
+					}
+				}
+			}
+	});
+
 	eleventyConfig.addPlugin(sanityImage, {
 		client: client
-	})
+	});
 
 	return {
 		dir: {

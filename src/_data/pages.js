@@ -2,6 +2,16 @@ const sanityFetch = require("../../lib/utils/sanityFetch");
 const groq = require('groq')
 
 module.exports = async () => {
+	const defaultPageQuery = groq`{
+			blocks[]{
+				_type,
+				...,
+				_type == "projectsArchive" => {
+					"tags":tags[]->{...},
+				},
+          	}
+		}`
+
 	const filter = groq`*[_type == "page"]`
 	const projection = groq`{
 			title,
@@ -15,7 +25,7 @@ module.exports = async () => {
 			...pageContent {
 				"template":condition,
 				"content":select(
-					condition == "defaultPage" => defaultPage,
+					condition == "defaultPage" => defaultPage${defaultPageQuery},
 					condition == "homePage" => homePage
 				)
 			}

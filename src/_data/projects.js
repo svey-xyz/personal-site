@@ -13,7 +13,7 @@ module.exports = async () => {
 			"slug":slug.current,
 			date,
 			blurb,
-			"tags":projectTags[]->title,
+			"tags":projectTags[]->{...},
 			thumbnail,
 			description,
 			content[],
@@ -22,10 +22,7 @@ module.exports = async () => {
 				url
 			}
 		},
-		"tags":*[_type == "projectTag"]{
-			title,
-			description
-		}
+		"tags":*[_type == "projectTag"]{...}
 	}`
 
 	// const order = `| order(publishedAt asc)`

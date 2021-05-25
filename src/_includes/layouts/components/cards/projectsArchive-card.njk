@@ -1,6 +1,6 @@
 {% set cardTags %}
 	{% for tag in project.tags %}
-		{{ tag | slug }}
+		{{ tag.title | slug }}
 		{% if not loop.last %},{% endif %}
 	{% endfor %}
 {% endset %}
