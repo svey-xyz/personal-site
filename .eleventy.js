@@ -13,6 +13,7 @@ const sanityImage = require('eleventy-plugin-sanity-image');
 // Cache busting
 const fs = require("fs");
 const path = require("path");
+const { callbackify } = require("util");
 
 const scriptManifestPath = path.resolve(__dirname, "www", "assets", "js", "manifest.json");
 const scriptManifest = process.env.NODE_ENV === 'production' ?
@@ -77,16 +78,28 @@ module.exports = (eleventyConfig) => {
 		return `<link rel="stylesheet" href="/assets/css/${styleManifest['style.css']}">`;
 	});
 
-	eleventyConfig.addShortcode("includeProjects", function (activeTags, projectTags) {
+	eleventyConfig.addShortcode("getMatchingProjects", function (projects, activeTags) {
+		let activeProjects = [];
+
+		projects.forEach(project => {
+			let matchingTags = {};
+
 			for (let i = 0; i < activeTags.length; i++) {
-				for (let j = 0; j < projectTags.length; j++) {
-					// compare the entire object
-					if (JSON.stringify(activeTags[i]) == JSON.stringify(projectTags[j])) {
-						// Return if common element found
-						return 'true';
-					}
+				if (!matchingTags[activeTags[i]._id]) {
+					const element = activeTags[i]._id;
+					matchingTags[element] = true;
 				}
 			}
+
+			for (let j = 0; j < project.tags.length; j++) {
+				if (matchingTags[project.tags[j]._id]) {
+					activeProjects.push(project);
+					break;
+				}
+			}
+		});
+		this.page.activeProjects = activeProjects;
+		return activeProjects;
 	});
 
 	eleventyConfig.addPlugin(sanityImage, {

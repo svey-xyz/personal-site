@@ -9,11 +9,15 @@ module.exports = async () => {
 				_type == "projectsArchive" => {
 					"tags":tags[]->{...},
 				},
+				_type == "itemCard" => {
+                	"linkID":link->_id
+              	}
           	}
 		}`
 
 	const filter = groq`*[_type == "page"]`
 	const projection = groq`{
+			_id,
 			title,
 			"slug":select(
 				*[_id == "navigation"]{

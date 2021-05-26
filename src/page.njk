@@ -13,12 +13,6 @@ permalink: "{{ pageData.slug | slug }}/index.html"
 	Root for all dynamic Sanity pages
 #}
 
-{# {% set myData = collections.pages | getCollectionItem(page) %} #}
-{# {{ collections.posts | getCollectionItem(page) }} #}
-{# {{ page.url = }} #}
-{# {% endaddScripts %} #}
-
 <article id="{{ pageData.title | slug }}">
-	{# {{ myData.data.page_scripts | debugger }} #}
 	{% extends "./_includes/layouts/templates/" + pageData.template + ".njk" %}
 </article>

@@ -58,8 +58,6 @@
 			}
 
 			& > .info > h4::after {
-				
-
 				width: calc(100% + 1rem);
 			}
 		}

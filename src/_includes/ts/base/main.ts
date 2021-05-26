@@ -51,6 +51,10 @@ document.addEventListener(
 				selector: '.projectsArchive > [data-filterable="true"]', // don't bother loading script if not filterable
 				script: import('../components/blocks/projectsArchive/projectsArchive')
 			},
+			{
+				selector: '.video',
+				script: import('../components/blocks/video/vimeo')
+			},
 		])
 	}
 )

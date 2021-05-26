@@ -30,12 +30,11 @@
 	</div>
 
 	<div class="flex flex-wrap justify-center sm:-mx-6">
-		{% for project in projects.work %}
-			{% set includeProject %}{% includeProjects filterTags, project.tags %}{% endset %}
-			
-			{% if includeProject == "true" %}
-				{% include "../cards/projectsArchive-card.njk" %}
-			{%endif%}
+		{# 11ty only returns strings from shortcodes, so the data is added to the page data, hopefully this changes in the future #}
+		{% set activeProjects %}{% getMatchingProjects projects.work, filterTags %}{% endset %}
+
+		{% for project in page.activeProjects %}
+			{% include "../cards/projectsArchive-card.njk" %}
 		{% endfor %}
 	</div>
 </div>

@@ -1,0 +1,39 @@
+{#
+	Video Section
+#}
+
+{% set highlightedClasses %}
+	{% if section.highlighted %}
+		bg-black
+	{% endif %}
+{% endset %}
+
+{% set hasThumbnail %}
+	{% if section.thumbnail %}
+		true
+	{% else %}
+		false
+	{% endif %}
+{% endset %}
+	
+<div data-overlay="{{ hasThumbnail }}" class="relative w-full {{ highlightedClasses }}">
+	<div class="relative flex flex-col w-full main-padding">
+		<h2 class="text-white">{{ section.title }}</h2>
+		<div class="relative w-full mb-24">
+			<div id="video-overlay" class="cursor-pointer absolute block z-10 inset-0">
+				<div class="relative w-full h-full flex items-center justify-center z-10">
+					<i class="z-10 fas fa-play-circle text-8xl text-primaryColour"></i>
+				</div>
+					
+
+				{% if hasThumbnail %}
+					<img src="{% imageUrlFor section.thumbnail, 1024 %}" alt="{{ section.title }} - Video Overlay"
+					class="lazy absolute inset-0 inline-block w-full h-full min-w-full min-h-full object-center object-cover"/>
+				{% endif %}
+			</div>
+
+			{# Handled by Eleventy Embed Everything plugin#}
+			<p>{{ section.url }}</p>
+		</div>
+	</div>
+</div>
