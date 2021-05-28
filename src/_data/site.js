@@ -3,19 +3,10 @@ const groq = require('groq')
 
 module.exports = async () => {
 	const query = groq`{
-		"siteSettings":*[_id == "siteSettings"]{
-			title,
-			description,
-			keywords,
-			author,
-		}[0],
+		"siteSettings":*[_id == "siteSettings"]{...}[0],
 		"about":*[_id == "about"] {
-			name,
-			bio,
-			content,
-			avatar,
-			email,
-			socail
+			"curriculumVitaeURL": curriculumVitae.asset->url,
+			...
 		}[0],
 		"navigation":*[_id == "navigation"] {
 			primaryNavigation[] {

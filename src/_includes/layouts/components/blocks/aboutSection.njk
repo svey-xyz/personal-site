@@ -1,0 +1,36 @@
+{#
+	About Section - built using site about data.
+#}
+{# Required since nunjucks 'for' creates a new scope if variable doesnt already exist #}
+
+<div class="main-padding w-full block-padding flex flex-col md:flex-row justify-center content-center">
+
+	<div class="rounded-lg shadow-lg relative flex w-full md:w-80 md:min-w-md">
+		<div class="rounded-lg relative block w-full overflow-hidden">
+
+			{% if site.about.avatar %}
+			<img src="{% imageUrlFor site.about.avatar %}"
+				class="lazy relative inline-block w-full min-w-full h-auto"/>
+			{% endif %}
+
+			<div class="absolute flex flex-col justify-center bottom-0 z-10 w-full p-8 md:w-2/5 md:min-w-md">
+				<div class="absolute inset-0 -mt-24 bg-gradient-to-t from-primaryColour via-primaryTranslucent"></div>
+				<div class="z-10 w-full">
+					<span class="block font-black leading-normal pb-6">{{ site.about.name }}</span>
+					{% if section.personalInfo %}
+						<a href="tel: {{ site.about.phoneNumber }}" class="leading-relaxed">{{ site.about.phoneNumber }}</a>
+						<a href="mailto: {{ site.about.email }}" class="leading-relaxed">{{ site.about.email }}</a>
+						<a href="{{ site.about.social[0].url }}" class="leading-relaxed">{{ site.about.social[0].socialTitle }}</a>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="block-padding md:m-0 md:pl-12 max-w-prose">
+		{{ site.about.description | sanityBlocksToMarkdown | markdownify | safe }}
+		{% if section.downloadCV %}
+			<a target="_blank" href="{{ site.about.curriculumVitaeURL }}" class="font-bold">{{ section.downloadCV }}</a>
+		{% endif %}
+	</div>
+</div>

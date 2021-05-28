@@ -25,9 +25,18 @@ module.exports = {
 				'sm': '12rem',
 				'md': '20rem'
 			},
+			maxWidth: {
+				'prose-full': '85ch',
+				'prose': '65ch'
+			},
 			minHeight: {
+				'80': '20rem',
+				'96': '24rem',
 				'3/5': '60%',
 				'full': '100%',
+			},
+			height: {
+				'102': '30rem',
 			},
 			maxHeight: {
 				'3/5': '60%',
@@ -35,6 +44,7 @@ module.exports = {
 			},
 			colors: {
 				primaryColour: 'var(--primary-colour)',
+				primaryTranslucent: 'var(--primary-colour-translucent)',
 				secondaryColour: 'var(--secondary-colour)',
 				accentColour: 'var(--accent-colour)',
 				charcoal: '#3B454E',
@@ -53,6 +63,7 @@ module.exports = {
 	variants: {
 		extend: {
 			fontWeight: ['hover'],
+			transform: ['hover']
 
 		}
 	},

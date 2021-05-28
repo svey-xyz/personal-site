@@ -13,9 +13,9 @@
 {# Set Tailwinds classes #}
 {% set gradient %}
 	{% if sectionID % 2 == 0 %}
-		md:my-0 md:-mr-32 md:bg-gradient-to-r from-primaryColour via-primaryColour
+		md:-mr-64 md:bg-gradient-to-r
 	{% else %}
-		md:-ml-32 md:bg-gradient-to-l from-primaryColour via-primaryColour
+		md:-ml-64 md:bg-gradient-to-l
 	{% endif %}
 {% endset %}
 
@@ -25,17 +25,17 @@
 	{% endif %}
 {% endset %}
 
-<div class="main-padding self-center w-full">
-	<a href="{{ pageLink | slug }}" class="rounded-lg my-12 shadow-lg relative flex w-full max-h-96 md:max-h-80">
+<div class="main-padding self-center w-full block-padding">
+	<a href="{{ pageLink | slug }}" class="rounded-lg shadow-lg relative flex w-full max-h-96 md:max-h-80">
 		<div class="rounded-lg relative block w-full overflow-hidden">
 
 			<img src="{% imageUrlFor section.image, 800 %}" alt="{{ section.heading }} - Card Background"
-				class="lazy relative inline-block w-full h-full min-w-full min-h-full object-center object-cover"/>
+				class="lazy relative inline-block w-full h-full min-w-full min-h-96 md:min-h-80 object-center object-cover"/>
 
 			<div class="absolute flex flex-col justify-center bottom-0 z-10 w-full px-8 py-12 md:h-full md:w-2/5 md:min-w-md md:px-16 md:py-0 {{ alignment }}">
-				<div class="absolute inset-0 bg-gradient-to-t -mt-16 {{ gradient }}"></div>
+				<div class="absolute inset-0 -mt-24 md:my-0 bg-gradient-to-t {{ gradient }} from-primaryColour via-primaryTranslucent"></div>
 
-				<p class="z-10 font-body text-3xl font-bold leading-loose">{{ section.heading }}</p>
+				<span class="z-10 font-body text-3xl font-bold leading-loose">{{ section.heading }}</span>
 				<span class="z-10">{{ section.blurb  | sanityBlocksToMarkdown | markdownify | safe }}</span>
 
 			</div>

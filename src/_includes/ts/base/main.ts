@@ -53,7 +53,11 @@ document.addEventListener(
 			},
 			{
 				selector: '.video',
-				script: import('../components/blocks/video/vimeo')
+				script: import('../components/blocks/video/video')
+			},
+			{
+				selector: '.contactForm #formContainer',
+				script: import('../components/blocks/contactForm/contactForm')
 			},
 		])
 	}

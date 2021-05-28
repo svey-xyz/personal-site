@@ -16,13 +16,16 @@
 	{% endif %}
 {% endset %}
 	
-<div data-overlay="{{ hasThumbnail }}" class="relative w-full {{ highlightedClasses }}">
-	<div class="relative flex flex-col w-full main-padding">
-		<h2 class="text-white">{{ section.title }}</h2>
-		<div class="relative w-full mb-24">
+<div data-overlay="{{ hasThumbnail }}" class="relative w-full block-padding {{ highlightedClasses }}">
+	<div class="relative flex flex-col justify-center items-center w-full main-padding">
+		{% if section.highlighted %}
+			<h2 class="text-white my-12">{{ section.title }}</h2>
+		{% endif %}
+
+		<div class="relative w-full mb-12">
 			<div id="video-overlay" class="cursor-pointer absolute block z-10 inset-0">
 				<div class="relative w-full h-full flex items-center justify-center z-10">
-					<i class="z-10 fas fa-play-circle text-8xl text-primaryColour"></i>
+					<i class="z-10 fas fa-play-circle text-primaryColour text-4xl md:text-6xl"></i>
 				</div>
 					
 
@@ -35,5 +38,14 @@
 			{# Handled by Eleventy Embed Everything plugin#}
 			<p>{{ section.url }}</p>
 		</div>
+			
+		{% if section.highlighted %}
+			<a data-scroll-destination="{{ section._type }}-{{ sectionID }}-content-end" class="scroll-indicator">
+				<i class="fas fa-chevron-down mb-12 cursor-pointer text-primaryColour text-2xl md:text-4xl transform duration-100 hover:scale-125"></i>
+			</a>
+		{% endif %}
+
+
 	</div>
 </div>
+<div id="{{ section._type }}-{{ sectionID }}-content-end" class="absolute top-full -mt-24"></div>

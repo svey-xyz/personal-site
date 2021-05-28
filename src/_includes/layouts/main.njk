@@ -15,9 +15,10 @@ permalink: false
 		<script src="https://kit.fontawesome.com/5d68704bfb.js" crossorigin="anonymous"></script>
 	</head>
 	<body>
-		<main id="pageContent" class="h-screen bg-primaryColour">		
+		<main id="pageContent" class="relative min-h-full h-auto w-full top-0 bg-primaryColour">		
 			{% include './components/headers/header.njk' %}
 			{{ content | safe }}
+			{% include './components/footers/footer.njk' %}
 		</main>
 	</body>
 	<footer>

@@ -7,6 +7,8 @@
 	--menu-button-width: 30px;
 	--header-padding: 25px;
 
+	--total-height: 75px;
+
 	&.collapsed {
 		& > .header-sticky > .header-container > .site-navigation {
 			& > .nav-item {
@@ -218,9 +220,7 @@
 	& > .header-padding {
 		position: relative;
 		width: 100%;
-		height: var(--header-item-height);
-		min-height: var(--header-item-height);
-		margin-top: var(--header-padding);
-		margin-bottom: var(--header-padding);
+		height: var(--total-height);
+		min-height: var(--total-height);
 	}
 }

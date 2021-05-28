@@ -2,6 +2,8 @@
 * Styling for different types of text sections
 */
 
+/* This can be doen with nunjucks and tailwinds - should transition it */
+
 .textSection {
 	& > .text-type-container {
 		width: 100%;
@@ -17,6 +19,14 @@
 			padding-bottom: 8rem;
 
 			& > .text-container {}
+		}
+
+		& h1, & h2, & h3, & h4, & h5, & h6 {
+			@apply mb-12;
+
+			&:last-child {
+				margin: 0;
+			}
 		}
 	}
 }
