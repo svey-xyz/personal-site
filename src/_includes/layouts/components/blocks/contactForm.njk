@@ -6,20 +6,26 @@
 	<form id="formContainer" class="w-full max-w-prose-full" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
 		{# Needed for Netlify forms #}
 		<input type="hidden" name="form-name" value="contact" />
+		<div hidden aria-hidden="true">
+			<label>
+				Don’t fill this out if you're human: 
+				<input name="bot-field" />
+			</label>
+		</div>
 		
 		<div class="w-full mb-12">
-			<label for="Name" class="block mb-4 tracking-wider font-semibold leading-normal">NAME</label>
-			<input type="text" id="Name" name="Name" class="block p-2 w-full border border-black" required/>
+			<label for="name" class="block mb-4 tracking-wider font-semibold leading-normal">NAME</label>
+			<input type="text" id="Name" name="name" class="block p-2 w-full border border-black" required/>
 		</div>
 
 		<div class="w-full mb-12">
-			<label for="Email" class="block mb-4 tracking-wider font-semibold leading-normal">EMAIL</label>
-			<input type="email" id="Email" name="Email" class="block p-2 w-full border border-black" required/>
+			<label for="email" class="block mb-4 tracking-wider font-semibold leading-normal">EMAIL</label>
+			<input type="email" id="Email" name="email" class="block p-2 w-full border border-black" required/>
 		</div>
 
 		<div class="w-full mb-12">
-			<label for="Message" class="block mb-4 tracking-wider font-semibold leading-normal">MESSAGE</label>
-			<textarea id="Message" name="Message" class="block p-2 w-full border border-black" rows="6" maxlength="3000" required></textarea>
+			<label for="message" class="block mb-4 tracking-wider font-semibold leading-normal">MESSAGE</label>
+			<textarea id="Message" name="message" class="block p-2 w-full border border-black" rows="6" maxlength="3000" required></textarea>
 		</div>
 
 		<div class="w-full mb-12">
