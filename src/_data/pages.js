@@ -1,11 +1,6 @@
 const sanityFetch = require("../../lib/utils/sanityFetch");
 const groq = require('groq')
 
-const serializers = require('../../lib/utils/serializers')
-const BlocksToMarkdown = require('@sanity/block-content-to-markdown')
-const imageURL = require('../../lib/utils/imageURL')
-const client = require('../../lib/utils/sanityClient.js')
-
 module.exports = async () => {
 	const defaultPageQuery = groq`{
 			blocks[]{
