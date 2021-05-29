@@ -55,11 +55,7 @@ document.addEventListener(
 			{
 				selector: '.video',
 				scriptPath: '/blocks/video/video'
-			},
-			{
-				selector: '.contactForm #formContainer',
-				scriptPath: '/blocks/contactForm/contactForm'
-			},
+			}
 		])
 	}
 )
