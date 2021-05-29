@@ -18,6 +18,9 @@ const GLSLLoader = [{
 	}
 }]
 
+const componentPath = "/components"
+const sourcePath = "./src/_includes/ts"
+
 module.exports = {
 
 	// bundling mode
@@ -25,7 +28,7 @@ module.exports = {
 
 	// entry files
 	entry: {
-		main: "./src/_includes/ts/base/main.ts",
+		main: `${sourcePath}/base/main.ts`,
 	},
 
 	// output bundles (location)
@@ -38,7 +41,7 @@ module.exports = {
 	plugins: [
 		new WebpackManifestPlugin({
 			publicPath: '/assets/js/',
-			filter(file) { if (file.isInitial) return true }
+			// filter(file) { if (file.isInitial) return true }
 		}),
 	],
 

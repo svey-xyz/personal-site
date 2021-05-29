@@ -7,6 +7,8 @@ let form:HTMLFormElement
 export const mount = (container: Element) => {
 	form = <HTMLFormElement>container
 	form.addEventListener("submit", submitForm);
+
+	console.log('contact loaded')
 }
 
 function submitForm(e:Event) {

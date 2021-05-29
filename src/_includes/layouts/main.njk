@@ -2,17 +2,24 @@
 permalink: false
 ---
 
+{% set pageDescriptor %}
+	{% if pageData.description %}
+		{{ pageData.description }}
+	{% else %}
+		{{ site.siteSettings.description }}
+	{% endif %}
+{% endset %}
+
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<title>{{ page.title }}</title>
-		<meta name="description" content="Hayden Soule's portfolio site.">
+		<title>{{ pageData.descriptiveTitle }}</title>
+		<meta name="description" content="{{ pageDescriptor }}">
 
 		{% bundledCSS %}
-		<script src="https://kit.fontawesome.com/5d68704bfb.js" crossorigin="anonymous"></script>
 	</head>
 	<body>
 		<main id="pageContent" class="relative min-h-full h-auto w-full top-0 bg-primaryColour">		
@@ -22,6 +29,9 @@ permalink: false
 		</main>
 	</body>
 	<footer>
+		<link rel="preconnect" href="https://fonts.gstatic.com"> 
+		<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Montserrat:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+		<script src="https://kit.fontawesome.com/5d68704bfb.js" crossorigin="anonymous"></script>
 		{% bundledJS %}
 	</footer>
 </html>

@@ -25,7 +25,8 @@ module.exports = async () => {
 				}[0]._id == _id => "/",
 				slug.current
 			),
-			blurb,
+			descriptiveTitle,
+			description,
 			...pageContent {
 				"template":condition,
 				"content":select(

@@ -1,7 +1,7 @@
 import { loadModules } from '../utilities/helpers'
 
 /******** VARIABLES ********/
-var ver = '0.1.2';
+var ver = '0.1.3';
 var mobile = false;
 var height:number;
 const prevPage = document.referrer;
@@ -35,29 +35,30 @@ function resize() {
 }
 
 /******** LOAD BLOCK SCRIPTS ********/
+// scriptPath is relative to 'components' folder 
 document.addEventListener(
 	'DOMContentLoaded',
 	() => {
 		loadModules([
 			{
 				selector: '#header',
-				script: import('../components/headers/header')
+				scriptPath: '/headers/header'
 			},
 			{
 				selector: '.interactiveSection > .section-container > .blobShader',
-				script: import('../components/blocks/interactiveSections/blobShader')
+				scriptPath: '/blocks/interactiveSections/blobShader'
 			},
 			{
 				selector: '.projectsArchive > [data-filterable="true"]', // don't bother loading script if not filterable
-				script: import('../components/blocks/projectsArchive/projectsArchive')
+				scriptPath: '/blocks/projectsArchive/projectsArchive'
 			},
 			{
 				selector: '.video',
-				script: import('../components/blocks/video/video')
+				scriptPath: '/blocks/video/video'
 			},
 			{
 				selector: '.contactForm #formContainer',
-				script: import('../components/blocks/contactForm/contactForm')
+				scriptPath: '/blocks/contactForm/contactForm'
 			},
 		])
 	}
