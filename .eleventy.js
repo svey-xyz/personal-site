@@ -8,7 +8,7 @@ const embedEverything = require("eleventy-plugin-embed-everything");
 const serializers = require('./lib/utils/serializers')
 const client = require('./lib/utils/sanityClient')
 const BlocksToMarkdown = require('@sanity/block-content-to-markdown')
-const sanityImage = require('eleventy-plugin-sanity-image');
+const imageUrl =  require('@sanity/image-url')
 
 // Cache busting
 const fs = require("fs");
@@ -49,6 +49,11 @@ module.exports = (eleventyConfig) => {
 		return BlocksToMarkdown(sanityBlcoks, { serializers, ...client.config() })
 	});
 
+	eleventyConfig.addShortcode("sanityImageURL", function(sanityImage, size = 400) {
+		const builder = imageUrl(client)
+		return builder.image(sanityImage).width(size).url();
+	});
+
 	// Overwrite 11ty built in slug filter to allow for backslashes to remain
 	eleventyConfig.addFilter("slug", (input) => {
 		const options = {
@@ -58,8 +63,6 @@ module.exports = (eleventyConfig) => {
 		};
 		return slugify(input, options);
 	});
-
-	eleventyConfig.addWatchTarget("./src/style/**/*"); // doesn't work with eleventy config not at root
 
 	eleventyConfig.addShortcode("bundledJS", function () {
 		if (!scriptManifest["main.js"] || !scriptManifest["runtime.js"]) {
@@ -102,9 +105,7 @@ module.exports = (eleventyConfig) => {
 		return activeProjects;
 	});
 
-	eleventyConfig.addPlugin(sanityImage, {
-		client: client
-	});
+	eleventyConfig.addWatchTarget("./src/style/**/*"); // doesn't work with eleventy config not at root
 
 	return {
 		dir: {

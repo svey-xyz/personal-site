@@ -30,7 +30,7 @@
 					
 
 				{% if hasThumbnail %}
-					<img src="{% imageUrlFor section.thumbnail, 1024 %}" alt="{{ section.title }} - Video Overlay"
+					<img src="{% sanityImageURL section.thumbnail, 1024 %}" alt="{{ section.title }} - Video Overlay"
 					class="lazy absolute inset-0 inline-block w-full h-full min-w-full min-h-full object-center object-cover"/>
 				{% endif %}
 			</div>

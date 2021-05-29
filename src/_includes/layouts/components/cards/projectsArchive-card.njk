@@ -8,7 +8,7 @@
 <a href="/{{ site.navigation.archivePageSlug | slug }}/{{ project.slug | slug }}" 
 class="projectsArchive-card" data-tags="{{ cardTags }}">
 	<div class="content">
-		<img src="{% imageUrlFor project.thumbnail %}" alt="{{ project.title }} Project Thumbnail" class="lazy"/>
+		<img src="{% sanityImageURL project.thumbnail %}" alt="{{ project.title }} Project Thumbnail" class="lazy"/>
 		<div class="info">
 			<h4>{{ project.title }}</h4>
 			<p>{{ project.blurb }}</p>
