@@ -3,7 +3,9 @@
 #}
 
 <div class="relative flex align-center justify-center w-full main-padding">
-	<form id="formContainer" class="w-full max-w-prose-full" name="Contact" method="POST" data-netlify="true">
+	<form id="formContainer" class="w-full max-w-prose-full" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+		{# Needed for Netlify forms #}
+		<input type="hidden" name="form-name" value="contact" />
 		
 		<div class="w-full mb-12">
 			<label for="Name" class="block mb-4 tracking-wider font-semibold leading-normal">NAME</label>
