@@ -55,6 +55,10 @@ document.addEventListener(
 			{
 				selector: '.video',
 				scriptPath: '/blocks/video/video'
+			},
+			{
+				selector: '#formContainer',
+				scriptPath: '/blocks/contact/contact'
 			}
 		])
 	}

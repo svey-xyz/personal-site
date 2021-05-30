@@ -2,10 +2,26 @@
 	Contact Form.
 #}
 
+{% set formName %}
+	{% if section.formName %}
+		{{ section.formName }}
+	{% else %}
+		contact
+	{% endif %}
+{% endset %}
+
+{% set successMessage %}
+	{% if section.successMessage %}
+		{{ section.successMessage }}
+	{% else %}
+		Message submitted successfully!
+	{% endif %}
+{% endset %}
+
 <div class="relative flex align-center justify-center w-full main-padding">
-	<form id="formContainer" class="w-full max-w-prose-full" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+	<form id="formContainer" class="w-full max-w-prose-full" name="{{ formName | slug }}" method="POST" action="{{ pageData.slug | slug }}/?{{ formName | slug }}=success" data-netlify="true" data-netlify-honeypot="bot-field">
 		{# Needed for Netlify forms bot testing #}
-		<input type="hidden" name="form-name" value="contact" />
+		<input type="hidden" name="form-name" value="{{ formName | slug }}" />
 		<div hidden aria-hidden="true">
 			<label>
 				Don’t fill this out if you're human: 
@@ -29,7 +45,11 @@
 		</div>
 
 		<div class="w-full mb-12">
-			<button type="submit" class="block bg-black text-white px-6 tracking-wider font-semibold leading-loose">Send</button>
+			<button type="submit" class="block border-black border-2 bg-black text-white px-6 tracking-wider font-semibold leading-loose hover:bg-primaryColour hover:text-black">Send</button>
+		</div>
+
+		<div class="w-full mb-12">
+			<span id="success" class="hidden text-green-500 font-bold">{{ successMessage }}</span>
 		</div>
 
 	</form>
