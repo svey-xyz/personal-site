@@ -18,9 +18,6 @@ const GLSLLoader = [{
 	}
 }]
 
-const componentPath = "/components"
-const sourcePath = "./src/_includes/ts"
-
 module.exports = {
 
 	// bundling mode
@@ -28,7 +25,7 @@ module.exports = {
 
 	// entry files
 	entry: {
-		main: `${sourcePath}/base/main.ts`,
+		main: './src/_includes/ts/base/main.ts',
 	},
 
 	// output bundles (location)

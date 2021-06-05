@@ -9,8 +9,10 @@
 		<div class="rounded-lg relative block w-full overflow-hidden">
 
 			{% if site.about.avatar %}
-			<img src="{% sanityImageURL site.about.avatar %}"
-				class="lazy relative inline-block w-full min-w-full h-auto"/>
+			{# <img src="{% sanityImageURL site.about.avatar %}"
+				class="lazy relative inline-block w-full min-w-full h-auto"/> #}
+				{% image site.about.avatar, "lazy relative inline-block w-full min-w-full h-auto", "", "100%", [400] %}
+
 			{% endif %}
 
 			<div class="absolute flex flex-col justify-center bottom-0 z-10 w-full p-8 md:w-2/5 md:min-w-md">

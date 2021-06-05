@@ -5,7 +5,11 @@
 {% set pageLink %}
 	{% for linkedPage in pages %}
 		{% if section.linkID == linkedPage._id %}
-			{{ linkedPage.slug }}
+			{% if linkedPage.slug %}
+				{{ linkedPage.slug }}
+			{% else %}
+				/
+			{% endif %}
 		{% endif %}
 	{% endfor %}
 {% endset %}
@@ -28,9 +32,12 @@
 <div class="main-padding self-center w-full block-padding">
 	<a href="{{ pageLink | slug }}" class="rounded-lg shadow-lg relative flex w-full max-h-96 md:max-h-80">
 		<div class="rounded-lg relative block w-full overflow-hidden">
-
+{# 
 			<img src="{% sanityImageURL section.image, 800 %}" alt="{{ section.heading }} - Card Background"
-				class="lazy relative inline-block w-full h-full min-w-full min-h-96 md:min-h-80 object-center object-cover"/>
+				class="lazy relative inline-block w-full h-full min-w-full min-h-96 md:min-h-80 object-center object-cover"/> #}
+
+			{% image section.image, "lazy relative inline-block w-full h-full min-w-full min-h-96 md:min-h-80 object-center object-cover", section.heading, "100%", [800] %}
+				
 
 			<div class="absolute flex flex-col justify-center bottom-0 z-10 w-full px-8 py-12 md:h-full md:w-2/5 md:min-w-md md:px-16 md:py-0 {{ alignment }}">
 				<div class="absolute inset-0 -mt-24 md:my-0 bg-gradient-to-t {{ gradient }} from-primaryColour via-primaryTranslucent"></div>

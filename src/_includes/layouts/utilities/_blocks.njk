@@ -1,13 +1,14 @@
-{% macro blocks(blocks) %}
+{# {% macro blocks(blocks) %} #}
+
 	{% if blocks | length > 0 %}
 		{% set sectionID = 0 %}
-		{% for section in blocks %}
+		{% asyncEach section in blocks %}
 			{# {{ block(section._type, specialClasses="", properties=section) }} #}
 			<div id="{{ section._type }}-{{ sectionID }}" class="{{ section._type }} {{ specialClasses }} relative flex" style="{{ style }}">
 				{% include ("layouts/components/blocks/" + section._type + ".njk") %}
 			</div>
 
 			{% set sectionID = sectionID + 1 %}
-		{% endfor %}
+		{% endeach %}
 	{% endif %}
-{% endmacro %}
+{# {% endmacro %} #}

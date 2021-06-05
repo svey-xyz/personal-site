@@ -13,7 +13,7 @@
 		"build:webpack": "NODE_ENV=production webpack --config ./config/webpack.config.js",
 		"build:postcss": "NODE_ENV=production postcss --config ./config/postcss.config.js src/style/style.css --o www/assets/css/style.css",
 		"build:eleventy": "NODE_ENV=production eleventy",
-		"build": "run-s clean:* build:*",
+		"build": "run-s clean:build build:*",
 		"serve": "NODE_ENV=production eleventy --serve",
 		"fetch": "run-s clean:cache build:eleventy"
 	},
@@ -22,14 +22,15 @@
 	"license": "ISC",
 	"devDependencies": {
 		"@11ty/eleventy": "^0.12.1",
+		"@11ty/eleventy-cache-assets": "^2.2.1",
 		"@sanity/block-content-to-markdown": "^0.0.5",
 		"@sanity/client": "^2.2.6",
 		"@types/three": "^0.125.1",
 		"@types/vimeo__player": "^2.10.0",
+		"@types/youtube-player": "^5.5.3",
 		"@vimeo/player": "^2.15.0",
 		"autoprefixer": "^10.2.6",
 		"cssnano": "^5.0.2",
-		"eleventy-plugin-embed-everything": "^1.13.2",
 		"groq": "^2.2.6",
 		"html-minifier": "^4.0.0",
 		"loader-utils": "^2.0.0",
@@ -54,12 +55,16 @@
 		"webpack-cli": "^4.6.0",
 		"webpack-glsl-loader": "^1.0.1",
 		"webpack-glsl-minify": "^1.4.2",
-		"webpack-manifest-plugin": "^3.1.1"
+		"webpack-manifest-plugin": "^3.1.1",
+		"youtube-player": "^5.5.2"
 	},
 	"browserslist": [
 		">0.3%",
 		"not ie 11",
 		"not dead",
 		"not op_mini all"
-	]
+	],
+	"dependencies": {
+		"@11ty/eleventy-img": "^0.9.0"
+	}
 }

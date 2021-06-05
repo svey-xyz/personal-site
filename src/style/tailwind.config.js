@@ -42,6 +42,9 @@ module.exports = {
 				'3/5': '60%',
 				'full': '100%',
 			},
+			padding: {
+				'16/9': '56.25%'
+			},
 			colors: {
 				primaryColour: 'var(--primary-colour)',
 				primaryTranslucent: 'var(--primary-colour-translucent)',

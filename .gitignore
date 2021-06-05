@@ -1,5 +1,6 @@
-## Ignore build files
+## Ignore build files, and cache files
 www/
+cache/
 
 ## Ignore node dependencies
 node_modules/

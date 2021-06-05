@@ -3,5 +3,9 @@
 	Just imports blocks.
 #}
 
-{% from "layouts/_blocks.njk" import blocks with context %}
-{{ blocks(blocks=pageData.content.blocks) }}
+{# {% from "layouts/utilities/_blocks.njk" import blocks with context %}
+{{ blocks(blocks=pageData.content.blocks) }} #}
+
+{% set blocks = pageData.content.blocks %}
+
+{% include ("layouts/utilities/_blocks.njk") %}

@@ -1,0 +1,28 @@
+{#
+	Video Section
+#}
+
+{% set highlightedClasses %}
+	{% if section.highlighted %}
+		bg-black
+	{% endif %}
+{% endset %}
+	
+<div class="relative w-full block-padding {{ highlightedClasses }}">
+	<div class="relative flex flex-col justify-center items-center w-full main-padding">
+		{% if section.highlighted %}
+			<h2 class="text-white my-12">{{ section.title }}</h2>
+		{% endif %}
+
+		{# {% from "layouts/utilities/video.njk" import video %} #}
+		{# {{ video(url=section.url, thumbnail=section.thumbnail, title=section.title) }} #}
+			
+		{% if section.highlighted %}
+			<a data-scroll-destination="{{ section._type }}-{{ sectionID }}-content-end" class="scroll-indicator">
+				<i class="fas fa-chevron-down mb-12 cursor-pointer text-primaryColour text-2xl md:text-4xl transform duration-100 hover:scale-125"></i>
+			</a>
+		{% endif %}
+
+	</div>
+</div>
+<div id="{{ section._type }}-{{ sectionID }}-content-end" class="absolute top-full -mt-24"></div>

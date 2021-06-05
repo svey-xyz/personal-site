@@ -1,39 +1,19 @@
 
-// Content modification tools
-const slugify = require("slugify");
 const markdownify = require("./lib/filters/markdownfilter")
-const embedEverything = require("eleventy-plugin-embed-everything");
+const blocksToMD = require("./lib/shortcodes/blocksToMD")
+const betterSlugs = require("./lib/filters/betterSlugs")
+const videoEmbed = require("./lib/shortcodes/videoEmbed")
+const videoID = require("./lib/shortcodes/videoID")
+const matchingPorjects = require("./lib/shortcodes/matchingProjects")
+const imageCache = require("./lib/shortcodes/imageCache")
+const bundlePointer = require("./lib/shortcodes/bundlePointer")
 
-// Sanity tools
-const serializers = require('./lib/utils/serializers')
-const client = require('./lib/utils/sanityClient')
-const BlocksToMarkdown = require('@sanity/block-content-to-markdown')
-const imageUrl =  require('@sanity/image-url')
-
-// Cache busting
-const fs = require("fs");
-const path = require("path");
-const { callbackify } = require("util");
-
-const scriptManifestPath = path.resolve(__dirname, "www", "assets", "js", "manifest.json");
-const scriptManifest = process.env.NODE_ENV === 'production' ?
-	JSON.parse(fs.readFileSync(scriptManifestPath, { encoding: "utf8" })) :
-	{ "main.js" : "/assets/js/main.js", "runtime.js" : "/assets/js/runtime.js" }
-
-const styleManifestPath = path.resolve(__dirname, "www", "assets", "css", "manifest.json");
-const styleManifest = process.env.NODE_ENV === 'production' ?
-	JSON.parse(fs.readFileSync(styleManifestPath, { encoding: "utf8" })) :
-	{ "style.css": "style.css" }
 
 module.exports = (eleventyConfig) => {
-	eleventyConfig.addPlugin(embedEverything);
 
 	// all the minify code is enabled when set to 'production'
 	eleventyConfig.setQuietMode(true);
 	eleventyConfig.setWatchThrottleWaitTime(1000);
-
-	eleventyConfig.setLibrary("md", markdownify.markdownLib);
-	eleventyConfig.addFilter("markdownify", markdownify);
 
 	eleventyConfig.setDataDeepMerge(true);
 
@@ -45,65 +25,22 @@ module.exports = (eleventyConfig) => {
 		debugger;
 	});
 
-	eleventyConfig.addFilter("sanityBlocksToMarkdown", (sanityBlcoks) => {
-		return BlocksToMarkdown(sanityBlcoks, { serializers, ...client.config() })
-	});
+	eleventyConfig.setLibrary("md", markdownify.markdownLib);
+	eleventyConfig.addFilter("markdownify", markdownify);
 
-	eleventyConfig.addShortcode("sanityImageURL", function(sanityImage, size = 400) {
-		const builder = imageUrl(client)
-		return builder.image(sanityImage).width(size).url();
-	});
+	eleventyConfig.addFilter("slug", betterSlugs);
+	eleventyConfig.addFilter("sanityBlocksToMarkdown", blocksToMD);
 
-	// Overwrite 11ty built in slug filter to allow for backslashes to remain
-	eleventyConfig.addFilter("slug", (input) => {
-		const options = {
-			replacement: "-",
-			remove: /[&,+()$~%.'":*?<>{}]/g,
-			lower: true
-		};
-		return slugify(input, options);
-	});
+	eleventyConfig.addShortcode("getMatchingProjects", matchingPorjects);
 
-	eleventyConfig.addShortcode("bundledJS", function () {
-		if (!scriptManifest["main.js"] || !scriptManifest["runtime.js"]) {
-			console.log("Javascript bundle not found!")
-			throw ("Javascript bundle not found!");
-		};
-		return `<script src="${scriptManifest["main.js"]}"></script><script src="${scriptManifest["runtime.js"]}"></script>`;
-	});
+	eleventyConfig.addNunjucksAsyncShortcode("image", imageCache);
 
-	eleventyConfig.addShortcode("bundledCSS", function () {
-		if (!styleManifest["style.css"]) {
-			console.log("Style bundle not found!")
-			throw ("Style bundle not found!");
-		};
-		
-		return `<link rel="stylesheet" href="/assets/css/${styleManifest['style.css']}">`;
-	});
+	eleventyConfig.addShortcode("videoEmbed", videoEmbed);
+	eleventyConfig.addShortcode("videoID", videoID);
 
-	eleventyConfig.addShortcode("getMatchingProjects", function (projects, activeTags) {
-		let activeProjects = [];
+	eleventyConfig.addShortcode("bundlePointer", bundlePointer);
 
-		projects.forEach(project => {
-			let matchingTags = {};
-
-			for (let i = 0; i < activeTags.length; i++) {
-				if (!matchingTags[activeTags[i]._id]) {
-					const element = activeTags[i]._id;
-					matchingTags[element] = true;
-				}
-			}
-
-			for (let j = 0; j < project.tags.length; j++) {
-				if (matchingTags[project.tags[j]._id]) {
-					activeProjects.push(project);
-					break;
-				}
-			}
-		});
-		this.page.activeProjects = activeProjects;
-		return activeProjects;
-	});
+	eleventyConfig.addPassthroughCopy({ "./src/_includes/assets/robots.txt": "robots.txt" });
 
 	eleventyConfig.addWatchTarget("./src/style/**/*"); // doesn't work with eleventy config not at root
 

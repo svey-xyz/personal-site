@@ -19,19 +19,19 @@ permalink: false
 		<title>{{ pageData.descriptiveTitle }}</title>
 		<meta name="description" content="{{ pageDescriptor }}">
 
-		{% bundledCSS %}
+		{% bundlePointer "CSS" %}
 	</head>
 	<body>
-		<main id="pageContent" class="relative min-h-full h-auto w-full top-0 bg-primaryColour">		
+		<main id="pageContent" class="relative min-h-full h-auto w-full top-0 bg-primaryColour">
 			{% include './components/headers/header.njk' %}
 			{{ content | safe }}
 			{% include './components/footers/footer.njk' %}
 		</main>
 	</body>
 	<footer>
-		<link rel="preconnect" href="https://fonts.gstatic.com"> 
-		<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Montserrat:wght@100;300;400;700;900&display=swap" rel="stylesheet">
-		<script src="https://kit.fontawesome.com/5d68704bfb.js" crossorigin="anonymous"></script>
-		{% bundledJS %}
+		<link rel="preconnect" href="https://fonts.gstatic.com" defer> 
+		<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Montserrat:wght@100;300;400;700;900&display=swap" rel="stylesheet" defer>
+		<script src="https://kit.fontawesome.com/5d68704bfb.js" crossorigin="anonymous" defer></script>
+		{% bundlePointer "JS" %}
 	</footer>
 </html>

@@ -42,24 +42,32 @@ document.addEventListener(
 		loadModules([
 			{
 				selector: '#header',
-				scriptPath: '/headers/header'
+				scriptPath: 'components/headers/header'
 			},
 			{
 				selector: '.interactiveSection > .section-container > .blobShader',
-				scriptPath: '/blocks/interactiveSections/blobShader'
+				scriptPath: 'components/blocks/interactiveSections/blobShader'
 			},
 			{
 				selector: '.projectsArchive > [data-filterable="true"]', // don't bother loading script if not filterable
-				scriptPath: '/blocks/projectsArchive/projectsArchive'
+				scriptPath: 'components/blocks/projectsArchive/projectsArchive'
+			},	
+			{
+				selector: '.contactForm #formContainer',
+				scriptPath: 'components/blocks/contact/contact'
 			},
 			{
-				selector: '.video',
-				scriptPath: '/blocks/video/video'
+				selector: '.video-utility',
+				scriptPath: 'utilities/video'
 			},
 			{
-				selector: '#formContainer',
-				scriptPath: '/blocks/contact/contact'
-			}
+				selector: '.scroll-indicator',
+				scriptPath: 'utilities/smoothScroll'
+			},
+			{
+				selector: '#returnTo',
+				scriptPath: 'utilities/returnTo'
+			},
 		])
 	}
 )

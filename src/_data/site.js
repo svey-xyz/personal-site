@@ -1,4 +1,4 @@
-const sanityFetch = require("../../lib/utils/sanityFetch");
+const sanityFetch = require("../../lib/utils/sanity/sanityFetch");
 const groq = require('groq')
 
 module.exports = async () => {
