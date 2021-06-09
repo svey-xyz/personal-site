@@ -8,22 +8,18 @@
 	{% set filterTags = section.tags %}
 {% endif %}
 
-<div data-filterable="{{ section.filterTags }}" class="main-padding block-padding flex-wrap justify-center v">
+<div data-filterable="{{ section.filterTags }}" name="projects-archive" class="main-padding block-padding flex-wrap justify-center w-full">
 	<div class="flex flex-wrap justify-center select-none">
 
 		{% if (section.filterTags) %}
-			<a class="tag-button cursor-pointer" data-tag="all" title="All">
+			<button class="tag-button std-round" data-tag="all" title="All">
 				All
-			</a>
-			<span>, &nbsp</span>
+			</button>
 
 			{% for tag in filterTags %}
-				<a class="tag-button cursor-pointer" data-tag="{{ tag.title | slug }}" title="{{ tag.title }}">
+				<button class="tag-button std-round" data-tag="{{ tag.title | slug }}" title="Sort for- {{ tag.title }}">
 					{{ tag.title }}
-				</a>
-				{% if not loop.last %}
-					<span>, &nbsp</span>
-				{% endif %}
+				</button>
 			{% endfor %}
 		{% endif %}
 
@@ -31,10 +27,10 @@
 
 	<div class="flex flex-wrap justify-center sm:-mx-6">
 		{# 11ty only returns strings from shortcodes, so the data is added to the page data, hopefully this changes in the future #}
-		{% set activeProjects %}{% getMatchingProjects projects.work, filterTags %}{% endset %}
+		{% set activeProjects %}{% getMatchingProjects projects.work, filterTags, pageData %}{% endset %}
 
-		{% for project in page.activeProjects %}
+		{% asyncEach project in pageData.activeProjects %}
 			{% include "../cards/projectsArchive-card.njk" %}
-		{% endfor %}
+		{% endeach %}
 	</div>
 </div>

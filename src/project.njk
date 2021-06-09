@@ -1,11 +1,15 @@
 ---
-layout: layouts/templates/single-project
-tags: 
-	- projects
 pagination:
   data: projects.work
   alias: project
   size: 1
   addAllPagesToCollections: true
-permalink: "/{{ site.navigation.archivePageSlug | slug }}/{{ project.title | slug }}/index.html"
+layout: layouts/main.njk
+tags: 
+	- projects
+permalink: "/{{ site.navigation.archivePageSlug | slug }}/{{ project.slug | slug }}/index.html"
 ---
+
+<article id="{{ project.title | slug }}">
+	{% extends "./_includes/layouts/templates/single-project.njk" %}
+</article>

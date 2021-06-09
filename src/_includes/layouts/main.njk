@@ -10,19 +10,29 @@ permalink: false
 	{% endif %}
 {% endset %}
 
+{% set pageTitle %}
+	{% if pageData.descriptiveTitle %}
+		{{ pageData.descriptiveTitle }}
+	{% elif project.title %}
+		{{ site.siteSettings.title }} | {{ project.title }}
+	{% else %}
+	{% endif %}
+
+{% endset %}
+
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<title>{{ pageData.descriptiveTitle }}</title>
+		<title>{{ pageTitle }}</title>
 		<meta name="description" content="{{ pageDescriptor }}">
 
 		{% bundlePointer "CSS" %}
 	</head>
 	<body>
-		<main id="pageContent" class="relative min-h-full h-auto w-full top-0 bg-primaryColour">
+		<main id="pageContent" class="relative min-h-full h-auto w-full top-0">
 			{% include './components/headers/header.njk' %}
 			{{ content | safe }}
 			{% include './components/footers/footer.njk' %}

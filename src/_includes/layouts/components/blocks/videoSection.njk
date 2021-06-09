@@ -14,6 +14,11 @@
 			<h2 class="text-white my-12">{{ section.title }}</h2>
 		{% endif %}
 
+		{% set videoProperties = {url:section.url, thumbnail:section.thumbnail, title:section.title} %}
+		{% include ("layouts/utilities/video.njk") %}
+
+
+
 		{# {% from "layouts/utilities/video.njk" import video %} #}
 		{# {{ video(url=section.url, thumbnail=section.thumbnail, title=section.title) }} #}
 			

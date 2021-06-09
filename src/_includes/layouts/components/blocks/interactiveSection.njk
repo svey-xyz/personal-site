@@ -1,8 +1,15 @@
 {#
 	Interactive Section
 #}
+{% set sectionHeight %}
+	{% if (topBlockMargin) %}
+		70
+	{% else %}
+		60
+	{% endif %}
+{% endset %}
 
-<div class="section-container {{ section.interactiveScript }}" style="--section-height:60">
+<div class="section-container {{ section.interactiveScript }} {{ topBlockMargin }}" style="--section-height:{{sectionHeight}}">
 	<div class="script-container {{ section.interactiveScript }}">
 		{# Initialized with Javascript #}
 	</div>

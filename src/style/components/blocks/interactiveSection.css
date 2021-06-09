@@ -4,16 +4,15 @@
 
 .interactiveSection {
 	& > .section-container {
-		width: 100%;
+		@apply w-full;
 		min-height: calc(var(--vh, 1vh) * var(--section-height));
 
 		& > .script-container {
-			@apply transition-fast;
-			opacity: 0;
+			@apply transition-opacity duration-200 opacity-0 h-full w-full;
 		}
 
 		&.loaded > .script-container {
-			opacity: 1;
+			@apply opacity-100;
 		}
 
 		&.blobShader {

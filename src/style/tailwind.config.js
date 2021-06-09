@@ -16,34 +16,16 @@ module.exports = {
 			xl: "1440px",
 		},
 		extend: {
-			minWidth: {
-				'0': '0',
-				'1/4': '25%',
-				'1/2': '50%',
-				'3/4': '75%',
-				'full': '100%',
-				'sm': '12rem',
-				'md': '20rem'
-			},
 			maxWidth: {
 				'prose-full': '85ch',
-				'prose': '65ch'
-			},
-			minHeight: {
-				'80': '20rem',
-				'96': '24rem',
-				'3/5': '60%',
-				'full': '100%',
-			},
-			height: {
-				'102': '30rem',
-			},
-			maxHeight: {
-				'3/5': '60%',
-				'full': '100%',
+				'prose': '65ch',
+				'prose-short': '45ch'
 			},
 			padding: {
 				'16/9': '56.25%'
+			},
+			flexGrow: {
+				'2': 1,
 			},
 			colors: {
 				primaryColour: 'var(--primary-colour)',

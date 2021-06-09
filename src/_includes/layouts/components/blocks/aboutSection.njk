@@ -5,31 +5,31 @@
 
 <div class="main-padding w-full block-padding flex flex-col md:flex-row justify-center content-center">
 
-	<div class="rounded-lg shadow-lg relative flex w-full md:w-80 md:min-w-md">
-		<div class="rounded-lg relative block w-full overflow-hidden">
+	<div class="relative rounded-lg shadow-lg w-full overflow-hidden md:w-80 h-full">
+		<div class="relative block w-full">
 
 			{% if site.about.avatar %}
 			{# <img src="{% sanityImageURL site.about.avatar %}"
 				class="lazy relative inline-block w-full min-w-full h-auto"/> #}
-				{% image site.about.avatar, "lazy relative inline-block w-full min-w-full h-auto", "", "100%", [400] %}
+				{% image site.about.avatar, "lazy relative inline-block w-full min-w-full max-w-none h-auto", "", "100%", [400] %}
 
 			{% endif %}
 
-			<div class="absolute flex flex-col justify-center bottom-0 z-10 w-full p-8 md:w-2/5 md:min-w-md">
+			<div class="absolute flex flex-col justify-center bottom-0 z-10 w-full p-8">
 				<div class="absolute inset-0 -mt-24 bg-gradient-to-t from-primaryColour via-primaryTranslucent"></div>
 				<div class="z-10 w-full">
 					<span class="block font-black leading-normal pb-6">{{ site.about.name }}</span>
 					{% if section.personalInfo %}
-						<a href="tel: {{ site.about.phoneNumber }}" class="leading-relaxed">{{ site.about.phoneNumber }}</a>
-						<a href="mailto: {{ site.about.email }}" class="leading-relaxed">{{ site.about.email }}</a>
-						<a href="{{ site.about.social[0].url }}" class="leading-relaxed">{{ site.about.social[0].socialTitle }}</a>
+						<a href="tel: {{ site.about.phoneNumber }}" class="block leading-relaxed">{{ site.about.phoneNumber }}</a>
+						<a href="mailto: {{ site.about.email }}" class="block leading-relaxed">{{ site.about.email }}</a>
+						<a href="{{ site.about.social[0].url }}" class="block leading-relaxed">{{ site.about.social[0].socialTitle }}</a>
 					{% endif %}
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<div class="block-padding md:m-0 md:pl-12 max-w-prose">
+	<div class="block-padding md:m-0 md:pl-12 transition-all duration-150 max-w-prose-short xl:max-w-prose flex-grow-0">
 		{{ site.about.description | sanityBlocksToMarkdown | markdownify | safe }}
 		{% if section.downloadCV %}
 			<a target="_blank" href="{{ site.about.curriculumVitaeURL }}" class="font-bold">{{ section.downloadCV }}</a>

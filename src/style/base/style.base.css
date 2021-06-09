@@ -16,7 +16,11 @@
 		}
 	}
 	a {
-		@apply tracking-wider hover:underline;
+		@apply tracking-wider;
+	}
+
+	button {
+		@apply focus:outline-none border-black focus:border-2;
 	}
 
 	.main-padding {
@@ -28,11 +32,8 @@
 		@apply my-8 md:my-12;
 	}
 
-	.transition-fast {
-		transition: all 250ms ease-out;
-	}
-	.transition-medium {
-		transition: all 500ms ease-in-out;
+	.top-block {
+		margin-top: calc(-1 * var(--header-total-height));
 	}
 }
 
@@ -58,13 +59,6 @@ iframe {
 	right: 0;
 	height: 100vh;
 	height: calc(var(--vh, 1vh) * 100);
-}
-
-.sixty-height-section {
-	left: 0;
-	right: 0;
-	height: 100vh;
-	height: calc(var(--vh, 1vh) * 60);
 }
 
 canvas {

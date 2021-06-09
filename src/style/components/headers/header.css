@@ -2,12 +2,15 @@
 * Styling for site wide header
 */
 
-#header {
+:root {
 	--header-item-height: 25px;
-	--menu-button-width: 30px;
 	--header-padding: 25px;
 
-	--total-height: 75px;
+	--header-total-height: 75px;
+}
+
+#header {
+
 
 	&.collapsed {
 		& > .header-sticky > .header-container > .site-navigation {
@@ -24,11 +27,30 @@
 	}
 
 	& > .header-sticky {
-		@apply shadow bg-primaryColour;
 		position: fixed;
 		top: 0;
 		z-index: 100;
 		min-width: 100%;
+
+		&:after {
+			content: "";
+			display: block;
+			position: absolute;
+			background-position: center;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			z-index: -1;
+
+			opacity: 0.9;
+			background-color: var(--primary-colour);
+			backdrop-filter: blur(8px);
+
+			border-bottom: 2px solid;
+			border-color: black; 
+			border-style: outset;
+		}
 
 		& > .header-container {
 			@apply main-padding;
@@ -86,42 +108,43 @@
 					opacity: 0;
 					position: absolute;
 					right: 0;
-					width: var(--menu-button-width);
+					width: var(--header-item-height);
 					height: var(--header-item-height);
 					padding: 2px;
 					display: block;
 					cursor: pointer;
 
-					& > .menu-bar {
-						@apply rounded transition-medium;
+					&:hover {
+						transform: scale(1.15);
 
-						display: block;
-						width: 100%;
-						height: 20%;
-						background: black;
-						transform: translate(0, 200%);
-
-
-						&::before {
-							@apply rounded transition-fast;
-							content: '';
-							display: block;
-							width: 100%;
-							height: 100%;
-							background: black;
-							transform: translate(0, -200%);
+						& > .menu-bar:after {
+							transform: translate(-50%, -50%) scale(0.85);
 						}
+					}
 
-						&::after {
-							@apply rounded transition-fast;
+					& > .menu-bar {
+						@apply transition-all;
+						position: relative;
+
+						border-radius: 50%;
+						border: 2px solid;
+						border-color: black;
+						display: inline-block;
+						width: 100%;
+						height: 100%;
+						/* background: black; */
+						/* transform: translate(0, 200%); */
+
+						&:after {
 							content: '';
-							display: block;
-							width: 100%;
-							height: 100%;
+							position: absolute;
+							left: 50%;
+							top: 50%;
+							transform: translate(-50%, -50%);
+							width: 30%;
+							height: 30%;
+							border-radius: 50%;
 							background: black;
-
-							transform: translate(0, 100%);
-
 
 						}
 					}
@@ -220,7 +243,7 @@
 	& > .header-padding {
 		position: relative;
 		width: 100%;
-		height: var(--total-height);
-		min-height: var(--total-height);
+		height: var(--header-total-height);
+		min-height: var(--header-total-height);
 	}
 }

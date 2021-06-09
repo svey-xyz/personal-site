@@ -4,19 +4,11 @@ const groq = require('groq')
 module.exports = async () => {
 	const query = groq`{
 		"work":*[_type == "project"]{
-			title,
+			...,
 			"slug":slug.current,
-			date,
-			blurb,
-			"tags":projectTags[]->{...},
-			thumbnail,
-			description,
-			content[],
-			links[] {
-				title,
-				url
-			}
-		},
+			projectTags[]->,
+			client->,
+		} | order(date desc),
 		"tags":*[_type == "projectTag"]{...}
 	}`
 

@@ -2,37 +2,37 @@
 *  Add sorting of projects
 */
 
-var projectCards = Array<projectCard>();
-var tagButtons = Array<HTMLElement>();
+import { updateURLParameter } from '../../../utilities/updateURLParameter'
+
+let projectCards = Array<projectCard>();
+let tagButtons = Array<HTMLElement>();
+let archiveContainer:HTMLElement;
+let archiveName:string;
+
 
 export const mount = (container: Element) => {
+	archiveContainer = <HTMLElement>container;
+
 	initializeArchive();
 }
 
 function initializeArchive(): void {
-	initTagSort();
-	initCards();
+	initElements();
+	
+	archiveName = archiveContainer.getAttribute('name')!;
 
-	var loadedTag = window.location.hash;
-	if (loadedTag) {
-		loadedTag = loadedTag.replace('#', '');
-
-		tagSelect(loadedTag)
-	} else {
-		tagSelect('all')
-	}
+	const filterTag = new URL(window.location.href).searchParams.get(archiveName)
+	filterTag ? tagSelect(filterTag) : tagSelect('all')
 }
 
-function initTagSort() : void {
-	var buttonElements = document.getElementsByClassName('tag-button');
+function initElements() : void {
+	const buttonElements = archiveContainer.querySelectorAll('.tag-button');
+	const htmlCards = archiveContainer.querySelectorAll('#projectsArchive-card');
+
 	for (let b of buttonElements) {
 		tagButtons.push(<HTMLElement>b);
 		b.addEventListener('mousedown', tagClick);
 	}
-}
-
-function initCards(): void {
-	var htmlCards = document.getElementsByClassName('projectsArchive-card');
 
 	for (let card of htmlCards) {
 		projectCards.push(new projectCard(<HTMLElement>card));
@@ -49,14 +49,14 @@ function tagClick(e : Event) : void {
 function tagSelect(tag : string) : void {
 	
 	for (let b of tagButtons) {
-		if (b.getAttribute('data-tag') != tag) b.style.setProperty('font-weight', '400');
-		else b.style.setProperty('font-weight', '900');
+		if (b.getAttribute('data-tag') != tag) b.classList.remove('active');
+		else b.classList.add('active');
 	}
 	
-	tagSort(tag)
+	archiveSort(tag)
 }
 
-function tagSort(tag : string) {
+function archiveSort(tag : string) {
 	let all = false;
 	let hashState = '#' + tag;
 
@@ -65,7 +65,9 @@ function tagSort(tag : string) {
 		hashState = '/work/';
 	}
 
-	history.replaceState(undefined, '', hashState)
+	updateURLParameter(window.location.href, 'locId', 'newLoc');
+	window.history.replaceState('', '', updateURLParameter(window.location.href, archiveName, tag));
+	// history.replaceState(undefined, '', hashState)
 
 	for (let card of projectCards) {
 		if (card.tags.includes(tag) || all) {
@@ -82,6 +84,6 @@ class projectCard {
 
 	constructor(dom : HTMLElement) {
 		this.container = dom;
-		this.tags = dom.getAttribute('data-tags')!.replace(/\s/g, "").split(',');
+		this.tags = JSON.parse(dom.getAttribute('data-tags')!);
 	}
 }
