@@ -28,12 +28,14 @@ module.exports = {
 				'2': 1,
 			},
 			colors: {
-				primaryColour: 'var(--primary-colour)',
-				primaryTranslucent: 'var(--primary-colour-translucent)',
-				secondaryColour: 'var(--secondary-colour)',
-				accentColour: 'var(--accent-colour)',
-				charcoal: '#3B454E',
-				textColour: '#3B454E'
+				'primary-bg': 'var(--primary-bg)',
+				'primary-bg-translucent': 'var(--primary-bg-translucent)',
+				'header-bg': 'var(--header-bg)',
+				'opposite-bg': 'var(--opposite-bg)',
+				'primary-border': 'var(--primary-border)',
+				'primary-text': 'var(--primary-text)',
+				'secondary-bg': 'var(--secondary-bg)',
+				'accent': 'var(--accent)',
 			},
 			boxShadow: {
 				DEFAULT: '0 0px 6px -1px rgba(0,0,0,0.1), 0 0px 5px -1px rgba(0,0,0,.06)',

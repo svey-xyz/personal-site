@@ -18,7 +18,7 @@ export const mount = (container: Element) => {
 
 function initializeArchive(): void {
 	initElements();
-	
+
 	archiveName = archiveContainer.getAttribute('name')!;
 
 	const filterTag = new URL(window.location.href).searchParams.get(archiveName)
@@ -57,17 +57,9 @@ function tagSelect(tag : string) : void {
 }
 
 function archiveSort(tag : string) {
-	let all = false;
-	let hashState = '#' + tag;
+	let all = tag === 'all';
 
-	if (tag == 'all') {
-		all = true;
-		hashState = '/work/';
-	}
-
-	updateURLParameter(window.location.href, 'locId', 'newLoc');
 	window.history.replaceState('', '', updateURLParameter(window.location.href, archiveName, tag));
-	// history.replaceState(undefined, '', hashState)
 
 	for (let card of projectCards) {
 		if (card.tags.includes(tag) || all) {

@@ -1,6 +1,6 @@
 @layer base {
 	h1, h2, h3, h4, h5, h6 {
-		@apply font-heading text-center leading-normal;
+		@apply font-heading text-center leading-normal text-primary-text;
 	}
 
 	h1 {
@@ -10,17 +10,15 @@
 		@apply text-4xl font-bold;
 	}
 	p {
-		@apply mb-6;
+		@apply mb-6 text-primary-text;
 		&:last-child {
 			margin: 0;
 		}
 	}
+	
 	a {
-		@apply tracking-wider;
-	}
-
-	button {
-		@apply focus:outline-none border-black focus:border-2;
+		@apply tracking-wider text-primary-text;
+		color: inheret;
 	}
 
 	.main-padding {
@@ -42,6 +40,7 @@ html, body {
   padding: 0px;
   min-height: 100%;
   height: 100%;
+  background-color: var(--primary-bg)
 }
 
 iframe {

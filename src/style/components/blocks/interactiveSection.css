@@ -16,7 +16,7 @@
 		}
 
 		&.blobShader {
-			@apply bg-accentColour w-full cursor-pointer;
+			@apply bg-accent w-full cursor-pointer;
 		}
 	}
 }

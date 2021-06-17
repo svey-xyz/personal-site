@@ -2,13 +2,21 @@
 	Projects Archive Block
 #}
 
-{% if section.allTags %}
-	{% set filterTags = projects.tags %}
-{% else %}
-	{% set filterTags = section.tags %}
-{% endif %}
+{% if section.allTags -%}
+	{%- set filterTags = projects.tags -%}
+{%- else -%}
+	{%- set filterTags = section.tags -%}
+{%- endif %}
 
-<div data-filterable="{{ section.filterTags }}" name="projects-archive" class="main-padding block-padding flex-wrap justify-center w-full">
+{% set archiveTitle -%}
+	{%- if (section.title) -%}
+		{{ section.title }}
+	{%- else -%}
+		archive
+	{%- endif -%}
+{%- endset %}
+
+<div data-filterable="{{ section.filterTags }}" name="{{ archiveTitle }}" class="main-padding block-padding flex-wrap justify-center w-full">
 	<div class="flex flex-wrap justify-center select-none">
 
 		{% if (section.filterTags) %}

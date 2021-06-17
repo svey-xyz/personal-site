@@ -1,13 +1,13 @@
 button {
 	&.std-round {
-		@apply rounded-full tracking-wider text-black font-bold border cursor-pointer px-2 py-1 m-2;
+		@apply rounded-full tracking-wider font-bold border cursor-pointer px-2 py-1 m-2 text-primary-text;
 
 		&:hover {
-			@apply text-primaryColour bg-accentColour border-accentColour;
+			@apply text-primary-bg bg-accent border-accent;
 		}
 
 		&.active {
-			@apply text-primaryColour bg-black border-black;
+			@apply text-primary-bg bg-opposite-bg border-primary-border;
 		}
 	}
 }

@@ -2,6 +2,7 @@
 // Common uniforms
 uniform float u_time;
 uniform vec2 u_posSeed;
+uniform vec3 u_bgColour;
 
 /*
  * GLSL textureless classic 2D noise "cnoise",
@@ -91,6 +92,6 @@ void main() {
 
 	float layer = floor(noise * steps + brightness) / steps;
 
-	gl_FragColor = vec4(vec3(1.0), layer); // return layers of white with opacity
+	gl_FragColor = vec4(u_bgColour, layer); // return layers of white with opacity
 }
 

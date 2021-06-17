@@ -13,7 +13,7 @@
 		&.highlighted {}
 
 		&.block {
-			@apply text-center bg-primaryColour shadow;
+			@apply text-center bg-primary-bg shadow;
 			z-index: 1;
 			padding-top: 8rem;
 			padding-bottom: 8rem;
@@ -28,5 +28,11 @@
 				margin: 0;
 			}
 		}
+	}
+}
+
+.dark {
+	& .textSection > .text-type-container.block {
+		@apply shadow-lg;
 	}
 }

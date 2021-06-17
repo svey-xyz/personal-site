@@ -8,6 +8,8 @@ import * as THREE from 'three';
 const vertShader: String = require('./blobShader/shaders/vert-Abstract.glsl');
 const fragShader: String = require('./blobShader/shaders/frag-Abstract.glsl');
 
+const styles = getComputedStyle(document.documentElement);
+
 export const mount = (container:Element) => {
 	new blobShader(container);
 }
@@ -18,6 +20,9 @@ class blobShader extends shader {
 	// Initializes the sketch
 	constructor(container: Element) {
 		super(container);
+
+		let rgbBg = global.hexConverter(global.primaryBg)
+
 		this.uniforms = {
 			u_time: {
 				type: "f",
@@ -26,6 +31,10 @@ class blobShader extends shader {
 			u_posSeed: {
 				type: "v2",
 				value: new THREE.Vector2(this.randomBetween(), this.randomBetween())
+			},
+			u_bgColour: {
+				type: "v3",
+				value: new THREE.Vector3(rgbBg.r / 255, rgbBg.g / 255, rgbBg.b / 255)
 			}
 		};
 
@@ -35,7 +44,10 @@ class blobShader extends shader {
 	// Renders the sketch
 	render() {
 		super.render();
+		let rgbBg = global.hexConverter(global.primaryBg)
+
 		this.uniforms.u_time.value = this.clock.getElapsedTime();
+		this.uniforms.u_bgColour.value = new THREE.Vector3(rgbBg.r / 255, rgbBg.g / 255, rgbBg.b / 255);
 	}
 
 	handleInput(e: Event) {

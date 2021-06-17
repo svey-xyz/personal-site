@@ -4,12 +4,31 @@
 	--lg-screen: 976px;
 	--xl-screen: 1440px;
 
-	--primary-colour: #FFFFFF;
-	--primary-colour-translucent: #FFFFFFDD;
-	--secondary-colour: #2D3047;
-	--accent-colour: #E0A142;
-
 	--block-padding: 1.5rem;
+
+	--primary-bg: #FFFFFF;
+	--primary-bg-translucent: #FFFFFFDD;
+	--opposite-bg: #000000;
+	--primary-text: #000000;
+	--primary-border: #000000;
+
+	--secondary-bg: #FFFFFF;
+	--accent: #E0A142;
+}
+
+.light {
+
+}
+
+.dark {
+	--primary-bg: #222222;
+	--primary-bg-translucent: #222222DD;
+	--opposite-bg: #FFFFFF;
+	--primary-text: #EEEEEE;
+	--primary-border: #EEEEEE;
+
+	--secondary-bg: #121212;
+	--accent: #F1B253;
 
 }
 

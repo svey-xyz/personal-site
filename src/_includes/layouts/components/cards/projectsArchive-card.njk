@@ -6,15 +6,15 @@
 {%- endset %}
 
 <a id="projectsArchive-card" href="/{{ site.navigation.archivePageSlug | slug }}/{{ project.slug | slug }}" 
-class="group relative overflow-hidden z-10 flex w-full h-96 flex-grow rounded-lg my-6 mx-0 border-2 border-black sm:mx-6 md:w-1/4" data-tags='[{{ cardTags }}]'>
+class="group relative overflow-hidden z-10 flex w-full h-96 flex-grow rounded-lg my-6 mx-0 border-2 border-primary-border sm:mx-6 md:w-1/4" data-tags='[{{ cardTags }}]'>
 	<div class="block relative overflow-hidden w-full h-full">
 		{# <img src="{% sanityImageURL project.thumbnail %}" alt="{{ project.title }} Project Thumbnail" class="lazy"/> #}
 		{% image project.thumbnail, "lazy relative m-0 w-full h-full min-w-full min-h-full object-center object-cover
 		transform duration-150 scale-105 group-hover:scale-110 md:scale-100 md:group-hover:scale-105 filter blur-sm md:blur-0 group-hover:blur", project.title, "100%", [400] %}
 
-		<div class="flex flex-col justify-center items-center transition-opacity inset-0 absolute p-6 z-10 md:opacity-0 group-hover:opacity-100">
-			<div class="absolute inset-0 bg-primaryColour opacity-60 md:opacity-80 group-hover:opacity-80" aria-hidden="true"></div>
-			<span class="text-5xl block font-black text-center z-10">{{ project.title }}</span>
+		<div class="flex flex-col justify-center items-center transition-opacity inset-0 absolute p-6 z-10 md:opacity-0 group-hover:opacity-100 text-primary-text">
+			<div class="absolute inset-0 bg-secondary-bg opacity-60 md:opacity-80 group-hover:opacity-80" aria-hidden="true"></div>
+			<span class="text-5xl block text-center z-10 font-black">{{ project.title }}</span>
 			<span class="hidden md:block mt-6 text-center font-medium text-xl z-10">{{ project.blurb }}</span>
 		</div>
 	</div>
