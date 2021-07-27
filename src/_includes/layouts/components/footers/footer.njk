@@ -28,7 +28,7 @@
 						fab fa-{{ social.socialType }}-square
 				{% endswitch %}
 			{% endset %}
-			<a aria-label="{{ social.socialType }} - {{ social.socialTitle }}" class="mr-4 md:mr-8 " href="{{ social.url }}">
+			<a aria-label="{{ social.socialType }} - {{ social.socialTitle }}" class="mr-4 md:mr-8 overflow-hidden" href="{{ social.url }}">
 				<i class="{{ socialIcon }} text-3xl md:text-4xl transform duration-100 hover:scale-110"></i>
 			</a>	
 		{% endfor %}

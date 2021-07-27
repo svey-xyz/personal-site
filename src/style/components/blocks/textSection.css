@@ -5,7 +5,10 @@
 /* This can be doen with nunjucks and tailwinds - should transition it */
 
 .textSection {
+	position: relative;
+
 	& > .text-type-container {
+		position: relative;
 		width: 100%;
 
 		&.plain {}
@@ -28,9 +31,20 @@
 				margin: 0;
 			}
 		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background-color: var(--primary-bg);
+			background-image: linear-gradient(to bottom right, var(--primary-bg) 50%, var(--secondary-bg-translucent) 50%);
+			z-index:-1;
+		}
 	}
 }
 
+
+/* TODO tailwinds shadows should change universsally when theme is toggled */
 .dark {
 	& .textSection > .text-type-container.block {
 		@apply shadow-lg;

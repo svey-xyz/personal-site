@@ -10,11 +10,9 @@ const bundlePointer = require("./lib/shortcodes/bundlePointer")
 
 
 module.exports = (eleventyConfig) => {
-
-	// all the minify code is enabled when set to 'production'
 	eleventyConfig.setQuietMode(true);
 	eleventyConfig.setWatchThrottleWaitTime(1000);
-
+	
 	eleventyConfig.setDataDeepMerge(true);
 
 	eleventyConfig.addTransform("htmlmin", require("./lib/transforms/htmlmin"))

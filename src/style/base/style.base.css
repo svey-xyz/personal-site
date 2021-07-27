@@ -35,12 +35,19 @@
 	}
 }
 
+html {
+  background-color: var(--secondary-bg);
+}
+
+body {
+  background-color: var(--primary-bg)
+}
+
 html, body {
   margin: 0px;
   padding: 0px;
   min-height: 100%;
   height: 100%;
-  background-color: var(--primary-bg)
 }
 
 iframe {
@@ -51,6 +58,11 @@ iframe {
 .emoji {
 	height: 1.2em;
 	display: inline
+}
+
+.sixty-height-section {
+	height: 60vh;
+	height: calc(var(--vh, 1vh) * 60);
 }
 
 .screen-height-section {

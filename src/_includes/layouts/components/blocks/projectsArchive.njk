@@ -17,7 +17,7 @@
 {%- endset %}
 
 <div data-filterable="{{ section.filterTags }}" name="{{ archiveTitle }}" class="main-padding block-padding flex-wrap justify-center w-full">
-	<div class="flex flex-wrap justify-center select-none">
+	<div class="z-10 relative flex flex-wrap justify-center select-none">
 
 		{% if (section.filterTags) %}
 			<button class="tag-button std-round" data-tag="all" title="All">

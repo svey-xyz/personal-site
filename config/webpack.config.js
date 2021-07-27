@@ -25,7 +25,7 @@ module.exports = {
 
 	// entry files
 	entry: {
-		main: './src/_includes/ts/base/main.ts',
+		main: './src/_includes/ts/base/main.ts'
 	},
 
 	// output bundles (location)

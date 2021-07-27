@@ -12,8 +12,10 @@
 	--primary-text: #000000;
 	--primary-border: #000000;
 
-	--secondary-bg: #FFFFFF;
-	--accent: #E0A142;
+	--secondary-bg: #F2F2F2;
+	--secondary-bg-translucent: #F2F2F2DD;
+	--primary-accent: #FEA31B;
+	--secondary-accent: #9B3ACF;
 }
 
 .light {
@@ -27,8 +29,10 @@
 	--primary-text: #EEEEEE;
 	--primary-border: #EEEEEE;
 
-	--secondary-bg: #121212;
-	--accent: #F1B253;
+	--secondary-bg: #1C1C1C;
+	--secondary-bg-translucent: #121212DD;
+	--primary-accent: #FEA31B;
+	--secondary-accent: #9B3ACF;
 
 }
 

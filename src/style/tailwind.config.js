@@ -27,6 +27,9 @@ module.exports = {
 			flexGrow: {
 				'2': 1,
 			},
+			scale: {
+				'102': '1.02'
+			},
 			colors: {
 				'primary-bg': 'var(--primary-bg)',
 				'primary-bg-translucent': 'var(--primary-bg-translucent)',
@@ -35,11 +38,15 @@ module.exports = {
 				'primary-border': 'var(--primary-border)',
 				'primary-text': 'var(--primary-text)',
 				'secondary-bg': 'var(--secondary-bg)',
-				'accent': 'var(--accent)',
+				'secondary-bg-translucent': 'var(--secondary-bg-translucent)',
+				'primary-accent': 'var(--primary-accent)',
+				'secondary-accent': 'var(--secondary-accent)',
+
 			},
 			boxShadow: {
 				DEFAULT: '0 0px 6px -1px rgba(0,0,0,0.1), 0 0px 5px -1px rgba(0,0,0,.06)',
 				lg: '0 0px 12px -3px rgba(0,0,0,0.6), 0 0px 6px -1px rgba(0,0,0,.06)',
+				xl: '0 0px 15px -5px rgba(0,0,0,0.8), 0 0px 8px -1px rgba(0,0,0,.06)',
 			},
 			fontFamily: {
 				heading: ['DM Serif Display', 'serif'],
