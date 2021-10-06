@@ -8,6 +8,7 @@ declare global {
 	var mobile:boolean;
 	var vh:number;
 	var primaryBg:any;
+	var primaryAccent: any;
 	var hexConverter:any;
 }
 

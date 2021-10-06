@@ -3,29 +3,51 @@
 #}
 
 <header id="header" class="collapsed">
-	<div class="header-sticky">
-		<div class="header-container">
-			<a class="site-title" href="/"><h1>{{ site.siteSettings.title }}</h1></a>
-			<div class="header-sizer"></div>
-			<div class="site-navigation">	
-				{% for navItem in site.navigation.primaryNavigation %}
-					<a class="nav-item" href="/{{ navItem.slug | slug }}">{{ navItem.title }}</a>	
-				{% endfor %}
-
-				<div class="header-menu-button"><div class="menu-bar"></div></div>	
-			</div>
+	<div class="header-sticky fixed top-0 z-50 min-w-full bg-secondary-bg shadow-lg">
+		<div class="header-container main-padding flex flex-row justify-between overflow-hidden w-screen pt-header pb-header">
+			<a class="site-title font-bold whitespace-nowrap" href="/">
+				<svg xmlns="http://www.w3.org/2000/svg"
+					width="250px" height="25px" viewBox="0 0 250 25">
+					<text x="0" y="20" 
+							fill="white"
+							font-family="'Montserrat', sans-serif"
+							font-weight="800"
+							font-size="25">
+						Soulely Hayden
+					</text>
+				</svg>
+			</a>
+			<div class="header-menu-button block z-10 cursor-pointer"><div class="menu-bar"></div></div>	
 		</div>
 
-		<div id="scrollProgressBar" class="header-scrollbar"></div>
+		<div id="scrollProgressBar" class="absolute left-0 bottom-0 mt-0.5 h-0.5 bg-gradient-to-r from-primary-accent to-secondary-accent"></div>
 	</div>
 
 	<div class="header-padding"></div>
+</header>
 
-	<div class="navigation-dropdown">
-		<div class="dropdown-item-container">
-			{% for navItem in site.navigation.primaryNavigation %}
-				<a class="nav-dropdown-item" href="/{{ navItem.slug | slug }}">{{ navItem.title }}</a>	
-			{% endfor %}
+<div class="fixed z-50 min-w-full">
+	<div id="menu" class="transition-all duration-500 max-w-screen-xl mx-auto px-0 md:px-24 flex md:mt-16 h-screen md:h-auto">
+		<div class="flex flex-col z-50 w-full overflow-hidden bg-primary-bg md:flex-row md:rounded-xl md:shadow-lg">
+			<div id="identity-container" class="flex justify-center p-8 border-b-2 bg-secondary-bg md:border-b-0 md:border-r-2 border-primary-border">
+				<a class="site-title font-bold whitespace-nowrap" href="/">
+					<svg xmlns="http://www.w3.org/2000/svg"
+						width="250px" height="25px" viewBox="0 0 250 25">
+						<text x="0" y="20" 
+								fill="white"
+								font-family="'Montserrat', sans-serif"
+								font-weight="800"
+								font-size="25">
+							Soulely Hayden
+						</text>
+					</svg>
+				</a>
+			</div>
+			<div class="flex flex-col p-6 angle-background h-full w-full md:flex-row md:h-auto">
+				{% for navItem in site.navigation.primaryNavigation %}
+					<a class="mt-3 mr-5 font-bold" href="/{{ navItem.slug | slug }}">{{ navItem.title }}</a>	
+				{% endfor %}
+			</div>
 		</div>
 	</div>
-</header>
+</div>

@@ -3,6 +3,8 @@
 */
 
 import { shader } from "./bases/shader-base";
+import { hexConverter } from '../../../utilities/hexConverter'
+
 import * as THREE from 'three';
 
 const vertShader: String = require('./blobShader/shaders/vert-Abstract.glsl');
@@ -21,7 +23,7 @@ class blobShader extends shader {
 	constructor(container: Element) {
 		super(container);
 
-		let rgbBg = global.hexConverter(global.primaryBg)
+		let rgbBg = hexConverter(global.primaryAccent)
 
 		this.uniforms = {
 			u_time: {
@@ -44,7 +46,7 @@ class blobShader extends shader {
 	// Renders the sketch
 	render() {
 		super.render();
-		let rgbBg = global.hexConverter(global.primaryBg)
+		let rgbBg = hexConverter(global.primaryAccent)
 
 		this.uniforms.u_time.value = this.clock.getElapsedTime();
 		this.uniforms.u_bgColour.value = new THREE.Vector3(rgbBg.r / 255, rgbBg.g / 255, rgbBg.b / 255);

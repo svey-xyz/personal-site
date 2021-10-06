@@ -1,5 +1,3 @@
-import { hexConverter } from './hexConverter'
-
 /******** VARIABLES ********/
 var height: number;
 
@@ -25,7 +23,8 @@ export function themeInit() {
 	document.documentElement.classList[wasDarkMode ? 'add' : 'remove']('dark');
 
 	global.primaryBg = getComputedStyle(document.documentElement).getPropertyValue('--primary-bg');
-	global.hexConverter = hexConverter;
+	global.primaryAccent = getComputedStyle(document.documentElement).getPropertyValue('--primary-accent');
+
 }
 
 function resize() {

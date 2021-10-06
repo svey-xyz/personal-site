@@ -22,7 +22,8 @@ module.exports = {
 				'prose-short': '45ch'
 			},
 			padding: {
-				'16/9': '56.25%'
+				'16/9': '56.25%',
+				'header': 'var(--header-padding)'
 			},
 			flexGrow: {
 				'2': 1,
@@ -41,7 +42,6 @@ module.exports = {
 				'secondary-bg-translucent': 'var(--secondary-bg-translucent)',
 				'primary-accent': 'var(--primary-accent)',
 				'secondary-accent': 'var(--secondary-accent)',
-
 			},
 			boxShadow: {
 				DEFAULT: '0 0px 6px -1px rgba(0,0,0,0.1), 0 0px 5px -1px rgba(0,0,0,.06)',
