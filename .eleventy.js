@@ -7,6 +7,7 @@ const videoID = require("./lib/shortcodes/videoID")
 const matchingPorjects = require("./lib/shortcodes/matchingProjects")
 const imageCache = require("./lib/shortcodes/imageCache")
 const bundlePointer = require("./lib/shortcodes/bundlePointer")
+const emailSplitter = require("./lib/shortcodes/emailSplitter")
 
 
 module.exports = (eleventyConfig) => {
@@ -28,6 +29,8 @@ module.exports = (eleventyConfig) => {
 
 	eleventyConfig.addFilter("slug", betterSlugs);
 	eleventyConfig.addFilter("sanityBlocksToMarkdown", blocksToMD);
+
+	eleventyConfig.addFilter("emailSplitter", emailSplitter);
 
 	eleventyConfig.addShortcode("getMatchingProjects", matchingPorjects);
 

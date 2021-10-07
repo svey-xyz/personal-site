@@ -9,6 +9,12 @@
 	h2 {
 		@apply text-4xl font-bold;
 	}
+	h5 {
+		@apply text-left font-bold font-body text-primary-text text-xl lg:text-2xl;
+	}
+	h6 {
+		@apply text-left font-bold font-body text-primary-text text-lg lg:text-xl;
+	}
 	p {
 		@apply mb-6 text-primary-text;
 		&:last-child {
@@ -36,6 +42,10 @@
 
 	.angle-background {
 		background-image: linear-gradient(to bottom right, var(--primary-bg) 50%, var(--secondary-bg-translucent) 50%);
+	}
+
+	.accent-background {
+		background: linear-gradient(to right, var(--primary-accent), var(--secondary-accent));
 	}
 }
 

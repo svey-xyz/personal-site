@@ -25,6 +25,13 @@ module.exports = {
 				'16/9': '56.25%',
 				'header': 'var(--header-padding)'
 			},
+			margin: {
+				'1/8': '12%',
+				'1/7': '15%',
+				'1/5': '20%',
+				'1/4': '20%',
+				'1/3': '33%'
+			},
 			flexGrow: {
 				'2': 1,
 			},
@@ -52,6 +59,12 @@ module.exports = {
 				heading: ['DM Serif Display', 'serif'],
 				body: ['Montserrat', 'sans-serif']
 			},
+			transitionProperty: {
+				'spacing': 'margin, padding',
+			},
+			zIndex: {
+				'-1': '-1'
+			}
 		}
 	},
 	variants: {

@@ -14,32 +14,39 @@
 			& > .header-menu-button {
 				width: var(--header-item-height);
 				height: var(--header-item-height);
-
-				&:hover {
-					& > .menu-bar {
-						/* background: linear-gradient(to right, var(--primary-accent), var(--secondary-accent)); */
-						transform: scale(1.1);
-						border: 3px solid;
-
-						&::after {
-							transform: scale(0.90) translate(-50%, -50%);
+				
+				/* Dissalow hover on handheld */
+				@media(hover: hover) and (pointer: fine) {
+					&:hover {
+						& > .menu-bar {	
+							background: linear-gradient(to right, var(--primary-accent), var(--secondary-accent));
+							border-color: var(--primary-border);
+							border-style: solid;
+							border-width: 4px;
+							transform: scale(1.2);
+		
+							&::after {
+								transform: translate(-50%, -50%) scale(0.95);
+							}
 						}
 					}
 				}
+				
 
 				& > .menu-bar {
-					@apply transition-all;
-					position: relative;
+					@apply transition-all border-primary-border border-solid border-2;
 
+					position: relative;
 					border-radius: 50%;
-					border: 2px solid;
-					border-color: var(--primary-border);
 					display: inline-block;
 					width: 100%;
 					height: 100%;
+					transform-origin: center;
 
 					&::after {
+						@apply bg-primary-border transition-transform duration-150;
 						content: '';
+						transform-origin: center;
 						position: absolute;
 						left: 50%;
 						top: 50%;
@@ -47,8 +54,6 @@
 						width: 30%;
 						height: 30%;
 						border-radius: 50%;
-						background: var(--primary-text);
-
 					}
 				}
 			}
@@ -56,8 +61,39 @@
 	}
 
 	&.menu-open {
-		& > .header-sticky > .header-container > .site-navigation > .header-menu-button > .menu-bar {
+		& > .header-sticky > .header-container > .header-menu-button > .menu-bar {
+			@apply accent-background border-primary-border border-solid border-2;
+			transform: scale(1.2);
+
+			&::after {
+				@apply bg-primary-border border-primary-border border-solid border-2;
+				transform: translate(-50%, -50%) scale(1.4);
+			}
+
+			@media(hover: hover) and (pointer: fine) {
+				&:hover {
+					&::after {
+						background-color: var(--secondary-bg);
+						border-color: var(--primary-border);
+						border-style: solid;
+						border-width: 1px;
+						transform: translate(-50%, -50%) scale(4.0);
+					}	
+				}
+			}
 		}
+
+		& > #menu-container {
+			pointer-events: auto;
+
+			& > #menu-background {
+				@apply md:opacity-70;
+			}
+
+			& > #menu {
+				@apply opacity-100;
+			}
+		} 
 	}
 	
 	/* Padding to align rest of page */
@@ -68,3 +104,4 @@
 		min-height: var(--header-total-height);
 	}
 }
+

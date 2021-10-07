@@ -15,7 +15,7 @@
 		"build:eleventy": "NODE_ENV=production eleventy",
 		"build": "run-s clean:build build:*",
 		"serve": "NODE_ENV=production eleventy --serve",
-		"fetch": "run-s clean:cache build:eleventy"
+		"fetch": "run-s clean:* build:*"
 	},
 	"keywords": [],
 	"author": "",

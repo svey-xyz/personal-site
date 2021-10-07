@@ -18,7 +18,7 @@ export function themeInit() {
 	console.log(wasDarkMode)
 
 	// localStorage.setItem('darkmode', wasDarkMode ? '1' : '0');
-	localStorage.setItem('theme', 'dark');
+	localStorage.setItem('theme', systemTheme);
 
 	document.documentElement.classList[wasDarkMode ? 'add' : 'remove']('dark');
 

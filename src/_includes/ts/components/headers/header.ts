@@ -1,16 +1,15 @@
 let header:Element;
+let menu:Element;
 let menuButton:Element;
 let headerSizer:HTMLElement;
 
 export const mount = (container: Element) => {
 	header = container;
-	menuButton = document.querySelector('.header-menu-button')!;
+	menu = header.querySelector('#menu-container')!;
+	menuButton = header.querySelector('.header-menu-button')!;
 
 	window.onscroll = function () { scrollIndicator() }
 	window.addEventListener("resize", scrollIndicator);
-
-	// Don't show navigation until sizer has had a chance to run, avoid showing wrong element
-	// document.querySelector('.site-navigation')!.classList.add("loaded");
 
 	menuButton.addEventListener("click", () => { 
 		header.classList.toggle('menu-open');
