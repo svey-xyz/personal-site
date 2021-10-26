@@ -2,35 +2,5 @@
 	Main footer component used across the site.
 #}
 
-{% set containerClasses %}
-	{% if pageData.template === "homePage" %}
-
-	{% endif %}
-{% endset %}
-
-{% set iconClasses %}
-	{% if pageData.template === "homePage" %}
-
-	{% endif %}
-{% endset %}
-
-<div class="footer-padding realtive w-full h-32"></div>
-
-
 <div id="footer" class="absolute bottom-0 w-full z-10">
-	<div class="main-padding block-padding w-full">
-		{% for social in site.about.social %}
-			{% set socialIcon %}
-				{% switch social.socialType %}
-					{% case 'linkedin' %}
-						fab fa-linkedin
-					{% default %}
-						fab fa-{{ social.socialType }}-square
-				{% endswitch %}
-			{% endset %}
-			<a aria-label="{{ social.socialType }} - {{ social.socialTitle }}" class="mr-4 md:mr-8 overflow-hidden" href="{{ social.url }}">
-				<i class="{{ socialIcon }} text-3xl md:text-4xl transform duration-100 hover:scale-110"></i>
-			</a>	
-		{% endfor %}
-	</div>
 </div>

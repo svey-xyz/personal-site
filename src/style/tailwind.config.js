@@ -59,6 +59,9 @@ module.exports = {
 				heading: ['DM Serif Display', 'serif'],
 				body: ['Montserrat', 'sans-serif']
 			},
+			lineHeight: {
+				'xs': '0.8'
+			},
 			transitionProperty: {
 				'spacing': 'margin, padding',
 			},

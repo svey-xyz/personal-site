@@ -47,10 +47,23 @@
 	.accent-background {
 		background: linear-gradient(to right, var(--primary-accent), var(--secondary-accent));
 	}
+
+	.accent-highlight {
+		@apply absolute inset-0 overflow-hidden -z-1 rounded-sm mt-1 ml-1 min-h-full w-full bg-secondary-accent transition-all duration-200 group-hover:left-1 group-hover:ml-1/8 group-hover:bg-primary-accent;
+	}
+
+	.svg-theme-colour {
+		@apply filter brightness-0;
+	}
 }
 
 html {
   background-color: var(--secondary-bg);
+  &.dark {
+	  & .svg-theme-colour {
+		  @apply filter invert;
+	  }
+  }
 }
 
 body {
