@@ -14,20 +14,20 @@
 				{% endswitch %}
 			{% endset %}
 			<a aria-label="{{ social.socialType }} - {{ social.socialTitle }}" class="group relative mr-4 md:mr-8" href="{{ social.url }}">
-				<i class="{{ socialIcon }} relative text-3xl md:text-4xl transform duration-100 group-hover:scale-110 z-10
+				<i class="{{ socialIcon }} relative text-medium-accent text-3xl md:text-4xl duration-100 group-hover:scale-110 z-10
 						after:accent-highlight after:shadow-sm group-hover:after:shadow-md">
 				</i>	
 			</a>	
 		{% endfor %}
 
-		<label class="group cursor-pointer relative flex items-center justify-center text-primary-text leading-xs text-2xl w-8 h-8 md:w-10 md:h-10 md:text-3xl">
+		<label class="group cursor-pointer relative flex items-center justify-center text-medium-accent leading-xs text-2xl w-8 h-8 md:w-10 md:h-10 md:text-3xl">
 			<input id="themeSwitcher" type="checkbox" class="absolute left-1/2 -translate-x-1/2 w-full h-full peer appearance-none
 					after:absolute after:overflow-hidden after:-z-1 after:inset-0 after:min-h-full after:w-full
 					after:bg-primary-accent after:rounded-full after:shadow-sm
-					after:transform after:duration-100 group-hover:after:scale-[0.8] group-hover:after:shadow-md
+					after:duration-100 group-hover:after:scale-[0.8] group-hover:after:shadow-md
 					checked:after:bg-secondary-accent"/>
-			<i class="relative fas fa-moon block peer-checked:!hidden transform duration-100 group-hover:scale-[1.30]"></i>
-			<i class="relative fas fa-sun !hidden peer-checked:!block transform duration-100 group-hover:scale-[1.30]"></i>
+			<i class="relative fas fa-moon block peer-checked:!hidden duration-100 group-hover:scale-[1.30]"></i>
+			<i class="relative fas fa-sun !hidden peer-checked:!block duration-100 group-hover:scale-[1.30]"></i>
 		</label>
 	</div>
 </div>

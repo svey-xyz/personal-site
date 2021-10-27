@@ -55,6 +55,10 @@
 	.svg-theme-colour {
 		@apply filter brightness-0;
 	}
+
+	.site-logo-cutout {
+		clip-path: 
+	}
 }
 
 html {

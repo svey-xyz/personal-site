@@ -40,15 +40,15 @@ module.exports = {
 			},
 			colors: {
 				'primary-bg': 'var(--primary-bg)',
-				'primary-bg-translucent': 'var(--primary-bg-translucent)',
 				'header-bg': 'var(--header-bg)',
 				'opposite-bg': 'var(--opposite-bg)',
 				'primary-border': 'var(--primary-border)',
 				'primary-text': 'var(--primary-text)',
 				'secondary-bg': 'var(--secondary-bg)',
-				'secondary-bg-translucent': 'var(--secondary-bg-translucent)',
 				'primary-accent': 'var(--primary-accent)',
 				'secondary-accent': 'var(--secondary-accent)',
+				'medium-accent': 'var(--medium-accent)',
+
 			},
 			boxShadow: {
 				DEFAULT: '0 0px 6px -1px rgba(0,0,0,0.1), 0 0px 5px -1px rgba(0,0,0,.06)',

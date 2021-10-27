@@ -1,19 +1,19 @@
 let header:Element;
-let menu:Element;
-let menuButton:Element;
-let headerSizer:HTMLElement;
+let menuSwitch:HTMLInputElement;
 
 export const mount = (container: Element) => {
 	header = container;
-	menu = header.querySelector('#menu-container')!;
-	menuButton = header.querySelector('.header-menu-button')!;
+	menuSwitch = header.querySelector('#menuSwitch')!;
+	menuSwitch.addEventListener("click", switchMenu);
+	switchMenu();
 
 	window.onscroll = function () { scrollIndicator() }
 	window.addEventListener("resize", scrollIndicator);
+}
 
-	menuButton.addEventListener("click", () => { 
-		header.classList.toggle('menu-open');
-	});
+function switchMenu() {
+	let menuState = menuSwitch.checked;
+	header.classList[menuState ? 'add' : 'remove']('menu-open');
 }
 
 function scrollIndicator() {

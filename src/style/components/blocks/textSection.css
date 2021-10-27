@@ -33,12 +33,10 @@
 		}
 
 		&::after {
+			@apply absolute inset-0 -z-1 bg-primary-bg bg-gradient-to-br from-primary-bg to-secondary-bg;
 			content: '';
-			position: absolute;
-			inset: 0;
-			background-color: var(--primary-bg);
-			background-image: linear-gradient(to bottom right, var(--primary-bg) 50%, var(--secondary-bg-translucent) 50%);
-			z-index:-1;
+
+			/* background-image: linear-gradient(to bottom right, var(--primary-bg) 50%, var(--secondary-bg-translucent) 50%); */
 		}
 	}
 }

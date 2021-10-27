@@ -7,15 +7,15 @@
 	--block-padding: 1.5rem;
 
 	--primary-bg: #FFFFFF;
-	--primary-bg-translucent: #FFFFFFDD;
+	--secondary-bg: #F2F2F2;
 	--opposite-bg: #000000;
+
 	--primary-text: #000000;
 	--primary-border: #000000;
 
-	--secondary-bg: #F2F2F2;
-	--secondary-bg-translucent: #F2F2F2DD;
 	--primary-accent: #837DA1;
 	--secondary-accent: #AD7F9F;
+	--medium-accent: #3D325D;
 }
 
 .light {
@@ -24,15 +24,13 @@
 
 .dark {
 	--primary-bg: #222222;
-	--primary-bg-translucent: #222222DD;
+	--secondary-bg: #1C1C1C;
 	--opposite-bg: #FFFFFF;
+
 	--primary-text: #EEEEEE;
 	--primary-border: #EEEEEE;
-
-	--secondary-bg: #1C1C1C;
-	--secondary-bg-translucent: #1C1C1CDD;
-	--primary-accent: #837DA1;
-	--secondary-accent: #AD7F9F;
+	
+	--medium-accent: #F4ECF8;
 
 }
 
