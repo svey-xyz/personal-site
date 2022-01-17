@@ -104,8 +104,11 @@ iframe {
 }
 
 canvas {
-	min-width: 100vw;
+	/* min-width: 100vw; */
+	max-width: 100%;
 	position: absolute;
 	display: block;
 	z-index: 0;
+	right: 0;
+	left: 0;
 }
