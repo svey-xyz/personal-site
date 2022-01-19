@@ -2,15 +2,13 @@
 * Blobby Shader
 */
 
-import { shader } from "./bases/shader-base";
-import { hexConverter } from '../../../utilities/hexConverter'
+import { shader } from "../bases/shader-base";
+import { hexConverter } from '../../../../utilities/hexConverter'
 
 import * as THREE from 'three';
 
-const vertShader: String = require('./blobShader/shaders/vert-Abstract.glsl');
-const fragShader: String = require('./blobShader/shaders/frag-Abstract.glsl');
-
-const styles = getComputedStyle(document.documentElement);
+const vertShader: String = require('../blobShader/shaders/vert-Abstract.glsl');
+const fragShader: String = require('../blobShader/shaders/frag-Abstract.glsl');
 
 export const mount = (container:Element) => {
 	new blobShader(container);

@@ -2,7 +2,7 @@ import { loadModules } from '../utilities/helpers'
 import { themeInit } from '../utilities/theme'
 
 
-/******** VARIABLES ********/
+/** Global Version for the website code */
 let ver = '0.1.3';
 declare global {
 	var mobile:boolean;
@@ -12,7 +12,10 @@ declare global {
 	var hexConverter:any;
 }
 
-/******** INITIALIZATION ********/
+/**
+ * INITIALIZATION
+ * @constructor
+*/
 ; (function () {
 	global.mobile = (/Mobi|Android/i.test(navigator.userAgent)) ? true : false;
 
@@ -22,20 +25,31 @@ declare global {
 	console.log(`JS Version is: ${ver}`);
 })();
 
-/******** LOAD BLOCK SCRIPTS ********/
+/**
+ * Initiates scripts for all the elements with active scripts on the page.
+ * @constructor
+ */
 function loadScripts() {
 	document.addEventListener(
 		'DOMContentLoaded',
 		() => {
+			let interactiveScripts: Array<{selector:string,scriptPath:string}> = []
+			document.querySelectorAll('.interactiveSection > .section-container > .script-container').forEach(async (section) => {
+				const sectionType = section.getAttribute('data-script')
+
+				interactiveScripts.push({
+					selector: `.interactiveSection > .section-container > .script-container, [data-script="${sectionType}"]`,
+					scriptPath: `components/blocks/interactiveSections/${sectionType}/${sectionType}`
+				})
+			});
+
+
 			loadModules([
 				{
 					selector: '#header',
 					scriptPath: 'components/headers/header'
 				},
-				{
-					selector: '.interactiveSection > .section-container > .blobShader',
-					scriptPath: 'components/blocks/interactiveSections/blobShader'
-				},
+				...interactiveScripts,
 				{
 					selector: '.projectsArchive > [data-filterable="true"]', // don't bother loading script if not filterable
 					scriptPath: 'components/blocks/projectsArchive/projectsArchive'
