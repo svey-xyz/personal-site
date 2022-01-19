@@ -2,7 +2,7 @@ export class Section {
 	// containerName: string;
 	container: HTMLElement;
 	heightPercent: number;
-	height: number;
+	sectionSize: { width: number, height: number } = { width: 0, height: 0 }
 
 	inputHandler: (e: Event) => void;
 	resizeHandler: (e: Event) => void;
@@ -13,7 +13,7 @@ export class Section {
 		// define universal section variables
 		this.container = container;
 		this.heightPercent = parseInt(container.parentElement.style.getPropertyValue('--section-height')!);
-		this.height = this.heightPercent * global.vh;
+		this.setSize();
 
 		// initialize listeners
 		this.inputHandler = this.handleInput.bind(this);
@@ -25,6 +25,11 @@ export class Section {
 
 	handleInput(e: Event): void { };
 	resize(e: Event): void { };
+
+	setSize(): void {
+		this.sectionSize.height = this.heightPercent * global.vh;
+		this.sectionSize.width = document.documentElement.clientWidth || document.body.clientWidth;
+	}
 }
 
 Section.prototype.handleInput = function (e: Event) {
@@ -33,6 +38,6 @@ Section.prototype.handleInput = function (e: Event) {
 };
 
 Section.prototype.resize = function (e: Event) {
-	this.height = this.heightPercent * global.vh;
+	this.setSize()
 };
 

@@ -6,6 +6,7 @@
 	"scripts": {
 		"clean:build": "rimraf www",
 		"clean:cache": "rimraf cache/*",
+		"clean:data": "rimraf cache/data/*",
 		"dev:webpack": "NODE_ENV=development webpack --config ./config/webpack.config.js --watch --progress",
 		"dev:postcss": "NODE_ENV=development TAILWIND_MODE=watch postcss --config ./config/postcss.config.js src/style/style.css --o www/assets/css/style.css --watch --verbose",
 		"dev:eleventy": "NODE_ENV=development eleventy --serve",
@@ -15,6 +16,7 @@
 		"build:eleventy": "NODE_ENV=production eleventy",
 		"build": "run-s clean:build build:*",
 		"serve": "NODE_ENV=production eleventy --serve",
+		"fetch:data": "run-s clean:data build:*",
 		"fetch": "run-s clean:* build:*"
 	},
 	"keywords": [],

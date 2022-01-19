@@ -22,7 +22,7 @@ export class shader extends Section {
 		// Initialize the WebGL renderer
 		this.renderer = new THREE.WebGLRenderer({ alpha: true });
 		this.renderer.setPixelRatio(window.devicePixelRatio);
-		this.renderer.setSize(window.innerWidth, this.height);
+		this.renderer.setSize(this.sectionSize.width, this.sectionSize.height);
 
 		// Add the renderer to the sketch container
 		this.container.appendChild(this.renderer.domElement);
@@ -73,7 +73,7 @@ export class shader extends Section {
 
 	resize(e: Event) {
 		super.resize(e)
-		this.renderer.setSize(window.innerWidth, this.height);
+		this.renderer.setSize(this.sectionSize.width, this.sectionSize.height);
 	}
 
 	handleInput(e: Event) {

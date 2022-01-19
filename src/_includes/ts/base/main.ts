@@ -38,11 +38,10 @@ function loadScripts() {
 				const sectionType = section.getAttribute('data-script')
 
 				interactiveScripts.push({
-					selector: `.interactiveSection > .section-container > .script-container, [data-script="${sectionType}"]`,
+					selector: `.interactiveSection > .section-container > .script-container[data-script="${sectionType}"]`,
 					scriptPath: `components/blocks/interactiveSections/${sectionType}/${sectionType}`
 				})
 			});
-
 
 			loadModules([
 				{

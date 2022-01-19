@@ -14,7 +14,7 @@
 			@apply pointer-events-auto;
 
 			& > #menu-background {
-				@apply md:opacity-70;
+				@apply opacity-70;
 			}
 
 			& > #menu {

@@ -42,6 +42,7 @@ function resize() {
 		height = window.innerHeight;
 		global.vh = height * 0.01;
 	}
-
+	
+	global.vh = height * 0.01;
 	document.documentElement.style.setProperty('--vh', `${global.vh}px`);
 }
