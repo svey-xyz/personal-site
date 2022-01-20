@@ -1,3 +1,4 @@
+import { SphereBufferGeometry } from "three";
 import { canvasBase } from "../bases/generic-canvas-base";
 
 export const mount = (container: Element) => {
@@ -5,20 +6,16 @@ export const mount = (container: Element) => {
 }
 
 class pixelMosaic extends canvasBase{
+	offset: number = 0
 	constructor(container: Element) {
 		super(container);
-		this.createImage(0)
-		this.context.putImageData(this.imagedata, 0, 0);
-	}
-
-	resize(e: Event): void {
-		super.resize(e);
-		this.createImage(0)
+		this.draw()
 		this.context.putImageData(this.imagedata, 0, 0);
 	}
 
     // Create the image
-    createImage(offset:number) {
+    draw(): void {
+		super.draw();
         // Loop over all of the pixels
         for (var x=0; x<this.canvas.width; x++) {
 			for (var y = 0; y < this.canvas.height; y++) {
@@ -26,12 +23,12 @@ class pixelMosaic extends canvasBase{
 				var pixelindex = (y * this.canvas.width + x) * 4;
  
                 // Generate a xor pattern with some random noise
-                var red = ((x+offset) % 256) ^ ((y+offset) % 256);
-                var green = ((2*x+offset) % 256) ^ ((2*y+offset) % 256);
+                var red = ((x+this.offset) % 256) ^ ((y+this.offset) % 256);
+                var green = ((2*x+this.offset) % 256) ^ ((2*y+this.offset) % 256);
                 var blue = 50 + Math.floor(Math.random()*100);
  
                 // Rotate the colors
-                blue = (blue + offset) % 256;
+                blue = (blue + this.offset) % 256;
  
                 // Set the pixel data
                 this.imagedata.data[pixelindex] = red;     // Red

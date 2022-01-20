@@ -1,3 +1,11 @@
+import { debounce } from "../../../../utilities/helpers";
+
+/**
+ * Base for handling all interactive sections.
+ *
+ * @export
+ * @class Section
+ */
 export class Section {
 	// containerName: string;
 	container: HTMLElement;
@@ -17,14 +25,31 @@ export class Section {
 
 		// initialize listeners
 		this.inputHandler = this.handleInput.bind(this);
-		this.container.addEventListener('mousedown', this.inputHandler);
+		this.container.addEventListener('mousedown', debounce(this.inputHandler));
 
 		this.resizeHandler = this.resize.bind(this);
-		window.addEventListener('resize', this.resizeHandler);
+		window.addEventListener('resize', debounce(this.resizeHandler));
 	}
 
 	handleInput(e: Event): void { };
 	resize(e: Event): void { };
+
+	/**
+	 * Called to init the main loop. Override 'loop()' for logic.
+	 *
+	 * @memberof Section
+	 */
+	mainLoop = () => {
+		requestAnimationFrame(this.mainLoop);
+		this.loop();
+	}
+
+	/**
+	 * Used for loop logic.
+	 *
+	 * @memberof Section
+	 */
+	loop(): void { }
 
 	setSize(): void {
 		this.sectionSize.height = this.heightPercent * global.vh;
@@ -34,7 +59,7 @@ export class Section {
 
 Section.prototype.handleInput = function (e: Event) {
 	// Handle click
-	console.log(`${this.container} has been clicked`)
+	console.log(this.container, ` has been clicked`)
 };
 
 Section.prototype.resize = function (e: Event) {

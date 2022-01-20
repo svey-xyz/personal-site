@@ -1,10 +1,13 @@
-/*
-* Shader Base Class for interactive shader sections
-*/
-
 import { Section } from "./section-base";
 import * as THREE from 'three';
 
+/**
+ * Shader Base Class for interactive shader sections
+ *
+ * @export
+ * @class shader
+ * @extends {Section}
+ */
 export class shader extends Section {
 	renderer: THREE.WebGLRenderer;
 	scene: THREE.Scene;
@@ -51,20 +54,18 @@ export class shader extends Section {
 			transparent: true,
 			vertexShader: this.vertShader,
 			fragmentShader: this.fragShader,
-			// fragmentShader: document.getElementById("fragmentShader")!.textContent!
 		});
 
 		// Create the mesh and add it to the scene
 		var mesh = new THREE.Mesh(geometry, material);
 		this.scene.add(mesh);
-		this.animate();
+		this.mainLoop();
 	}
 
-	// Animates the sketch
-	animate = () => {
-		requestAnimationFrame(this.animate);
+	loop(): void {
+		super.loop();
 		this.render();
-	}
+	};
 
 	// Renders the sketch
 	render() {
@@ -74,6 +75,8 @@ export class shader extends Section {
 	resize(e: Event) {
 		super.resize(e)
 		this.renderer.setSize(this.sectionSize.width, this.sectionSize.height);
+		// Render on resize instead of waiting for animation frame to avoid jitter
+		this.render();
 	}
 
 	handleInput(e: Event) {
