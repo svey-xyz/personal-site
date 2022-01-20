@@ -109,4 +109,7 @@ canvas {
 	z-index: 0;
 	right: 0;
 	left: 0;
+
+	image-rendering: crisp-edges;
+	transform-origin: top left;
 }

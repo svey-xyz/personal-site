@@ -3,6 +3,7 @@
 */
 
 import { Section } from "./section-base";
+import { relativeLocation } from "../../../../utilities/relativeLocationClick";
 
 /**
  * Base for interactive sections using a canvas.
@@ -12,53 +13,71 @@ import { Section } from "./section-base";
  * @extends {Section}
  */
 export class canvasBase extends Section {
-	canvas: HTMLCanvasElement;
-	context: CanvasRenderingContext2D
-	imagedata: ImageData
-	pixelScale: number = 1
+
+	paintCanvas: HTMLCanvasElement;
+	paintContext: CanvasRenderingContext2D;
+
+	imagedata: ImageData = new ImageData(1,1);
+	pixelScale: number = 1;
 
 	constructor(container: Element) {
 		super(container);
 
-		// Initialize the WebGL renderer
-		this.canvas = document.createElement('canvas');
-		this.context = this.canvas.getContext("2d")!;
+		this.paintCanvas = document.createElement('canvas');
+		this.paintContext = this.paintCanvas.getContext("2d")!;
 
-		this.setCanvasSize()
-
-		this.imagedata = this.context.createImageData(this.sectionSize.width / this.pixelScale, this.sectionSize.height / this.pixelScale);
-
-		// Add the renderer to the sketch container
-		this.container.appendChild(this.canvas);
+		this.setCanvasSize();
+		this.container.appendChild(this.paintCanvas);
 
 		this.mainLoop();
 	}
 
-	loop(): void {
-		// this.imagedata = this.context.createImageData(this.sectionSize.width, this.sectionSize.height);
-		// this.context.putImageData(this.imagedata, 0, 0);
-	}
+	loop(): void { }
 
 	/**
 	 * Used to draw elements to imagedata
 	 *
 	 * @memberof canvasBase
 	 */
-	draw(): void { }
+	draw(): void { 
+		this.paintContext.putImageData(this.imagedata, 0, 0);
+	}
 
 	setCanvasSize(): void {
-		this.canvas.width = this.sectionSize.width;
-		this.canvas.height = this.sectionSize.height;
+		this.paintCanvas.width = this.sectionSize.width / this.pixelScale;
+		this.paintCanvas.height = this.sectionSize.height / this.pixelScale;
 
-		this.imagedata = this.context.createImageData(this.sectionSize.width, this.sectionSize.height);
+		this.imagedata = this.paintContext.createImageData(this.paintCanvas.width, this.paintCanvas.height);
+		this.paintCanvas.style.transform = (`scale(${this.pixelScale})`)
+
+		this.draw();
+
 	}
 
 	resize(e: Event): void {
 		super.resize(e);
 		this.setCanvasSize();
-
-		// Redraw since imagedata has been reset
-		this.draw();
-		this.context.putImageData(this.imagedata, 0, 0);
 	}
+	
+	handleInput(e: Event) {
+		super.handleInput(e);
+		var loc = relativeLocation(this.paintCanvas, <MouseEvent>e)
+		var scaledLoc = { x: Math.floor(loc.x / this.pixelScale), y: Math.floor(loc.y / this.pixelScale) }
+
+		var pixelindex = (scaledLoc.y * this.imagedata.width + scaledLoc.x) * 4;
+		this.imagedata.data[pixelindex] = 0;     // Red
+		this.imagedata.data[pixelindex + 1] = 0; // Green
+		this.imagedata.data[pixelindex + 2] = 0;  // Blue
+		this.imagedata.data[pixelindex + 3] = 255;   // Alpha
+
+		this.draw();
+
+		console.log('Scaled Loc: ', scaledLoc)
+	}
+	
+	setPixelScale(scale : number) {
+		this.pixelScale = scale;
+		this.setCanvasSize();
+	}
+	
 }

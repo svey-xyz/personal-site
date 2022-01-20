@@ -25,7 +25,7 @@ export class Section {
 
 		// initialize listeners
 		this.inputHandler = this.handleInput.bind(this);
-		this.container.addEventListener('mousedown', debounce(this.inputHandler));
+		this.container.addEventListener('mousedown', this.inputHandler);
 
 		this.resizeHandler = this.resize.bind(this);
 		window.addEventListener('resize', debounce(this.resizeHandler));
