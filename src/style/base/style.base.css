@@ -104,7 +104,6 @@ iframe {
 }
 
 canvas {
-	position: absolute;
 	display: block;
 	z-index: 0;
 	right: 0;

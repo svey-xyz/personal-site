@@ -3,7 +3,6 @@
 */
 
 import { Section } from "./section-base";
-import { relativeLocation } from "../../../../utilities/relativeLocationClick";
 
 /**
  * Base for interactive sections using a canvas.
@@ -43,9 +42,18 @@ export class canvasBase extends Section {
 		this.paintContext.putImageData(this.imagedata, 0, 0);
 	}
 
+	setPixelData(img: ImageData, pos: { x: number, y: number }, c: colour): void {
+		var pixelindex = (pos.y * this.imagedata.width + pos.x) * 4;
+
+		img.data[pixelindex] = c.r;     // Red
+		img.data[pixelindex + 1] = c.g; // Green
+		img.data[pixelindex + 2] = c.b;  // Blue
+		img.data[pixelindex + 3] = (c.a) ? c.a : 255;   // Alpha
+	}
+
 	setCanvasSize(): void {
-		this.paintCanvas.width = this.sectionSize.width / this.pixelScale;
-		this.paintCanvas.height = this.sectionSize.height / this.pixelScale;
+		this.paintCanvas.width = Math.ceil(this.sectionSize.width / this.pixelScale);
+		this.paintCanvas.height = Math.ceil(this.sectionSize.height / this.pixelScale);
 
 		this.imagedata = this.paintContext.createImageData(this.paintCanvas.width, this.paintCanvas.height);
 		this.paintCanvas.style.transform = (`scale(${this.pixelScale})`)
@@ -61,18 +69,6 @@ export class canvasBase extends Section {
 	
 	handleInput(e: Event) {
 		super.handleInput(e);
-		var loc = relativeLocation(this.paintCanvas, <MouseEvent>e)
-		var scaledLoc = { x: Math.floor(loc.x / this.pixelScale), y: Math.floor(loc.y / this.pixelScale) }
-
-		var pixelindex = (scaledLoc.y * this.imagedata.width + scaledLoc.x) * 4;
-		this.imagedata.data[pixelindex] = 0;     // Red
-		this.imagedata.data[pixelindex + 1] = 0; // Green
-		this.imagedata.data[pixelindex + 2] = 0;  // Blue
-		this.imagedata.data[pixelindex + 3] = 255;   // Alpha
-
-		this.draw();
-
-		console.log('Scaled Loc: ', scaledLoc)
 	}
 	
 	setPixelScale(scale : number) {

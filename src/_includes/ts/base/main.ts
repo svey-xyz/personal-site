@@ -5,6 +5,9 @@ import { themeInit } from '../utilities/theme'
 /** Global Version for the website code */
 let ver = '0.1.3';
 declare global {
+	type colour = { r: number, g: number, b: number, a?: number }
+	type position = { x: number, y: number, z?: number }
+
 	var mobile:boolean;
 	var vh:number;
 	var primaryBg:any;

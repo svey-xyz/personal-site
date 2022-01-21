@@ -1,17 +1,18 @@
 {
 	"compilerOptions": {
+		"noEmit": false,
 		"target": "ESNEXT",
 		"module": "esnext",
 		// "moduleResolution": "node", // required for THREE.js
 		"strict": true,
 		"noImplicitAny": true,
 		"sourceMap": true,
-		"moduleResolution": "node"
+		"moduleResolution": "node",
 	},
 	"exclude": [
-		"../node_modules",
+		"../node_modules"
 	],
 	"include": [
 		"../**/*"
-	]
+	],
 }

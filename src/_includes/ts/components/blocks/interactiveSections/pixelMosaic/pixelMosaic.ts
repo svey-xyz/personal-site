@@ -1,59 +1,49 @@
 import { canvasBase } from "../bases/generic-canvas-base";
+import { relativeLocation } from "../../../../utilities/relativeLocationClick";
+import * as fct from "../../../../utilities/mathHelpers"
 
 export const mount = (container: Element) => {
 	new pixelMosaic(container);
 }
-
 class pixelMosaic extends canvasBase{
-	offset: number = 0
-
+	pixels:Map<position, colour> = new Map<position, colour>();
 	constructor(container: Element) {
 		super(container);
 
 		this.setPixelScale(25);
+
+		for (var x = 0; x < this.imagedata.width; x++) {
+			for (var y = 0; y < this.imagedata.height; y++) {
+				let pos = { x: x, y: y }
+
+				let noise = fct.PerlinNoise(pos, 0.2, 3)
+				let r = fct.constrain(fct.rng(175, 255) * noise, 0, 255)
+				let g = fct.constrain(fct.rng(10, 120) * noise, 0, 255)
+				let b = fct.constrain(fct.rng(110, 200) * noise, 0, 255)
+				this.pixels.set(pos, { r: r, g: g, b: b })
+				console.log(`Noise: ${noise}`)
+				this.setPixelData(this.imagedata, pos, {r:r,g:g,b:b})
+			}
+		}
+
 		this.draw()
+
 	}
 
     // Create the image
     draw(): void {
-        // Loop over all of the pixels
-        // for (var x=0; x<this.imagedata.width; x++) {
-		// 	for (var y = 0; y < this.imagedata.height; y++) {
-        //         // Get the pixel index
-		// 		var pixelindex = (y * this.imagedata.width + x) * 4;
- 
-        //         // Generate a xor pattern with some random noise
-        //         var red = ((x+this.offset) % 256) ^ ((y+this.offset) % 256);
-        //         var green = ((2*x+this.offset) % 256) ^ ((2*y+this.offset) % 256);
-        //         var blue = 50 + Math.floor(Math.random()*100);
- 
-        //         // Rotate the colors
-        //         blue = (blue + this.offset) % 256;
- 
-        //         // Set the pixel data
-        //         this.imagedata.data[pixelindex] = red;     // Red
-        //         this.imagedata.data[pixelindex+1] = green; // Green
-		// 		this.imagedata.data[pixelindex+2] = blue;  // Blue
-		// 		this.imagedata.data[pixelindex+3] = 255;   // Alpha
-        //     }
-        // }
-
 		super.draw();
-
     }
- 
-    // // Main loop
-    // function main(tframe) {
-    //     // Request animation frames
-    //     window.requestAnimationFrame(main);
- 
-    //     // Create the image
-    //     createImage(Math.floor(tframe / 10));
- 
-    //     // Draw the image data to the canvas
-    //     context.putImageData(imagedata, 0, 0);
-    // }
- 
-    // // Call the main loop
-    // main(0);
+
+	handleInput(e: Event): void {
+		super.handleInput(e)
+		var loc = relativeLocation(this.paintCanvas, <MouseEvent>e)
+		var scaledLoc = { x: Math.floor(loc.x / this.pixelScale), y: Math.floor(loc.y / this.pixelScale) }
+		this.setPixelData(this.imagedata, scaledLoc, { r: 0, g: 0, b: 0 })
+	
+
+		this.draw();
+
+		console.log('Scaled Loc: ', scaledLoc)
+	}
 }
