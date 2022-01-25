@@ -3,7 +3,6 @@
 */
 
 import { shader } from "../bases/shader-base";
-import { hexConverter } from '../../../../utilities/hexConverter'
 
 import * as THREE from 'three';
 
@@ -17,11 +16,12 @@ export const mount = (container:Element) => {
 class blobShader extends shader {
 	uniforms: any;
 
+	rgbBg = utils.colourUtils.hexConverter(global.primaryAccent)
+
+
 	// Initializes the sketch
 	constructor(container: Element) {
 		super(container);
-
-		let rgbBg = hexConverter(global.primaryAccent)
 
 		this.uniforms = {
 			u_time: {
@@ -34,7 +34,7 @@ class blobShader extends shader {
 			},
 			u_bgColour: {
 				type: "v3",
-				value: new THREE.Vector3(rgbBg.r / 255, rgbBg.g / 255, rgbBg.b / 255)
+				value: new THREE.Vector3(this.rgbBg.r / 255, this.rgbBg.g / 255, this.rgbBg.b / 255)
 			}
 		};
 
@@ -44,10 +44,9 @@ class blobShader extends shader {
 	// Renders the sketch
 	render() {
 		super.render();
-		let rgbBg = hexConverter(global.primaryAccent)
 
 		this.uniforms.u_time.value = this.clock.getElapsedTime();
-		this.uniforms.u_bgColour.value = new THREE.Vector3(rgbBg.r / 255, rgbBg.g / 255, rgbBg.b / 255);
+		this.uniforms.u_bgColour.value = new THREE.Vector3(this.rgbBg.r / 255, this.rgbBg.g / 255, this.rgbBg.b / 255);
 	}
 
 	handleInput(e: Event) {

@@ -1,6 +1,6 @@
 import { loadModules } from '../utilities/helpers'
 import { themeInit } from '../utilities/theme'
-import { fct } from '../utilities/mathHelpers'
+
 import { utils } from './utils'
 
 
@@ -11,13 +11,11 @@ declare global {
 	type position = { x: number, y: number, z?: number }
 	type pixel = { pos: position, col: colour }
 
-	var fct:any
 	var utils:any
 	var mobile:boolean;
 	var vh:number;
 	var primaryBg:any;
 	var primaryAccent: any;
-	var hexConverter:any;
 }
 
 /**
@@ -26,7 +24,6 @@ declare global {
 */
 ; (function () {
 	global.mobile = (/Mobi|Android/i.test(navigator.userAgent)) ? true : false;
-	global.fct = new fct();
 	global.utils = new utils();
 
 	themeInit();

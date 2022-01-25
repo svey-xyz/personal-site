@@ -47,7 +47,7 @@ export class canvasBase extends Section {
 		this.paintContext.putImageData(this.imagedata, 0, 0);
 	}
 
-	setPixelData(img: ImageData, pix:pixel): void {
+	setImagePixelData(img: ImageData, pix:pixel): void {
 		var pixelindex = (pix.pos.y * this.imagedata.width + pix.pos.x) * 4;
 
 		img.data[pixelindex] = pix.col.r;     // Red

@@ -1,5 +1,5 @@
 
-export class fct {
+export class mathUtils {
 
 	perlinNoise:perlin
 
@@ -135,6 +135,10 @@ class perlin {
 	];
 
 	constructor(random = Math.random) {
+		this.randomize(random);
+	}
+
+	randomize(random = Math.random): void {
 		for (let i = 0; i < 256; i++) this.p[i] = i;
 
 		let n: number;
