@@ -15,7 +15,7 @@ export class Section {
 	inputHandler: (e: Event) => void;
 	resizeHandler: (e: Event) => void;
 
-	constructor(container: any) {
+	constructor(container: any, args?:{}) {
 		container.parentElement.classList.add('loaded');
 
 		// define universal section variables

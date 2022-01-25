@@ -1,5 +1,11 @@
-export const hexConverter = function (hex: string) {
-	var r: number, g: number, b: number;
+
+/**
+ * Turns a Hex colour into rgb values
+ * @param hex 
+ * @returns 
+ */
+export const hexConverter = function (hex: string): colour {
+	let r: number, g: number, b: number;
 
 	hex = hex.replace(/\s/g, '')
 
