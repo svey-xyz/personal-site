@@ -13,6 +13,8 @@ export class pixelMosaic extends canvasBase {
 		super(container, {pixelScale: 32});
 
 		this.initializeGrid();
+		this.startLoop(60)
+
 	}
 
 	initializeGrid(): void {
@@ -39,7 +41,6 @@ export class pixelMosaic extends canvasBase {
 		}
 
 		this.averageWealth = this.collectiveWealth / (this.canvasSize.width * this.canvasSize.height)
-		this.startLoop(60);
 	}
 
 	setPixel(pos: position, args:{wealth:number, influence: number }) {
@@ -98,6 +99,8 @@ export class pixelMosaic extends canvasBase {
 		super.resize(e);
 		this.loopActive = false
 		this.initializeGrid();
+		this.loop(); // avoids flickering of missed loops
+		this.loopActive = true;
 	}
 
 	handleInput(e: Event): void {

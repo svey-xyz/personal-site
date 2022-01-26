@@ -36,9 +36,8 @@ export class Section {
 	startLoop = (refreshRate: number = 0) => {
 		this.cancel()
 		this.loopActive = true
-		this.loop();
+		this.mainLoop(refreshRate);
 
-		this.mainLoop(refreshRate)
 	}
 
 	/**
