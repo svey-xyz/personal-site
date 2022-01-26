@@ -38,6 +38,8 @@ class blobShader extends shader {
 		};
 
 		super.initializeShader(this.uniforms, { vert: vertShader, frag: fragShader});
+		// this.render();
+
 	}
 
 	// Renders the sketch

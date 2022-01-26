@@ -11,8 +11,11 @@ declare global {
 	type position = { x: number, y: number, z?: number }
 	type pixel = { pos: position, col: colour }
 
+	/** Global Utilities */
 	var utils:utils
+	/** Global Theme Settings */
 	var theme:theme
+	
 }
 
 /**

@@ -32,8 +32,6 @@ export class canvasBase extends Section {
 
 		this.setCanvasSize();
 		this.container.appendChild(this.paintCanvas);
-
-		this.mainLoop();
 	}
 
 	loop(): void { }
@@ -48,7 +46,7 @@ export class canvasBase extends Section {
 	}
 
 	setImagePixelData(img: ImageData, pix:pixel): void {
-		var pixelindex = (pix.pos.y * this.imagedata.width + pix.pos.x) * 4;
+		var pixelindex = utils.mathUtils.cartesianIndex(pix.pos, this.imagedata.width) * 4
 
 		img.data[pixelindex] = pix.col.r;     // Red
 		img.data[pixelindex + 1] = pix.col.g; // Green

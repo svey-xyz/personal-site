@@ -1,6 +1,17 @@
 
 export class mathUtils {
 
+	cardinals: Array<position> = [
+		{ x: -1, y: -1 },
+		{ x: -1, y: 0 },
+		{ x: -1, y: 1 },
+		{ x: 0, y: 1 },
+		{ x: 0, y: -1 },
+		{ x: 1, y: -1 },
+		{ x: 1, y: 0 },
+		{ x: 1, y: 1 },
+	]
+
 	perlinNoise:perlin
 
 	constructor() {
@@ -91,7 +102,7 @@ export class mathUtils {
 		return Math.min(Math.max(v, min), max);
 	}
 
-	percentDifference(val1: number, val2: number) {
+	percentDifference(val1: number, val2: number): number {
 		if (val1 > 0) {
 			return (Math.abs(val1 - val2) / val1);
 		} else {
@@ -99,6 +110,15 @@ export class mathUtils {
 		}
 	}
 
+	addPos(pos1: position, pos2: position): position {
+		let z = (pos1.z && pos2.z) ? pos1.z + pos2.z : undefined
+		let pos = z ? { x: pos1.x + pos2.x, y: pos1.y + pos2.y, z } : { x: pos1.x + pos2.x, y: pos1.y + pos2.y }
+		return pos
+	}
+
+	cartesianIndex(pos: position, width: number): number {
+		return (pos.y * width + pos.x);
+	}
 
 }
 

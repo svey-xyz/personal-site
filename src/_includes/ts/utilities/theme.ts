@@ -9,6 +9,7 @@ export class theme {
 	vh: number
 	mobile: boolean;
 
+	resizeHandler: (e: Event) => void;
 
 	constructor() {
 		this.mobile = (/Mobi|Android/i.test(navigator.userAgent)) ? true : false;
@@ -23,8 +24,9 @@ export class theme {
 		this.height = window.innerHeight;
 		this.vh = this.height * 0.01;
 
-		window.addEventListener("resize", this.resize);
-		this.resize();
+		this.resizeHandler = this.resize.bind(this);
+		window.addEventListener('resize', utils.domUtils.debounce(this.resizeHandler));
+		this.setSize()
 
 		let themeTest = window.matchMedia("(prefers-color-scheme: light)");
 		let systemTheme = themeTest.matches ? 'light' : 'dark';
@@ -38,6 +40,9 @@ export class theme {
 		this.secondaryAccent = utils.colourUtils.hexConverter(getComputedStyle(document.documentElement).getPropertyValue('--secondary-accent'));
 	}
 
+	resize(e: Event): void { };
+
+
 	switchTheme(theme: string) {
 
 		localStorage.setItem('theme', theme);
@@ -46,7 +51,7 @@ export class theme {
 
 	}
 
-	resize() {
+	setSize() {
 		if (!this.mobile) {
 			this.height = window.innerHeight;
 			this.vh = this.height * 0.01;
@@ -54,5 +59,16 @@ export class theme {
 
 		this.vh = this.height * 0.01;
 		document.documentElement.style.setProperty('--vh', `${this.vh}px`);
+		// console.log(`Height resized: ${ this.vh }`)
 	}
+
+	
+	public get getVH(): number {
+		return this.vh
+	}
+	
 }
+
+theme.prototype.resize = function (e: Event) {
+	this.setSize()
+};

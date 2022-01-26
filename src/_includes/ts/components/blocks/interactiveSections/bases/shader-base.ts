@@ -38,6 +38,7 @@ export class shader extends Section {
 
 		// Initialize the clock
 		this.clock = new THREE.Clock(true);
+
 	}
 
 	initializeShader(uniforms:any, shaders:any) {
@@ -59,7 +60,7 @@ export class shader extends Section {
 		// Create the mesh and add it to the scene
 		var mesh = new THREE.Mesh(geometry, material);
 		this.scene.add(mesh);
-		this.mainLoop();
+		this.startLoop();
 	}
 
 	loop(): void {

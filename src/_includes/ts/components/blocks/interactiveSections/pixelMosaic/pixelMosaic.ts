@@ -1,62 +1,54 @@
 import { canvasBase } from "../bases/generic-canvas-base";
+import { pixelData } from "./pixelData"
 
 export const mount = (container: Element) => {
 	new pixelMosaic(container);
 }
-class pixelMosaic extends canvasBase {
-	pixels: Map<position, pixelData> = new Map<position, pixelData>();
-	pixelColour: colour = theme.primaryAccent;
-
+export class pixelMosaic extends canvasBase {
+	pixels: Map<number, pixelData> = new Map<number, pixelData>();
 	averageWealth: number = 0;
 	collectiveWealth: number = 0;
 
 	constructor(container: Element) {
-		super(container, {pixelScale: 25});
+		super(container, {pixelScale: 32});
 
 		this.initializeGrid();
 	}
 
 	initializeGrid(): void {
+		this.collectiveWealth = 0;
+		this.pixels = new Map<number, pixelData>();
+
 		let SEED = Math.random() * 10000;
-		let noiseSize = 15;
-		let frequency = ((this.canvasSize.width + this.canvasSize.height) / 2) / noiseSize;
+		let noiseSize = 32;
+		let wealthFrequency = ((this.canvasSize.width + this.canvasSize.height) / 2) / noiseSize;
+		let influenceFrequency = ((this.canvasSize.width + this.canvasSize.height) / 2) / noiseSize / 10;
+
 
 		for (var x = 0; x < this.canvasSize.width; x++) {
 			for (var y = 0; y < this.canvasSize.height; y++) {
 				let dx = x / this.canvasSize.width;
 				let dy = y / this.canvasSize.height;
 
-				let wealth: number = utils.mathUtils.map(utils.mathUtils.perlinNoise.get({x: (dx * frequency) + SEED, y: (dy * frequency) + SEED}), -1, 1, 0, 1)
+				let wealth: number = utils.mathUtils.map(utils.mathUtils.perlinNoise.get({ x: (dx * wealthFrequency) + SEED, y: (dy * wealthFrequency) + SEED}), -1, 1, 0, 1)
+				let influence: number = utils.mathUtils.map(utils.mathUtils.perlinNoise.get({ x: (dx * influenceFrequency) + SEED * 3, y: (dy * influenceFrequency) + SEED * 3 }), -1, 1, 0, 1)
 				this.collectiveWealth += wealth
 				
-				this.setPixel({ x: x, y: y }, {wealth:wealth})
+				this.setPixel({ x: Math.floor(x), y: Math.floor(y) }, { wealth: wealth, influence: influence})
 			}
 		}
 
 		this.averageWealth = this.collectiveWealth / (this.canvasSize.width * this.canvasSize.height)
-		this.draw();
-
+		this.startLoop(60);
 	}
 
-	setPixel(pos: position, args:{wealth:number}) {
+	setPixel(pos: position, args:{wealth:number, influence: number }) {
+		let pixelIndex = utils.mathUtils.cartesianIndex(pos, this.canvasSize.width)
+		let pixel: pixelData = this.pixels.get(pixelIndex) ? this.pixels.get(pixelIndex)! : new pixelData(this, pos, args);
 
-		let pixel = this.pixels.get(pos)
-		let pix: pixel
 
-		if (pixel) {
-			pix = pixel.getPix
-		} else {
-			let pixCol = utils.colourUtils.colourShift(this.pixelColour, theme.secondaryAccent, 0.8 - args.wealth)
-			pixCol = utils.colourUtils.colourNoise(pixCol, args.wealth * 50)
-
-			pixCol.a = args.wealth * 255
-
-			pix = { pos: pos, col: pixCol}
-			pixel = new pixelData(pix, args);
-		}
-
-		this.pixels.set(pos, pixel)
-		this.setImagePixelData(this.imagedata, pix)
+		this.pixels.set(pixelIndex, pixel)
+		this.setImagePixelData(this.imagedata, pixel.getPix)
 	}
 
     // Create the image
@@ -65,77 +57,66 @@ class pixelMosaic extends canvasBase {
     }
 
 	loop(): void {
-		super.loop();
 
-		// this.collectiveWealth = 0;
+		let economicSpeed = 1.6;
+		let influenceAdjust = 1.01
 
-		// let i = 1;
-		// this.pixels.forEach((pix, index) => {
-		// 	this.pixelUpdate(pix)
- 
-		// 	i++;
-		// });
+		this.pixels.forEach((pix) => {
+	
+			let wealthChange: number = 0
+			
+			utils.mathUtils.cardinals.forEach(pos => {
+
+				let neighbourPos = utils.mathUtils.addPos(pos, pix.getPos)
+				let pixelIndex = utils.mathUtils.cartesianIndex(neighbourPos, this.canvasSize.width)
+				let neighbour = this.pixels.get(pixelIndex)
+
+				if (neighbour) {
+					if (pix.getWealth > this.averageWealth) {
+						let maxChange = Math.min(pix.getWealth, neighbour.getWealth)
+						wealthChange = utils.mathUtils.constrain(utils.mathUtils.percentDifference(neighbour!.getInfluence, pix.getInfluence), 0, maxChange) / economicSpeed
+						pix.setInfluence = pix.getInfluence * (influenceAdjust)
+					} else {
+						let wealthSteal: number = 10
+						if (neighbour.getWealth > this.averageWealth) wealthSteal = 5
+						wealthChange = utils.mathUtils.rng(0, neighbour.getWealth / (wealthSteal * economicSpeed))
+						pix.setInfluence = pix.getInfluence / (influenceAdjust)
+					}
+
+
+					pix.updateWealth(wealthChange)
+					neighbour.updateWealth(-wealthChange)
+				}
+
+			});
+		})
+		this.draw()
 	}
+
 
 	resize(e: Event): void {
 		super.resize(e);
+		this.loopActive = false
 		this.initializeGrid();
 	}
-
-	pixelUpdate(pix: pixelData): void {
-		// let survival = utils.mathUtils.constrain((utils.mathUtils.map(pix.influence, 0, 1, 1, 0) + utils.mathUtils.map(pix.wealth, 0, 1, 1, 0)) / 2, 0, 1);
-		// let radius = ((pix.influence + utils.mathUtils.constrain(pix.wealth, 0.1, 0.5)) + 1);
-
-		//update pixel influence - affects pixel's ability to steal wealth
-		let changeInfluence = () => {
-		}
-	}
-
-	// generateCol(wealth: number): colour {
-	// 	let r = fct.constrain(fct.rng(175, 255) * noise, 0, 255)
-	// 	let g = fct.constrain(fct.rng(10, 120) * noise, 0, 255)
-	// 	let b = fct.constrain(fct.rng(110, 200) * noise, 0, 255)
-
-	// 	return { r: r, g: g, b: b }
-	// }
 
 	handleInput(e: Event): void {
 		super.handleInput(e)
 		var loc = utils.domUtils.relativeLocation(this.paintCanvas, <MouseEvent>e)
 		var scaledLoc = { x: Math.floor(loc.x / this.pixelScale), y: Math.floor(loc.y / this.pixelScale) }
-		let pix: pixel = { pos: scaledLoc, col: { r: 0, g: 0, b: 0, a: 0 } }
+		let pixelIndex = utils.mathUtils.cartesianIndex(scaledLoc, this.canvasSize.width)
 
-		this.setImagePixelData(this.imagedata, pix)
-	
-		this.draw();
+		let pix = this.pixels.get(pixelIndex)!
+
+		if (pix.getWealth > this.averageWealth) {
+			pix.setInfluence = 0.0
+			pix.setWealth = this.averageWealth / 2
+		} else {
+			pix.setInfluence = 0.8
+			pix.setWealth = this.averageWealth * 1.5
+		}
+
+		console.log(`Pixel Wealth: ${this.pixels.get(pixelIndex)!.getWealth }`)
+		console.log(`Pixel Pos: `, this.pixels.get(pixelIndex)!.getPos)
 	}
-}
-
-/**
- *
- * Used to store data for each pixel in the mosaic
- * @class pixelData
- */
-class pixelData {
-
-	pix: pixel
-
-	wealth: number | undefined
-	influence: number | undefined
-	survival: number
-
-	//iniate and define things
-	constructor(pix: pixel, args:{wealth?: number, influence?: number}) {
-		this.pix = pix;
-
-		this.wealth = args.wealth;
-		this.influence = args.influence;
-		this.survival = 1
-	}
-
-	
-	public get getPix() : pixel {
-		return this.pix
-	}
-	
 }
