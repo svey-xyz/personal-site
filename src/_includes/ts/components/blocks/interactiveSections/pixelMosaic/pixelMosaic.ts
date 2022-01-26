@@ -5,7 +5,7 @@ export const mount = (container: Element) => {
 }
 class pixelMosaic extends canvasBase {
 	pixels: Map<position, pixelData> = new Map<position, pixelData>();
-	pixelColour: colour = global.utils.colourUtils.hexConverter(global.primaryAccent);
+	pixelColour: colour = theme.primaryAccent;
 
 	averageWealth: number = 0;
 	collectiveWealth: number = 0;
@@ -14,8 +14,6 @@ class pixelMosaic extends canvasBase {
 		super(container, {pixelScale: 25});
 
 		this.initializeGrid();
-
-		this.draw();
 	}
 
 	initializeGrid(): void {
@@ -36,7 +34,7 @@ class pixelMosaic extends canvasBase {
 		}
 
 		this.averageWealth = this.collectiveWealth / (this.canvasSize.width * this.canvasSize.height)
-
+		this.draw();
 
 	}
 
@@ -48,9 +46,12 @@ class pixelMosaic extends canvasBase {
 		if (pixel) {
 			pix = pixel.getPix
 		} else {
-			let tempCol: colour = { r: this.pixelColour.r, g: this.pixelColour.g, b: this.pixelColour.b, a: 255 * args.wealth }
+			let pixCol = utils.colourUtils.colourShift(this.pixelColour, theme.secondaryAccent, 0.8 - args.wealth)
+			pixCol = utils.colourUtils.colourNoise(pixCol, args.wealth * 50)
 
-			pix = { pos:pos, col:tempCol}
+			pixCol.a = args.wealth * 255
+
+			pix = { pos: pos, col: pixCol}
 			pixel = new pixelData(pix, args);
 		}
 
@@ -76,9 +77,14 @@ class pixelMosaic extends canvasBase {
 		// });
 	}
 
+	resize(e: Event): void {
+		super.resize(e);
+		this.initializeGrid();
+	}
+
 	pixelUpdate(pix: pixelData): void {
-		let survival = utils.mathUtils.constrain((utils.mathUtils.map(pix.influence, 0, 1, 1, 0) + utils.mathUtils.map(pix.wealth, 0, 1, 1, 0)) / 2, 0, 1);
-		let radius = ((pix.influence + utils.mathUtils.constrain(pix.wealth, 0.1, 0.5)) + 1);
+		// let survival = utils.mathUtils.constrain((utils.mathUtils.map(pix.influence, 0, 1, 1, 0) + utils.mathUtils.map(pix.wealth, 0, 1, 1, 0)) / 2, 0, 1);
+		// let radius = ((pix.influence + utils.mathUtils.constrain(pix.wealth, 0.1, 0.5)) + 1);
 
 		//update pixel influence - affects pixel's ability to steal wealth
 		let changeInfluence = () => {

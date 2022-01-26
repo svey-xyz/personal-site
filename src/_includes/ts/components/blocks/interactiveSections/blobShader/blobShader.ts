@@ -1,7 +1,6 @@
 /*
 * Blobby Shader
 */
-
 import { shader } from "../bases/shader-base";
 
 import * as THREE from 'three';
@@ -16,7 +15,7 @@ export const mount = (container:Element) => {
 class blobShader extends shader {
 	uniforms: any;
 
-	rgbBg = utils.colourUtils.hexConverter(global.primaryAccent)
+	rgbBg = theme.primaryAccent
 
 
 	// Initializes the sketch

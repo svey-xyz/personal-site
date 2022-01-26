@@ -1,48 +1,58 @@
-/******** VARIABLES ********/
-var height: number;
-let themeSwitch: HTMLInputElement;
 
-/******** INITIALIZATION ********/
-export function themeInit() {
-	themeSwitch = <HTMLInputElement>document.querySelector('#themeSwitcher');
-	themeSwitch.addEventListener("click", () => {
-		let theme = themeSwitch.checked ? 'light' : 'dark';
-		localStorage.setItem('preferredTheme', theme);
-		switchTheme(theme);
-	});
+export class theme {
+	height: number;
+	themeSwitch: HTMLInputElement;
 
-	height = window.innerHeight;
-	global.vh = height * 0.01;
+	primaryBg: colour
+	primaryAccent: colour
+	secondaryAccent: colour
+	vh: number
+	mobile: boolean;
 
-	window.addEventListener("resize", resize);
-	resize();
 
-	let themeTest = window.matchMedia("(prefers-color-scheme: light)");
-	let systemTheme = themeTest.matches ? 'light' : 'dark';
+	constructor() {
+		this.mobile = (/Mobi|Android/i.test(navigator.userAgent)) ? true : false;
 
-	let userPreference = localStorage.getItem('preferredTheme');
-	let theme = userPreference ? userPreference : systemTheme;
-	switchTheme(theme);
+		this.themeSwitch = <HTMLInputElement>document.querySelector('#themeSwitcher');
+		this.themeSwitch.addEventListener("click", () => {
+			let theme = this.themeSwitch.checked ? 'light' : 'dark';
+			localStorage.setItem('preferredTheme', theme);
+			this.switchTheme(theme);
+		});
 
-	global.primaryBg = getComputedStyle(document.documentElement).getPropertyValue('--primary-bg');
-	global.primaryAccent = getComputedStyle(document.documentElement).getPropertyValue('--primary-accent');
+		this.height = window.innerHeight;
+		this.vh = this.height * 0.01;
 
-}
+		window.addEventListener("resize", this.resize);
+		this.resize();
 
-function switchTheme(theme:string) {
+		let themeTest = window.matchMedia("(prefers-color-scheme: light)");
+		let systemTheme = themeTest.matches ? 'light' : 'dark';
 
-	localStorage.setItem('theme', theme);
-	document.documentElement.classList[theme === 'dark' ? 'add' : 'remove']('dark');
-	themeSwitch.checked = theme === 'light';
-	
-}
+		let userPreference = localStorage.getItem('preferredTheme');
+		let theme = userPreference ? userPreference : systemTheme;
+		this.switchTheme(theme);
 
-function resize() {
-	if (!global.mobile) {
-		height = window.innerHeight;
-		global.vh = height * 0.01;
+		this.primaryBg = utils.colourUtils.hexConverter(getComputedStyle(document.documentElement).getPropertyValue('--primary-bg'));
+		this.primaryAccent = utils.colourUtils.hexConverter(getComputedStyle(document.documentElement).getPropertyValue('--primary-accent'));
+		this.secondaryAccent = utils.colourUtils.hexConverter(getComputedStyle(document.documentElement).getPropertyValue('--secondary-accent'));
 	}
-	
-	global.vh = height * 0.01;
-	document.documentElement.style.setProperty('--vh', `${global.vh}px`);
+
+	switchTheme(theme: string) {
+
+		localStorage.setItem('theme', theme);
+		document.documentElement.classList[theme === 'dark' ? 'add' : 'remove']('dark');
+		this.themeSwitch.checked = theme === 'light';
+
+	}
+
+	resize() {
+		if (!this.mobile) {
+			this.height = window.innerHeight;
+			this.vh = this.height * 0.01;
+		}
+
+		this.vh = this.height * 0.01;
+		document.documentElement.style.setProperty('--vh', `${this.vh}px`);
+	}
 }

@@ -110,5 +110,7 @@ canvas {
 	left: 0;
 
 	image-rendering: crisp-edges;
+	image-rendering: -webkit-optimize-contrast;
+	image-rendering: pixelated;
 	transform-origin: top left;
 }

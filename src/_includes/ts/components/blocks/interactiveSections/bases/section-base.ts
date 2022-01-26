@@ -1,5 +1,3 @@
-import { debounce } from "../../../../utilities/helpers";
-
 /**
  * Base for handling all interactive sections.
  *
@@ -28,7 +26,7 @@ export class Section {
 		this.container.addEventListener('mousedown', this.inputHandler);
 
 		this.resizeHandler = this.resize.bind(this);
-		window.addEventListener('resize', debounce(this.resizeHandler));
+		window.addEventListener('resize', utils.domUtils.debounce(this.resizeHandler));
 	}
 
 	handleInput(e: Event): void { };
@@ -52,7 +50,7 @@ export class Section {
 	loop(): void { }
 
 	setSize(): void {
-		this.sectionSize.height = this.heightPercent * global.vh;
+		this.sectionSize.height = this.heightPercent * theme.vh;
 		this.sectionSize.width = document.documentElement.clientWidth || document.body.clientWidth;
 	}
 }

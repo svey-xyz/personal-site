@@ -1,5 +1,5 @@
 import { loadModules } from '../utilities/helpers'
-import { themeInit } from '../utilities/theme'
+import { theme } from '../utilities/theme'
 
 import { utils } from './utils'
 
@@ -11,11 +11,8 @@ declare global {
 	type position = { x: number, y: number, z?: number }
 	type pixel = { pos: position, col: colour }
 
-	var utils:any
-	var mobile:boolean;
-	var vh:number;
-	var primaryBg:any;
-	var primaryAccent: any;
+	var utils:utils
+	var theme:theme
 }
 
 /**
@@ -23,10 +20,9 @@ declare global {
  * @constructor
 */
 ; (function () {
-	global.mobile = (/Mobi|Android/i.test(navigator.userAgent)) ? true : false;
 	global.utils = new utils();
+	global.theme = new theme();
 
-	themeInit();
 	loadScripts();
 
 	console.log(`JS Version is: ${ver}`);

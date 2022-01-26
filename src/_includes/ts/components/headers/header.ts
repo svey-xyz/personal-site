@@ -1,6 +1,3 @@
-import { debounce } from "../../utilities/helpers";
-
-
 let header:Element;
 let menuSwitch:HTMLInputElement;
 
@@ -10,8 +7,8 @@ export const mount = (container: Element) => {
 	menuSwitch.addEventListener("click", switchMenu);
 	switchMenu();
 
-	window.onscroll = debounce(function () { scrollIndicator() })
-	window.addEventListener("resize", debounce(scrollIndicator));
+	window.onscroll = utils.domUtils.debounce(function () { scrollIndicator() })
+	window.addEventListener("resize", utils.domUtils.debounce(scrollIndicator));
 }
 
 function switchMenu() {
