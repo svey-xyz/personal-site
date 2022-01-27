@@ -59,41 +59,52 @@ export class pixelMosaic extends canvasBase {
 
 	loop(): void {
 
-		let economicSpeed = 1.6;
-		let influenceAdjust = 1.01
+		let economicSpeed = 4.5;
+		let influenceAdjust = 1.6
 
 		this.pixels.forEach((pix) => {
 	
 			let wealthChange: number = 0
 			
+			let neighbourCount = 0
+			let neighbourWealthTotal = 0
 			utils.mathUtils.cardinals.forEach(pos => {
 
 				let neighbourPos = utils.mathUtils.addPos(pos, pix.getPos)
 				let pixelIndex = utils.mathUtils.cartesianIndex(neighbourPos, this.canvasSize.width)
-				let neighbour = this.pixels.get(pixelIndex)
+				let neighbour = this.pixels.get(pixelIndex)				
 
 				if (neighbour) {
+					neighbourCount++;
+					neighbourWealthTotal += neighbour.getWealth
+
 					if (pix.getWealth > this.averageWealth) {
 						let maxChange = Math.min(pix.getWealth, neighbour.getWealth)
-						wealthChange = utils.mathUtils.constrain(utils.mathUtils.percentDifference(neighbour!.getInfluence, pix.getInfluence), 0, maxChange) / economicSpeed
-						pix.setInfluence = pix.getInfluence * (influenceAdjust)
+						wealthChange = utils.mathUtils.constrain(
+							utils.mathUtils.rng((pix.getSurroundingWealth ? pix.getSurroundingWealth : 1) / 8, utils.mathUtils.percentDifference(neighbour!.getInfluence, pix.getInfluence)),
+							0, maxChange) / economicSpeed
+						pix.setInfluence = (pix.getInfluence * pix.getWealth) * influenceAdjust
 					} else {
-						let wealthSteal: number = 10
-						if (neighbour.getWealth > this.averageWealth) wealthSteal = 5
+						let wealthSteal: number = 10 / (pix.getSurroundingWealth ? pix.getSurroundingWealth : 1)
+						if (neighbour.getWealth > this.averageWealth) wealthSteal /= 10.0
+
 						wealthChange = utils.mathUtils.rng(0, neighbour.getWealth / (wealthSteal * economicSpeed))
-						pix.setInfluence = pix.getInfluence / (influenceAdjust)
+						pix.setInfluence = (pix.getInfluence * pix.getWealth) * (influenceAdjust)
 					}
 
-
+					// Must net 0 change
 					pix.updateWealth(wealthChange)
 					neighbour.updateWealth(-wealthChange)
 				}
 
 			});
+
+			let neighbourWealthAverage = neighbourWealthTotal / neighbourCount
+			pix.setSurroundingWealth = neighbourWealthAverage
+
 		})
 		this.draw()
 	}
-
 
 	resize(e: Event): void {
 		super.resize(e);
@@ -112,14 +123,26 @@ export class pixelMosaic extends canvasBase {
 		let pix = this.pixels.get(pixelIndex)!
 
 		if (pix.getWealth > this.averageWealth) {
+			let wealthDiff = pix.getWealth - this.averageWealth / 2;
+
 			pix.setInfluence = 0.0
 			pix.setWealth = this.averageWealth / 2
+
+
+			// this.collectiveWealth -= wealthDiff;
+			// this.averageWealth = this.collectiveWealth / (this.canvasSize.width * this.canvasSize.height)
 		} else {
-			pix.setInfluence = 0.8
-			pix.setWealth = this.averageWealth * 1.5
+			let wealthDiff = this.averageWealth * 1.5 - pix.getWealth;
+
+			pix.setInfluence = 2.0
+			pix.setWealth = this.averageWealth * 2.0
+
+			console.log(`poor`)
+
+			// this.collectiveWealth += wealthDiff
+			// this.averageWealth = this.collectiveWealth / (this.canvasSize.width * this.canvasSize.height)
 		}
 
-		console.log(`Pixel Wealth: ${this.pixels.get(pixelIndex)!.getWealth }`)
-		console.log(`Pixel Pos: `, this.pixels.get(pixelIndex)!.getPos)
+
 	}
 }

@@ -12,9 +12,7 @@ export class pixelData {
 
 	private wealth: number
 	private influence: number
-	private survival: number
-
-	private wealthChange: number = 0
+	private surroundingWealth: number | undefined
 
 	private mosaic: pixelMosaic
 
@@ -23,7 +21,6 @@ export class pixelData {
 		this.mosaic = mosaic
 		this.wealth = args.wealth;
 		this.influence = args.influence;
-		this.survival = 1
 
 		this.pix = { pos: pos, col: this.updateCol() };
 
@@ -71,12 +68,12 @@ export class pixelData {
 		this.influence = utils.mathUtils.constrain(influence, 0.1, 1)
 	}
 
-	public get getWealthChange(): number {
-		return this.wealthChange
+
+	public get getSurroundingWealth(): number | undefined {
+		return this.surroundingWealth
 	}
 
-	public set setWealthChange(wealthChange: number) {
-		this.wealthChange = wealthChange
+	public set setSurroundingWealth(surroundingWealth: number) {
+		this.surroundingWealth = surroundingWealth, 0.1, 1
 	}
-
 }
