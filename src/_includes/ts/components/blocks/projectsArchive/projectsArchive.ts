@@ -2,8 +2,6 @@
 *  Add sorting of projects
 */
 
-import { updateURLParameter } from '../../../utilities/updateURLParameter'
-
 let projectCards = Array<projectCard>();
 let tagButtons = Array<HTMLElement>();
 let archiveContainer:HTMLElement;
@@ -59,7 +57,7 @@ function tagSelect(tag : string) : void {
 function archiveSort(tag : string) {
 	let all = tag === 'all';
 
-	window.history.replaceState('', '', updateURLParameter(window.location.href, archiveName, tag));
+	window.history.replaceState('', '', utils.domUtils.updateURLParameter(window.location.href, archiveName, tag));
 
 	for (let card of projectCards) {
 		if (card.tags.includes(tag) || all) {

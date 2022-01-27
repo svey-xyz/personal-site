@@ -10,32 +10,27 @@ export class pixelData {
 
 	private pix: pixel = {pos:{x:0,y:0},col:{r:0,g:0,b:0}}
 
-	private wealth: number
+	private intensity: number
 	private influence: number
-	private surroundingWealth: number | undefined
+	private surroundingIntensity: number | undefined
 
 	private mosaic: pixelMosaic
 
 	//iniate and define things
-	constructor(mosaic: pixelMosaic, pos: position, args: { wealth: number, influence: number }) {
+	constructor(mosaic: pixelMosaic, pos: position, args: { intensity: number }) {
 		this.mosaic = mosaic
-		this.wealth = args.wealth;
-		this.influence = args.influence;
+		this.intensity = args.intensity;
+		this.influence = args.intensity + utils.mathUtils.rng(0, 0.5);
 
 		this.pix = { pos: pos, col: this.updateCol() };
 
 	}
 
-	public updateWealth(wealthChange: number): void {
-		this.wealth += wealthChange
-		this.updateCol()
-	}
-
 	public updateCol(): colour {
-		let pixCol = utils.colourUtils.colourShift(this.pixelColour, theme.primaryAccent, 1.0 - utils.mathUtils.constrain(this.wealth, 0, 1))
-		pixCol = utils.colourUtils.colourNoise(pixCol, (1.0 - utils.mathUtils.constrain(this.wealth, 0, 1)) * 50)
+		let pixCol = utils.colourUtils.colourShift(this.pixelColour, theme.primaryAccent, 1.0 - utils.mathUtils.constrain(this.intensity, 0, 1))
+		pixCol = utils.colourUtils.colourNoise(pixCol, (1.0 - utils.mathUtils.constrain(this.intensity, 0, 1)) * 50)
 
-		pixCol.a = utils.mathUtils.map(utils.mathUtils.constrain(this.wealth * 255, 0, 255), 0, 255, 255, 20)
+		pixCol.a = utils.mathUtils.map(utils.mathUtils.constrain(this.intensity * 255, 0, 255), 0, 255, 255, 20)
 
 		this.pix.col = pixCol;
 		this.mosaic.setImagePixelData(this.mosaic.imagedata, this.pix)
@@ -52,12 +47,13 @@ export class pixelData {
 		return this.pix.pos
 	}
 
-	public get getWealth(): number {
-		return this.wealth
+	public get getIntensity(): number {
+		return this.intensity
 	}
 
-	public set setWealth(wealth: number) {
-		this.wealth = utils.mathUtils.constrain(wealth, 0.1, 1)
+	public set setIntensity(intensity: number) {
+		this.intensity = utils.mathUtils.constrain(intensity, 0.1, 1)
+		this.updateCol()
 	}
 
 	public get getInfluence(): number {
@@ -69,11 +65,11 @@ export class pixelData {
 	}
 
 
-	public get getSurroundingWealth(): number | undefined {
-		return this.surroundingWealth
+	public get getSurroundingIntensity(): number | undefined {
+		return this.surroundingIntensity
 	}
 
-	public set setSurroundingWealth(surroundingWealth: number) {
-		this.surroundingWealth = surroundingWealth, 0.1, 1
+	public set setSurroundingIntensity(surroundingIntensity: number) {
+		this.surroundingIntensity = utils.mathUtils.constrain(surroundingIntensity, 0.1, 1)
 	}
 }

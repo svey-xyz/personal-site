@@ -1,4 +1,4 @@
-import { loadModules } from '../utilities/helpers'
+import { loadModules } from '../utilities/moduleLoader'
 import { theme } from '../utilities/theme'
 
 import { utils } from './utils'
@@ -65,15 +65,15 @@ function loadScripts() {
 				},
 				{
 					selector: '.video-utility',
-					scriptPath: 'utilities/video'
+					scriptPath: 'components/domUtils/video'
 				},
 				{
 					selector: '.scroll-indicator',
-					scriptPath: 'utilities/smoothScroll'
+					scriptPath: 'components/domUtils/smoothScroll'
 				},
 				{
 					selector: '#returnTo',
-					scriptPath: 'utilities/returnTo'
+					scriptPath: 'components/domUtils/returnTo'
 				},
 			])
 		}
