@@ -1,7 +1,7 @@
 /*
 * Blobby Shader
 */
-import { shader } from "../bases/shader-base";
+import { shader } from "../bases/shaderBase";
 
 import * as THREE from 'three';
 
@@ -50,8 +50,8 @@ class blobShader extends shader {
 		this.uniforms.u_bgColour.value = new THREE.Vector3(this.rgbBg.r / 255, this.rgbBg.g / 255, this.rgbBg.b / 255);
 	}
 
-	handleInput(e: Event) {
-		super.handleInput(e);
+	touchStart(e: Event): void {
+		super.touchStart(e);
 		this.uniforms.u_posSeed.value.set(this.randomBetween(), this.randomBetween());
 	}
 

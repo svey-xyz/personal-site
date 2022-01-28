@@ -1,4 +1,4 @@
-import { Section } from "./section-base";
+import { Section } from "./sectionBase";
 import * as THREE from 'three';
 
 /**

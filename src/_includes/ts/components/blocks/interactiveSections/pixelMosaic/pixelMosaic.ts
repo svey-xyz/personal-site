@@ -1,4 +1,4 @@
-import { canvasBase } from "../bases/generic-canvas-base";
+import { canvasBase } from "../bases/canvasBase";
 import { pixelData } from "./pixelData"
 
 export const mount = (container: Element) => {
@@ -97,26 +97,33 @@ export class pixelMosaic extends canvasBase {
 	}
 
 	resize(e: Event): void {
-		super.resize(e);
-		this.loopActive = false
-		this.initializeGrid();
-		this.loop(); // avoids flickering of missed loops
-		this.loopActive = true;
+		if (theme.vh != theme.ogVH) {
+			super.resize(e);
+
+			this.loopActive = false
+			this.initializeGrid();
+			this.loop(); // avoids flickering of missed loops
+			this.loopActive = true;
+		}
 	}
 
-	handleInput(e: Event): void {
-		super.handleInput(e)
-		var loc = utils.domUtils.relativeLocation(this.paintCanvas, <MouseEvent>e)
-		var scaledLoc = { x: Math.floor(loc.x / this.pixelScale), y: Math.floor(loc.y / this.pixelScale) }
-		let pixelIndex = utils.mathUtils.cartesianIndex(scaledLoc, this.canvasSize.width)
+	touchMove(e: Event): void {
+		super.touchMove(e)
+		if (this.touch) {
+			var loc = utils.domUtils.relativeLocation(this.paintCanvas, <MouseEvent>e)
+			var scaledLoc = { x: Math.floor(loc.x / this.pixelScale), y: Math.floor(loc.y / this.pixelScale) }
+			let pixelIndex = utils.mathUtils.cartesianIndex(scaledLoc, this.canvasSize.width)
 
-		let pix = this.pixels.get(pixelIndex)!
-		let intensityDiff = 1.0 - pix.getIntensity
+			console.log(scaledLoc)
 
-		pix.setInfluence = 1.0
-		pix.setIntensity = 1.0
+			let pix = this.pixels.get(pixelIndex)!
+			let intensityDiff = 1.0 - pix.getIntensity
 
-		this.collectiveIntensity += intensityDiff
-		this.averageIntensity = this.collectiveIntensity / (this.canvasSize.width * this.canvasSize.height)
+			pix.setInfluence = 1.0
+			pix.setIntensity = 1.0
+
+			this.collectiveIntensity += intensityDiff
+			this.averageIntensity = this.collectiveIntensity / (this.canvasSize.width * this.canvasSize.height)
+		}
 	}
 }

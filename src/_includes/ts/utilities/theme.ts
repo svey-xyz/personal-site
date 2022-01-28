@@ -7,6 +7,7 @@ export class theme {
 	primaryAccent: colour
 	secondaryAccent: colour
 	vh: number
+	ogVH: number
 	mobile: boolean;
 
 	resizeHandler: (e: Event) => void;
@@ -23,6 +24,7 @@ export class theme {
 
 		this.height = window.innerHeight;
 		this.vh = this.height * 0.01;
+		this.ogVH = this.vh
 
 		this.resizeHandler = this.resize.bind(this);
 		window.addEventListener('resize', utils.domUtils.debounce(this.resizeHandler));

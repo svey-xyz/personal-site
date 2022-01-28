@@ -38,6 +38,36 @@ export class domUtils {
 		}
 	}
 
+	copyObj(obj:{}): {} {
+		let copy: any = {}
+		Object.entries(obj).forEach(([key, value]) => {
+			copy[key] = value
+		})
+		return copy;
+	}
+
+	/**
+	 * Returns id for touch from a list.
+	 * Returns -1 if not found.
+	 *
+	 * @param {number} idToFind
+	 * @param {Array<Touch>} ongoingTouches
+	 * @return {*}  {number}
+	 * @memberof domUtils
+	 */
+	ongoingTouchIndexById(idToFind: number, ongoingTouches: Array<Touch>): number {
+		for (var i = 0; i < ongoingTouches.length; i++) {
+			var id = ongoingTouches[i].identifier;
+
+			if (id == idToFind) {
+				return i;
+			}
+		}
+		return -1;    // not found
+	}
+
+
+
 	/**
 	 * Debounce functions for better performance
 	 * (c) 2018 Chris Ferdinandi, MIT License, https://gomakethings.com

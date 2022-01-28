@@ -2,7 +2,7 @@
 * Shader Base Class for interactive shader sections
 */
 
-import { Section } from "./section-base";
+import { Section } from "./sectionBase";
 
 
 /**
@@ -20,6 +20,7 @@ export class canvasBase extends Section {
 
 	imagedata: ImageData = new ImageData(1,1);
 	canvasSize = { width: 0, height: 0 }
+
 	pixelScale: number = 1;
 
 	constructor(container: Element, args: { pixelScale: number }) {
