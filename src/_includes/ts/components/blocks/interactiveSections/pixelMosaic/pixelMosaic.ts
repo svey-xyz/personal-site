@@ -8,7 +8,7 @@ export class pixelMosaic extends canvasBase {
 	pixels: Map<number, pixelData> = new Map<number, pixelData>();
 	averageIntensity: number = 0;
 	collectiveIntensity: number = 0;
-	economicSpeed = 20.5;
+	economicSpeed = 24.5;
 
 
 	constructor(container: Element) {
@@ -113,8 +113,6 @@ export class pixelMosaic extends canvasBase {
 			var loc = utils.domUtils.relativeLocation(this.paintCanvas, <MouseEvent>e)
 			var scaledLoc = { x: Math.floor(loc.x / this.pixelScale), y: Math.floor(loc.y / this.pixelScale) }
 			let pixelIndex = utils.mathUtils.cartesianIndex(scaledLoc, this.canvasSize.width)
-
-			console.log(scaledLoc)
 
 			let pix = this.pixels.get(pixelIndex)!
 			let intensityDiff = 1.0 - pix.getIntensity

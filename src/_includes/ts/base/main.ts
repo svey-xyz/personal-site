@@ -45,35 +45,38 @@ function loadScripts() {
 
 				interactiveScripts.push({
 					selector: `.interactiveSection > .section-container > .script-container[data-script="${sectionType}"]`,
-					scriptPath: `components/blocks/interactiveSections/${sectionType}/${sectionType}`
+					scriptPath: `blocks/interactiveSections/${sectionType}/${sectionType}`
 				})
 			});
 
+			/**
+			 * Only imports from components folder
+			 */
 			loadModules([
 				{
 					selector: '#header',
-					scriptPath: 'components/headers/header'
+					scriptPath: 'headers/header'
 				},
 				...interactiveScripts,
 				{
 					selector: '.projectsArchive > [data-filterable="true"]', // don't bother loading script if not filterable
-					scriptPath: 'components/blocks/projectsArchive/projectsArchive'
+					scriptPath: 'blocks/projectsArchive/projectsArchive'
 				},	
 				{
 					selector: '.contactForm #formContainer',
-					scriptPath: 'components/blocks/contact/contact'
+					scriptPath: 'blocks/contact/contact'
 				},
 				{
 					selector: '.video-utility',
-					scriptPath: 'components/domUtils/video'
+					scriptPath: 'domUtils/video'
 				},
 				{
 					selector: '.scroll-indicator',
-					scriptPath: 'components/domUtils/smoothScroll'
+					scriptPath: 'domUtils/smoothScroll'
 				},
 				{
 					selector: '#returnTo',
-					scriptPath: 'components/domUtils/returnTo'
+					scriptPath: ' domUtils/returnTo'
 				},
 			])
 		}

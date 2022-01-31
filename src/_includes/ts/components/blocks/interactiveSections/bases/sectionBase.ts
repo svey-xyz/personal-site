@@ -29,6 +29,9 @@ export class Section {
 		this.inputHandler = this.handleInput.bind(this);
 		this.container.addEventListener('mousedown', this.inputHandler);
 		this.container.addEventListener('mouseup', this.inputHandler);
+		this.container.addEventListener('mouseleave', this.inputHandler);
+		this.container.addEventListener('mouseenter', this.inputHandler);
+
 		this.container.addEventListener('mousemove', this.inputHandler);
 		this.container.addEventListener('touchstart', this.inputHandler);
 		this.container.addEventListener('touchend', this.inputHandler);
@@ -134,8 +137,15 @@ Section.prototype.handleInput = function (e: Event) {
 			this.touchStart(e)
 			break;
 
-		case ('mouseup' || 'touchend'):
+		case ('mouseup'):
 			this.touchEnd(e);
+			break;
+		case ('mouseleave'):
+			this.touchEnd(e);
+			break;
+
+		case ('mouseenter'):
+			if ((<MouseEvent>e).buttons > 0) this.touchStart(e);
 			break;
 
 		case ('touchend'):

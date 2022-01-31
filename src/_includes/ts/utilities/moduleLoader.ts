@@ -9,7 +9,7 @@ export function loadModules(mods: Array<{ selector: string, scriptPath: string }
 		const containers = document.querySelectorAll(mod.selector)
 
 		if (containers.length > 0) {
-			const script = await import(`../${mod.scriptPath}`);
+			const script = await import(`../components/${mod.scriptPath}`);
 			// this triggers webpack to export every file in ../ as a chunk, maybe bad...
 			// full literal strings will ruin the dynamic import nature though...
 
