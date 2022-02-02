@@ -47,16 +47,28 @@ async function loadScript() {
 		button.style.display = 'none';
 		videoContainer.style.display = 'block';
 
-		embedType === 'vimeo' ? player.play() : player.playVideo()
+		try {
+			embedType === 'vimeo' ? player.play() : player.playVideo()
+		} catch (err) {
+			console.log('video not played: ', err)
+		}
 	}
 
 	function loadVideo() {
 		if (player) return;
-		player = embedType === 'vimeo' ?
-			new VimeoPlayer(<HTMLElement>videoContainer.querySelector(`#${embedType}-container`), vimeoOptions) :
-			YouTubePlayer(<HTMLElement>videoContainer.querySelector('#youtube-container'));
+		try {
+			player = embedType === 'vimeo' ?
+				new VimeoPlayer(<HTMLElement>videoContainer.querySelector(`#${embedType}-container`), vimeoOptions) :
+				YouTubePlayer(<HTMLElement>videoContainer.querySelector('#youtube-container'));
 
-		if (embedType === 'youtube') player.loadVideoById(videoID);
+			if (embedType === 'youtube') player.loadVideoById(videoID);
+		} catch (err) {
+			console.log('Player not loaded: ', err)
+		}
+
+		player.ready().then(function () {
+			console.log('player succesfully loaded')
+		});
 	}
 }
 

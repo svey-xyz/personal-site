@@ -16,7 +16,11 @@
 		}
 
 		&.blobShader {
-			@apply bg-primary-bg w-full cursor-pointer;
+			@apply bg-primary-bg w-full;
+		}
+
+		&.pixelMosaic {
+			@apply cursor-pointer;
 		}
 	}
 }

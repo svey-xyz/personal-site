@@ -6,7 +6,6 @@
  */
 export class colourUtils {
 	constructor() {
-		console.log('colour utils loaded')
 	}
 
 	/**

@@ -10,10 +10,10 @@
 		@apply text-4xl font-bold;
 	}
 	h5 {
-		@apply text-left font-bold font-body text-primary-text text-xl lg:text-2xl;
+		@apply text-left font-bold font-body text-primary-text text-2xl lg:text-3xl;
 	}
 	h6 {
-		@apply text-left font-bold font-body text-primary-text text-lg lg:text-xl;
+		@apply text-left font-bold font-body text-primary-text text-xl lg:text-2xl;
 	}
 	p {
 		@apply mb-6 text-primary-text;

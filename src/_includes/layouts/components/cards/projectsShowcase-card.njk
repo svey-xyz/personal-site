@@ -1,0 +1,18 @@
+<a id="projectsShowcase-card" href="/{{ site.navigation.archivePageSlug | slug }}/{{ project.slug | slug }}" 
+class="group relative overflow-hidden z-10 flex w-full h-96 flex-grow max-w-prose-short rounded-xl my-6 mx-0 shadow-lg sm:mx-6 md:w-1/4
+	transform duration-150" data-tags='[{{ cardTags }}]'>
+
+	<div class="block relative overflow-hidden w-full h-full">
+		{% image project.thumbnail, "lazy relative m-0 w-full h-full min-w-full min-h-full object-center object-cover",
+			project.title, "100%", [400] %}
+
+		<div class="flex inset-0 absolute">
+			{# <div class="absolute inset-0 bg-secondary-bg opacity-60 md:opacity-80 group-hover:opacity-80" aria-hidden="true"></div> #}
+			<div class="w-full self-end p-6 z-10 bg-secondary-bg border-t-2 border-primary-border">
+				<span class="block text-2xl z-10 font-black text-primary-text duration-150">{{ project.title }}</span>
+			</div>
+		</div>
+	</div>
+
+</a>
+

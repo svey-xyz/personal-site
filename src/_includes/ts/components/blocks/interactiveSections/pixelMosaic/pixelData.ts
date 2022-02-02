@@ -23,10 +23,12 @@ export class pixelData {
 		this.influence = args.intensity + utils.mathUtils.rng(0, 0.5);
 
 		this.pix = { pos: pos, col: this.updateCol() };
+		this.mosaic.setImagePixelData(this.mosaic.imagedata, this.pix)
 
 	}
 
 	public updateCol(): colour {
+		// let intensityDiff = utils.mathUtils.percentDifference(this.mosaic.averageIntensity, this.intensity)
 		let pixCol = utils.colourUtils.colourShift(this.pixelColour, theme.primaryAccent, 1.0 - utils.mathUtils.constrain(this.intensity, 0, 1))
 		pixCol = utils.colourUtils.colourNoise(pixCol, (1.0 - utils.mathUtils.constrain(this.intensity, 0, 1)) * 50)
 

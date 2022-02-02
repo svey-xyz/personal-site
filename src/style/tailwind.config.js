@@ -48,6 +48,8 @@ module.exports = {
 				'primary-accent': 'var(--primary-accent)',
 				'secondary-accent': 'var(--secondary-accent)',
 				'medium-accent': 'var(--medium-accent)',
+				// 'mixed-accent': 'mix(var(--primary-accent),  var(--secondary-accent))',
+
 
 			},
 			boxShadow: {
@@ -67,6 +69,15 @@ module.exports = {
 			},
 			zIndex: {
 				'-1': '-1'
+			},
+			animation: {
+				'breathing': 'bounceScale 2s linear infinite', 
+			},
+			keyframes: { 
+				bounceScale: {
+					'0%, 100%': { transform: 'scale(1)' },
+					'50%': { transform: 'scale(1.2)' },
+				}
 			}
 		}
 	},

@@ -42,6 +42,12 @@ class blobShader extends shader {
 
 	}
 
+	init() {
+		super.init();
+		this.uniforms.u_posSeed.value.set(this.randomBetween(), this.randomBetween());
+
+	}
+
 	// Renders the sketch
 	render() {
 		super.render();
@@ -52,7 +58,6 @@ class blobShader extends shader {
 
 	touchStart(e: Event): void {
 		super.touchStart(e);
-		this.uniforms.u_posSeed.value.set(this.randomBetween(), this.randomBetween());
 	}
 
 	randomBetween(min = -100000, max = 100000) { // min and max included 

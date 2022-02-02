@@ -1,0 +1,31 @@
+{#
+	Projects Archive Block
+#}
+
+{% if section.allTags -%}
+	{%- set filterTags = projects.tags -%}
+{%- else -%}
+	{%- set filterTags = section.tags -%}
+{%- endif %}
+
+{% set showcaseTitle -%}
+	{%- if (section.title) -%}
+		{{ section.title }}
+	{%- else -%}
+		showcase
+	{%- endif -%}
+{%- endset %}
+
+<div class="w-full h-full shadow-xl before:absolute before:inset-0 before:opacity-40 before:bg-secondary-accent after:absolute after:inset-0 after:opacity-25 after:bg-primary-accent">
+	<div data-filterable="{{ section.filterTags }}" name="{{ showcaseTitle }}" class="main-padding block-padding flex-wrap justify-center w-full">
+		<div class="flex flex-wrap justify-center sm:-mx-6">
+			{# 11ty only returns strings from shortcodes, so the data is added to the page data, hopefully this changes in the future #}
+			{% set activeProjects %}{% getMatchingProjects projects.work, filterTags, pageData %}{% endset %}
+			
+			{{ activeProjects | debugger }}
+			{% asyncEach project in pageData.activeProjects %}
+				{% include "../cards/projectsShowcase-card.njk" %}
+			{% endeach %}
+		</div>
+	</div>
+</div>

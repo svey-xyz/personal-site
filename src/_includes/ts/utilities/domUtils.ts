@@ -73,7 +73,7 @@ export class domUtils {
 	 * (c) 2018 Chris Ferdinandi, MIT License, https://gomakethings.com
 	 * @param  {Function} fn The function to debounce
 	 */
-	debounce(this: any, fn: any) {
+	debounce(this: any, fn: any, delay: number = 0) {
 
 		// Setup a timer
 		let timeout: number;
@@ -89,14 +89,14 @@ export class domUtils {
 			if (timeout) {
 				window.cancelAnimationFrame(timeout);
 			}
-
 			// Setup the new requestAnimationFrame()
 			timeout = window.requestAnimationFrame(function () {
-				fn.apply(context, args);
+				utils.scriptUtils.requestTimeout(fn, delay);
 			});
 
 		}
 	};
+	
 
 	/**
 	 * Function to update URL params; from Matthew Wilcoxson on StackOverflow

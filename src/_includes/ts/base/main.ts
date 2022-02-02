@@ -60,7 +60,7 @@ function loadScripts() {
 				...interactiveScripts,
 				{
 					selector: '.projectsArchive > [data-filterable="true"]', // don't bother loading script if not filterable
-					scriptPath: 'blocks/projectsArchive/projectsArchive'
+					scriptPath: 'blocks/projects/projectsArchive'
 				},	
 				{
 					selector: '.contactForm #formContainer',

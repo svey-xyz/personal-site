@@ -16,13 +16,14 @@
 			{# RIGHT SIDE WRAPPER #}
 			<div class="relative transition-spacing duration-500 flex flex-col p-6 bg-gradient-to-b md:bg-gradient-to-r from-secondary-bg via-primary-bg to-primary-bg w-full px-6 sm:px-12">
 				{# NAVIGATION CONTAINER #}
-				<div class="relative flex md:inline-block flex-col md:flex-row justify-start items-start">
+				<div class="relative flex h-full flex-col md:flex-row justify-start md:items-center flex-wrap space-be">
 					{% for navItem in site.navigation.primaryNavigation %}
-						<div class="relative md:inline-block group mb-1 mr-10 last:mr-0">
-							<h6 class="relative z-10"><a href="/{{ navItem.slug | slug }}" class="relative z-10 duration-200
+						<div class="relative md:inline-block group py-4 pr-16">
+							<h6 class="relative z-10"><a href="/{{ navItem.slug | slug }}" class="relative z-10 duration-200 text-primary-text
+							group-hover:text-primary-bg
 							after:bg-gradient-to-r after:from-primary-accent after:to-secondary-accent
-							after:absolute after:left-0 after:bottom-[-4px] after:overflow-hidden after:h-1 after:rounded-sm after:-z-1
-							after:duration-200 after:w-0 group-hover:after:w-full">
+							after:absolute after:left-[-5%] after:right-0 after:bottom-[-12.5%] after:overflow-hidden after:rounded-sm after:-z-1
+							after:transition-all after:duration-200 after:h-1 group-hover:after:h-[125%]">
 								{{ navItem.title }}
 							</a></h6>
 						</div>	
@@ -30,11 +31,8 @@
 				</div>
 
 				{# CONTACT CONTAINER #}
-				<a href="mailto:hayden@haydensoule.com" class="inline-block">
+				{# <a href="mailto:hayden@haydensoule.com" class="inline-block">
 					<div class="group inline-flex flex-col mt-10 md:mt-5">
-						{# {% set emailHalves %}
-							{% emailSplitter site.about.email %}
-						{% endset %} #}
 						{% for emailPart in site.about.email | emailSplitter %}
 							<div class="pb-2 relative inline-block">
 								<div class="relative inline-block">
@@ -43,7 +41,7 @@
 							</div>
 						{% endfor %}
 					</div>
-				</a>
+				</a> #}
 			</div>
 
 			<div class="main-padding w-full z-10 md:fixed md:bottom-0">

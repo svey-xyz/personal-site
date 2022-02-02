@@ -6,7 +6,10 @@
  */
 export class Section {
 	// containerName: string;
+	containerParent: HTMLElement
 	container: HTMLElement;
+	resetButton: HTMLElement;
+
 	heightPercent: number;
 	sectionSize: { width: number, height: number } = { width: 0, height: 0 }
 	loopActive: boolean = false
@@ -17,16 +20,22 @@ export class Section {
 	inputHandler: (e: Event) => void;
 	resizeHandler: (e: Event) => void;
 
-	constructor(container: any, args?:{}) {
-		container.parentElement.classList.add('loaded');
-
+	constructor(container: Element, args?:{}) {
+		
 		// define universal section variables
-		this.container = container;
-		this.heightPercent = parseInt(container.parentElement.style.getPropertyValue('--section-height')!);
+		this.container = (<HTMLElement>container);
+		this.containerParent = this.container.parentElement ? this.container.parentElement : this.container;
+		this.resetButton = this.containerParent.querySelector(`#resetButton`)!;
+
+		this.containerParent.classList.add('loaded');
+
+		this.heightPercent = parseInt(this.containerParent.style.getPropertyValue('--section-height')!);
 		this.setSize();
 
 		// initialize listeners
 		this.inputHandler = this.handleInput.bind(this);
+		this.resetButton.addEventListener('click', this.inputHandler);
+
 		this.container.addEventListener('mousedown', this.inputHandler);
 		this.container.addEventListener('mouseup', this.inputHandler);
 		this.container.addEventListener('mouseleave', this.inputHandler);
@@ -38,33 +47,33 @@ export class Section {
 
 		this.container.addEventListener('touchmove', this.inputHandler);
 
-
-
 		this.resizeHandler = this.resize.bind(this);
 		window.addEventListener('resize', utils.domUtils.debounce(this.resizeHandler));
 	}
 
+	init(): void { }
 	handleInput(e: Event): void { };
 	holdTouch(e: Event): void { };
 	touchMove(e: Event): void { };
 	touchStart(e: Event): void {
+		if (e.target == this.resetButton) console.log('reset clciked')
+
 		this.timer = setInterval(() => {
 			this.holdTouch(e)
 		}, 100);
 		this.touch = true;
 	}
 	touchEnd(e: Event) {
+		// console.log(e.target)
+
 		if (this.timer) clearInterval(this.timer)
 		this.touch = false;
 	}
 
-
-
-
 	resize(e: Event): void { };
 
 	startLoop = (refreshRate: number = 0) => {
-		this.cancel()
+		// this.cancel()
 		this.loopActive = true
 		this.mainLoop(refreshRate);
 
@@ -77,35 +86,10 @@ export class Section {
 	 */
 	mainLoop = (refreshRate: number = 0) => {
 		if (this.loopActive) {
-			this.requestTimeout(() => this.mainLoop(refreshRate), refreshRate, this.registerCancel);
+			utils.scriptUtils.requestTimeout(() => this.mainLoop(refreshRate), refreshRate);
 			this.loop();
 		}
 	}
-
-	noop = () => { };
-
-	requestTimeout = (fn: () => void, delay: number, registerCancel: any) => {
-		const start = new Date().getTime();
-
-		const loop = () => {
-			const delta = new Date().getTime() - start;
-
-			if (delta >= delay) {
-				fn();
-				registerCancel(this.noop);
-				return;
-			}
-
-			const raf = requestAnimationFrame(loop);
-			registerCancel(() => cancelAnimationFrame(raf));
-		};
-
-		const raf = requestAnimationFrame(loop);
-		registerCancel(() => cancelAnimationFrame(raf));
-	};
-
-	cancel = this.noop;
-	registerCancel = (fn: () => void) => this.cancel = fn;
 
 	/**
 	 * Used for loop logic.
@@ -122,7 +106,12 @@ export class Section {
 
 Section.prototype.handleInput = function (e: Event) {
 	let touches: TouchList
-	e.preventDefault()
+	// e.preventDefault()
+
+	if (e.target == this.resetButton && (e.type == 'click')) {
+		this.init();
+		return;
+	}
 
 	switch(e.type) {
 		case ('mousedown'):

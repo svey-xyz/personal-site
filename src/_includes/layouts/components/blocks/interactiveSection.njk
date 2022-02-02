@@ -13,4 +13,16 @@
 	<div class="script-container {{ section.interactiveScript }} max-w-full overflow-hidden" data-colour="var(--primary-bg)"  data-script="{{ section.interactiveScript }}">
 		{# Initialized with Javascript #}
 	</div>
+
+	<div class="group cursor-pointer absolute flex items-center justify-center text-medium-accent leading-xs text-4xl right-4 bottom-4 md:right-8 md:bottom-8">
+		<div class="duration-100 group-hover:scale-125">
+			<i id="resetButton" class="relative fas fa-random block
+				left-1/2 -translate-x-1/2 w-full h-full
+				after:absolute after:overflow-hidden after:-z-1 after:inset-0 after:min-h-full after:w-full
+				after:bg-primary-accent after:rounded-full after:shadow-sm
+				after:duration-100 group-hover:after:scale-[0.9] group-hover:after:shadow-md
+				motion-safe:group-hover:after:animate-pulse
+				checked:after:bg-secondary-accent"></i>
+		</div>
+	</div>
 </div>

@@ -14,12 +14,13 @@ export class pixelMosaic extends canvasBase {
 	constructor(container: Element) {
 		super(container, {pixelScale: 32});
 
-		this.initializeGrid();
+		this.init();
 		this.startLoop(60)
 
 	}
 
-	initializeGrid(): void {
+	init(): void {
+		super.init();
 		this.collectiveIntensity = 0;
 		this.pixels = new Map<number, pixelData>();
 
@@ -49,7 +50,6 @@ export class pixelMosaic extends canvasBase {
 
 
 		this.pixels.set(pixelIndex, pixel)
-		this.setImagePixelData(this.imagedata, pixel.getPix)
 	}
 
     // Create the image
@@ -101,7 +101,7 @@ export class pixelMosaic extends canvasBase {
 			super.resize(e);
 
 			this.loopActive = false
-			this.initializeGrid();
+			this.init();
 			this.loop(); // avoids flickering of missed loops
 			this.loopActive = true;
 		}
@@ -109,6 +109,8 @@ export class pixelMosaic extends canvasBase {
 
 	touchMove(e: Event): void {
 		super.touchMove(e)
+		e.preventDefault();
+		
 		if (this.touch) {
 			var loc = utils.domUtils.relativeLocation(this.paintCanvas, <MouseEvent>e)
 			var scaledLoc = { x: Math.floor(loc.x / this.pixelScale), y: Math.floor(loc.y / this.pixelScale) }

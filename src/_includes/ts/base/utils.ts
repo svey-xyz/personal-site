@@ -1,6 +1,8 @@
 import { colourUtils } from "../utilities/colourUtils";
 import { mathUtils } from '../utilities/mathUtils'
 import { domUtils } from '../utilities/domUtils'
+import { scriptUtils } from '../utilities/scriptUtils'
+
 
 /**
  * Utilities Class
@@ -12,9 +14,22 @@ export class utils {
 	private colourUtilsStore: colourUtils | undefined
 	private mathUtilsStore: mathUtils | undefined
 	private domUtilsStore: domUtils | undefined
+	private scriptUtilsStore: scriptUtils | undefined
+
 
 
 	constructor() {
+	}
+
+	/**
+	 * Utilities for scripts.
+	 *
+	 * @readonly
+	 * @type {scriptUtils}
+	 * @memberof utils
+	 */
+	public get scriptUtils(): scriptUtils {
+		return this.scriptUtilsStore ? this.scriptUtilsStore : this.scriptUtilsStore = new scriptUtils()
 	}
 
 	/**
