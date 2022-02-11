@@ -1,3 +1,4 @@
+
 {#
 	Video Section
 #}
@@ -16,11 +17,6 @@
 
 		{% set videoProperties = {url:section.url, thumbnail:section.thumbnail, title:section.title} %}
 		{% include ("layouts/utilities/video.njk") %}
-
-
-
-		{# {% from "layouts/utilities/video.njk" import video %} #}
-		{# {{ video(url=section.url, thumbnail=section.thumbnail, title=section.title) }} #}
 			
 		{% if section.highlighted %}
 			<a data-scroll-destination="{{ section._type }}-{{ sectionID }}-content-end" class="scroll-indicator">

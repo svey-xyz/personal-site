@@ -1,28 +1,30 @@
+
 {#
 	Video Utility used across the site
-
 	Cannot use macros with 11ty image caching as it has to be async, and macros can't be async
 	Make sure to set videoProperties before including this block
 #}
 
+{# Can't return an object so set in pagedata #}
+{% videoEmbed videoProperties, pageData %}
+
+
 <div class="video-utility relative w-full pb-16/9 mb-12">
 
 	<a onclick="('customElements' in window) && event.preventDefault()" title="Play Video" rel="noreferrer" target="_blank" href="{{ videoProperties.url }}"
-		id="video-overlay" class="block cursor-pointer absolute inset-0 overflow-hidden">
-		<div class="video-overlay-button relative w-full h-full flex items-center justify-center z-10 transform duration-200 hover:scale-125">
-			<i class="z-10 fas fa-play-circle text-white text-4xl md:text-6xl"></i>
-		</div>
-		{% if videoProperties.thumbnail %}
+		id="video-overlay" class="flex cursor-pointer absolute inset-0 overflow-hidden items-center justify-center z-10 transform duration-200
+		bg-[url('{{ pageData.videoProperties.thumbnail }}')]">
+		
+		<i class="z-10 fas fa-play-circle text-white text-4xl md:text-6xl hover:scale-125"></i>
+
+
+		{# {% if videoProperties.thumbnail %}
 			<div class="flex absolute inset-0 items-center justify-center bg-black">
 				{% image videoProperties.thumbnail,
 					"lazy absolute inset-0 inline-block w-full h-full w-min-full object-center object-cover",
 					videoProperties.title, "100%", [1024, 400] %}
 			</div>
-
-			<div id="player" data-plyr-provider="vimeo" data-plyr-embed-id="76979871"></div>
-		{% endif %}
+		{% endif %} #}
 	</a>
 
-	{# Handled by Eleventy and JS #}
-	{% videoEmbed videoProperties.url %}
 </div>
