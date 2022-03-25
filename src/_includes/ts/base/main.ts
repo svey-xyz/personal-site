@@ -40,11 +40,11 @@ function loadScripts() {
 		'DOMContentLoaded',
 		() => {
 			let interactiveScripts: Array<{selector:string,scriptPath:string}> = []
-			document.querySelectorAll('.interactiveSection > .section-container > .script-container').forEach(async (section) => {
+			document.querySelectorAll('.interactiveSection > .section-container').forEach(async (section) => {
 				const sectionType = section.getAttribute('data-script')
 
 				interactiveScripts.push({
-					selector: `.interactiveSection > .section-container > .script-container[data-script="${sectionType}"]`,
+					selector: `.interactiveSection > .section-container[data-script="${sectionType}"]`,
 					scriptPath: `blocks/interactiveSections/${sectionType}/${sectionType}`
 				})
 			});

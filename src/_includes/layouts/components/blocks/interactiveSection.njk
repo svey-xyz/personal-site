@@ -9,12 +9,14 @@
 	{% endif %}
 {% endset %}
 
-<div class="section-container {{ section.interactiveScript }} {{ topBlockMargin }} w-full" style="--section-height:{{sectionHeight}}">
-	<div class="script-container {{ section.interactiveScript }} max-w-full overflow-hidden" data-colour="var(--primary-bg)"  data-script="{{ section.interactiveScript }}">
+<div class="section-container {{ section.interactiveScript }} {{ topBlockMargin }} w-full" style="--section-height:{{sectionHeight}}"
+		data-colour="var(--primary-bg)"  data-script="{{ section.interactiveScript }}">
+		
+	<div class="script-container {{ section.interactiveScript }} max-w-full overflow-hidden">
 		{# Initialized with Javascript #}
 	</div>
 
-	<div class="group cursor-pointer absolute flex items-center justify-center text-medium-accent leading-xs text-4xl right-4 bottom-4 md:right-8 md:bottom-8">
+	<div class="group cursor-pointer absolute z-10 flex items-center justify-center text-medium-accent leading-xs text-4xl right-4 bottom-4 md:right-8 md:bottom-8">
 		<div class="duration-100 group-hover:scale-125">
 			<i id="resetButton" class="relative fas fa-random block
 				left-1/2 -translate-x-1/2 w-full h-full

@@ -1,3 +1,5 @@
+@import '../../../node_modules/plyr/dist/plyr.css';
+
 button {
 	&.std-round {
 		@apply relative rounded-full tracking-wider font-bold cursor-pointer px-2 py-1 m-2 text-primary-bg bg-opposite-bg border-2 border-transparent;
@@ -25,4 +27,8 @@ button {
 			}
 		}
 	}
+}
+
+.plyr {
+	@apply absolute inset-0;
 }

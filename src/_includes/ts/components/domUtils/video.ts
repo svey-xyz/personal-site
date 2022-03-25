@@ -1,35 +1,45 @@
 /*
 *  Dynamically load videos
 */
-
-let overlay: HTMLElement
-let videoContainer: HTMLElement
-let playerContainer: HTMLElement
-let embedType: string
-let videoID: string
+import * as Plyr from 'plyr';
 
 export const mount = (container: Element) => {
-	videoContainer = <HTMLElement>container.querySelector('.video-embed-container')!;
-	overlay = <HTMLElement>container.querySelector('#video-overlay')!;
-
-	embedType = videoContainer.getAttribute('data-embed-type')!;
-	videoID = videoContainer.getAttribute('data-video-id')!;
-
-	playerContainer = <HTMLElement>videoContainer.querySelector(`#${embedType}-container`);
-
-	loadScript();
+	new videoPlayer(<HTMLElement>container)
 }
 
-async function loadScript() {
+class videoPlayer {
+	playerContainer: HTMLElement
+	embedType: string
+	videoID: string
+	player: any
 
-	overlay.addEventListener('mouseover', loadVideo);
-	overlay.addEventListener('click', playVideo);
+	constructor(container: HTMLElement) {
+		this.playerContainer = container.querySelector(`#player`)!;
+		this.embedType = this.playerContainer.getAttribute('data-plyr-provider')!;
+		this.videoID = this.playerContainer.getAttribute('data-plyr-embed-id')!;
 
-	function playVideo() {
+		let options = {
+			root: null, // defaults to browser viewport
+			rootMargin: '0px',
+			threshold: 1.0
+		}
 
+		let observer = new IntersectionObserver(this.intersect, options);
+		observer.observe(this.playerContainer);
 	}
 
-	function loadVideo() {
-	
+	loadPlayer(playerContainer: HTMLElement) {
+		if (this.player) return;
+		this.player = new Plyr(playerContainer);
+		console.log(`Loaded: `, this.player)
+	}
+
+	intersect = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
+		entries.forEach((entry: IntersectionObserverEntry) => {
+			if (entry.isIntersecting) {
+				let playerContainer = <HTMLElement>entry.target!
+				this.loadPlayer(playerContainer);
+			}
+		});
 	}
 }

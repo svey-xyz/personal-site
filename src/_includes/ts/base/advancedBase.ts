@@ -1,17 +1,12 @@
+import { base } from './base'
+
 /**
  * Base for handling all interactive sections.
  *
  * @export
  * @class Section
  */
-export class Section {
-	// containerName: string;
-	containerParent: HTMLElement
-	container: HTMLElement;
-	resetButton: HTMLElement;
-
-	heightPercent: number;
-	sectionSize: { width: number, height: number } = { width: 0, height: 0 }
+export class advancedBase extends base {
 	loopActive: boolean = false
 	timer: any
 	touch: boolean = false
@@ -20,21 +15,13 @@ export class Section {
 	inputHandler: (e: Event) => void;
 	resizeHandler: (e: Event) => void;
 
-	constructor(container: Element, args?:{}) {
-		
-		// define universal section variables
-		this.container = (<HTMLElement>container);
-		this.containerParent = this.container.parentElement ? this.container.parentElement : this.container;
-		this.resetButton = this.containerParent.querySelector(`#resetButton`)!;
-
-		this.containerParent.classList.add('loaded');
-
-		this.heightPercent = parseInt(this.containerParent.style.getPropertyValue('--section-height')!);
-		this.setSize();
+	constructor(container: HTMLElement, args?: {}) {
+		super(container, args);
 
 		// initialize listeners
 		this.inputHandler = this.handleInput.bind(this);
-		this.resetButton.addEventListener('click', this.inputHandler);
+
+		this.container.addEventListener('click', this.inputHandler);
 
 		this.container.addEventListener('mousedown', this.inputHandler);
 		this.container.addEventListener('mouseup', this.inputHandler);
@@ -53,67 +40,30 @@ export class Section {
 
 	init(): void { }
 	handleInput(e: Event): void { };
+	click(e: Event): void { };
 	holdTouch(e: Event): void { };
 	touchMove(e: Event): void { };
 	touchStart(e: Event): void {
-		if (e.target == this.resetButton) console.log('reset clciked')
-
 		this.timer = setInterval(() => {
 			this.holdTouch(e)
 		}, 100);
 		this.touch = true;
 	}
 	touchEnd(e: Event) {
-		// console.log(e.target)
-
 		if (this.timer) clearInterval(this.timer)
 		this.touch = false;
 	}
 
 	resize(e: Event): void { };
-
-	startLoop = (refreshRate: number = 0) => {
-		// this.cancel()
-		this.loopActive = true
-		this.mainLoop(refreshRate);
-
-	}
-
-	/**
-	 * Called to init the main loop. Override 'loop()' for logic.
-	 *
-	 * @memberof Section
-	 */
-	mainLoop = (refreshRate: number = 0) => {
-		if (this.loopActive) {
-			utils.scriptUtils.requestTimeout(() => this.mainLoop(refreshRate), refreshRate);
-			this.loop();
-		}
-	}
-
-	/**
-	 * Used for loop logic.
-	 *
-	 * @memberof Section
-	 */
-	loop(): void { }
-
-	setSize(): void {
-		this.sectionSize.height = this.heightPercent * theme.getVH;
-		this.sectionSize.width = document.documentElement.clientWidth || document.body.clientWidth;
-	}
 }
 
-Section.prototype.handleInput = function (e: Event) {
+advancedBase.prototype.handleInput = function (e: Event) {
 	let touches: TouchList
-	// e.preventDefault()
 
-	if (e.target == this.resetButton && (e.type == 'click')) {
-		this.init();
-		return;
-	}
-
-	switch(e.type) {
+	switch (e.type) {
+		case ('click'):
+			this.click(e);
+			break;
 		case ('mousedown'):
 			this.touchStart(e);
 			break;
@@ -168,7 +118,6 @@ Section.prototype.handleInput = function (e: Event) {
 
 };
 
-Section.prototype.resize = function (e: Event) {
-	this.setSize()
+advancedBase.prototype.resize = function (e: Event) {
 };
 

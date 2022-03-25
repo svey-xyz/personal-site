@@ -36,7 +36,7 @@
 			<img src="{% sanityImageURL section.image, 800 %}" alt="{{ section.heading }} - Card Background"
 				class="lazy relative inline-block w-full h-full min-w-full min-h-96 md:min-h-80 object-center object-cover"/> #}
 
-			{% image section.image, "lazy relative inline-block w-full h-full min-w-full min-h-96 md:min-h-80 object-center object-cover", section.heading, "100%", [800] %}
+			{% image section.image | sanityImageURL, "lazy relative inline-block w-full h-full min-w-full min-h-96 md:min-h-80 object-center object-cover", section.heading, "100%", [800] %}
 				
 
 			<div class="absolute flex flex-col justify-center bottom-0 z-10 w-full px-8 py-12 md:h-full md:w-2/5 md:min-w-md md:px-16 md:py-0 {{ alignment }}">

@@ -1,4 +1,4 @@
-import { Section } from "./sectionBase";
+import { InteractiveSection } from "./interactiveSectionBase";
 import * as THREE from 'three';
 
 /**
@@ -8,7 +8,7 @@ import * as THREE from 'three';
  * @class shader
  * @extends {Section}
  */
-export class shader extends Section {
+export class shader extends InteractiveSection {
 	renderer: THREE.WebGLRenderer;
 	scene: THREE.Scene;
 	camera: THREE.OrthographicCamera;
@@ -19,7 +19,7 @@ export class shader extends Section {
 	fragShader: string = '';
 
 	// Initializes the sketch
-	constructor(container: Element) {
+	constructor(container: HTMLElement) {
 		super(container);
 
 		// Initialize the WebGL renderer
@@ -28,7 +28,7 @@ export class shader extends Section {
 		this.renderer.setSize(this.sectionSize.width, this.sectionSize.height);
 
 		// Add the renderer to the sketch container
-		this.container.appendChild(this.renderer.domElement);
+		this.scriptContainer.appendChild(this.renderer.domElement);
 
 		// Initialize the scene
 		this.scene = new THREE.Scene();

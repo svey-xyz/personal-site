@@ -2,7 +2,7 @@ import { canvasBase } from "../bases/canvasBase";
 import { pixelData } from "./pixelData"
 
 export const mount = (container: Element) => {
-	new pixelMosaic(container);
+	new pixelMosaic(<HTMLElement>container!);
 }
 export class pixelMosaic extends canvasBase {
 	pixels: Map<number, pixelData> = new Map<number, pixelData>();
@@ -10,8 +10,7 @@ export class pixelMosaic extends canvasBase {
 	collectiveIntensity: number = 0;
 	economicSpeed = 24.5;
 
-
-	constructor(container: Element) {
+	constructor(container: HTMLElement) {
 		super(container, {pixelScale: 32});
 
 		this.init();

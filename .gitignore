@@ -12,6 +12,7 @@ package-lock.json
 ._.*
 
 .env.development
+*.env
 cachedContent.json
 # Local Netlify folder
 .netlify

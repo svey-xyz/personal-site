@@ -11,7 +11,7 @@
 			{% if site.about.avatar %}
 			{# <img src="{% sanityImageURL site.about.avatar %}"
 				class="lazy relative inline-block w-full min-w-full h-auto"/> #}
-				{% image site.about.avatar, "lazy relative inline-block w-full min-w-full max-w-none h-auto", "", "100%", [400] %}
+				{% image site.about.avatar | sanityImageURL, "lazy relative inline-block w-full min-w-full max-w-none h-auto", "", "100%", [400] %}
 
 			{% endif %}
 

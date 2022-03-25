@@ -3,7 +3,7 @@ class="group relative overflow-hidden z-10 flex w-full h-96 flex-grow max-w-pros
 	transform duration-150" data-tags='[{{ cardTags }}]'>
 
 	<div class="block relative overflow-hidden w-full h-full">
-		{% image project.thumbnail, "lazy relative m-0 w-full h-full min-w-full min-h-full object-center object-cover",
+		{% image project.thumbnail | sanityImageURL, "lazy relative m-0 w-full h-full min-w-full min-h-full object-center object-cover",
 			project.title, "100%", [400] %}
 
 		<div class="flex inset-0 absolute">

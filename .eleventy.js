@@ -1,3 +1,5 @@
+const dotenv = require('dotenv');
+dotenv.config({ path: './config/config.env' });
 
 const markdownify = require("./lib/filters/markdownfilter")
 const blocksToMD = require("./lib/shortcodes/blocksToMD")
@@ -8,9 +10,11 @@ const matchingPorjects = require("./lib/shortcodes/matchingProjects")
 const imageCache = require("./lib/shortcodes/imageCache")
 const bundlePointer = require("./lib/shortcodes/bundlePointer")
 const emailSplitter = require("./lib/shortcodes/emailSplitter")
+const sanityImageURL = require("./lib/filters/sanityImageURL")
 
 
 module.exports = (eleventyConfig) => {
+
 	eleventyConfig.setQuietMode(true);
 	eleventyConfig.setWatchThrottleWaitTime(1000);
 	
@@ -32,11 +36,14 @@ module.exports = (eleventyConfig) => {
 
 	eleventyConfig.addFilter("emailSplitter", emailSplitter);
 
+	eleventyConfig.addFilter("sanityImageURL", sanityImageURL);
+
+
 	eleventyConfig.addShortcode("getMatchingProjects", matchingPorjects);
 
 	eleventyConfig.addNunjucksAsyncShortcode("image", imageCache);
 
-	eleventyConfig.addShortcode("videoEmbed", videoEmbed);
+	eleventyConfig.addNunjucksAsyncShortcode("videoEmbed", videoEmbed);
 	eleventyConfig.addShortcode("videoID", videoID);
 
 	eleventyConfig.addShortcode("bundlePointer", bundlePointer);

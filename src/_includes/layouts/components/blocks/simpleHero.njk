@@ -3,5 +3,5 @@
 #}
 
 <div class="relative flex overflow-hidden w-full sixty-height-section {{ topBlockMargin }}">
-	{% image section.heroImage, "lazy relative inline-block w-full h-full min-w-full min-h-full object-center object-cover", "", "100vw", [1280] %}
+	{% image section.heroImage | sanityImageURL, "lazy relative inline-block w-full h-full min-w-full min-h-full object-center object-cover", "", "100vw", [1280] %}
 </div>

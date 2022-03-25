@@ -6,25 +6,6 @@
 #}
 
 {# Can't return an object so set in pagedata #}
-{% videoEmbed videoProperties, pageData %}
-
-
 <div class="video-utility relative w-full pb-16/9 mb-12">
-
-	<a onclick="('customElements' in window) && event.preventDefault()" title="Play Video" rel="noreferrer" target="_blank" href="{{ videoProperties.url }}"
-		id="video-overlay" class="flex cursor-pointer absolute inset-0 overflow-hidden items-center justify-center z-10 transform duration-200
-		bg-[url('{{ pageData.videoProperties.thumbnail }}')]">
-		
-		<i class="z-10 fas fa-play-circle text-white text-4xl md:text-6xl hover:scale-125"></i>
-
-
-		{# {% if videoProperties.thumbnail %}
-			<div class="flex absolute inset-0 items-center justify-center bg-black">
-				{% image videoProperties.thumbnail,
-					"lazy absolute inset-0 inline-block w-full h-full w-min-full object-center object-cover",
-					videoProperties.title, "100%", [1024, 400] %}
-			</div>
-		{% endif %} #}
-	</a>
-
+	{% videoEmbed videoProperties, pageData %}
 </div>

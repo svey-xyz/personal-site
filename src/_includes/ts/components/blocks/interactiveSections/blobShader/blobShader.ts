@@ -9,7 +9,7 @@ const vertShader: String = require('../blobShader/shaders/vert-Abstract.glsl');
 const fragShader: String = require('../blobShader/shaders/frag-Abstract.glsl');
 
 export const mount = (container:Element) => {
-	new blobShader(container);
+	new blobShader(<HTMLElement>container!);
 }
 
 class blobShader extends shader {
@@ -19,7 +19,7 @@ class blobShader extends shader {
 
 
 	// Initializes the sketch
-	constructor(container: Element) {
+	constructor(container: HTMLElement) {
 		super(container);
 
 		this.uniforms = {
