@@ -30,7 +30,8 @@
 	</div>
 
 	<div class="block-padding md:m-0 md:pl-12 transition-all duration-150 max-w-prose-short xl:max-w-prose flex-grow-0">
-		{{ site.about.description | sanityBlocksToMarkdown | markdownify | safe }}
+		{% portableTextToHTML site.about.description %}
+
 		{% if site.about.curriculumVitaeURL %}
 			<a target="_blank" href="{{ site.about.curriculumVitaeURL }}" class="font-bold">{{ section.downloadCV }}</a>
 		{% endif %}

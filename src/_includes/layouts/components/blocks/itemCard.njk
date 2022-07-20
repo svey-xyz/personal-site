@@ -43,7 +43,10 @@
 				<div class="absolute inset-0 -mt-24 md:my-0 bg-gradient-to-t {{ gradient }} from-primary-bg via-primary-bg/80"></div>
 
 				<span class="z-10 font-body text-3xl font-bold leading-loose">{{ section.heading }}</span>
-				<span class="z-10">{{ section.blurb  | sanityBlocksToMarkdown | markdownify | safe }}</span>
+				<span class="z-10"> 
+					{% portableTextToHTML section.blurb  %}
+
+				</span>
 
 			</div>
 		</div>

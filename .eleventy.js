@@ -32,7 +32,8 @@ module.exports = (eleventyConfig) => {
 	eleventyConfig.addFilter("markdownify", markdownify);
 
 	eleventyConfig.addFilter("slug", betterSlugs);
-	eleventyConfig.addFilter("sanityBlocksToMarkdown", blocksToMD);
+	eleventyConfig.addNunjucksAsyncShortcode("portableTextToHTML", blocksToMD);
+
 
 	eleventyConfig.addFilter("emailSplitter", emailSplitter);
 

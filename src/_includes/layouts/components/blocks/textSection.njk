@@ -4,6 +4,6 @@
 
 <div class="text-type-container {{ section.textType }}">
 	<div class="text-container main-padding self-center block-padding mx-auto max-w-prose-full">
-		{{ section.text | sanityBlocksToMarkdown | markdownify | safe }}
+		{% portableTextToHTML section.text  %}
 	</div>
 </div>
