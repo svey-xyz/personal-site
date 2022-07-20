@@ -2,7 +2,7 @@ const dotenv = require('dotenv');
 dotenv.config({ path: './config/config.env' });
 
 const markdownify = require("./lib/filters/markdownfilter")
-const blocksToMD = require("./lib/shortcodes/blocksToMD")
+const blocksToMD = require("./lib/shortcodes/portableTextToHTML")
 const betterSlugs = require("./lib/filters/betterSlugs")
 const videoEmbed = require("./lib/shortcodes/videoEmbed")
 const videoID = require("./lib/shortcodes/videoID")
