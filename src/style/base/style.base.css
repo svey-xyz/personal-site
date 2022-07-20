@@ -23,7 +23,7 @@
 	}
 	
 	a {
-		@apply tracking-wider text-primary-accent underline hover:text-secondary-accent;
+		@apply tracking-wider;
 		color: inheret;
 	}
 
