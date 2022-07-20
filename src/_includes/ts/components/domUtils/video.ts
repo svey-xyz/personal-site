@@ -2,18 +2,21 @@
 *  Dynamically load videos
 */
 import * as Plyr from 'plyr';
+import { advancedBase } from '../../base/advancedBase';
 
 export const mount = (container: Element) => {
 	new videoPlayer(<HTMLElement>container)
 }
 
-class videoPlayer {
+class videoPlayer extends advancedBase{
 	playerContainer: HTMLElement
 	embedType: string
 	videoID: string
 	player: any
 
-	constructor(container: HTMLElement) {
+	constructor(container: HTMLElement, args?: {}) {
+		super(container, args);
+
 		this.playerContainer = container.querySelector(`#player`)!;
 		this.embedType = this.playerContainer.getAttribute('data-plyr-provider')!;
 		this.videoID = this.playerContainer.getAttribute('data-plyr-embed-id')!;
@@ -21,7 +24,7 @@ class videoPlayer {
 		let options = {
 			root: null, // defaults to browser viewport
 			rootMargin: '0px',
-			threshold: 1.0
+			threshold: 0.0
 		}
 
 		let observer = new IntersectionObserver(this.intersect, options);
@@ -31,7 +34,6 @@ class videoPlayer {
 	loadPlayer(playerContainer: HTMLElement) {
 		if (this.player) return;
 		this.player = new Plyr(playerContainer);
-		console.log(`Loaded: `, this.player)
 	}
 
 	intersect = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
@@ -41,5 +43,10 @@ class videoPlayer {
 				this.loadPlayer(playerContainer);
 			}
 		});
+	}
+
+	click(e: Event) {
+		super.click(e);
+		if (!this.player) this.loadPlayer;
 	}
 }

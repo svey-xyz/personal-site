@@ -1,16 +1,13 @@
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-	mode: 'jit',
-	purge: {
-		content: [
-			"./src/_includes/layouts/**/*.njk",
-			"./src/*.njk",
-			"./lib/**/*.{ts,js}"
-		],
-		options: {
-			keyframes: true
-		},
+	content: [
+		"./src/_includes/layouts/**/*.njk",
+		"./src/*.njk",
+		"./lib/**/*.{ts,js}"
+	],
+	options: {
+		keyframes: true
 	},
 	theme: {
 		screens: {
@@ -60,6 +57,7 @@ module.exports = {
 				DEFAULT: '0 0px 6px -1px rgba(0,0,0,0.1), 0 0px 5px -1px rgba(0,0,0,.06)',
 				lg: '0 0px 12px -3px rgba(0,0,0,0.6), 0 0px 6px -1px rgba(0,0,0,.06)',
 				xl: '0 0px 15px -5px rgba(0,0,0,0.8), 0 0px 8px -1px rgba(0,0,0,.06)',
+
 			},
 			fontFamily: {
 				heading: ['DM Serif Display', 'serif'],
@@ -83,13 +81,6 @@ module.exports = {
 					'50%': { transform: 'scale(1.2)' },
 				}
 			}
-		}
-	},
-	variants: {
-		extend: {
-			fontWeight: ['hover'],
-			transform: ['hover']
-
 		}
 	},
 	plugins: [],

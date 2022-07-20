@@ -23,8 +23,12 @@
 	}
 	
 	a {
-		@apply tracking-wider text-primary-text;
+		@apply tracking-wider text-primary-accent underline hover:text-secondary-accent;
 		color: inheret;
+	}
+
+	label {
+		@apply text-primary-text;
 	}
 
 	.main-padding {
