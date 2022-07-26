@@ -56,7 +56,6 @@ export class theme {
 	setSize() {
 		if (!this.mobile) {
 			this.height = window.innerHeight;
-			this.vh = this.height * 0.01;
 		}
 
 		this.vh = this.height * 0.01;

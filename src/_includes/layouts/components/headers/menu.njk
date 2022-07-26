@@ -18,8 +18,15 @@
 				{# NAVIGATION CONTAINER #}
 				<div class="relative flex h-full flex-col md:flex-row justify-start md:items-center flex-wrap space-be">
 					{% for navItem in site.navigation.primaryNavigation %}
+						{% set navLink %}
+							{% if navItem.slug == site.navigation.homePageSlug %}
+								''
+							{% else %}
+								{{ navItem.slug }}
+							{% endif%}
+						{% endset %}
 						<div class="relative md:inline-block group py-4 pr-16">
-							<h6 class="relative z-10"><a href="/{{ navItem.slug | slug }}" class="relative z-10 duration-200 text-primary-text
+							<h6 class="relative z-10"><a href="/{{ navLink | slug }}" class="relative z-10 duration-200 text-primary-text
 							group-hover:text-primary-bg
 							after:bg-gradient-to-r after:from-primary-accent after:to-secondary-accent
 							after:absolute after:left-[-5%] after:right-0 after:bottom-[-12.5%] after:overflow-hidden after:rounded-sm after:-z-1
@@ -29,19 +36,6 @@
 						</div>	
 					{% endfor %}
 				</div>
-
-				{# CONTACT CONTAINER #}
-				{# <a href="mailto:hayden@haydensoule.com" class="inline-block">
-					<div class="group inline-flex flex-col mt-10 md:mt-5">
-						{% for emailPart in site.about.email | emailSplitter %}
-							<div class="pb-2 relative inline-block">
-								<div class="relative inline-block">
-									<h5 class="relative leading-xs uppercase font-black z-10 text-medium-accent after:accent-highlight">{{ emailPart }}</h5>
-								</div>
-							</div>
-						{% endfor %}
-					</div>
-				</a> #}
 			</div>
 
 			<div class="main-padding w-full z-10 md:fixed md:bottom-0">

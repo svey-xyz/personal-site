@@ -5,7 +5,7 @@
 
 <div class="main-padding w-full block-padding flex flex-col md:flex-row justify-center content-center">
 
-	<div class="relative rounded-lg shadow-lg w-full overflow-hidden md:w-80 h-full">
+	<div class="relative rounded-lg shadow-lg w-full overflow md:w-80 h-full">
 		<div class="relative block w-full">
 
 			{% if site.about.avatar %}
@@ -15,15 +15,18 @@
 
 			{% endif %}
 
-			<div class="absolute flex flex-col justify-center bottom-0 z-10 w-full p-8">
+			<div class="absolute flex flex-col justify-center bottom-0 z-10 w-full p-6">
 				<div class="absolute inset-0 -mt-24 bg-gradient-to-t from-primary-bg via-primary-bg/80"></div>
 				<div class="z-10 w-full">
-					<span class="block text-primary-text leading-normal pb-6">{{ site.about.name }}</span>
-					{% if section.personalInfo %}
+					{# <span class="block text-primary-text leading-normal pb-6">{{ site.about.name }}</span> #}
+					{# {% if section.personalInfo %}
 						<a href="tel: {{ site.about.phoneNumber }}" class="block leading-relaxed">{{ site.about.phoneNumber }}</a>
 						<a href="mailto: {{ site.about.email }}" class="block leading-relaxed">{{ site.about.email }}</a>
 						<a href="{{ site.about.social[0].url }}" class="block leading-relaxed">{{ site.about.social[0].socialTitle }}</a>
-					{% endif %}
+					{% endif %} #}
+					{% include "../../utilities/emailInsert.njk" %}
+
+					
 				</div>
 			</div>
 		</div>

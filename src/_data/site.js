@@ -16,7 +16,8 @@ module.exports = async () => {
 					page->title
 				)
 			},
-			"archivePageSlug":archivePage->slug.current
+			"archivePageSlug":archivePage->slug.current,
+			"homePageSlug":homePage->slug.current
 		}[0]
 	}`
 
