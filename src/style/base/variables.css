@@ -8,6 +8,7 @@
 
 	--primary-bg: #FFFFFF;
 	--secondary-bg: #F2F2F2;
+	--darker-bg: #BBBBBB;
 	--opposite-bg: #000000;
 
 	--primary-text: #000000;
@@ -25,6 +26,7 @@
 .dark {
 	--primary-bg: #222222;
 	--secondary-bg: #1C1C1C;
+	--darker-bg: #000000;
 	--opposite-bg: #FFFFFF;
 
 	--primary-text: #EEEEEE;

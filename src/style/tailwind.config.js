@@ -41,6 +41,7 @@ module.exports = {
 			},
 			colors: {
 				'primary-bg': 'var(--primary-bg)',
+				'darker-bg': 'var(--darker-bg)',
 				'header-bg': 'var(--header-bg)',
 				'opposite-bg': 'var(--opposite-bg)',
 				'primary-border': 'var(--primary-border)',

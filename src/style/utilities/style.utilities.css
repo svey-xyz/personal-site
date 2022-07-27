@@ -1,5 +1,9 @@
 @import '../../../node_modules/plyr/dist/plyr.css';
 
+.text-input {
+	@apply block p-2 w-full bg-secondary-bg text-primary-text rounded-md shadow-inner focus:outline-none;
+}
+
 button {
 	&.std-round {
 		@apply relative rounded-full tracking-wider font-bold cursor-pointer px-2 py-1 m-2 text-primary-bg bg-opposite-bg border-2 border-transparent;
