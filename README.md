@@ -47,6 +47,8 @@ This section to come later...
 Personal notes for development...
 
 Required env variables, go in ```'config/config.env'```-
-```SANITYPROJECTID
+```
+SANITYPROJECTID
 SANITYDATASET
-YOUTUBEAPIKEY```
+YOUTUBEAPIKEY
+```
