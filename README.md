@@ -1,8 +1,8 @@
-# soulelyhayden
-## A personal website
+# `soulelyhayden`
+## `A personal website`
 This project is where I develop [my personal site](https://haydensoule.com), as well as a location for me to test new and exciting web technologies.
-This site uses Sanity CMS, and Cloudflare workers. You can find those repos here-
 
+This project has related repos- [CMS](https://github.com/soulelyhayden/sanity-portfolio-site), and [serverless functions](https://github.com/soulelyhayden/cloudflare-contact-worker). 
 
 ## What tools have I used? 🧰
 
@@ -35,8 +35,18 @@ If you're interested in the development for Sanity take a look at [the repo for 
 I've been using Cloudflare to manage my DNS for ages, so when I saw their competitive offering for static hosting I knew I'd have to give it a try. With the success I had with their platform I also choose to host [my serverless functions](https://github.com/soulelyhayden/cloudflare-contact-worker) on their **[Workers](https://workers.cloudflare.com/)** platform
 
 
-## Design Philosophy
+## Design Philosophy 🖌️
 
 #### Visual Design
+This section to come later...
 
 #### Production Design
+This section to come later...
+
+## Notes
+Personal notes for development...
+
+Required env variables, go in ```'config/config.env'```-
+```SANITYPROJECTID
+SANITYDATASET
+YOUTUBEAPIKEY```
