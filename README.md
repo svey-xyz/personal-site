@@ -38,10 +38,10 @@ I've been using Cloudflare to manage my DNS for ages, so when I saw their compet
 ## Design Philosophy 🖌️
 
 #### Visual Design
-This section to come later...
+*This section to come later...*
 
 #### Production Design
-This section to come later...
+*This section to come later...*
 
 ## Notes
 Personal notes for development...
