@@ -6,27 +6,39 @@ export const mount = (container: HTMLElement) => {
 	header = container;
 	menuSwitch = header.querySelector('#menuSwitch')!;
 	menuBackground = header.querySelector('#menu-container #menu-background')!;
-	console.log(menuBackground)
 
 	menuSwitch.addEventListener("click", switchMenu);
 	menuBackground.addEventListener("click", switchMenu);
 	switchMenu(null);
 
+	document.addEventListener("keydown", function (event) {
+		const key = event.key; // Or const {key} = event; in ES6+
+		console.log(`Key down: ${key}`)
+		if (key === "Escape") {
+			switchMenu(null, false);
+		}
+	});
+
 	window.onscroll = utils.domUtils.debounce(function () { scrollIndicator() })
 	window.addEventListener("resize", utils.domUtils.debounce(scrollIndicator));
 }
 
-function switchMenu(e: Event | null) {
-	switch (e?.target) {
-		case menuBackground:
-			menuSwitch.checked = false;
-			header.classList['remove']('menu-open');
-			break;
-		default:
-			let menuState = menuSwitch.checked;
-			header.classList[menuState ? 'add' : 'remove']('menu-open');
-			break;
+function switchMenu(e: Event | null, force?:boolean) {
+	let menuState: boolean | undefined = force;
+
+	if (typeof menuState === 'undefined') {
+		switch (e?.target) {
+			case menuBackground:
+				menuState = false;
+				break;
+			default:
+				menuState = menuSwitch.checked;
+				break;
+		}
 	}
+
+	header.classList[menuState ? 'add' : 'remove']('menu-open');
+	menuSwitch.checked = menuState;
 }
 
 function scrollIndicator() {

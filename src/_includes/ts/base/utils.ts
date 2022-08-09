@@ -16,8 +16,6 @@ export class utils {
 	private domUtilsStore: domUtils | undefined
 	private scriptUtilsStore: scriptUtils | undefined
 
-
-
 	constructor() {
 	}
 
