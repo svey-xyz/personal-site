@@ -29,7 +29,7 @@ function initElements() : void {
 
 	for (let b of buttonElements) {
 		tagButtons.push(<HTMLElement>b);
-		b.addEventListener('mousedown', tagClick, { passive: true });
+		b.addEventListener('mousedown', tagClick);
 	}
 
 	for (let card of htmlCards) {

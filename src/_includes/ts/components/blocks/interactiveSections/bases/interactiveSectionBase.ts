@@ -57,6 +57,10 @@ export class InteractiveSection extends advancedBase {
 		this.sectionSize.width = document.documentElement.clientWidth || document.body.clientWidth;
 	}
 
+	resize(e: Event): void {
+		this.setSize();
+	}
+
 	click(e: Event): void {
 		super.click(e);
 		if (e.target == this.resetButton) {

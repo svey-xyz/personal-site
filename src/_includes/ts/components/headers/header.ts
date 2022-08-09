@@ -16,10 +16,10 @@ export const mount = (container: HTMLElement) => {
 		if (key === "Escape") {
 			switchMenu(null, false);
 		}
-	}, { passive: true });
+	});
 
 	window.onscroll = utils.domUtils.debounce(function () { scrollIndicator() })
-	window.addEventListener("resize", utils.domUtils.debounce(scrollIndicator), { passive: true });
+	window.addEventListener("resize", utils.domUtils.debounce(scrollIndicator));
 }
 
 function switchMenu(e: Event | null, force?:boolean) {
