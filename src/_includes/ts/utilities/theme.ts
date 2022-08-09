@@ -20,14 +20,14 @@ export class theme {
 			let theme = this.themeSwitch.checked ? 'light' : 'dark';
 			localStorage.setItem('preferredTheme', theme);
 			this.switchTheme(theme);
-		});
+		}, { passive: true });
 
 		this.height = window.innerHeight;
 		this.vh = this.height * 0.01;
 		this.ogVH = this.vh
 
 		this.resizeHandler = this.resize.bind(this);
-		window.addEventListener('resize', utils.domUtils.debounce(this.resizeHandler));
+		window.addEventListener('resize', utils.domUtils.debounce(this.resizeHandler), { passive: true });
 		this.setSize()
 
 		let themeTest = window.matchMedia("(prefers-color-scheme: light)");

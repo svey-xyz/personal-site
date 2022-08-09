@@ -104,7 +104,7 @@ export class domUtils {
 	 * @memberof domUtils
 	 */
 	updateURLParameter(url: string, param: string, paramVal: string) {
-		var TheAnchor = null;
+		var TheAnchor: string | null = null;
 		var newAdditionalURL = "";
 		var tempArray = url.split("?");
 		var baseURL = tempArray[0];

@@ -41,7 +41,10 @@ module.exports = {
 			// filter(file) { if (file.isInitial) return true }
 		}),
 	],
-
+	performance: {
+		maxEntrypointSize: 512000,
+		maxAssetSize: 512000
+	},
 	optimization: {	
 		moduleIds: 'deterministic',
 		runtimeChunk: 'single',

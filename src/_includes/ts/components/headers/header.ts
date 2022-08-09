@@ -13,14 +13,13 @@ export const mount = (container: HTMLElement) => {
 
 	document.addEventListener("keydown", function (event) {
 		const key = event.key; // Or const {key} = event; in ES6+
-		console.log(`Key down: ${key}`)
 		if (key === "Escape") {
 			switchMenu(null, false);
 		}
-	});
+	}, { passive: true });
 
 	window.onscroll = utils.domUtils.debounce(function () { scrollIndicator() })
-	window.addEventListener("resize", utils.domUtils.debounce(scrollIndicator));
+	window.addEventListener("resize", utils.domUtils.debounce(scrollIndicator), { passive: true });
 }
 
 function switchMenu(e: Event | null, force?:boolean) {

@@ -47,7 +47,9 @@ permalink: false
 	<footer>
 		{# TODO cache these resources #}
 		<link rel="preconnect" href="https://fonts.gstatic.com" defer> 
-		<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Montserrat:wght@100;300;400;700;900&display=swap" rel="stylesheet" defer>
+		<link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Montserrat:wght@100;300;400;700;900&display=swap"
+			as="style"
+			onload="this.onload=null; this.rel='stylesheet'; document.body.classList.add('fontLoaded')">
 		<script src="https://kit.fontawesome.com/5d68704bfb.js" crossorigin="anonymous" defer></script>
 		{% bundlePointer "mainJS" %}
 	</footer>

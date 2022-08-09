@@ -1,5 +1,5 @@
 export const mount = (container: Element) => {
-	container.addEventListener('click', smoothScroll);
+	container.addEventListener('click', smoothScroll, { passive: true });
 }
 
 function smoothScroll(this:HTMLElement, err: any) {
