@@ -19,9 +19,10 @@
 {% endset %}
 
 <div class="relative flex align-center justify-center w-full main-padding">
-	<form id="formContainer" class="w-full max-w-prose-full" name="{{ formName | slug }}" method="POST" action="{{ pageData.slug | slug }}/?{{ formName | slug }}=success" data-netlify="true" data-netlify-honeypot="bot-field">
-		{# Needed for Netlify forms bot testing #}
-		<input type="hidden" name="form-name" value="{{ formName | slug }}" />
+	<form id="formContainer" class="w-full max-w-prose-full" name="{{ formName | slug }}" method="POST" action="https://contact.haydensoule.com/">
+		<input type="hidden" name="receiveMail" value="{{ site.about.email }}" />
+		<input type="hidden" name="successMessage" value="{{ successMessage }}" />
+
 		<div hidden aria-hidden="true">
 			<label>
 				Don’t fill this out if you're human: 
@@ -45,20 +46,19 @@
 		</div>
 
 		<div class="w-full mb-12">
-			{# <button type="submit" class="block px-6 tracking-wider font-semibold leading-loose border-2 border-primary-border bg-secondary-bg text-primary-text rounded-md
-				hover:border-primary-accent hover:outline-none hover:shadow-lg hover:shadow-primary-accent hover:border-3">Send</button> #}
-				<div class="relative md:inline-block group py-4 pr-16">
-					<button class="relative block px-4 py-2 w-full bg-secondary-bg text-primary-text rounded-md shadow-md focus:outline-none font-semibold
-						after:absolute after:inset-0 after:overflow-hidden after:bg-darker-bg after:opacity-0 hover:after:opacity-30 after:inner-shadow after:rounded-md">
-							<span class="relative z-10">Send</span>
-					</button>
+			<div class="relative md:inline-block group py-4 pr-16">
+				<button class="g-recaptcha relative block px-4 py-2 w-full bg-secondary-bg text-primary-text rounded-md shadow-md focus:outline-none font-semibold
+					after:absolute after:inset-0 after:overflow-hidden after:bg-darker-bg after:opacity-0 hover:after:opacity-30 after:inner-shadow after:rounded-md"
+					data-sitekey="6LfhR1ohAAAAABJFXPocs9NyudnQgvZNDH1DtQ3c" 
+        			data-callback='onSubmit' 
+       				data-action='submit'>
+						<span class="relative z-10">Send</span>
+				</button>
 			</div>	
 		</div>
 
 		<div class="w-full mb-12">
-			{# <span id="success" class="hidden text-green-500 font-bold">{{ successMessage }}</span> #}
-		
+			<span id="response" class="hidden text-green-500 font-bold"></span>
 		</div>
-
 	</form>
 </div>

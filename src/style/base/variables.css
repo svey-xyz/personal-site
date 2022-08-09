@@ -17,6 +17,9 @@
 	--primary-accent: #837DA1;
 	--secondary-accent: #AD7F9F;
 	--medium-accent: #3D325D;
+
+	--success-accent: #22c55e;
+	--failure-accent: #c43f21;
 }
 
 .light {

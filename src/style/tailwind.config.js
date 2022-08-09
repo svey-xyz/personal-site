@@ -50,6 +50,9 @@ module.exports = {
 				'primary-accent': 'var(--primary-accent)',
 				'secondary-accent': 'var(--secondary-accent)',
 				'medium-accent': 'var(--medium-accent)',
+				'failure-accent': 'var(--failure-accent)',
+				'success-accent': 'var(--success-accent)',
+
 				// 'mixed-accent': 'mix(var(--primary-accent),  var(--secondary-accent))',
 
 
