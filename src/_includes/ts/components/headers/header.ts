@@ -1,14 +1,11 @@
 let header:HTMLElement;
 let menuSwitch:HTMLInputElement;
-let menuBackground:HTMLElement;
 
 export const mount = (container: HTMLElement) => {
 	header = container;
 	menuSwitch = header.querySelector('#menuSwitch')!;
-	menuBackground = header.querySelector('#menu-container #menu-background')!;
 
 	menuSwitch.addEventListener("click", switchMenu);
-	menuBackground.addEventListener("click", switchMenu);
 	switchMenu(null);
 
 	document.addEventListener("keydown", function (event) {
@@ -27,9 +24,6 @@ function switchMenu(e: Event | null, force?:boolean) {
 
 	if (typeof menuState === 'undefined') {
 		switch (e?.target) {
-			case menuBackground:
-				menuState = false;
-				break;
 			default:
 				menuState = menuSwitch.checked;
 				break;

@@ -64,7 +64,6 @@ export class InteractiveSection extends advancedBase {
 	click(e: Event): void {
 		super.click(e);
 		if (e.target == this.resetButton) {
-			console.log('click')
 			this.init();
 			return;
 		}
