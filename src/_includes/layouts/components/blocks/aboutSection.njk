@@ -9,8 +9,8 @@
 		<div class="relative block w-full">
 
 			{% if site.about.avatar %}
-				{% image site.about.avatar | sanityImageURL, "lazy relative inline-block w-full min-w-full max-w-none h-auto
-				after:absolute after:inset-0 after:-mt-24 after:bg-gradient-to-t after:from-primary-bg after:via-primary-bg/80", "", "100%", [400] %}
+				{% image site.about.avatar, "lazy relative inline-block w-full min-w-full max-w-none h-auto
+				after:absolute after:inset-0 after:-mt-24 after:bg-gradient-to-t after:from-primary-bg after:via-primary-bg/80" %}
 			{% endif %}
 
 			<div class="absolute inset-5 flex flex-row items-end">

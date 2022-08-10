@@ -24,8 +24,8 @@ class="group relative overflow-hidden z-10 flex w-full h-96 flex-grow max-w-pros
 	transform duration-150 md:hover:scale-102 md:hover:shadow-xl" data-tags='[{{ cardTags }}]'>
 
 	<div class="block relative overflow-hidden w-full h-full">
-		{% image project.thumbnail | sanityImageURL, "lazy relative m-0 w-full h-full min-w-full min-h-full object-center object-cover
-		transform duration-150 scale-105 group-hover:scale-110 md:scale-100 md:group-hover:scale-105", project.title, "100%", [400] %}
+		{% image project.thumbnail, "lazy relative m-0 w-full h-full min-w-full min-h-full object-center object-cover
+		transform duration-150 scale-105 group-hover:scale-110 md:scale-100 md:group-hover:scale-105", project.title %}
 
 		<div class="flex inset-0 absolute">
 			{# <div class="absolute inset-0 bg-secondary-bg opacity-60 md:opacity-80 group-hover:opacity-80" aria-hidden="true"></div> #}

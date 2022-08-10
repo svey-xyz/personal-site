@@ -70,7 +70,6 @@
 		"not op_mini all"
 	],
 	"dependencies": {
-		"@11ty/eleventy-img": "^2.0.1",
 		"@portabletext/to-html": "^1.0.3",
 		"dotenv": "^16.0.0",
 		"htm": "^3.1.1",
