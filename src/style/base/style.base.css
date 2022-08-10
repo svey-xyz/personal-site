@@ -33,7 +33,7 @@
 
 	.main-padding {
 		@apply max-w-screen-xl mx-auto px-6 sm:px-12 md:px-24;
-		transition: padding 0.5s ease-out;
+		// transition: padding 0.5s ease-out;
 	}
 
 	.block-padding {
