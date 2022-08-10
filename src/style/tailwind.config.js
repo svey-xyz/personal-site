@@ -1,4 +1,5 @@
 const colors = require('tailwindcss/colors')
+const plugin = require('tailwindcss/plugin')
 
 module.exports = {
 	content: [
@@ -87,5 +88,11 @@ module.exports = {
 			}
 		}
 	},
-	plugins: [],
+	plugins: [
+		plugin(function ({ addVariant }) {
+			addVariant('optional', '&:optional')
+			addVariant('group-optional', ':merge(.group):optional &')
+			addVariant('peer-optional', ':merge(.peer):optional ~ &')
+		})
+	],
 };

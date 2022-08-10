@@ -11,16 +11,15 @@
 #header {
 	&.menu-open {
 		& > #menu-container {
-			@apply pointer-events-auto;
-
-			& > #menu-background {
-				@apply opacity-70;
-			}
+			@apply pointer-events-auto !visible;
 
 			& > #menu {
 				@apply opacity-100;
 			}
 		} 
+		& > #menu-container:after {
+			@apply opacity-70;
+		}
 	}
 }
 

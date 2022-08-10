@@ -2,11 +2,10 @@
 	Menu block separated from header for legibility
 #}
 
-<div id="menu-container" class="fixed z-40 min-w-full min-h-full pointer-events-none">
-	{# MENU COLOURED BACKGROUND #}
-	<div id="menu-background" class="fixed min-w-full min-h-full bg-primary-accent transition-opacity duration-300 opacity-0"></div>
+<div id="menu-container" class="fixed z-40 min-w-full min-h-full pointer-events-none invisible
+	after:absolute after:inset-0 after:bg-primary-accent after:transition-opacity after:duration-300 after:opacity-0 after:-z-1">
 
-	<div id="menu" class="max-w-screen-xl mx-auto px-0 md:px-24 flex md:block-padding h-screen md:h-auto opacity-0">
+	<div id="menu" class="max-w-screen-xl mx-auto px-0 md:px-24 flex md:block-padding h-screen md:h-auto transition-opacity duration-200 opacity-0 z-10">
 		<div class="transition-all duration-500 flex flex-col md:justify-center z-10 w-full overflow-hidden bg-primary-bg md:flex-row md:rounded-xl md:shadow-lg">
 			{# IDENTITY CONTAINER #}
 			<div id="identity-container" class="transition-spacing duration-500 filter flex border-b-2 bg-secondary-bg px-6 py-6 sm:px-12 md:px-6 lg:px-12 md:border-b-0 md:border-r-2 border-secondary-accent">
