@@ -1,7 +1,7 @@
-const colors = require('tailwindcss/colors')
-const plugin = require('tailwindcss/plugin')
+const textShadow = require('tailwindcss-textshadow')
 
 module.exports = {
+	darkMode: 'class',
 	content: [
 		"./src/_includes/layouts/**/*.njk",
 		"./src/*.njk",
@@ -62,7 +62,13 @@ module.exports = {
 				DEFAULT: '0 0px 6px -1px rgba(0,0,0,0.1), 0 0px 5px -1px rgba(0,0,0,.06)',
 				lg: '0 0px 12px -3px rgba(0,0,0,0.6), 0 0px 6px -1px rgba(0,0,0,.06)',
 				xl: '0 0px 15px -5px rgba(0,0,0,0.8), 0 0px 8px -1px rgba(0,0,0,.06)',
+				'md-soft': '0 6px 8px -2px rgb(0 0 0 / 0.1), 0 4px 6px -3px rgb(0 0 0 / 0.1)',
+				'inner-dark': 'inset 0 2px 4px 0 rgb(0 0 0 / 0.25)',
+				'md-dark': ' 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.5)'
 
+			},
+			textShadow: {
+				'md-dark': '0px 1px 2px rgb(30 29 39 / 0.5), 1px 2px 4px rgb(54 64 147 / 0.5)'
 			},
 			fontFamily: {
 				heading: ['DM Serif Display', 'serif'],
@@ -89,10 +95,6 @@ module.exports = {
 		}
 	},
 	plugins: [
-		plugin(function ({ addVariant }) {
-			addVariant('optional', '&:optional')
-			addVariant('group-optional', ':merge(.group):optional &')
-			addVariant('peer-optional', ':merge(.peer):optional ~ &')
-		})
+		textShadow
 	],
 };
