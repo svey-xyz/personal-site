@@ -3,25 +3,21 @@
 #}
 {# Required since nunjucks 'for' creates a new scope if variable doesnt already exist #}
 
-<div class="main-padding w-full block-padding flex flex-col md:flex-row justify-center content-center">
+<div class="main-padding w-full block-padding flex flex-col lg:flex-row justify-center content-center max-h-">
 
-	<div class="relative rounded-lg shadow-lg w-full md:w-80 h-full overflow-hidden">
-		<div class="relative block w-full">
+	<div class="relative">
 
 			{% if site.about.avatar %}
-				{% image site.about.avatar, "lazy relative inline-block w-full min-w-full max-w-none h-auto
-				after:absolute after:inset-0 after:-mt-24 after:bg-gradient-to-t after:from-primary-bg after:via-primary-bg/80" %}
+				{% image site.about.avatar, "lazy w-auto max-w-full h-auto h-[66vh] max-h-[500px] rounded-lg shadow-lg max-w-prose
+				after:absolute after:inset-0 after:-mt-24 after:bg-gradient-to-t after:from-primary-bg after:via-primary-bg/80", "Avatar", "100%", [100,400] %}
 			{% endif %}
 
 			<div class="absolute inset-5 flex flex-row items-end">
-				<div class="fixed">
 					{% include "../../utilities/emailInsert.njk" %}
-				</div>
 			</div>
-		</div>
 	</div>
 
-	<div class="block-padding md:m-0 md:pl-12 transition-all duration-150 max-w-prose-short xl:max-w-prose flex-grow-0">
+	<div class="block-padding lg:m-0 lg:pl-12 transition-all duration-150 max-w-prose-short xl:max-w-prose flex-grow-0">
 		{% portableTextToHTML site.about.description %}
 
 		{% if site.about.curriculumVitaeURL %}
