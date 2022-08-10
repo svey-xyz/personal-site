@@ -36,13 +36,19 @@
 						</div>	
 					{% endfor %}
 				</div>
+				<div class="md:hidden">
+					{% include "../../utilities/emailInsert.njk" %}
+				</div>
 			</div>
 
-			<div class="main-padding w-full z-10 md:fixed md:bottom-0">
+			<div class="main-padding w-full z-10 fixed bottom-0">
 				{% set iconColour %}
 				{% endset %}
 				{% include ("layouts/components/footers/menu-footer.njk") %}
 			</div>
 		</div>
+	</div>
+	<div class="main-padding">
+		{% include "../../utilities/emailInsert.njk" %}
 	</div>
 </div>

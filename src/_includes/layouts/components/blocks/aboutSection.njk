@@ -3,21 +3,18 @@
 #}
 {# Required since nunjucks 'for' creates a new scope if variable doesnt already exist #}
 
-<div class="main-padding w-full block-padding flex flex-col lg:flex-row justify-center content-center max-h-">
+<div class="main-padding w-full block-padding flex flex-col lg:flex-row justify-center content-center">
 
 	<div class="relative">
 
 			{% if site.about.avatar %}
-				{% image site.about.avatar, "lazy w-auto max-w-full h-auto h-[66vh] max-h-[500px] rounded-lg shadow-lg max-w-prose
+				{% image site.about.avatar, "lazy w-full sm:w-auto max-w-full h-auto sm:h-[66vh] sm:max-h-[500px] rounded-xl shadow-md max-w-prose
 				after:absolute after:inset-0 after:-mt-24 after:bg-gradient-to-t after:from-primary-bg after:via-primary-bg/80", "Avatar", "100%", [100,400] %}
 			{% endif %}
 
-			<div class="absolute inset-5 flex flex-row items-end">
-					{% include "../../utilities/emailInsert.njk" %}
-			</div>
 	</div>
 
-	<div class="block-padding lg:m-0 lg:pl-12 transition-all duration-150 max-w-prose-short xl:max-w-prose flex-grow-0">
+	<div class="mt-12 lg:m-0 lg:pl-12 transition-all duration-150 max-w-prose-short xl:max-w-prose flex-grow-0">
 		{% portableTextToHTML site.about.description %}
 
 		{% if site.about.curriculumVitaeURL %}

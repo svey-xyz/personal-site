@@ -64,6 +64,7 @@ module.exports = {
 				xl: '0 0px 15px -5px rgba(0,0,0,0.8), 0 0px 8px -1px rgba(0,0,0,.06)',
 				'md-soft': '0 6px 8px -2px rgb(0 0 0 / 0.1), 0 4px 6px -3px rgb(0 0 0 / 0.1)',
 				'inner-dark': 'inset 0 2px 4px 0 rgb(0 0 0 / 0.25)',
+				'inner-xdark': 'inset 0 4px 8px 0 rgb(0 0 0 / 0.95)',
 				'md-dark': ' 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.5)'
 
 			},
