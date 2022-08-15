@@ -15,6 +15,19 @@ module.exports = async () => {
           	}
 		}`
 
+	const homePageQuery = groq`{
+			blocks[]{
+				_type,
+				...,
+				_type == "projectsArchive" => {
+					"tags":tags[]->{...},
+				},
+				_type == "itemCard" => {
+                	"linkID":link->_id
+              	}
+          	}
+		}`
+
 	const filter = groq`*[_type == "page"]`
 	const projection = groq`{
 			_id,
@@ -27,13 +40,11 @@ module.exports = async () => {
 			),
 			descriptiveTitle,
 			description,
-			...pageContent {
-				"template":condition,
-				"content":select(
-					condition == "defaultPage" => defaultPage${defaultPageQuery},
-					condition == "homePage" => homePage
-				)
-			}
+			"template":pageType,
+			"content":select(
+				pageType == "defaultPage" => defaultPage${defaultPageQuery},
+				pageType == "homePage" => homePage${homePageQuery}
+			)
 		}`
 
 	// const order = `| order(publishedAt asc)`

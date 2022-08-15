@@ -34,11 +34,7 @@ module.exports = {
 				'1/4': '20%',
 				'1/3': '33%'
 			},
-			flexGrow: {
-				'2': 1,
-			},
-			scale: {
-				'102': '1.02'
+			backgroundImage: {
 			},
 			colors: {
 				'primary-bg': 'var(--primary-bg)',

@@ -2,6 +2,45 @@
 permalink: false
 ---
 
+<style>
+	:root {
+		--sm-screen: 480px;
+		--md-screen: 768px;
+		--lg-screen: 976px;
+		--xl-screen: 1440px;
+
+		--block-padding: 1.5rem;
+
+		--primary-bg: #FFFFFF;
+		--secondary-bg: #F2F2F2;
+		--darker-bg: #BBBBBB;
+		--opposite-bg: #000000;
+
+		--primary-text: #000000;
+		--primary-border: #000000;
+
+		--primary-accent: #837DA1;
+		--secondary-accent: #AD7F9F;
+		--medium-accent: #3D325D;
+
+		--success-accent: #22c55e;
+		--failure-accent: #c43f21;
+	}
+
+	.dark {
+		--primary-bg: #222222;
+		--secondary-bg: #1C1C1C;
+		--darker-bg: #000000;
+		--opposite-bg: #FFFFFF;
+
+		--primary-text: #EEEEEE;
+		--primary-border: #EEEEEE;
+		
+		--medium-accent: #F4ECF8;
+
+	}
+</style>
+
 {% set pageDescriptor %}
 	{% if pageData.description %}
 		{{ pageData.description }}

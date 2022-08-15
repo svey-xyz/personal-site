@@ -20,12 +20,3 @@ module.exports = async () => {
 	
 	return data;
 }
-
-// function generateContent(post) {
-// 	return {
-// 		...post,
-// 		thumbnail: imageURL(post.thumbnail),
-// 		description: BlocksToMarkdown(post.description, { serializers, ...client.config() }),
-// 		content: BlocksToMarkdown(post.content, { serializers, ...client.config() })
-// 	}
-// }
