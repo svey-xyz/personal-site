@@ -1,5 +1,12 @@
 # `soulelyhayden`
-## `A personal website`
+
+## `Table of Contents 📑`
+- [Intro 🎬](#a-personal-website)
+- [Tools 🧰](#what-tools-have-i-used-🧰)
+- [Platforms 🌐](#what-platforms-did-i-choose-🌐)
+- [Design 🖌️](#design-philosophy-🖌️)
+- [Notes 📔](#notes-📔)
+## `A personal website 🙌`
 This project is where I develop [my personal site](https://haydensoule.com), as well as a location for me to test new and exciting web technologies.
 
 This project has related repos- [CMS](https://github.com/soulelyhayden/personal-sanity-studio), and [serverless functions](https://github.com/soulelyhayden/personal-cloudflare-contact-worker). 
@@ -43,7 +50,7 @@ I've been using Cloudflare to manage my DNS for ages, so when I saw their compet
 #### Production Design
 *This section to come later...*
 
-## Notes
+## Notes 📔
 Personal notes for development...
 
 Required env variables, go in ```'config/config.env'```-
