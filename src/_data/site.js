@@ -3,7 +3,7 @@ const groq = require('groq')
 
 module.exports = async () => {
 	const accentColourNames = ['primaryAccent','secondaryAccent','mediumAccent','successAccent','failureAccent']
-	const calculatedColourNames = ['secondaryBackground', 'darkerBackground', 'oppositeBackground', 'primaryBorder']
+	const calculatedColourNames = ['secondaryBackground', 'oppositeBackground', 'primaryBorder']
 
 	function queryCombiner(strings) {
 		let fetchString = '';

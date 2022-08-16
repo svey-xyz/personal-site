@@ -9,10 +9,10 @@
 	{% endif %}
 {% endset %}
 
-<div class="section-container {{ section.interactiveScript }} {{ topBlockMargin }} w-full" style="--section-height:{{sectionHeight}}"
+<div class="section-container relative {{ section.interactiveScript }} {{ topBlockMargin }} w-full" style="--section-height:{{sectionHeight}}"
 		data-colour="var(--primaryBackground)"  data-script="{{ section.interactiveScript }}">
 		
-	<div class="script-container {{ section.interactiveScript }} max-w-full overflow-hidden">
+	<div class="script-container {{ section.interactiveScript }} max-w-full overflow-hidden inset-0 absolute">
 		{# Initialized with Javascript #}
 	</div>
 

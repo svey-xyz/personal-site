@@ -1,7 +1,7 @@
 # `soulelyhayden`
 
 ## `Table of Contents 📑`
-- [Intro 🎬](#a-personal-website)
+- [Intro 🎬](#a-personal-website-)
 - [Tools 🧰](#what-tools-have-i-used-)
 - [Platforms 🌐](#what-platforms-did-i-choose-)
 - [Design 🖌️](#design-philosophy-️)
