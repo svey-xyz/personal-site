@@ -4,7 +4,7 @@
 - [Intro 🎬](#a-personal-website)
 - [Tools 🧰](#what-tools-have-i-used-)
 - [Platforms 🌐](#what-platforms-did-i-choose-)
-- [Design 🖌️](#design-philosophy-)
+- [Design 🖌️](#design-philosophy-️)
 - [Notes 📔](#notes-)
 ## `A personal website 🙌`
 This project is where I develop [my personal site](https://haydensoule.com), as well as a location for me to test new and exciting web technologies.
