@@ -44,11 +44,11 @@
 	}
 
 	.angle-background {
-		background-image: linear-gradient(to bottom right, var(--primary-bg) 50%, var(--secondary-bg-translucent) 50%);
+		background-image: linear-gradient(to bottom right, var(--primaryBackground) 50%, var(--secondaryBackground-translucent) 50%);
 	}
 
 	.accent-background {
-		background: linear-gradient(to right, var(--primary-accent), var(--secondary-accent));
+		background: linear-gradient(to right, var(--primaryAccent), var(--secondaryAccent));
 	}
 
 	.accent-highlight {
@@ -66,7 +66,7 @@
 		/* @apply block p-2 w-full border-2 border-primary-border bg-secondary-bg text-primary-text rounded-md focus:border-primary-accent focus:outline-none focus:shadow-lg focus:shadow-primary-accent; */
 
 html {
-  background-color: var(--secondary-bg);
+  background-color: var(--secondaryBackground);
   &.dark {
 	  & .svg-theme-colour {
 		  @apply filter invert;
@@ -75,7 +75,7 @@ html {
 }
 
 body {
-  background-color: var(--primary-bg)
+  background-color: var(--primaryBackground)
 }
 
 html, body {

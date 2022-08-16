@@ -37,20 +37,20 @@ module.exports = {
 			backgroundImage: {
 			},
 			colors: {
-				'primary-bg': 'var(--primary-bg)',
-				'darker-bg': 'var(--darker-bg)',
+				'primary-bg': 'var(--primaryBackground)',
+				'darker-bg': 'var(--darkerBackground)',
 				'header-bg': 'var(--header-bg)',
-				'opposite-bg': 'var(--opposite-bg)',
-				'primary-border': 'var(--primary-border)',
-				'primary-text': 'var(--primary-text)',
-				'secondary-bg': 'var(--secondary-bg)',
-				'primary-accent': 'var(--primary-accent)',
-				'secondary-accent': 'var(--secondary-accent)',
-				'medium-accent': 'var(--medium-accent)',
-				'failure-accent': 'var(--failure-accent)',
-				'success-accent': 'var(--success-accent)',
+				'opposite-bg': 'var(--oppositeBackground)',
+				'primary-border': 'var(--primaryBorder)',
+				'primary-text': 'var(--primaryText)',
+				'secondary-bg': 'var(--secondaryBackground)',
+				'primary-accent': 'var(--primaryAccent)',
+				'secondary-accent': 'var(--secondaryAccent)',
+				'medium-accent': 'var(--mediumAccent)',
+				'failure-accent': 'var(--failureAccent)',
+				'success-accent': 'var(--successAccent)',
 
-				// 'mixed-accent': 'mix(var(--primary-accent),  var(--secondary-accent))',
+				// 'mixed-accent': 'mix(var(--primaryAccent),  var(--secondaryAccent))',
 
 
 			},

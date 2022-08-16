@@ -25,7 +25,7 @@ button {
 				z-index: -1;
 				margin: -4px;
 				border-radius: inherit;
-				background: linear-gradient(to right, var(--primary-accent), var(--secondary-accent));
+				background: linear-gradient(to right, var(--primaryAccent), var(--secondaryAccent));
 				opacity: 1;
 
 			}
