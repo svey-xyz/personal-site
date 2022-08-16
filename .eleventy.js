@@ -7,6 +7,7 @@ const betterSlugs = require("./lib/filters/betterSlugs")
 const videoEmbed = require("./lib/shortcodes/videoEmbed")
 const videoID = require("./lib/shortcodes/videoID")
 const matchingPorjects = require("./lib/shortcodes/matchingProjects")
+const themeCalculations = require("./lib/utils/themeCalculations")
 
 const responsiveImage = require("./lib/shortcodes/images/responsiveImage")
 
@@ -39,7 +40,9 @@ module.exports = (eleventyConfig) => {
 
 	eleventyConfig.addFilter("emailSplitter", emailSplitter);
 
+	eleventyConfig.addShortcode("themeCalculations", themeCalculations);
 	eleventyConfig.addShortcode("getMatchingProjects", matchingPorjects);
+
 
 	eleventyConfig.addNunjucksAsyncShortcode("image", responsiveImage);
 
