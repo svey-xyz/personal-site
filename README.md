@@ -1,4 +1,4 @@
-# `soulelyhayden`
+# `svey-xyz`
 
 ## `Table of Contents 📑`
 - [Intro 🎬](#a-personal-website-)
@@ -7,9 +7,9 @@
 - [Design 🖌️](#design-philosophy-️)
 - [Notes 📔](#notes-)
 ## `A personal website 🙌`
-This project is where I develop [my personal site](https://haydensoule.com), as well as a location for me to test new and exciting web technologies.
+This project is where I develop [my personal site](https://svey.xyz), as well as a location for me to test new and exciting web technologies.
 
-This project has related repos- [CMS](https://github.com/soulelyhayden/personal-sanity-studio), and [serverless functions](https://github.com/soulelyhayden/personal-cloudflare-contact-worker). 
+This project has related repos- [CMS](https://github.com/svey-xyz/personal-sanity-studio), and [serverless functions](https://github.com/svey-xyz/personal-cloudflare-contact-worker). 
 
 ## What tools have I used? 🧰
 
@@ -36,10 +36,10 @@ Choosing platforms wasn't as easy as it has been in the past. With a static proj
 #### [Sanity](https://www.sanity.io/)
 Trusted by some of the largest corporations in the world, and with an incredibly flexible developer experience Sanity is hands down one of **THE BEST** CMSs I have had the pleasure to use.
 
-If you're interested in the development for Sanity take a look at [the repo for this site](https://github.com/soulelyhayden/personal-sanity-studio).
+If you're interested in the development for Sanity take a look at [the repo for this site](https://github.com/svey-xyz/personal-sanity-studio).
 
 #### [Cloudflare](https://www.cloudflare.com/)
-I've been using Cloudflare to manage my DNS for ages, so when I saw their competitive offering for static hosting I knew I'd have to give it a try. With the success I had with their platform I also choose to host [my serverless functions](https://github.com/soulelyhayden/personal-cloudflare-contact-worker) on their **[Workers](https://workers.cloudflare.com/)** platform.
+I've been using Cloudflare to manage my DNS for ages, so when I saw their competitive offering for static hosting I knew I'd have to give it a try. With the success I had with their platform I also choose to host [my serverless functions](https://github.com/svey-xyz/personal-cloudflare-contact-worker) on their **[Workers](https://workers.cloudflare.com/)** platform.
 
 
 ## Design Philosophy 🖌️
