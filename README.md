@@ -1,4 +1,4 @@
-# `svey-xyz`
+# `svey.xyz`
 
 ## `Table of Contents 📑`
 - [Intro 🎬](#a-personal-website-)
