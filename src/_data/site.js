@@ -33,6 +33,7 @@ module.exports = async () => {
 			"homePageSlug":homePage->slug.current
 		}[0],
 		"theme":*[_id == "theme"] {
+			...,
 			"defaultTheme":defaultTheme{
 				...
 			},
