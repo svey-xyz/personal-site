@@ -37,9 +37,9 @@ export class theme {
 		let theme = userPreference ? userPreference : systemTheme;
 		this.switchTheme(theme);
 
-		this.primaryBg = utils.colourUtils.hexConverter(getComputedStyle(document.documentElement).getPropertyValue('--primary-bg'));
-		this.primaryAccent = utils.colourUtils.hexConverter(getComputedStyle(document.documentElement).getPropertyValue('--primary-accent'));
-		this.secondaryAccent = utils.colourUtils.hexConverter(getComputedStyle(document.documentElement).getPropertyValue('--secondary-accent'));
+		this.primaryBg = utils.colourUtils.hexConverter(getComputedStyle(document.documentElement).getPropertyValue('--primaryBackground'));
+		this.primaryAccent = utils.colourUtils.hexConverter(getComputedStyle(document.documentElement).getPropertyValue('--primaryAccent'));
+		this.secondaryAccent = utils.colourUtils.hexConverter(getComputedStyle(document.documentElement).getPropertyValue('--secondaryAccent'));
 	}
 
 	resize(e: Event): void { };

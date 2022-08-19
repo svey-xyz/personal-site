@@ -36,7 +36,7 @@
 			@apply absolute inset-0 -z-1 bg-primary-bg bg-gradient-to-br from-primary-bg to-secondary-bg;
 			content: '';
 
-			/* background-image: linear-gradient(to bottom right, var(--primary-bg) 50%, var(--secondary-bg-translucent) 50%); */
+			/* background-image: linear-gradient(to bottom right, var(--primaryBackground) 50%, var(--secondaryBackground-translucent) 50%); */
 		}
 	}
 }

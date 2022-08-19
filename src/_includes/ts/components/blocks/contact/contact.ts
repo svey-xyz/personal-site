@@ -38,7 +38,7 @@ async function recaptchaHandler(e: Event) {
 	request.onreadystatechange = function () {
 		if (request.readyState === 4) {
 
-			const responseColour = request.status == 200 ? 'var(--success-accent)' : 'var(--failure-accent)'
+			const responseColour = request.status == 200 ? 'var(--successAccent)' : 'var(--failureAccent)'
 
 			responseMessageContainer.innerHTML = request.response.message;
 			responseMessageContainer.classList.remove('hidden');

@@ -2,6 +2,23 @@
 permalink: false
 ---
 
+<style>
+	:root {
+		--sm-screen: 480px;
+		--md-screen: 768px;
+		--lg-screen: 976px;
+		--xl-screen: 1440px;
+
+		--block-padding: 1.5rem;
+
+		{% themeCalculations site.theme.defaultTheme %}
+	}
+
+	.dark {
+		{% themeCalculations site.theme.darkTheme %}
+	}
+</style>
+
 {% set pageDescriptor %}
 	{% if pageData.description %}
 		{{ pageData.description }}

@@ -34,27 +34,23 @@ module.exports = {
 				'1/4': '20%',
 				'1/3': '33%'
 			},
-			flexGrow: {
-				'2': 1,
-			},
-			scale: {
-				'102': '1.02'
+			backgroundImage: {
 			},
 			colors: {
-				'primary-bg': 'var(--primary-bg)',
-				'darker-bg': 'var(--darker-bg)',
+				'primary-bg': 'var(--primaryBackground)',
+				'darker-bg': 'var(--darkerBackground)',
 				'header-bg': 'var(--header-bg)',
-				'opposite-bg': 'var(--opposite-bg)',
-				'primary-border': 'var(--primary-border)',
-				'primary-text': 'var(--primary-text)',
-				'secondary-bg': 'var(--secondary-bg)',
-				'primary-accent': 'var(--primary-accent)',
-				'secondary-accent': 'var(--secondary-accent)',
-				'medium-accent': 'var(--medium-accent)',
-				'failure-accent': 'var(--failure-accent)',
-				'success-accent': 'var(--success-accent)',
+				'opposite-bg': 'var(--oppositeBackground)',
+				'primary-border': 'var(--primaryBorder)',
+				'primary-text': 'var(--primaryText)',
+				'secondary-bg': 'var(--secondaryBackground)',
+				'primary-accent': 'var(--primaryAccent)',
+				'secondary-accent': 'var(--secondaryAccent)',
+				'medium-accent': 'var(--mediumAccent)',
+				'failure-accent': 'var(--failureAccent)',
+				'success-accent': 'var(--successAccent)',
 
-				// 'mixed-accent': 'mix(var(--primary-accent),  var(--secondary-accent))',
+				// 'mixed-accent': 'mix(var(--primaryAccent),  var(--secondaryAccent))',
 
 
 			},
@@ -64,6 +60,7 @@ module.exports = {
 				xl: '0 0px 15px -5px rgba(0,0,0,0.8), 0 0px 8px -1px rgba(0,0,0,.06)',
 				'md-soft': '0 6px 8px -2px rgb(0 0 0 / 0.1), 0 4px 6px -3px rgb(0 0 0 / 0.1)',
 				'inner-dark': 'inset 0 2px 4px 0 rgb(0 0 0 / 0.25)',
+				'inner-xdark': 'inset 0 4px 8px 0 rgb(0 0 0 / 0.95)',
 				'md-dark': ' 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.5)'
 
 			},
