@@ -20,7 +20,7 @@
 
 <div class="relative flex align-center justify-center w-full main-padding">
 	<form id="formContainer" class="w-full max-w-prose-full mb-8" name="{{ formName | slug }}" method="POST" action="https://contact.haydensoule.com/">
-		<input type="hidden" name="receiveMail" value="{{ site.about.email }}" />
+		<input type="hidden" name="receiver" value="{{ site.about.email }}" />
 		<input type="hidden" name="successMessage" value="{{ successMessage }}" />
 
 		<div hidden aria-hidden="true">
