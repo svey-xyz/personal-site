@@ -4,13 +4,13 @@ let responseMessageContainer: HTMLElement
 import formValidator from '../../../../../../plugins/contact-form-validator'
 
 export const mount = (container: HTMLElement) => {
-	let validator = new formValidator(container as HTMLFormElement, '2px solid red', '6LfhR1ohAAAAABJFXPocs9NyudnQgvZNDH1DtQ3c')
+	let validator = new formValidator(container as HTMLFormElement, '6LfhR1ohAAAAABJFXPocs9NyudnQgvZNDH1DtQ3c')
 	validator.addSubmissionButton(container.querySelector('.g-recaptcha')!);
 
 
-	for (const field of container.querySelectorAll('input')) {
-		validator.addField(field, { customValidation: testValidator })
-	}
+	// for (const field of container.querySelectorAll('input')) {
+	// 	validator.addField(field, { customValidation: testValidator })
+	// }
 
 	// formContainer = <HTMLFormElement>container;
 	// responseMessageContainer = container.querySelector('#response')!;

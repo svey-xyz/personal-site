@@ -26,23 +26,24 @@
 		<div hidden aria-hidden="true">
 			<label>
 				Don’t fill this out if you're human: 
-				<input name="bot-field" />
+				<input name="bot-field"/>
 			</label>
 		</div>
 		
 		<div class="w-full mb-12">
 			<label for="name" class="block mb-4 tracking-wider font-semibold leading-normal">Name <span class="align-super text-failure-accent">*</span></label>
-			<input type="text" id="name" name="name" class="text-input" required/>
+			<input type="text" id="name" name="name" placeholder="Your Name"
+				class="validator-field-validation text-input invalid:outline-2 invalid:outline-failure-accent" required/>
 		</div>
 
 		<div class="w-full mb-12">
 			<label for="email" class="block mb-4 tracking-wider font-semibold leading-normal">Email <span class="align-super text-failure-accent">*</span></label>
-			<input type="email" id="email" name="email" class="text-input" required/>
+			<input type="email" id="email" name="email" class="validator-field-validation text-input invalid:outline-2 invalid:outline-failure-accent" customErrorResponse="Put a real email ya goofus." required/>
 		</div>
 
 		<div class="w-full mb-12">
 			<label for="message" class="block mb-4 tracking-wider font-semibold leading-normal">Message <span class="align-super text-failure-accent">*</span></label>
-			<textarea id="message" name="message" rows="6" maxlength="3000" class="text-input" required></textarea>
+			<textarea id="message" name="message" rows="6" maxlength="3000" class="validator-field-validation text-input invalid:outline-2 invalid:outline-failure-accent" required></textarea>
 		</div>
 
 		<div class="block md:inline mb-12">
