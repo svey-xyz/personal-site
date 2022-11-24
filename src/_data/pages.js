@@ -3,6 +3,7 @@ const groq = require('groq')
 
 module.exports = async () => {
 	const defaultPageQuery = groq`{
+			...,
 			blocks[]{
 				_type,
 				...,

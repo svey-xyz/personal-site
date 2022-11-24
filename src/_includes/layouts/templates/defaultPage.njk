@@ -7,5 +7,9 @@
 {{ blocks(blocks=pageData.content.blocks) }} #}
 
 {% set blocks = pageData.content.blocks %}
+{% if pageData.content.titleSection %}
+{{ pageData.content.titleSection | debugger }}
 
+	{% include ("layouts/components/titles/" + pageData.content.titleSection + ".njk") %}
+{% endif %}
 {% include ("layouts/utilities/_blocks.njk") %}

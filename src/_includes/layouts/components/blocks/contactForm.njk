@@ -26,39 +26,37 @@
 		<div hidden aria-hidden="true">
 			<label>
 				Don’t fill this out if you're human: 
-				<input name="bot-field"/>
+				<input name="bot-field" class="vldx-honeypot"/>
 			</label>
 		</div>
 		
 		<div class="w-full mb-12">
-			<label for="name" class="block mb-4 tracking-wider font-semibold leading-normal">Name <span class="align-super text-failure-accent">*</span></label>
-			<input type="text" id="name" name="name" placeholder="Your Name"
-				class="validator-field-validation block p-2 w-full bg-secondary-bg text-primary-text rounded-md shadow-inner focus:outline-none
+			{# <label for="name" class="block mb-4 tracking-wider font-semibold leading-normal">Name <span class="align-super text-failure-accent">*</span></label> #}
+			<input type="text" id="name" name="name" placeholder="Name"
+				class="vldx-field block p-2 w-full bg-secondary-bg text-primary-text rounded-md shadow-inner focus:outline-none
 					invalid:outline invalid:outline-2 invalid:outline-failure-accent"
-				rules="required"
-				/>
+				vldx-rules="required" />
 		</div>
 
 		<div class="w-full mb-12">
-			<label for="email" class="block mb-4 tracking-wider font-semibold leading-normal">Email <span class="align-super text-failure-accent">*</span></label>
-			<input type="email" id="email" name="email"
-				class="validator-field-validation block p-2 w-full bg-secondary-bg text-primary-text rounded-md shadow-inner focus:outline-none
-					invalid:outline invalid:outline-2 invalid:outline-failure-accent"
-				rules="email|required"
-				customErrorResponse="Put a real email ya goofus." />
+			{# <label for="email" class="block mb-4 tracking-wider font-semibold leading-normal">Email <span class="align-super text-failure-accent">*</span></label> #}
+			<input type="email" id="email" name="email" placeholder="Email"
+				class="vldx-field block p-2 w-full bg-secondary-bg text-primary-text rounded-md shadow-inner focus:outline-none
+					invalid:outline invalid:outline-2 invalid:outline-failure-accent" 
+				vldx-rules="email|required" />
 		</div>
 
 		<div class="w-full mb-12">
-			<label for="message" class="block mb-4 tracking-wider font-semibold leading-normal">Message <span class="align-super text-failure-accent">*</span></label>
-			<textarea id="message" name="message" rows="6" maxlength="3000"
-				class="validator-field-validation block p-2 w-full bg-secondary-bg text-primary-text rounded-md shadow-inner focus:outline-none
+			{# <label for="message" class="block mb-4 tracking-wider font-semibold leading-normal">Message <span class="align-super text-failure-accent">*</span></label> #}
+			<textarea id="message" name="message" rows="6" maxlength="3000" placeholder="Message"
+				class="vldx-field block p-2 w-full bg-secondary-bg text-primary-text rounded-md shadow-inner focus:outline-none
 					invalid:outline invalid:outline-2 invalid:outline-failure-accent"
 				></textarea>
 		</div>
 
 		<div class="block md:inline mb-12">
 			<div class="relative py-4 md:inline-block md:pr-16">
-				<button class="g-recaptcha relative block px-4 py-2 w-full bg-secondary-bg text-primary-text rounded-md font-semibold overflow-hidden
+				<button class="vldx-submit g-recaptcha relative block px-4 py-2 w-full bg-secondary-bg text-primary-text rounded-md font-semibold overflow-hidden
 					shadow-inner transition-all duration-200
 					after:bg-gradient-to-r after:from-primary-accent after:to-secondary-accent after:shadow-inner-dark
 					after:absolute after:left-0 after:right-0 after:bottom-0 after:overflow-hidden
@@ -74,7 +72,7 @@
 		</div>
 
 		<div class="block md:inline mb-12">
-			<span id="response" class="hidden text-green-500 font-bold"></span>
+			<span id="response" class="vldx-response hidden text-green-500 font-bold"></span>
 		</div>
 	</form>
 </div>
