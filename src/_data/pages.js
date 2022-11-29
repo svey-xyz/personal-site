@@ -1,5 +1,6 @@
 const sanityFetch = require("../../lib/utils/sanity/sanityFetch");
 const groq = require('groq')
+const slugify = require('slugify')
 
 module.exports = async () => {
 	const defaultPageQuery = groq`{
@@ -37,7 +38,7 @@ module.exports = async () => {
 				*[_id == "navigation"]{
 					"_id":homePage->_id
 				}[0]._id == _id => "/",
-				slug.current
+				select(slug.current != null => slug.current, title)
 			),
 			descriptiveTitle,
 			description,
@@ -58,6 +59,6 @@ module.exports = async () => {
 function preProcessData(data) {
 	return {
 		...data,
-		slug: data.slug == "/" ? "" : `/${data.slug}`
+		slug: data.slug == "/" ? "" : slugify(`/${data.slug}`)
 	}
 }
