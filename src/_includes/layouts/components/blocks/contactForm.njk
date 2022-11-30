@@ -19,8 +19,8 @@
 {% endset %}
 
 <div class="relative flex align-center justify-center w-full main-padding">
-	<form id="formContainer" class="w-full max-w-prose-full mb-8" name="{{ formName | slug }}"
-		method="POST" action="https://contact.svey.xyz/" data-vldx-success-message="{{ successMessage }}">
+	<form id="formContainer" class="vldx-form w-full max-w-prose-full mb-8" name="{{ formName | slug }}"
+		method="POST" action="https://contact.svey.xyz/" data-vldx-success-message="{{ successMessage }}" data-vldx-recaptcha="6LfhR1ohAAAAABJFXPocs9NyudnQgvZNDH1DtQ3c">
 
 		<input hidden aria-hidden="true" type="hidden" name="receiver" value="{{ site.about.email }}" />
 
@@ -36,7 +36,7 @@
 			<input type="text" id="name" name="name" placeholder="Name"
 				class="vldx-field block p-2 w-full bg-secondary-bg text-primary-text rounded-md shadow-inner focus:outline-none
 					invalid:outline invalid:outline-2 invalid:outline-failure-accent"
-				vldx-rules="required" />
+				data-vldx-rules="required" />
 		</div>
 
 		<div class="w-full mb-12">
@@ -44,7 +44,7 @@
 			<input type="email" id="email" name="email" placeholder="Email"
 				class="vldx-field block p-2 w-full bg-secondary-bg text-primary-text rounded-md shadow-inner focus:outline-none
 					invalid:outline invalid:outline-2 invalid:outline-failure-accent" 
-				vldx-rules="email|required" />
+				data-vldx-rules="email|required" />
 		</div>
 
 		<div class="w-full mb-12">
@@ -64,7 +64,6 @@
 					after:transition-all after:duration-200 after:h-0 hover:after:h-full hover:text-primary-bg
 					before:absolute before:inset-0 before:bg-primary-bg before:opacity-0 active:opacity-60
 					focus:outline-none"
-					data-sitekey="6LfhR1ohAAAAABJFXPocs9NyudnQgvZNDH1DtQ3c" 
         			data-callback='onSubmit' 
        				data-action='submit'>
 						<span class="relative z-10">Send</span>

@@ -79,6 +79,7 @@
 		"recaptcha-v3": "^1.10.0",
 		"slugify": "^1.6.5",
 		"tailwindcss-textshadow": "^2.1.3",
-		"vhtml": "^2.2.0"
+		"vhtml": "^2.2.0",
+		"vldx": "^1.0.2"
 	}
 }
