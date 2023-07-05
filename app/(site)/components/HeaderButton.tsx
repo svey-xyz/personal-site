@@ -1,7 +1,7 @@
 'use client'
 
 import { ReactNode, useState } from "react";
-import Modal from "./MenuModal";
+import Modal from "@site/components/MenuModal";
 
 export default function BlogHeader(): ReactNode {
   const [showModal, setShowModal] = useState(false);

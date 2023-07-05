@@ -20,7 +20,12 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+			"@styles/*": ["./styles/*"],
+			"@public/*": ["./public/*"],
+			"@sanityStudio/*": ["./sanityStudio/*"],
+			"@studio/*": ["./app/(studio)/*"],
+			"@site/*": ["./app/(site)/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

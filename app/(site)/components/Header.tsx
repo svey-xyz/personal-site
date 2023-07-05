@@ -1,7 +1,4 @@
-import Link from 'next/link'
-
-import styles from './BlogHeader.module.css'
-import HeaderButton from './HeaderButton'
+import HeaderButton from '@site/components/HeaderButton'
 
 export default function Header({
 	title, description
