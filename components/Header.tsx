@@ -3,7 +3,11 @@ import Link from 'next/link'
 import styles from './BlogHeader.module.css'
 import HeaderButton from './HeaderButton'
 
-export default function Header({ title, description }: { title: string, description?: any[] }) {
+export default function Header({
+	title, description
+}: {
+	title: string, description?: any[]
+}) {
 	return (
 		<nav className="block relative h-[75px]">
 			<div className='fixed left-0 right-0 top-0 w-full max-w-screen bg-white py-[25px] z-50'>
@@ -14,7 +18,7 @@ export default function Header({ title, description }: { title: string, descript
 					{/* <h4 className={`mt-5 text-center text-lg md:pl-8 md:text-left ${styles.portableText}`}>
 						<PortableText value={description} />
 					</h4> */}
-          <HeaderButton />
+          			<HeaderButton />
 
 				</div>
 			</div>

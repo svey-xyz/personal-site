@@ -15,10 +15,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <Header title={'title'} description={['description']} />
-      <div id="modal-root"></div>
-      <body className={inter.className}>{children}</body>
+    <html lang="en"> 
+      <body className={inter.className}>
+				<div id="modal-root"></div>
+				<main>
+					<Header title={'title'} description={['description']} />
+					{children}
+				</main>
+			</body>
     </html>
   )
 }
