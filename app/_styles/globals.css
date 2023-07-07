@@ -6,6 +6,14 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+
+	--custom-white: #FFF;
+	--custom-black: #1A1A1A;
+	--custom-grey: #666;
+	--xyz-accent: #837DA1;
+	--custom-red: #C43F21;
+	--custom-yellow: #C5A922;
+	--custom-green: #22C55E;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -13,6 +21,14 @@
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
+
+		--custom-white: #FFF;
+		--custom-black: #1A1A1A;
+		--custom-grey: #666;
+		--xyz-accent: #837DA1;
+		--custom-red: #C43F21;
+		--custom-yellow: #C5A922;
+		--custom-green: #22C55E;
   }
 }
 

@@ -10,7 +10,9 @@ import {deskTool} from 'sanity/desk'
 import { apiVersion, dataset, projectId } from '@sanityStudio/env'
 // import {schema} from './schema'
 import { schema } from '@sanityStudio/schema'
-import { studioTheme } from '@/studio.theme'
+import { studioTheme } from '@styles/studio.theme'
+import StudioHeader from '@components/studio/StudioHeader'
+import StudioLogo from '@/app/_components/studio/StudioLogo'
 
 export default defineConfig({
   basePath: '/studio',
@@ -28,7 +30,8 @@ export default defineConfig({
   ],
 	studio: {
 		components: {
-			
+			logo: StudioLogo,
+			navbar: StudioHeader
 		}
 	},
 	theme: studioTheme

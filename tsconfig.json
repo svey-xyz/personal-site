@@ -21,8 +21,9 @@
     ],
     "paths": {
       "@/*": ["./*"],
-			"@styles/*": ["./styles/*"],
-			"@public/*": ["./public/*"],
+			"@styles/*": ["./app/_styles/*"],
+			"@public/*": ["./app/_public/*"],
+			"@components/*": ["./app/_components/*"],
 			"@sanityStudio/*": ["./sanityStudio/*"],
 			"@studio/*": ["./app/(studio)/*"],
 			"@site/*": ["./app/(site)/*"]

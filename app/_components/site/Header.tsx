@@ -1,4 +1,4 @@
-import HeaderButton from '@site/components/HeaderButton'
+import HeaderButton from '@components/site/HeaderButton'
 
 export default function Header({
 	title, description
