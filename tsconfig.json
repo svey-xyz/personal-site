@@ -24,6 +24,7 @@
 			"@styles/*": ["./app/_styles/*"],
 			"@public/*": ["./app/_public/*"],
 			"@components/*": ["./app/_components/*"],
+			"@lib/*": ["./lib/*"],
 			"@sanityStudio/*": ["./sanityStudio/*"],
 			"@studio/*": ["./app/(studio)/*"],
 			"@site/*": ["./app/(site)/*"]

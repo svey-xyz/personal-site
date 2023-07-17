@@ -1,6 +1,25 @@
 import Image from 'next/image'
 
-export default function Home() {
+import { draftMode } from 'next/headers'
+// import { DocumentsCount, query } from '@components/DocumentsCount'
+// import PreviewDocumentsCount from 'components/PreviewDocumentsCount'
+import PreviewProvider from '@components/sanity/PreviewProvider'
+import { getClient } from '@lib/sanity.client'
+
+export default async function Home() {
+	const preview = draftMode().isEnabled ? { token: process.env.SANITY_API_READ_TOKEN } : undefined
+	const client = getClient(preview)
+
+	// const data = await client.fetch(query)
+	if (preview && preview.token) {
+		return (
+			<PreviewProvider token={preview.token}>
+				{/* <PreviewDocumentsCount data={data} /> */}
+			</PreviewProvider>
+		)
+	}
+
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
