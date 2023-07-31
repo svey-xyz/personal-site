@@ -13,6 +13,15 @@ import { schema } from '@sanityStudio/schema'
 import { studioTheme } from '@styles/studio.theme'
 import StudioHeader from '@components/studio/StudioHeader'
 import StudioLogo from '@/app/_components/studio/StudioLogo'
+import { structure, schemaOptions, documentOptions } from '@/sanityStudio/structure'
+import { colorInput } from '@sanity/color-input'
+import { noteField } from 'sanity-plugin-note-field'
+
+const defaultDesk = deskTool({
+	structure,
+})
+const deskPlugins = [defaultDesk, visionTool({ defaultApiVersion: apiVersion }), colorInput(), noteField()]
+
 
 export default defineConfig({
   basePath: '/studio',
@@ -21,13 +30,9 @@ export default defineConfig({
   projectId,
   dataset,
   // Add and edit the content schema in the './sanity/schema' folder
-  schema,
-  plugins: [
-    deskTool(),
-    // Vision is a tool that lets you query your content with GROQ in the studio
-    // https://www.sanity.io/docs/the-vision-plugin
-    visionTool({defaultApiVersion: apiVersion}),
-  ],
+	schema: schemaOptions,
+	plugins: deskPlugins,
+	document: documentOptions,
 	studio: {
 		components: {
 			logo: StudioLogo,
