@@ -1,4 +1,4 @@
-import {defineField, defineType} from 'sanity'
+import { defineField, defineType, defineArrayMember } from '@sanity-typed/types'
 
 export default defineType({
   name: 'author',
@@ -39,12 +39,12 @@ export default defineType({
       title: 'Bio',
       type: 'array',
       of: [
-        {
+        defineArrayMember({
           title: 'Block',
           type: 'block',
           styles: [{title: 'Normal', value: 'normal'}],
           lists: [],
-        },
+        }),
       ],
     }),
   ],

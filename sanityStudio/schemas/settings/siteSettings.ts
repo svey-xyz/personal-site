@@ -1,4 +1,7 @@
-import { defineType, defineField } from "sanity";
+import {
+	defineField,
+	defineType,
+} from "@sanity-typed/types";
 
 export const siteSettings = defineType({
 	title: 'Site Settings',

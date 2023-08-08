@@ -7,7 +7,7 @@ import { BsFileText, BsFillPersonLinesFill } from "react-icons/bs";
 import { RiPaintBrushFill } from "react-icons/ri";
 import { FaBusinessTime, FaTags } from "react-icons/fa";
 import { StructureBuilder, StructureResolverContext } from "sanity/desk";
-import { schema } from "@/sanityStudio/schema";
+import { types } from "@/sanityStudio/schema";
 import { DocumentActionComponent, DocumentActionsContext, Template } from "sanity";
 
 // Define the actions that should be available for singleton documents
@@ -81,7 +81,7 @@ export const structure = (S: StructureBuilder) =>
 	])
 
 export const schemaOptions = {
-	types: schema.types,
+	types: types,
 	// Filter out singleton types from the global “New document” menu options
 	templates: (templates: Template<any, any>[]) => templates.filter(({ schemaType }: { schemaType: string }) => !singletonTypes.has(schemaType)),
 }

@@ -14,6 +14,7 @@ module.exports = {
 				'custom-red': 'var(--custom-red)',
 				'custom-yellow': 'var(--custom-yellow)',
 				'custom-green': 'var(--custom-green)',
+				'primary-text': '#000000'
 			},
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

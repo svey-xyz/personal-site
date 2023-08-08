@@ -3,19 +3,18 @@
  */
 
 import {visionTool} from '@sanity/vision'
-import {defineConfig} from 'sanity'
+import { defineConfig } from '@sanity-typed/types'
 import {deskTool} from 'sanity/desk'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import { apiVersion, dataset, projectId } from '@sanityStudio/env'
-// import {schema} from './schema'
-import { schema } from '@sanityStudio/schema'
 import { studioTheme } from '@styles/studio.theme'
 import StudioHeader from '@components/studio/StudioHeader'
 import StudioLogo from '@/app/_components/studio/StudioLogo'
 import { structure, schemaOptions, documentOptions } from '@/sanityStudio/structure'
 import { colorInput } from '@sanity/color-input'
 import { noteField } from 'sanity-plugin-note-field'
+import { InferSchemaValues } from '@sanity-typed/types'
 
 const defaultDesk = deskTool({
 	structure,
@@ -23,7 +22,7 @@ const defaultDesk = deskTool({
 const deskPlugins = [defaultDesk, visionTool({ defaultApiVersion: apiVersion }), colorInput(), noteField()]
 
 
-export default defineConfig({
+const config = defineConfig({
   basePath: '/studio',
 	name: 'xyz_studio',
 	title: 'xyz studio',
@@ -41,3 +40,7 @@ export default defineConfig({
 	},
 	theme: studioTheme
 })
+export default config;
+
+type Values = InferSchemaValues<typeof config>;
+export type SiteSettings = Values["siteSettings"];

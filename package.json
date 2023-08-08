@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.0.18",
+    "@sanity-typed/types": "^3.2.3",
     "@sanity/color-input": "^3.1.0",
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.14.1",
@@ -24,7 +25,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.10.1",
-    "sanity": "^3.14.1",
+    "sanity": "^3.15.0",
     "sanity-plugin-note-field": "^2.0.2",
     "typescript": "5.1.6"
   },

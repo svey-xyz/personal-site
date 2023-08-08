@@ -1,4 +1,4 @@
-import { defineType, defineField } from "sanity";
+import { defineType, defineField } from "@sanity-typed/types";
 
 export const navigation = defineType({
 	title: 'Site Navigation',
@@ -25,7 +25,7 @@ export const navigation = defineType({
 			name: 'myCustomNote',
 			type: 'note',
 			options: {
-				icon: () => <Warning size={ 20} weight = "duotone" />,
+				// icon: () => <Warning size={ 20} weight = "duotone" />,
 				tone: 'caution',
   		},
 		})
