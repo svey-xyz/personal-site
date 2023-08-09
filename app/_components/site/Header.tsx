@@ -6,42 +6,39 @@ import { draftMode } from 'next/headers'
 import { settingsQuery } from '@/lib/sanity.queries'
 
 import { SiteSettings } from '@/sanity.config'
+import { SanityClient } from 'next-sanity'
 
-export default async function Header({
-	title, description
+export default function Header({
+	preview, client
 }: {
-	title: string, description?: any[]
+	preview: {token:string|undefined}|undefined, client: SanityClient
 }) {
-	const preview = draftMode().isEnabled ? { token: process.env.SANITY_API_READ_TOKEN } : undefined
-	const client = getClient(preview)
-	const settings: SiteSettings = await client.fetch(settingsQuery)
-
-	title = settings.title ? settings.title : title;
-	// const data = await client.fetch(query)
 	if (preview && preview.token) {
 		return (
-			<PreviewProvider token={preview.token} children={headerWrapper({children: [previewHeader(), basicHeader({ title, description })]})} />
+			<PreviewProvider token={preview.token} children={headerWrapper({ children: [previewHeader(), basicHeader({ client })]})} />
 		)
 	}
 	return (
-		headerWrapper({ children: [basicHeader({ title, description })] })
+		headerWrapper({ children: [basicHeader({ client })] })
 	)
 }
 
 function headerWrapper({children}:{children: React.ReactNode}) {
 	return (
-		<div className='fixed top-0 left-0 right-0 max-w-screen z-50'>
+		<nav className='fixed top-0 left-0 right-0 max-w-screen z-50'>
 			{children}
-		</div>
+		</nav>
 	)
 }
 
-function basicHeader({title,description}:{title: string, description?: any[]}) {
+async function basicHeader({client}:{client:SanityClient}) {
+	const settings: SiteSettings = await client.fetch(settingsQuery)
+
 	return (
-		<nav className="relative h-[--header-height] flex items-center justify-center bg-white z-50">
+		<div className="relative h-[--header-height] flex items-center justify-center bg-white z-50">
 			<div className="container m-auto flex flex-row items-center justify-between ">
 				<h1 className="text-[--header-item-height] leading-none font-bold tracking-tighter md:pr-8 md:text-2xl text-primary-text">
-					{title}
+					{settings.title}
 				</h1>
 				{/* <h4 className={`mt-5 text-center text-lg md:pl-8 md:text-left ${styles.portableText}`}>
 					<PortableText value={description} />
@@ -49,7 +46,7 @@ function basicHeader({title,description}:{title: string, description?: any[]}) {
 				<HeaderButton />
 
 			</div>
-		</nav>
+		</div>
 	)
 }
 
