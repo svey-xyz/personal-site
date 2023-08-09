@@ -9,6 +9,7 @@ import { FaBusinessTime, FaTags } from "react-icons/fa";
 import { StructureBuilder, StructureResolverContext } from "sanity/desk";
 import { types } from "@/sanityStudio/schema";
 import { DocumentActionComponent, DocumentActionsContext, Template } from "sanity";
+import { AiFillFileImage } from "react-icons/ai";
 
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set(["publish", "discardChanges", "restore"])
@@ -63,21 +64,13 @@ export const structure = (S: StructureBuilder) =>
 		// S.documentTypeListItem('page').schemaType('page'),
 
 		/** PROJECTS */
-		// S.listItem().title('Projects').icon(AiFillFileImage).child(
-		// 	S.list().title('Projects').items([
-		// 		S.documentTypeListItem('projectTag'),
-		// 		S.divider(),
-		// 		S.documentTypeListItem('project'),
-		// 	])
-		// ),
-		// /** TEXTS */
-		// S.listItem().title('Texts').icon(BsFileText).child(
-		// 	S.list().title('Texts').items([
-		// 		S.documentTypeListItem('textTag'),
-		// 		S.divider(),
-		// 		S.documentTypeListItem('textDocument'),
-		// 	])
-		// ),
+		S.listItem().title('Projects').icon(AiFillFileImage).child(
+			S.list().title('Projects').items([
+				// S.documentTypeListItem('projectTag'),
+				// S.divider(),
+				S.documentTypeListItem('project'),
+			])
+		),
 	])
 
 export const schemaOptions = {
