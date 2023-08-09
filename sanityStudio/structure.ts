@@ -64,13 +64,8 @@ export const structure = (S: StructureBuilder) =>
 		// S.documentTypeListItem('page').schemaType('page'),
 
 		/** PROJECTS */
-		S.listItem().title('Projects').icon(AiFillFileImage).child(
-			S.list().title('Projects').items([
-				// S.documentTypeListItem('projectTag'),
-				// S.divider(),
-				S.documentTypeListItem('project'),
-			])
-		),
+		S.documentTypeListItem('projectTag'),
+		S.documentTypeListItem('project')
 	])
 
 export const schemaOptions = {

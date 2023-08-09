@@ -10,8 +10,9 @@ import author from './schemas/author'
 import { navigation } from '@/sanityStudio/schemas/settings/navigation'
 import { siteSettings } from '@/sanityStudio/schemas/settings/siteSettings'
 import { theme } from '@/sanityStudio/schemas/settings/theme'
-import { project } from '@/sanityStudio/schemas/project'
+import { project } from '@/sanityStudio/schemas/projects/project'
+import { projectTag } from '@/sanityStudio/schemas/projects/projectTag'
 
-const _documents = [siteSettings, navigation, theme, project]
+const _documents = [siteSettings, navigation, theme, project, projectTag]
 
 export const types = [..._documents, post, author, category, blockContent];

@@ -53,18 +53,18 @@ export const project = defineType({
 			group: 'projectSettings',
 			description: 'A description of the project.',
 		}),
-		// defineField({
-		// 	title: 'Tags',
-		// 	name: 'tags',
-		// 	type: 'array',
-		// 	group: 'projectSettings',
-		// 	of: [
-		// 		defineArrayMember({
-		// 			type: 'reference',
-		// 			to: [{ type: 'projectTag' }]
-		// 		})
-		// 	]
-		// }),
+		defineField({
+			title: 'Tags',
+			name: 'tags',
+			type: 'array',
+			group: 'projectSettings',
+			of: [
+				defineArrayMember({
+					type: 'reference',
+					to: [{ type: 'projectTag' }]
+				})
+			]
+		}),
 		defineField({
 			name: 'slug',
 			title: 'Slug',
