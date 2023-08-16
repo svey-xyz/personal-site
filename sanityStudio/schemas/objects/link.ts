@@ -9,6 +9,18 @@ export const link = defineType({
 	type: 'object',
 	fields: [
 		defineField({
+			title: 'Link Type',
+			name: 'type',
+			type: 'string',
+			options: {
+				list: [
+					{ title: 'Repo', value: 'repo' },
+					{ title: 'Website', value: 'website' },
+					{ title: 'Other', value: 'other' }
+				],
+			}
+		}),
+		defineField({
 			title: 'Link Text',
 			name: 'text',
 			type: 'string',
@@ -25,12 +37,15 @@ export const link = defineType({
 	preview: {
 		select: {
 			title: 'text',
-			url: 'url'
+			url: 'url',
+			type: 'type'
 		},
-		prepare(value: any) {
+		prepare(value) {
+			const capitalType = value.type ? value.type[0].toUpperCase() + value.type.slice(1) : undefined
+			const linkText = (value.title && capitalType) ? `${capitalType} | ${value.title}` : (value.title) ? value.title : undefined;
 			return {
-				title: value.title ? value.title : `Link text not set.`,
-				subtitle: value.url,
+				title: linkText ? linkText : value.url,
+				subtitle: linkText ? value.url : '',
 				media: BiLink
 			}
 		}

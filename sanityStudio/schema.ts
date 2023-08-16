@@ -1,10 +1,14 @@
 import { defineArrayMember, defineType } from '@sanity-typed/types'
 
 
-import blockContent from '@schemas/blockContent'
-import category from '@schemas/category'
-import post from '@schemas/post'
-import author from '@schemas/author'
+/** 
+ * Objects
+ */
+import blockContent from '@schemas/objects/blockContent'
+import { link } from '@schemas/objects/link'
+import { social } from '@schemas/objects/social'
+
+const _objects = [blockContent, link, social]
 
 
 /**
@@ -17,7 +21,7 @@ import { project } from '@schemas/projects/project'
 import { projectTag } from '@schemas/projects/projectTag'
 
 /**
- * Project objects
+ * Projects
  */
 // import { aboutSection } from "@objects/aboutSection";
 import { textObject } from '@schemas/projects/projectObjects/textObject'
@@ -42,4 +46,4 @@ const projectObjects = defineType({
 
 const _documents = [siteSettings, navigation, theme, project, projectTag]
 
-export const types = [..._documents, ..._projectObjects, projectObjects, post, author, category, blockContent];
+export const types = [..._documents, ..._objects, ..._projectObjects, projectObjects];

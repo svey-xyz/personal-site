@@ -96,10 +96,7 @@ export const project = defineType({
 			group: 'projectSettings',
 			of: [
 				defineArrayMember({
-					type: 'url',
-					validation: Rule => Rule.uri({
-						scheme: ['https', 'http']
-					})
+					type: 'link'
 				})
 			],
 			description: 'All relevant links for the project.'
