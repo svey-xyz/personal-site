@@ -26,6 +26,7 @@
 			"@components/*": ["./app/_components/*"],
 			"@lib/*": ["./lib/*"],
 			"@sanityStudio/*": ["./sanityStudio/*"],
+			"@schemas/*": ["./sanityStudio/schemas/*"],
 			"@studio/*": ["./app/(studio)/*"],
 			"@site/*": ["./app/(site)/*"]
     }

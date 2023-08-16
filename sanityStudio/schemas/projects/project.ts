@@ -2,7 +2,6 @@ import { defineType, defineField, defineArrayMember } from "@sanity-typed/types"
 import { mediaAssetSource } from "sanity-plugin-media";
 
 import { AiFillFileImage } from 'react-icons/ai';
-import { BsFillImageFill } from "react-icons/bs";
 
 export const project = defineType({
 	title: "Projects",
@@ -31,11 +30,24 @@ export const project = defineType({
 			]
 		}),
 		defineField({
-			title: 'Hidden',
-			name: 'hidden',
-			type: 'boolean',
-			description: 'Defines the visibility of the project in an archive.',
-			initialValue: false
+			name: 'slug',
+			title: 'Slug',
+			type: 'slug',
+			options: {
+				source: 'title',
+				maxLength: 96,
+			},
+		}),
+		defineField({
+			title: 'Thumbnail',
+			name: 'thumbnail',
+			type: 'image',
+			options: {
+				sources: [mediaAssetSource]
+			},
+			group: 'projectSettings',
+			description: 'Thumbnail for the project, this does not appear in the project content unless you add the image there as well.',
+			validation: Rule => Rule.required()
 		}),
 		defineField({
 			title: 'Date',
@@ -66,36 +78,39 @@ export const project = defineType({
 			]
 		}),
 		defineField({
-			name: 'slug',
-			title: 'Slug',
-			type: 'slug',
-			options: {
-				source: 'title',
-				maxLength: 96,
-			},
+			title: 'Github',
+			name: 'github',
+			type: 'url',
+			group: 'projectSettings',
+			validation: Rule => Rule.uri({
+				scheme: ['https']
+			}).custom(github => {
+				return github?.startsWith('https://github.com') ? true : 'This does not appear to be a GitHub link'
+			}),
+			description: 'The main GitHub repo for the project. If there are additional repos add them to the external links',
 		}),
 		defineField({
-			name: 'thumbnail',
-			title: 'Thumbnail',
-			type: 'image',
-			options: {
-				hotspot: true,
-			},
-			fields: [
-				{
-					name: 'alt',
-					type: 'string',
-					title: 'Alternative Text',
-				}
-			]
+			title: 'Links',
+			name: 'links',
+			type: 'array',
+			group: 'projectSettings',
+			of: [
+				defineArrayMember({
+					type: 'url',
+					validation: Rule => Rule.uri({
+						scheme: ['https', 'http']
+					})
+				})
+			],
+			description: 'All relevant links for the project.'
 		}),
-		// defineField({
-		// 	title: 'Content',
-		// 	name: 'content',
-		// 	type: 'projectTypes',
-		// 	group: 'projectContent',
-		// 	description: 'The main content of the project.',
-		// })
+		defineField({
+			title: 'Content',
+			name: 'content',
+			type: 'projectObjects',
+			group: 'projectContent',
+			description: 'The main content of the project.',
+		})
 	],
 	preview: {
 		select: {

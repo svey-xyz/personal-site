@@ -14,12 +14,13 @@ import StudioLogo from '@/app/_components/studio/StudioLogo'
 import { structure, schemaOptions, documentOptions } from '@/sanityStudio/structure'
 import { colorInput } from '@sanity/color-input'
 import { noteField } from 'sanity-plugin-note-field'
+import { media, mediaAssetSource } from 'sanity-plugin-media'
 import { InferSchemaValues } from '@sanity-typed/types'
 
 const defaultDesk = deskTool({
 	structure,
 })
-const deskPlugins = [defaultDesk, visionTool({ defaultApiVersion: apiVersion }), colorInput(), noteField()]
+const deskPlugins = [defaultDesk, visionTool({ defaultApiVersion: apiVersion }), colorInput(), noteField(), media()]
 
 
 const config = defineConfig({
@@ -38,7 +39,15 @@ const config = defineConfig({
 			navbar: StudioHeader
 		}
 	},
-	theme: studioTheme
+	theme: studioTheme,
+	form: {
+		// Don't use this plugin when selecting files only (but allow all other enabled asset sources)
+		file: {
+			assetSources: previousAssetSources => {
+				return previousAssetSources.filter(assetSource => assetSource !== mediaAssetSource)
+			}
+		}
+	}
 })
 export default config;
 
