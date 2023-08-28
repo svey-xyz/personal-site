@@ -1,4 +1,4 @@
-import { defineArrayMember, defineType } from '@sanity-typed/types'
+import { defineArrayMember, defineField, defineType } from '@sanity-typed/types'
 
 
 /** 
@@ -7,6 +7,7 @@ import { defineArrayMember, defineType } from '@sanity-typed/types'
 import blockContent from '@schemas/objects/blockContent'
 import { link } from '@schemas/objects/link'
 import { social } from '@schemas/objects/social'
+
 
 const _objects = [blockContent, link, social]
 
@@ -19,6 +20,10 @@ import { siteSettings } from '@schemas/settings/siteSettings'
 import { theme } from '@schemas/settings/theme'
 import { project } from '@schemas/projects/project'
 import { projectTag } from '@schemas/projects/projectTag'
+import { mux } from '@/sanityStudio/schemas/settings/mux.api'
+
+const _documents = [siteSettings, navigation, theme, project, projectTag, mux]
+
 
 /**
  * Projects
@@ -38,12 +43,13 @@ const projectObjects = defineType({
 		defineArrayMember({ type: textObject.name }),
 		defineArrayMember({ type: embedObject.name }),
 		defineArrayMember({ type: gallery.name }),
-		defineArrayMember({ type: video.name }),
-
+		defineArrayMember({
+			title: 'Video file',
+			name: 'video',
+			type: 'mux.video',
+		}),
 	],
 
 })
-
-const _documents = [siteSettings, navigation, theme, project, projectTag]
 
 export const types = [..._documents, ..._objects, ..._projectObjects, projectObjects];
