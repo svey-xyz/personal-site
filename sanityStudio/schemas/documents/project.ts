@@ -3,6 +3,22 @@ import { mediaAssetSource } from "sanity-plugin-media";
 
 import { AiFillFileImage } from 'react-icons/ai';
 
+import { textObject } from '@schemas/objects/text'
+import { gallery } from '@schemas/objects/gallery'
+import { video } from '@schemas/objects/video'
+
+export const projectObjects = defineType({
+	title: 'Project Items',
+	name: 'projectObjects',
+	type: 'array',
+	of: [
+		defineArrayMember({ type: textObject.name }),
+		defineArrayMember({ type: gallery.name }),
+		defineArrayMember({ type: video.name }),
+	],
+
+})
+
 export const project = defineType({
 	title: "Projects",
 	name: "project",

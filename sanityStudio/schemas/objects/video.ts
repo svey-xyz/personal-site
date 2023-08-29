@@ -8,13 +8,6 @@ export const video = defineType({
 	icon: RiFilmFill,
 	fields: [
 		defineField({
-			name: 'url',
-			type: 'url',
-			title: 'Link to the video.',
-			description: 'Works with Vimeo and YouTube.',
-			validation: (Rule) => Rule.required()
-		}),
-		defineField({
 			title: 'Title',
 			name: 'title',
 			type: 'string',
@@ -27,11 +20,6 @@ export const video = defineType({
 			type: 'string',
 			description: 'A brief description of the embed, this could be the content, the medium, etc.'
 			// validation: Rule => Rule.required()
-		}),
-		defineField({
-			title: 'Date',
-			name: 'date',
-			type: 'date',
 		}),
 	],
 	preview: {
