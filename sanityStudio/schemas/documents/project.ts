@@ -20,7 +20,7 @@ export const projectObjects = defineType({
 })
 
 export const project = defineType({
-	title: "Projects",
+	title: "Project",
 	name: "project",
 	type: 'document',
 	icon: AiFillFileImage,
@@ -89,7 +89,7 @@ export const project = defineType({
 			of: [
 				defineArrayMember({
 					type: 'reference',
-					to: [{ type: 'projectTag' }]
+					to: [{ type: 'taxonomicTerm' }]
 				})
 			]
 		}),

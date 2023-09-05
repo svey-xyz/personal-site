@@ -71,8 +71,8 @@ export const structure = (S: StructureBuilder) =>
 		// S.documentTypeListItem('page').schemaType('page'),
 
 		/** PROJECTS */
-		S.documentTypeListItem('projectTag'),
-		S.documentTypeListItem('project')
+		S.documentTypeListItem('taxonomicTerm').title('Terms'),
+		S.documentTypeListItem('project').title('Projects')
 	])
 
 export const schemaOptions = {
