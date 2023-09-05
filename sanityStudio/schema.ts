@@ -1,14 +1,14 @@
 /** 
  * Objects
  */
-import blockContent from '@schemas/objects/blockContent'
+import { basicBlockContent, extraBlockContent } from '@schemas/objects/blockContent'
 import { link } from '@schemas/objects/link'
 import { social } from '@schemas/objects/social'
 import { textObject } from '@schemas/objects/text'
 import { gallery } from '@schemas/objects/gallery'
 import { video } from '@schemas/objects/video'
 
-const _objects = [blockContent, link, social, textObject, gallery, video]
+const _objects = [basicBlockContent, extraBlockContent, link, social, textObject, gallery, video]
 
 /**
  * Documents
