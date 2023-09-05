@@ -8,8 +8,9 @@ import { textObject } from '@schemas/objects/text'
 import { gallery } from '@schemas/objects/gallery'
 import { video } from '@schemas/objects/video'
 import { basicDate } from '@schemas/objects/basicDate'
+import { basicDocumentOptions } from '@/sanityStudio/lib/basicDocumentOptions'
 
-const _objects = [basicBlockContent, extraBlockContent, link, social, textObject, gallery, video, basicDate]
+const _objects = [basicBlockContent, extraBlockContent, link, social, textObject, gallery, video, basicDate, basicDocumentOptions]
 
 /**
  * Documents
