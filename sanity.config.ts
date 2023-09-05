@@ -13,7 +13,6 @@ import { colorInput } from '@sanity/color-input'
 import { InferSchemaValues } from '@sanity-typed/types'
 import { media, mediaAssetSource } from 'sanity-plugin-media'
 
-
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import { apiVersion, dataset, projectId } from '@sanityStudio/env'
 import { studioTheme } from '@styles/studio.theme'

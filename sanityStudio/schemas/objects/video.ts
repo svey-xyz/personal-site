@@ -11,13 +11,11 @@ export const video = defineType({
 			title: 'Title',
 			name: 'title',
 			type: 'string',
-			description: 'Title of the video.'
 		}),
 		defineField({
 			title: 'Description',
 			name: 'description',
 			type: 'string',
-			description: 'A brief description of the embed, this could be the content, the medium, etc.'
 		}),
 		defineField({
 			title: 'Video',
