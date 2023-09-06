@@ -1,4 +1,4 @@
-import { defineType, defineArrayMember } from '@sanity-typed/types'
+import { defineType, defineArrayMember } from 'sanity'
 import { mediaAssetSource } from 'sanity-plugin-media'
 
 /**

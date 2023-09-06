@@ -1,4 +1,4 @@
-import { defineType, defineField, defineArrayMember } from "@sanity-typed/types";
+import { defineType, defineField, defineArrayMember } from "sanity";
 import { BsFillGridFill, BsFillImageFill } from "react-icons/bs";
 import { mediaAssetSource } from "sanity-plugin-media";
 

@@ -1,4 +1,4 @@
-import { defineType, defineField } from "@sanity-typed/types";
+import { defineType, defineField } from "sanity";
 import { FaCalendar } from 'react-icons/fa';
 
 const datetimeOptions = {

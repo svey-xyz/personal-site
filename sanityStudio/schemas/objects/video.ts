@@ -1,4 +1,4 @@
-import { defineType, defineField } from "@sanity-typed/types";
+import { defineType, defineField } from "sanity";
 import { RiFilmFill } from "react-icons/ri";
 
 export const video = defineType({

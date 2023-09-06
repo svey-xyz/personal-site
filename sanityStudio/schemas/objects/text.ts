@@ -1,4 +1,4 @@
-import { defineType, defineField, defineArrayMember } from "@sanity-typed/types";
+import { defineType, defineField, defineArrayMember } from "sanity";
 import { GrTextAlignFull } from "react-icons/gr";
 
 const textBlockTypes = [

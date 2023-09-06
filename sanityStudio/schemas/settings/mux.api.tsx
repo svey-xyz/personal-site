@@ -1,4 +1,4 @@
-import { defineField, defineType } from "@sanity-typed/types";
+import { defineField, defineType } from "sanity";
 
 export const mux = defineType({
 	title: 'Mux API',

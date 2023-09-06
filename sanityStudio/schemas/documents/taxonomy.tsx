@@ -1,4 +1,4 @@
-import { defineType, defineField } from "@sanity-typed/types";
+import { defineType, defineField } from "sanity";
 import { FaTag } from "react-icons/fa6";
 
 const skosPrimerURL: string = "https://www.w3.org/TR/2009/NOTE-skos-primer-20090818"

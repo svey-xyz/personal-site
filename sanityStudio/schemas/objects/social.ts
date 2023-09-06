@@ -1,4 +1,4 @@
-import { defineType, defineField } from "@sanity-typed/types";
+import { defineType, defineField } from "sanity";
 import { HiAtSymbol } from 'react-icons/hi';
 
 const socialTypes = [

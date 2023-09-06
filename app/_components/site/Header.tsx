@@ -4,8 +4,6 @@ import HeaderButton from '@components/site/HeaderButton'
 import { draftMode } from 'next/headers'
 
 import { settingsQuery } from '@/lib/sanity.queries'
-
-import { SiteSettings } from '@/sanity.config'
 import { SanityClient } from 'next-sanity'
 
 export default function Header({
@@ -32,7 +30,7 @@ function headerWrapper({children}:{children: React.ReactNode}) {
 }
 
 async function basicHeader({client}:{client:SanityClient}) {
-	const settings: SiteSettings = await client.fetch(settingsQuery)
+	const settings = await client.fetch(settingsQuery)
 
 	return (
 		<div className="relative h-[--header-height] flex items-center justify-center bg-white z-50">

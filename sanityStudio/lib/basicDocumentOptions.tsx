@@ -1,4 +1,4 @@
-import { defineType, defineField, defineArrayMember } from "@sanity-typed/types";
+import { defineType, defineField, defineArrayMember } from "sanity";
 import { mediaAssetSource } from "sanity-plugin-media";
 
 import { BsInputCursorText } from "react-icons/bs";

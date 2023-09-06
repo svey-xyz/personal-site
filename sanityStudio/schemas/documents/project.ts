@@ -1,4 +1,4 @@
-import { defineType, defineField, defineArrayMember } from "@sanity-typed/types";
+import { defineType, defineField, defineArrayMember } from "sanity";
 import { basicDocumentConstructor } from "@/sanityStudio/lib/basicDocumentConstructor";
 
 import { BsFillBookmarkFill } from 'react-icons/bs'

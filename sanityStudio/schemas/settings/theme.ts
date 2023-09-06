@@ -1,4 +1,4 @@
-import { defineType, defineField } from "@sanity-typed/types";
+import { defineType, defineField } from "sanity";
 
 /**
 *	Dynamically create all of the fields

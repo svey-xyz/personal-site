@@ -3,14 +3,13 @@
  */
 
 import {visionTool} from '@sanity/vision'
-import { defineConfig } from '@sanity-typed/types'
+import { defineConfig } from 'sanity'
 import {deskTool} from 'sanity/desk'
 
 /** PLUGINS */
 import { muxInput } from 'sanity-plugin-mux-input'
 import { noteField } from 'sanity-plugin-note-field'
 import { colorInput } from '@sanity/color-input'
-import { InferSchemaValues } from '@sanity-typed/types'
 import { media, mediaAssetSource } from 'sanity-plugin-media'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
@@ -53,6 +52,3 @@ const config = defineConfig({
 	}
 })
 export default config;
-
-type Values = InferSchemaValues<typeof config>;
-export type SiteSettings = Values["siteSettings"];

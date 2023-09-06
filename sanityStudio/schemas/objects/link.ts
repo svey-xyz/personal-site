@@ -1,4 +1,4 @@
-import { defineType, defineField } from "@sanity-typed/types";
+import { defineType, defineField } from "sanity";
 import { BiLink } from 'react-icons/bi';
 
 export const link = defineType({

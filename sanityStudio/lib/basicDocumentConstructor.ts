@@ -1,5 +1,5 @@
 import { camelCaseToWords } from "@/lib/stringFunctions";
-import { defineField, defineType } from "@sanity-typed/types";
+import { defineField, defineType } from "sanity";
 import { IconType } from "react-icons";
 import { BsFileEarmarkRichtextFill } from "react-icons/bs";
 import { IoMdOptions } from "react-icons/io";

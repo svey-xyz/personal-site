@@ -1,7 +1,7 @@
 import {
 	defineField,
 	defineType,
-} from "@sanity-typed/types";
+} from "sanity";
 
 export const siteSettings = defineType({
 	title: 'Site Settings',
