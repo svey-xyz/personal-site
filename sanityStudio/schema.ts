@@ -1,12 +1,10 @@
 /**
  * Settings
  */
-import { navigation } from '@schemas/settings/navigation'
 import { siteSettings } from '@schemas/settings/siteSettings'
-import { theme } from '@schemas/settings/theme'
 import { mux } from '@schemas/settings/mux.api'
 
-const _settings = [navigation, siteSettings, theme, mux]
+const _settings = [siteSettings, mux]
 
 /** 
  * Objects

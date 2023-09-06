@@ -4,7 +4,7 @@ import {
 } from "sanity";
 
 export const siteSettings = defineType({
-	title: 'Site Settings',
+	title: 'Settings',
 	name: 'siteSettings',
 	type: 'document',
 	fields: [
@@ -19,6 +19,20 @@ export const siteSettings = defineType({
 			name: 'description',
 			type: 'basicBlockContent',
 			description: 'Concise description of the site.',
+		}),
+		defineField({
+			title: 'Logo',
+			name: 'logo',
+			type: 'image',
+			description: 'Site logo displayed in header. Ideally an SVG. If no logo is provided text of the site name will appear in the header.',
+			// validation: Rule => Rule.required()
+		}),
+		defineField({
+			title: 'Signature',
+			name: 'signature',
+			type: 'image',
+			description: 'Signature used across the site.',
+			// validation: Rule => Rule.required()
 		}),
 	],
 	preview: {

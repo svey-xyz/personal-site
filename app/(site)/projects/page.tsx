@@ -1,4 +1,4 @@
-export default async function ProjectsPAge() {
+export default async function ProjectsPage() {
 	return(
 		<div>
 			

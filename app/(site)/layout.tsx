@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google'
 import Head from '@site/head'
 import { draftMode } from 'next/headers';
 import { getClient } from '@/lib/sanity.client';
+import { settingsQuery, siteSettings } from '@/lib/sanity.queries';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,13 +20,14 @@ export default async function RootLayout({
 }) {
 	const preview = draftMode().isEnabled ? { token: process.env.SANITY_API_READ_TOKEN } : undefined
 	const client = getClient(preview)
+	const settings: siteSettings = await client.fetch(settingsQuery)
 
   return (
 		<html lang="en">
-			<Head />
+			<Head settings={settings}/>
 			<body className={inter.className}>
 				<div id="modal-root"></div>
-				<Header preview={preview} client={client} />
+				<Header preview={preview} settings={settings} />
 				{preview ? (
 					<main className='[--total-header-height:calc(var(--header-height)+var(--preview-header-height))] mt-[--total-header-height]'>
 						{children}

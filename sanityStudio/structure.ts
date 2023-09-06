@@ -25,24 +25,14 @@ export const structure = (S: StructureBuilder) =>
 		S.listItem().title('Settings').icon(MdSettings).child(
 			S.list().title('Settings Documents').items([
 				/* SITE SETTINGS */
-				S.listItem().title('Site Settings').icon(CgWebsite).child(
-					S.document().title('Site Settings').schemaType('siteSettings').documentId('siteSettings')
+				S.listItem().title('Settings').icon(CgWebsite).child(
+					S.document().schemaType('siteSettings').documentId('siteSettings')
 				),
-				/* SITE NAVIGATION */
-				S.listItem().title('Site Navigation').icon(IoNavigateCircle).child(
-					S.document().title('Site Navigation').schemaType('navigation').documentId('navigation')
-				),
-				/* SITE THEME */
-				S.listItem().title('Site Theme').icon(RiPaintBrushFill).child(
-					S.document().title('Site Theme').schemaType('theme').documentId('theme')
-				),
+
 				/* MUX */
 				S.listItem().title('Mux API').icon(MdSettings).child(
 					S.document().title('Mux API').schemaType('mux.apiKey').documentId('secrets.mux')
 				),
-				// S.documentTypeListItem('mux.apiKey')
-
-				// S.documentTypeListItem('mux.apiKey')
 			])
 		),
 		S.divider(),
@@ -66,9 +56,6 @@ export const structure = (S: StructureBuilder) =>
 		// 	])
 		// ),
 		// S.divider(),
-
-		/** PAGES */
-		// S.documentTypeListItem('page').schemaType('page'),
 
 		/** PROJECTS */
 		S.documentTypeListItem('taxonomicTerm').title('Terms'),

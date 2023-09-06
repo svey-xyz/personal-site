@@ -5,19 +5,21 @@ import { draftMode } from 'next/headers'
 
 import { settingsQuery } from '@/lib/sanity.queries'
 import { SanityClient } from 'next-sanity'
+import { siteSettings } from '@/lib/sanity.queries'
+import { PortableText } from '@portabletext/react'
 
 export default function Header({
-	preview, client
+	preview, settings
 }: {
-	preview: {token:string|undefined}|undefined, client: SanityClient
+	preview: {token:string|undefined}|undefined, settings: siteSettings
 }) {
 	if (preview && preview.token) {
 		return (
-			<PreviewProvider token={preview.token} children={headerWrapper({ children: [previewHeader(), basicHeader({ client })]})} />
+			<PreviewProvider token={preview.token} children={headerWrapper({ children: [previewHeader(), basicHeader({ settings })]})} />
 		)
 	}
 	return (
-		headerWrapper({ children: [basicHeader({ client })] })
+		headerWrapper({ children: [basicHeader({ settings })] })
 	)
 }
 
@@ -29,9 +31,7 @@ function headerWrapper({children}:{children: React.ReactNode}) {
 	)
 }
 
-async function basicHeader({client}:{client:SanityClient}) {
-	const settings = await client.fetch(settingsQuery)
-
+async function basicHeader({settings}:{settings:siteSettings}) {
 	return (
 		<div className="relative h-[--header-height] flex items-center justify-center bg-white z-50">
 			<div className="container m-auto flex flex-row items-center justify-between ">
