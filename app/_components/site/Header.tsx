@@ -28,7 +28,7 @@ function headerWrapper({children}:{children: React.ReactNode}) {
 
 async function basicHeader({settings}:{settings:siteSettings}) {
 	return (
-		<div className="relative h-[--header-height] flex items-center justify-center bg-white z-50">
+		<div className="relative h-[--header-height] flex items-center justify-center bg-secondary-bg z-50">
 			<div className="container m-auto flex flex-row items-center justify-between ">
 				<h1 className="[font-size:var(--header-item-height)] leading-none font-bold tracking-tighter md:pr-8 md:text-2xl text-primary-accent">
 					{settings.title}

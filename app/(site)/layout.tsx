@@ -23,7 +23,7 @@ export default async function RootLayout({
 	const settings: siteSettings = await client.fetch(settingsQuery)
 
   return (
-		<html lang="en">
+		<html lang="en" className="dark">
 			<Head settings={settings}/>
 			<body className={inter.className}>
 				<div id="modal-root"></div>

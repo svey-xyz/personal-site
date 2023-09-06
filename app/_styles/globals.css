@@ -9,7 +9,7 @@
 		--secondary-bg: #EEE;
 		--opposite-bg: #1A1A1A;
 		--primary-accent: #837DA1;
-		--secondary-accent: #837DA1;
+		--secondary-accent: #ad7f9f;
 		--failure-accent: #C43F21;
 		--warning-accent: #C5A922;
 		--success-accent: #22C55E;
@@ -21,27 +21,25 @@
 	}
 
 	.dark {
-		:root {
-			--primary-text: #FFF;
-			--primary-bg: #1A1A1A;
-			--secondary-bg: #2B2B2B;
-			--opposite-bg: #FFF;
-			--primary-accent: #837DA1;
-			--secondary-accent: #837DA1;
-			--failure-accent: #C43F21;
-			--warning-accent: #C5A922;
-			--success-accent: #22C55E;
-		}
+		--primary-text: #FFF;
+		--primary-bg: #101112;
+		--secondary-bg: #151617;
+		--opposite-bg: #efeeed;
+		--primary-accent: #837DA1;
+		--secondary-accent: #ad7f9f;
+		--failure-accent: #C43F21;
+		--warning-accent: #C5A922;
+		--success-accent: #22C55E;
 	}
 
 	body {
-		color: rgb(var(--foreground-rgb));
+		color: var(--primary-text);
 		background: linear-gradient(
 				to bottom,
 				transparent,
-				rgb(var(--background-end-rgb))
+				var(--secondary-bg)
 			)
-			rgb(var(--background-start-rgb));
+			var(--primary-bg);
 	}
 
 	.accent-background {

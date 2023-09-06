@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 const Modal = ({ children, title }: {children:ReactNode, title:string}) => {
 	const modalContent = (
 		<div className="absolute inset-0 w-full h-full min-h-full flex justify-center items-center z-20
-			after:absolute after:inset-0 after:min-h-full after:bg-blue-50 after:-z-10 after:mt-[75px]">
+			after:absolute after:inset-0 after:min-h-full after:bg-primary-accent after:-z-10 after:mt-[75px] after:opacity-70">
 			<div className="flex flex-col h-screen w-full md:h-fit md:w-auto md:max-w-screen-xl md:mx-auto overflow-hidden bg-red-50 md:flex-row md:rounded-xl shadow-md">
 				<div className="border-b-2 bg-secondary-bg px-6 py-6 sm:px-12 md:px-6 lg:px-12 md:border-b-0 md:border-r-2 border-secondary-accent shadow-md md:shadow-lg z-10">
 					{/* {% image site.theme.logo, "lazy relative m-0 h-auto w-16 md:w-24", 'Site Logo' %} */}
