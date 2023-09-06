@@ -1,21 +1,18 @@
-// import { WebPreview, JsonView } from './previews'
+
+/** ICONS */
 import { MdSettings } from "react-icons/md";
 import { CgWebsite } from "react-icons/cg";
-// import { GrNavigate } from "react-icons/gr";
-import { IoNavigateCircle } from "react-icons/io5";
-import { BsFileText, BsFillPersonLinesFill } from "react-icons/bs";
-import { RiPaintBrushFill } from "react-icons/ri";
-import { FaBusinessTime, FaTags } from "react-icons/fa";
-import { StructureBuilder, StructureResolverContext } from "sanity/desk";
+
+/** HELPERS */
+import { StructureBuilder } from "sanity/desk";
 import { types } from "@/sanityStudio/schema";
 import { DocumentActionComponent, DocumentActionsContext, Template } from "sanity";
-import { AiFillFileImage } from "react-icons/ai";
 
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set(["publish", "discardChanges", "restore"])
 
 // Define the singleton document types
-const singletonTypes = new Set(["siteSettings", "navigation", "theme", "about"])
+const singletonTypes = new Set(["siteSettings", "about"])
 
 
 

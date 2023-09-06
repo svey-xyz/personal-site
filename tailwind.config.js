@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+	darkMode: 'class',
   content: [
     './app/**/*.{js,ts,jsx,tsx,mdx}',
 
@@ -7,19 +8,22 @@ module.exports = {
   theme: {
     extend: {
 			colors: {
-				'custom-white': 'var(--custom-white)',
-				'custom-black': 'var(--custom-black)',
-				'custom-grey': 'var(--custom-grey)',
-				'xyz-accent': 'var(--xyz-accent)',
-				'custom-red': 'var(--custom-red)',
-				'custom-yellow': 'var(--custom-yellow)',
-				'custom-green': 'var(--custom-green)',
-				'primary-text': '#000000'
+				'primary-text': 'var(--primary-text)',
+				'primary-bg': 'var(--primary-bg)',
+				'secondary-bg': 'var(--secondary-bg)',
+				'opposite-bg': 'var(--opposite-bg)',
+				'primary-accent': 'var(--primary-accent)',
+				'secondary-accent': 'var(--secondary-accent)',
+				'failure-accent': 'var(--failure-accent)',
+				'warning-accent': 'var(--warning-accent)',
+				'success-accent': 'var(--success-accent)',
 			},
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+				'linear-accent-gradient':
+					'linear-gradient(to right, var(--primaryAccent), var(--secondaryAccent))',
       },
     },
   },

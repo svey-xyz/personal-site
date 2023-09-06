@@ -4,17 +4,15 @@
 
 @layer base {
 	:root {
-		--foreground-rgb: 0, 0, 0;
-		--background-start-rgb: 214, 219, 220;
-		--background-end-rgb: 255, 255, 255;
-
-		--custom-white: #FFF;
-		--custom-black: #1A1A1A;
-		--custom-grey: #666;
-		--xyz-accent: #837DA1;
-		--custom-red: #C43F21;
-		--custom-yellow: #C5A922;
-		--custom-green: #22C55E;
+		--primary-text: #000;
+		--primary-bg: #FFF;
+		--secondary-bg: #EEE;
+		--opposite-bg: #1A1A1A;
+		--primary-accent: #837DA1;
+		--secondary-accent: #837DA1;
+		--failure-accent: #C43F21;
+		--warning-accent: #C5A922;
+		--success-accent: #22C55E;
 
 		--header-height: 75px;
 		--header-item: 25px;
@@ -22,19 +20,17 @@
 		--total-header-height: calc(var(--header-height) + var(--preview-header-height));
 	}
 
-	@media (prefers-color-scheme: dark) {
+	.dark {
 		:root {
-			--foreground-rgb: 255, 255, 255;
-			--background-start-rgb: 0, 0, 0;
-			--background-end-rgb: 0, 0, 0;
-
-			--custom-white: #FFF;
-			--custom-black: #1A1A1A;
-			--custom-grey: #666;
-			--xyz-accent: #837DA1;
-			--custom-red: #C43F21;
-			--custom-yellow: #C5A922;
-			--custom-green: #22C55E;
+			--primary-text: #FFF;
+			--primary-bg: #1A1A1A;
+			--secondary-bg: #2B2B2B;
+			--opposite-bg: #FFF;
+			--primary-accent: #837DA1;
+			--secondary-accent: #837DA1;
+			--failure-accent: #C43F21;
+			--warning-accent: #C5A922;
+			--success-accent: #22C55E;
 		}
 	}
 
@@ -46,5 +42,9 @@
 				rgb(var(--background-end-rgb))
 			)
 			rgb(var(--background-start-rgb));
+	}
+
+	.accent-background {
+		background: linear-gradient(to right, var(--primaryAccent), var(--secondaryAccent));
 	}
 }

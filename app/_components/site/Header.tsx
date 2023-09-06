@@ -1,12 +1,7 @@
 import PreviewProvider from '@/app/_components/sanity/PreviewProvider'
-import { getClient } from '@/lib/sanity.client'
 import HeaderButton from '@components/site/HeaderButton'
-import { draftMode } from 'next/headers'
 
-import { settingsQuery } from '@/lib/sanity.queries'
-import { SanityClient } from 'next-sanity'
 import { siteSettings } from '@/lib/sanity.queries'
-import { PortableText } from '@portabletext/react'
 
 export default function Header({
 	preview, settings
@@ -35,11 +30,10 @@ async function basicHeader({settings}:{settings:siteSettings}) {
 	return (
 		<div className="relative h-[--header-height] flex items-center justify-center bg-white z-50">
 			<div className="container m-auto flex flex-row items-center justify-between ">
-				<h1 className="text-[--header-item-height] leading-none font-bold tracking-tighter md:pr-8 md:text-2xl text-primary-text">
+				<h1 className="[font-size:var(--header-item-height)] leading-none font-bold tracking-tighter md:pr-8 md:text-2xl text-primary-accent">
 					{settings.title}
 				</h1>
 				{/* <h4 className={`mt-5 text-center text-lg md:pl-8 md:text-left ${styles.portableText}`}>
-					<PortableText value={description} />
 				</h4> */}
 				<HeaderButton />
 
