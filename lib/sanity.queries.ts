@@ -10,3 +10,8 @@ export const aboutQuery: string = groq`
 		...
 	}[0]
 `
+
+export interface siteSettings {
+	title: string,
+	description: any
+}

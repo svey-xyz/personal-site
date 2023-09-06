@@ -17,13 +17,8 @@ export const siteSettings = defineType({
 		defineField({
 			title: 'Description',
 			name: 'description',
-			type: 'text',
+			type: 'basicBlockContent',
 			description: 'Concise description of the site.',
-			validation: Rule => [
-				Rule.required(),
-				Rule.min(45).warning("Try to be more descriptive."),
-				Rule.max(200).warning("This may be too descriptive!")
-			]
 		}),
 	],
 	preview: {
