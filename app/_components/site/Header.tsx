@@ -29,8 +29,8 @@ function headerWrapper({children}:{children: React.ReactNode}) {
 async function basicHeader({settings}:{settings:siteSettings}) {
 	return (
 		<div className="relative h-[--header-height] flex items-center justify-center bg-secondary-bg z-50">
-			<div className="container m-auto flex flex-row items-center justify-between ">
-				<h1 className="[font-size:var(--header-item-height)] leading-none font-bold tracking-tighter md:pr-8 md:text-2xl text-primary-accent">
+			<div className="main-padding flex flex-row items-center justify-between">
+				<h1 className="leading-none font-bold tracking-tighter text-2xl text-primary-accent">
 					{settings.title}
 				</h1>
 				{/* <h4 className={`mt-5 text-center text-lg md:pl-8 md:text-left ${styles.portableText}`}>
@@ -45,7 +45,7 @@ async function basicHeader({settings}:{settings:siteSettings}) {
 function previewHeader() {
 	return (
 		<div className="relative h-[--preview-header-height] flex items-center justify-center">
-			<div className="container m-auto flex flex-row">
+			<div className="main-padding m-auto flex flex-row">
 				<span className="w-full text-center">
 					You're viewing the site in preview mode! To view published content click <a href="/api/exit-preview" className='underline'>here</a>.
 				</span>

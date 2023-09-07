@@ -44,6 +44,8 @@
 
 	h1 { @apply text-center text-3xl font-bold; }
 
+	.main-padding { @apply max-w-screen-2xl w-full mx-auto px-6 sm:px-12 md:px-24; }
+
 	.accent-background {
 		background: linear-gradient(to right, var(--primaryAccent), var(--secondaryAccent));
 	}
