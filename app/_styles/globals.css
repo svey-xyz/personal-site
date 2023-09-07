@@ -42,6 +42,8 @@
 			var(--primary-bg);
 	}
 
+	h1 { @apply text-center text-3xl font-bold; }
+
 	.accent-background {
 		background: linear-gradient(to right, var(--primaryAccent), var(--secondaryAccent));
 	}
