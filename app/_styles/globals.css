@@ -44,7 +44,9 @@
 
 	h1 { @apply text-center text-3xl font-bold; }
 
-	.main-padding { @apply max-w-screen-2xl w-full mx-auto px-6 sm:px-12 md:px-24; }
+	.main-padding { @apply max-w-screen-xl w-full mx-auto px-6 sm:px-12 md:px-24; }
+
+	.h-full-noheader { min-height: calc(100vh - var(--total-header-height)); }
 
 	.accent-background {
 		background: linear-gradient(to right, var(--primaryAccent), var(--secondaryAccent));
