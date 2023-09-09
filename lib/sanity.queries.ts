@@ -1,10 +1,19 @@
 import { siteSettings } from "@/sanityStudio/schemas/settings/siteSettings";
 import { groq } from "next-sanity";
-import { Image } from "sanity";
+import { Image, ImageAsset, ImageMetadata, ImageOptions, ImageSchemaType } from "sanity";
 
 /** QUERIES */
 export const settingsQuery: string = groq`
-	*[_id == "siteSettings"][0]
+	*[_id == "siteSettings"][0] {
+		...,
+		logo {
+			...,
+			"resolvedAsset":asset->{
+				...,
+				metadata,
+			}
+		}
+	}
 `
 export const aboutQuery: string = groq`
 	*[_id == "about"] {
@@ -12,6 +21,11 @@ export const aboutQuery: string = groq`
 		...
 	}[0]
 `
+
+interface resolvedImage extends Image {
+	resolvedAsset: ImageAsset
+}
+
 interface basicQuery {
 	_updatedAt: string,
 	_createdAt: string,
@@ -23,6 +37,6 @@ interface basicQuery {
 export interface siteSettings extends basicQuery {
 	title: string,
 	description: Array<{}>,
-	logo: Image,
+	logo: resolvedImage,
 	signature: Image
 }

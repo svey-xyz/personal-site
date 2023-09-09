@@ -4,7 +4,11 @@ import { ReactNode, useState } from "react";
 import MenuModal from "@components/site/MenuModal";
 import { siteSettings } from "@/lib/sanity.queries";
 
-export default function HeaderButton({settings}:{settings:siteSettings}): ReactNode {
+export default function HeaderButton({
+	preview, settings
+}: {
+	preview: { token: string | undefined } | undefined, settings: siteSettings
+}): ReactNode {
   const [showModal, setShowModal] = useState(false);
 
 	return (
@@ -29,7 +33,7 @@ export default function HeaderButton({settings}:{settings:siteSettings}): ReactN
 					checked:after:bg-linear-accent-gradient checked:after:-translate-x-1/2 checked:after:-translate-y-1/2 checked:after:scale-[3.0]"/>
 			</label>
 			{showModal &&
-				<MenuModal settings={settings} />
+				<MenuModal preview={preview} settings={settings} />
 			}
 		</div>
 	)

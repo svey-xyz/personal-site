@@ -10,11 +10,11 @@ export default function Header({
 }) {
 	if (preview && preview.token) {
 		return (
-			<PreviewProvider token={preview.token} children={headerWrapper({ children: [previewHeader(), basicHeader({ settings })]})} />
+			<PreviewProvider token={preview.token} children={headerWrapper({ children: [previewHeader(), basicHeader({ preview, settings })]})} />
 		)
 	}
 	return (
-		headerWrapper({ children: [basicHeader({ settings })] })
+		headerWrapper({ children: [basicHeader({ preview, settings })] })
 	)
 }
 
@@ -26,7 +26,7 @@ function headerWrapper({children}:{children: React.ReactNode}) {
 	)
 }
 
-async function basicHeader({settings}:{settings:siteSettings}) {
+async function basicHeader({settings, preview}:{settings:siteSettings, preview: { token: string | undefined } | undefined}) {
 	return (
 		<div className="relative h-[--header-height] flex items-center justify-center bg-secondary-bg z-50">
 			<div className="main-padding flex flex-row items-center justify-between">
@@ -35,7 +35,7 @@ async function basicHeader({settings}:{settings:siteSettings}) {
 				</h1>
 				{/* <h4 className={`mt-5 text-center text-lg md:pl-8 md:text-left ${styles.portableText}`}>
 				</h4> */}
-				<HeaderButton settings={settings}/>
+				<HeaderButton preview={preview} settings={settings}/>
 
 			</div>
 		</div>
