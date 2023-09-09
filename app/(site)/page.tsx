@@ -1,4 +1,4 @@
-import { TextBlock } from "@/app/_components/site/TextBlock"
+import TextBlock from "@/app/_components/site/TextBlock";
 
 export default async function Home() {
   return (
