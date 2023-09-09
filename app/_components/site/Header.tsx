@@ -30,13 +30,10 @@ async function basicHeader({settings, preview}:{settings:siteSettings, preview: 
 	return (
 		<div className="relative h-[--header-height] flex items-center justify-center bg-secondary-bg z-50">
 			<div className="main-padding flex flex-row items-center justify-between">
-				<h1 className="leading-none font-bold tracking-tighter text-2xl text-primary-accent">
+				<h1 className="leading-none font-black text-[25px] text-primary-text">
 					{settings.title}
 				</h1>
-				{/* <h4 className={`mt-5 text-center text-lg md:pl-8 md:text-left ${styles.portableText}`}>
-				</h4> */}
 				<HeaderButton preview={preview} settings={settings}/>
-
 			</div>
 		</div>
 	)

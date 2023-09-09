@@ -18,10 +18,10 @@ const MenuModal = ({
 }) => {
 
 	const modalContent = (
-		<div className="absolute inset-0 w-full flex z-20 md:main-padding
+		<div className="mt-[--total-header-height] absolute inset-0 w-full flex z-20 md:main-padding
 			after:fixed after:inset-0 after:bg-primary-accent after:-z-10 after:mt-[75px] after:opacity-70">
 
-			<div className="mt-[--total-header-height] flex flex-col h-screen w-full bg-gradient-to-b from-secondary-bg via-primary-bg to-primary-bg
+			<div className="mt-12 flex flex-col h-screen w-full bg-gradient-to-b from-secondary-bg via-primary-bg to-primary-bg
 					md:flex-row md:h-fit md:bg-gradient-to-r md:rounded-xl">
 				<div className="border-b-2 px-6 py-6 sm:px-12 md:px-6 lg:px-12 md:border-b-0 md:border-r-2 border-secondary-accent shadow-md md:shadow-lg z-10">
 					<SanityImage

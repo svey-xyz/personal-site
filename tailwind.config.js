@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
 	darkMode: 'class',
   content: [
@@ -37,8 +39,8 @@ module.exports = {
 					'linear-gradient(to right, var(--primaryAccent), var(--secondaryAccent))',
       },
 			fontFamily: {
-				heading: ['DM Serif Display', 'serif'],
-				body: ['Montserrat', 'sans-serif']
+				heading: ['Montserrat', ...defaultTheme.fontFamily.sans],
+				body: ['Montserrat', ...defaultTheme.fontFamily.sans]
 			},
 			animation: {
 				'breathing': 'bounceScale 2s linear infinite',
