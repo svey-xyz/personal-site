@@ -8,7 +8,7 @@ export const settingsQuery: string = groq`
 		...,
 		logo {
 			...,
-			"resolvedAsset":asset->{
+			"imageAsset":asset->{
 				...,
 				metadata,
 			}
@@ -22,8 +22,8 @@ export const aboutQuery: string = groq`
 	}[0]
 `
 
-interface resolvedImage extends Image {
-	resolvedAsset: ImageAsset
+export interface sanityImageAsset extends Image {
+	imageAsset: ImageAsset
 }
 
 interface basicQuery {
@@ -37,6 +37,6 @@ interface basicQuery {
 export interface siteSettings extends basicQuery {
 	title: string,
 	description: Array<{}>,
-	logo: resolvedImage,
+	logo: sanityImageAsset,
 	signature: Image
 }
