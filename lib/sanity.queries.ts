@@ -1,6 +1,6 @@
 import { siteSettings } from "@/sanityStudio/schemas/settings/siteSettings";
 import { groq } from "next-sanity";
-import { Image, ImageAsset, ImageMetadata, ImageOptions, ImageSchemaType } from "sanity";
+import { Image, ImageAsset, ImageMetadata, ImageOptions, ImageSchemaType, PortableTextBlock } from "sanity";
 
 /** QUERIES */
 export const settingsQuery: string = groq`
@@ -36,7 +36,7 @@ interface basicQuery {
 /** */
 export interface siteSettings extends basicQuery {
 	title: string,
-	description: Array<{}>,
+	description: PortableTextBlock,
 	logo: sanityImageAsset,
 	signature: Image
 }
