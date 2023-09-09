@@ -15,12 +15,12 @@ export function sanityImage({
 }) {
 	const client = getClient(preview)
 	const imageProps = useNextSanityImage(client, image);
-	const sizes = `(max-width: ${width}) ${width}, ${height}`
+	const sizes = `(max-width: ${width}) ${width}`
 
 	return <Image
 		{...imageProps}
 		style={{ width: width, height: height }}
-		sizes="(max-width: 200px) 200px, 200px"
+		sizes={sizes}
 		placeholder="blur"
 		blurDataURL={image.imageAsset.metadata.lqip}
 		alt={alt}
