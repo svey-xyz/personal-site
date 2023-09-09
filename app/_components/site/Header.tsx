@@ -35,7 +35,7 @@ async function basicHeader({settings}:{settings:siteSettings}) {
 				</h1>
 				{/* <h4 className={`mt-5 text-center text-lg md:pl-8 md:text-left ${styles.portableText}`}>
 				</h4> */}
-				<HeaderButton />
+				<HeaderButton settings={settings}/>
 
 			</div>
 		</div>

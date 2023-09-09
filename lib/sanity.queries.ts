@@ -1,4 +1,6 @@
+import { siteSettings } from "@/sanityStudio/schemas/settings/siteSettings";
 import { groq } from "next-sanity";
+import { Image } from "sanity";
 
 /** QUERIES */
 export const settingsQuery: string = groq`
@@ -10,9 +12,17 @@ export const aboutQuery: string = groq`
 		...
 	}[0]
 `
-
+interface basicQuery {
+	_updatedAt: string,
+	_createdAt: string,
+	_rev: string,
+	_type: string,
+	_id: string
+}
 /** */
-export interface siteSettings {
+export interface siteSettings extends basicQuery {
 	title: string,
-	description: Array<{}>
+	description: Array<{}>,
+	logo: Image,
+	signature: Image
 }

@@ -1,7 +1,8 @@
+import { siteSettings } from "@/lib/sanity.queries";
 import React, { ReactNode } from "react";
 import ReactDOM from "react-dom";
 
-const Modal = ({ children, title }: {children:ReactNode, title:string}) => {
+const MenuModal = ({ settings }: { settings: siteSettings }) => {
 	const modalContent = (
 		<div className="absolute inset-0 w-full flex z-20 md:main-padding
 			after:fixed after:inset-0 after:bg-primary-accent after:-z-10 after:mt-[75px] after:opacity-70">
@@ -16,8 +17,8 @@ const Modal = ({ children, title }: {children:ReactNode, title:string}) => {
 					<div className="relative flex flex-col h-auto p-6 w-full px-6 sm:px-12">
 						{/* {# NAVIGATION CONTAINER #} */}
 						<div className="relative flex h-auto flex-col md:flex-row justify-start md:items-center flex-wrap">
-							{title && <h1>{title}</h1>}
-							<div className="pt-3">{children}</div>
+						{settings.title && <h1>{settings.title}</h1>}
+							<div className="pt-3">{}</div>
 						</div>
 					</div>
 				</div>
@@ -30,4 +31,4 @@ const Modal = ({ children, title }: {children:ReactNode, title:string}) => {
 	);
 };
 
-export default Modal
+export default MenuModal

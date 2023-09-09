@@ -1,9 +1,10 @@
 'use client'
 
 import { ReactNode, useState } from "react";
-import Modal from "@components/site/MenuModal";
+import MenuModal from "@components/site/MenuModal";
+import { siteSettings } from "@/lib/sanity.queries";
 
-export default function BlogHeader(): ReactNode {
+export default function HeaderButton({settings}:{settings:siteSettings}): ReactNode {
   const [showModal, setShowModal] = useState(false);
 
 	return (
@@ -28,9 +29,7 @@ export default function BlogHeader(): ReactNode {
 					checked:after:bg-linear-accent-gradient checked:after:-translate-x-1/2 checked:after:-translate-y-1/2 checked:after:scale-[3.0]"/>
 			</label>
 			{showModal &&
-				<Modal title="test">
-					Hello from the modal!
-				</Modal>
+				<MenuModal settings={settings} />
 			}
 		</div>
 	)
