@@ -1,6 +1,6 @@
 'use client'
 
-import { ReactNode, useState } from "react";
+import { useState } from "react";
 import MenuModal from "@components/site/MenuModal";
 import { siteSettings } from "@/lib/sanity.queries";
 
@@ -8,7 +8,7 @@ export default function HeaderButton({
 	preview, settings
 }: {
 	preview: { token: string | undefined } | undefined, settings: siteSettings
-}): ReactNode {
+}): React.ReactNode {
   const [showModal, setShowModal] = useState(false);
 
 	return (

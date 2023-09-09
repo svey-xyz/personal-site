@@ -1,12 +1,7 @@
-import { getClient } from "@/lib/sanity.client";
 import { siteSettings } from "@/lib/sanity.queries";
-import React from "react";
 import ReactDOM from "react-dom";
 
-import { useNextSanityImage } from 'next-sanity-image';
-import Image from "next/image";
 import SanityImage from "@/app/_components/site/sanityImage";
-import PreviewProvider from "@/app/_components/sanity/PreviewProvider";
 
 
 
