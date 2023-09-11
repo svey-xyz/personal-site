@@ -4,8 +4,8 @@
 		--primary-bg: #FFF;
 		--secondary-bg: #EEE;
 		--opposite-bg: #1A1A1A;
-		--primary-accent: #837DA1;
-		--secondary-accent: #ad7f9f;
+		--primary-accent: #ad7f9f;
+		--secondary-accent: #837DA1;
 		--failure-accent: #C43F21;
 		--warning-accent: #C5A922;
 		--success-accent: #22C55E;
@@ -21,8 +21,8 @@
 		--primary-bg: #101112;
 		--secondary-bg: #151617;
 		--opposite-bg: #efeeed;
-		--primary-accent: #837DA1;
-		--secondary-accent: #ad7f9f;
+		--primary-accent: #ad7f9f;
+		--secondary-accent: #837DA1;
 		--failure-accent: #C43F21;
 		--warning-accent: #C5A922;
 		--success-accent: #22C55E;
@@ -40,7 +40,7 @@
 	}
 
 	h1 { @apply font-heading text-center text-6xl font-bold; }
-	a { @apply underline underline-offset-2 motion-safe:hover:underline-offset-4 transition-all duration-100; }
+	a { @apply underline underline-offset-2 motion-safe:hover:underline-offset-4 transition-[text-underline-offset] duration-100 visited:text-secondary-accent hover:text-primary-accent; }
 
 	.main-padding { @apply max-w-screen-xl w-full mx-auto px-6 sm:px-12 md:px-24; }
 

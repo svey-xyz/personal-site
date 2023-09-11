@@ -15,7 +15,7 @@ export default function HeaderButton({
     
 		<div>
 			<label className="group relative w-[25px] h-[25px] block z-10 cursor-pointer">
-				<button onClick={() => setShowModal(!showModal)} aria-label="Root Menu Button"
+				<input onClick={() => setShowModal(!showModal)} aria-label="Root Menu Button" type="checkbox"
 					className="absolute left-1/2 -translate-x-1/2 w-full h-full appearance-none
 					cursor-pointer transition-all duration-200
 					origin-center

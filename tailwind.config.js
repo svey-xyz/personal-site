@@ -30,11 +30,8 @@ module.exports = {
 				'success-accent': 'var(--success-accent)',
 			},
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
 				'linear-accent-gradient':
-					'linear-gradient(to right, var(--primaryAccent), var(--secondaryAccent))',
+					'linear-gradient(to right, var(--primary-accent), var(--secondary-accent))',
       },
 			fontFamily: {
 				heading: ['DM Serif Display', 'serif'],
