@@ -1,0 +1,52 @@
+@layer base {
+	:root {
+		--primary-text: #000;
+		--primary-bg: #FFF;
+		--secondary-bg: #EEE;
+		--opposite-bg: #1A1A1A;
+		--primary-accent: #837DA1;
+		--secondary-accent: #ad7f9f;
+		--failure-accent: #C43F21;
+		--warning-accent: #C5A922;
+		--success-accent: #22C55E;
+
+		--header-height: 75px;
+		--header-item: 25px;
+		--preview-header-height: 40px;
+		--total-header-height: calc(var(--header-height) + var(--preview-header-height));
+	}
+
+	.dark {
+		--primary-text: #FFF;
+		--primary-bg: #101112;
+		--secondary-bg: #151617;
+		--opposite-bg: #efeeed;
+		--primary-accent: #837DA1;
+		--secondary-accent: #ad7f9f;
+		--failure-accent: #C43F21;
+		--warning-accent: #C5A922;
+		--success-accent: #22C55E;
+	}
+
+	body {
+		@apply font-body;
+		color: var(--primary-text);
+		background: linear-gradient(
+				to bottom,
+				transparent,
+				var(--secondary-bg)
+			)
+			var(--primary-bg);
+	}
+
+	h1 { @apply font-heading text-center text-6xl font-bold; }
+	a { @apply underline underline-offset-2 motion-safe:hover:underline-offset-4 transition-all duration-100; }
+
+	.main-padding { @apply max-w-screen-xl w-full mx-auto px-6 sm:px-12 md:px-24; }
+
+	.h-full-noheader { min-height: calc(100vh - var(--total-header-height)); }
+
+	.accent-background {
+		background: linear-gradient(to right, var(--primaryAccent), var(--secondaryAccent));
+	}
+}
