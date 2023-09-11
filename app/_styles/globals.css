@@ -47,6 +47,7 @@
 	}
 
 	h1 { @apply font-heading text-center text-6xl font-bold; }
+	a { @apply underline underline-offset-2 motion-safe:hover:underline-offset-4 transition-all duration-100; }
 
 	.main-padding { @apply max-w-screen-xl w-full mx-auto px-6 sm:px-12 md:px-24; }
 
