@@ -1,5 +1,5 @@
+import { CalendarDaysIcon } from "@heroicons/react/24/solid";
 import { defineType, defineField } from "sanity";
-import { FaCalendar } from 'react-icons/fa';
 
 const datetimeOptions = {
 	dateFormat: 'YYYY-MM-DD',
@@ -9,7 +9,7 @@ const datetimeOptions = {
 
 export const basicDate = defineType({
 	name: 'basicDate',
-	icon: FaCalendar,
+	icon: CalendarDaysIcon,
 	description: 'Date & time settings. Leave End Date blank for dates that do not cover a duration of time.',
 	type: 'object',
 	options: { collapsible: true, collapsed: true, columns: 2 },
@@ -70,7 +70,7 @@ export const basicDate = defineType({
 		prepare(value: any) {
 			return {
 				title: `${value.streetNumber}  ${value.streetName}`,
-				media: FaCalendar
+				media: CalendarDaysIcon
 			}
 		}
 	}

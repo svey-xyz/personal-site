@@ -1,5 +1,6 @@
 import { defineType, defineField } from "sanity";
-import { FaTag } from "react-icons/fa6";
+import { TagIcon } from "@heroicons/react/24/solid";
+
 
 const skosPrimerURL: string = "https://www.w3.org/TR/2009/NOTE-skos-primer-20090818"
 function skosSectionLink(sec: string, text: string) {
@@ -13,7 +14,7 @@ export const taxonomicTerm = defineType({
 	title: 'Term',
 	name: 'taxonomicTerm',
 	type: 'document',
-	icon: FaTag,
+	icon: TagIcon,
 	description: taxonomicTermDescription,
 	fieldsets: [
 		{
@@ -81,7 +82,7 @@ export const taxonomicTerm = defineType({
 			return {
 				title: value.title,
 				description: value.description,
-				media: FaTag
+				media: TagIcon
 			}
 		}
 	}

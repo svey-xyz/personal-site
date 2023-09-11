@@ -14,6 +14,7 @@
 		--header-item: 25px;
 		--preview-header-height: 40px;
 		--total-header-height: calc(var(--header-height) + var(--preview-header-height));
+
 	}
 
 	.dark {

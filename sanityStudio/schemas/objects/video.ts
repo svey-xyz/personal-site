@@ -1,11 +1,11 @@
+import { FilmIcon } from "@heroicons/react/24/solid";
 import { defineType, defineField } from "sanity";
-import { RiFilmFill } from "react-icons/ri";
 
 export const video = defineType({
 	title: 'Video',
 	name: 'video',
 	type: 'object',
-	icon: RiFilmFill,
+	icon: FilmIcon,
 	fields: [
 		defineField({
 			title: 'Title',
@@ -32,7 +32,7 @@ export const video = defineType({
 			return {
 				title: value.title ? value.title : 'Untitled Video',
 				subtitle: value.desc ? value.desc : `no description`,
-				media: RiFilmFill
+				media: FilmIcon
 			}
 		}
 	}

@@ -1,10 +1,9 @@
 import { camelCaseToWords } from "@/lib/stringFunctions";
 import { defineField, defineType } from "sanity";
-import { IconType } from "react-icons";
-import { BsFileEarmarkRichtextFill } from "react-icons/bs";
-import { IoMdOptions } from "react-icons/io";
 
-export function basicDocumentConstructor(args: {name: string, contentFields: Array<any>, icon?: IconType | undefined}) {
+import { DocumentTextIcon, AdjustmentsHorizontalIcon } from "@heroicons/react/24/solid";
+
+export function basicDocumentConstructor(args: {name: string, contentFields: Array<any>, icon?: any }) {
 	const { name, contentFields, icon} = args
 	contentFields.forEach(field => {
 		field.fieldset = 'content'
@@ -27,12 +26,12 @@ export function basicDocumentConstructor(args: {name: string, contentFields: Arr
 			{
 				name: 'options',
 				title: 'Options',
-				icon: IoMdOptions
+				icon: AdjustmentsHorizontalIcon
 			},
 			{
 				name: 'content',
 				title: 'Content',
-				icon: BsFileEarmarkRichtextFill
+				icon: DocumentTextIcon
 			},
 		],
 		fields: [

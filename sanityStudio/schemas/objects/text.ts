@@ -1,5 +1,5 @@
+import { Bars3BottomLeftIcon } from "@heroicons/react/24/solid";
 import { defineType, defineField, defineArrayMember } from "sanity";
-import { GrTextAlignFull } from "react-icons/gr";
 
 const textBlockTypes = [
 	{ title: 'Plain', value: 'plain' },
@@ -11,7 +11,7 @@ export const textObject = defineType({
 	title: 'Text',
 	name: 'textObject',
 	type: 'object',
-	icon: GrTextAlignFull,
+	icon: Bars3BottomLeftIcon,
 	fields: [
 		defineField({
 			title: 'Text',
@@ -50,7 +50,7 @@ export const textObject = defineType({
 					block.children.filter((child: any) => child._type === 'span').map((span: any) => span.text).join('') :
 					'No text entered',
 				subtitle: `Text Block Style: ${textBlockTypeTitle}`,
-				media: GrTextAlignFull
+				media: Bars3BottomLeftIcon
 			}
 		}
 	}

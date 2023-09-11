@@ -1,5 +1,5 @@
+import { AtSymbolIcon } from "@heroicons/react/24/solid";
 import { defineType, defineField } from "sanity";
-import { HiAtSymbol } from 'react-icons/hi';
 
 const socialTypes = [
 	{ title: 'Twitter', value: 'twitter' },
@@ -14,7 +14,7 @@ export const social = defineType({
 	title: 'Social',
 	name: 'social',
 	description: 'Link to a social platform.',
-	icon: HiAtSymbol,
+	icon: AtSymbolIcon,
 	type: 'object',
 	fields: [
 		defineField({
@@ -52,7 +52,7 @@ export const social = defineType({
 			return {
 				title: `${socialSiteTypeTitle}`,
 				subtitle: value.title,
-				media: HiAtSymbol
+				media: AtSymbolIcon
 			}
 		}
 	}

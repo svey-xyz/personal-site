@@ -1,0 +1,18 @@
+:root {
+	--studio-icon-size: 25px;
+}
+
+span[data-testid] {
+	svg {
+		max-width: var(--studio-icon-size);
+		min-width: var(--studio-icon-size);
+		width: var(--studio-icon-size);
+	}
+}
+span[data-ui] {
+	svg {
+		max-width: var(--studio-icon-size);
+		min-width: var(--studio-icon-size);
+		width: var(--studio-icon-size);
+	}
+}

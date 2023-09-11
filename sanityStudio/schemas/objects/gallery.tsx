@@ -1,12 +1,12 @@
 import { defineType, defineField, defineArrayMember } from "sanity";
-import { BsFillGridFill, BsFillImageFill } from "react-icons/bs";
 import { mediaAssetSource } from "sanity-plugin-media";
+import { PhotoIcon, Squares2X2Icon } from "@heroicons/react/24/solid";
 
 export const gallery = defineType({
 	title: 'Gallery',
 	name: 'gallery',
 	type: 'object',
-	icon: BsFillGridFill,
+	icon: Squares2X2Icon,
 	fields: [
 		defineField({
 			title: 'Editing Image Data',
@@ -14,7 +14,7 @@ export const gallery = defineType({
 			type: 'note',
 			description: <>To edit an image's <i>Name</i>, <i>Alt Text</i>, or <i>Description</i> head to the <i>Media</i> tab or click on the name of the file in the media browser.</>,
 			options: {
-				icon: BsFillImageFill,
+				icon: PhotoIcon,
 				tone: 'primary',
 			}
 		}),
@@ -28,7 +28,7 @@ export const gallery = defineType({
 					<p><b>Description</b>: can be a description of the medium, process, or anything else and will appear next to the image with the title.</p>
 				</>,
 			options: {
-				icon: BsFillImageFill,
+				icon: PhotoIcon,
 				tone: 'caution',
 			}
 		}),
@@ -70,7 +70,7 @@ export const gallery = defineType({
 			return {
 				title: 'Gallery',
 				subtitle: 'A gallery of images.',
-				media: BsFillGridFill
+				media: Squares2X2Icon
 			}
 		}
 	}

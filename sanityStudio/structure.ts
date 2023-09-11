@@ -1,12 +1,10 @@
 
-/** ICONS */
-import { MdSettings } from "react-icons/md";
-import { CgWebsite } from "react-icons/cg";
-
 /** HELPERS */
 import { StructureBuilder } from "sanity/desk";
 import { types } from "@/sanityStudio/schema";
 import { DocumentActionComponent, DocumentActionsContext, Template } from "sanity";
+
+import { AdjustmentsHorizontalIcon, Cog6ToothIcon } from "@heroicons/react/24/solid";
 
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set(["publish", "discardChanges", "restore"])
@@ -14,20 +12,18 @@ const singletonActions = new Set(["publish", "discardChanges", "restore"])
 // Define the singleton document types
 const singletonTypes = new Set(["siteSettings", "about"])
 
-
-
 export const structure = (S: StructureBuilder) =>
 	S.list().title('Content').items([
 		/* SETTINGS */
-		S.listItem().title('Settings').icon(MdSettings).child(
+		S.listItem().title('Settings').icon(Cog6ToothIcon).child(
 			S.list().title('Settings Documents').items([
 				/* SITE SETTINGS */
-				S.listItem().title('Settings').icon(CgWebsite).child(
+				S.listItem().title('Settings').icon(AdjustmentsHorizontalIcon).child(
 					S.document().schemaType('siteSettings').documentId('siteSettings')
 				),
 
 				/* MUX */
-				S.listItem().title('Mux API').icon(MdSettings).child(
+				S.listItem().title('Mux API').icon(Cog6ToothIcon).child(
 					S.document().title('Mux API').schemaType('mux.apiKey').documentId('secrets.mux')
 				),
 			])

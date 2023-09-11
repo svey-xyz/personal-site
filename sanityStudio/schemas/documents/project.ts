@@ -1,7 +1,7 @@
 import { defineType, defineField, defineArrayMember } from "sanity";
 import { basicDocumentConstructor } from "@/sanityStudio/lib/basicDocumentConstructor";
 
-import { BsFillBookmarkFill } from 'react-icons/bs'
+import { BookmarkIcon } from "@heroicons/react/24/solid";
 
 import { textObject } from '@schemas/objects/text'
 import { gallery } from '@schemas/objects/gallery'
@@ -39,5 +39,5 @@ export const project = basicDocumentConstructor({
 			type: 'projectObjectsList',
 			description: 'The main content of the project.',
 		})],
-	icon: BsFillBookmarkFill
+	icon: BookmarkIcon
 })

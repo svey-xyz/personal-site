@@ -1,11 +1,11 @@
+import { LinkIcon } from "@heroicons/react/24/solid";
 import { defineType, defineField } from "sanity";
-import { BiLink } from 'react-icons/bi';
 
 export const link = defineType({
 	title: 'Link',
 	name: 'link',
 	description: 'External link.',
-	icon: BiLink,
+	icon: LinkIcon,
 	type: 'object',
 	fields: [
 		defineField({
@@ -46,7 +46,7 @@ export const link = defineType({
 			return {
 				title: linkText ? linkText : value.url,
 				subtitle: linkText ? value.url : '',
-				media: BiLink
+				media: LinkIcon
 			}
 		}
 	}

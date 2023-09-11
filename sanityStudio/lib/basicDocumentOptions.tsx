@@ -1,8 +1,6 @@
+import { BookOpenIcon, DocumentTextIcon } from "@heroicons/react/24/solid";
 import { defineType, defineField, defineArrayMember } from "sanity";
 import { mediaAssetSource } from "sanity-plugin-media";
-
-import { BsInputCursorText } from "react-icons/bs";
-import { CgReadme } from "react-icons/cg";
 
 export const basicDocumentOptions = defineType({
 	name: "basicDocumentOptions",
@@ -35,7 +33,7 @@ export const basicDocumentOptions = defineType({
 			type: 'note',
 			description: <>These are standardized options for a variety of documents - if an option is not needed leave it blank.</>,
 			options: {
-				icon: CgReadme,
+				icon: BookOpenIcon,
 				tone: 'primary',
 			}
 		}),
@@ -159,7 +157,7 @@ export const basicDocumentOptions = defineType({
 			const name = value.firstName + value.lastName;
 			return {
 				title: value.title,
-				media: value.image ? value.image.asset : BsInputCursorText
+				media: value.image ? value.image.asset : DocumentTextIcon
 			}
 		}
 	},
