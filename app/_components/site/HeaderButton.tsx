@@ -1,6 +1,3 @@
-'use client'
-
-import { useState } from "react";
 import MenuModal from "@components/site/MenuModal";
 import { siteSettings } from "@/lib/sanity.queries";
 
@@ -9,15 +6,14 @@ export default function HeaderButton({
 }: {
 	preview: { token: string | undefined } | undefined, settings: siteSettings
 }): React.ReactNode {
-  const [showModal, setShowModal] = useState(false);
 
 	return (
-    
-		<div>
-			<label className="group relative w-[25px] h-[25px] block z-10 cursor-pointer">
-				<input onClick={() => setShowModal(!showModal)} aria-label="Root Menu Button" type="checkbox"
-					className="absolute left-1/2 -translate-x-1/2 w-full h-full appearance-none
-					cursor-pointer transition-all duration-200
+			<div>
+				<input aria-label="Root Menu Button" type="checkbox"
+					className="peer
+					relative w-[25px] h-[25px] block z-10 cursor-pointer
+					left-1/2 -translate-x-1/2 appearance-none
+					transition-all duration-200
 					origin-center
 					before:relative before:origin-center before:rounded-full before:inline-block before:w-full before:h-full
 					before:border-primary-accent before:border-solid before:border-4
@@ -31,10 +27,9 @@ export default function HeaderButton({
 					group-hover:scale-110
 
 					checked:after:bg-linear-accent-gradient checked:after:-translate-x-1/2 checked:after:-translate-y-1/2 checked:after:scale-[3.0]"/>
-			</label>
-			{showModal &&
-				<MenuModal preview={preview} settings={settings} />
-			}
-		</div>
+
+			<MenuModal preview={preview} settings={settings} />
+
+			</div>
 	)
 }

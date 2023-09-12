@@ -1,6 +1,7 @@
 import { siteSettings } from "@/lib/sanity.queries";
 
 export default function Head({settings}:{settings:siteSettings}) {
+
 	return(
 		<>
 			<title>{settings.title}</title>

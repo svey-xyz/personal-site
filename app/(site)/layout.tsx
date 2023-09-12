@@ -3,11 +3,11 @@ import Header from '@components/site/Header'
 import '@styles/globals.css'
 import { Inter } from 'next/font/google'
 import Head from '@site/head'
-import { draftMode } from 'next/headers';
+import { cookies, draftMode } from 'next/headers';
 import { getClient } from '@/lib/sanity.client';
 import { settingsQuery, siteSettings } from '@/lib/sanity.queries';
 import PreviewProvider from '@components/sanity/PreviewProvider';
-import BasicFooter from '@components/site/Footer';
+import { ThemeProvider } from '@helpers/ThemeContext';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -41,7 +41,7 @@ async function layout({
 		'[--total-header-height:var(--header-height)] mt-[--total-header-height]'
 
 	return (
-		<html lang="en" className="dark">
+		<html lang="en" className='dark'>
 			<Head settings={settings} />
 			<body className={headerHeightString}>
 				<div id="modal-root"></div>

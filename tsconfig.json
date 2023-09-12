@@ -24,11 +24,12 @@
 			"@styles/*": ["./app/_styles/*"],
 			"@public/*": ["./app/_public/*"],
 			"@components/*": ["./app/_components/*"],
+			"@helpers/*": ["./app/_helpers/*"],
 			"@lib/*": ["./lib/*"],
 			"@sanityStudio/*": ["./sanityStudio/*"],
 			"@schemas/*": ["./sanityStudio/schemas/*"],
 			"@studio/*": ["./app/(studio)/*"],
-			"@site/*": ["./app/(site)/*"]
+			"@site/*": ["./app/(site)/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
