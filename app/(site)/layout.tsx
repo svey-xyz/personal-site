@@ -7,7 +7,6 @@ import { cookies, draftMode } from 'next/headers';
 import { getClient } from '@/lib/sanity.client';
 import { settingsQuery, siteSettings } from '@/lib/sanity.queries';
 import PreviewProvider from '@components/sanity/PreviewProvider';
-import { ThemeProvider } from '@helpers/ThemeContext';
 
 const inter = Inter({ subsets: ['latin'] })
 

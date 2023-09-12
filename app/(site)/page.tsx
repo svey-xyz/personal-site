@@ -4,6 +4,7 @@ import { settingsQuery, siteSettings } from "@/lib/sanity.queries";
 import { draftMode } from "next/headers";
 
 import { PortableText } from '@portabletext/react'
+import { portableTextComponents } from "@/lib/portableTextComponenets";
 
 export default async function Home() {
 	const preview = draftMode().isEnabled ? { token: process.env.SANITY_API_READ_TOKEN } : undefined
@@ -14,7 +15,7 @@ export default async function Home() {
 		<div className="flex flex-col items-center justify-between h-full-noheader text-center leading-8">
 				<TextBlock>
 					<h1 className='mb-8'>Work in progress</h1>
-				<PortableText value={settings.description} />
+				<PortableText value={settings.description} components={portableTextComponents}/>
 			</TextBlock>
     </div>
   )
