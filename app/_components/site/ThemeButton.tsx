@@ -1,13 +1,15 @@
-import { MoonIcon, SunIcon } from "@heroicons/react/24/solid";
-import React, { useContext } from "react";
+"use client"; // Required to set the onClick.
 
-export function ThemeButton({ currentTheme }: { currentTheme: string }) {
-	// const changeTheme = () => setTheme(currentTheme);
-	
+import { setTheme } from "@helpers/SetTheme";
+import { MoonIcon, SunIcon } from "@heroicons/react/24/solid";
+import React from "react";
+
+export function ThemeButton({ theme }: { theme: string }) {
+	const changeTheme = () => setTheme(theme);
 	return(
 			<label className = "group cursor-pointer relative flex items-center justify-center text-medium-accent leading-xs w-8 h-8 text-3xl" >
-			<input
-				aria-label="Theme Switcher" id="themeSwitcher" type="checkbox" defaultChecked={currentTheme=="dark"?true:false}
+			<input onClick={changeTheme}
+				aria-label="Theme Switcher" id="themeSwitcher" type="checkbox" defaultChecked={theme =="dark"?true:false}
 					className="absolute left-1/2 -translate-x-1/2 w-full h-full peer appearance-none
 					after:absolute after:overflow-hidden after:-z-1 after:inset-0 after:min-h-full after:w-full
 					after:bg-primary-accent after:rounded-full after:shadow-sm

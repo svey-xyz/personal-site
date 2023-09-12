@@ -4,17 +4,19 @@ import HeaderButton from '@components/site/HeaderButton'
 import { siteSettings } from '@/lib/sanity.queries'
 
 export default function Header({
-	preview, settings
+	preview, settings, theme
 }: {
-	preview: {token:string|undefined}|undefined, settings: siteSettings
+	preview: {token:string|undefined}|undefined,
+	settings: siteSettings,
+	theme: string,
 }) {
 	if (preview && preview.token) {
 		return (
-			<PreviewProvider token={preview.token} children={headerWrapper({ children: [previewHeader(), basicHeader({ preview, settings })]})} />
+			<PreviewProvider token={preview.token} children={headerWrapper({ children: [previewHeader(), basicHeader({ preview, settings, theme })]})} />
 		)
 	}
 	return (
-		headerWrapper({ children: [basicHeader({ preview, settings })] })
+		headerWrapper({ children: [basicHeader({ preview, settings, theme })] })
 	)
 }
 
@@ -26,14 +28,20 @@ function headerWrapper({children}:{children: React.ReactNode}) {
 	)
 }
 
-async function basicHeader({settings, preview}:{settings:siteSettings, preview: { token: string | undefined } | undefined}) {
+async function basicHeader({
+	settings, preview, theme
+}:{
+	settings:siteSettings,
+	preview: { token: string | undefined } | undefined,
+	theme: string,
+}) {
 	return (
 		<div className="relative h-[--header-height] flex items-center justify-center bg-secondary-bg z-50">
 			<div className="main-padding flex flex-row items-center justify-between">
 				<span className="leading-none font-black text-[25px] text-primary-text">
 					{settings.title}
 				</span>
-				<HeaderButton preview={preview} settings={settings}/>
+				<HeaderButton preview={preview} settings={settings} theme={theme}/>
 			</div>
 		</div>
 	)

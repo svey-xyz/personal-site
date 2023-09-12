@@ -1,10 +1,14 @@
-import ThemeButton from "@/app/_components/site/ThemeButton";
+import ThemeButton from "@components/site/ThemeButton";
 
-export function BasicFooter() {
+export function BasicFooter({
+	theme
+}:{
+	theme:string,
+}) {
 	return (
 		<div className="fixed bottom-0 left-0 right-0 main-padding">
 			<div className="relative bottom-0 flex flex-row py-4 justify-end">
-					<ThemeButton />
+					<ThemeButton theme={theme}/>
 				</div>
 		</div>
 	)

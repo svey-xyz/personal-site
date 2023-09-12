@@ -40,12 +40,17 @@ async function layout({
 		'[--total-header-height:calc(var(--header-height)+var(--preview-header-height))] mt-[--total-header-height]' :
 		'[--total-header-height:var(--header-height)] mt-[--total-header-height]'
 
+	const defaultTheme = "dark";
+	const cookieValue = cookies().get("theme")?.value || "";
+	const isTheme = cookieValue === defaultTheme || cookieValue === "light";
+	const theme = isTheme ? cookieValue : defaultTheme;
+
 	return (
-		<html lang="en" className='dark'>
+		<html lang="en" className={theme}>
 			<Head settings={settings} />
 			<body className={headerHeightString}>
 				<div id="modal-root"></div>
-				<Header preview={preview} settings={settings} />
+				<Header preview={preview} settings={settings} theme={theme} />
 				{preview ? (
 					<main>
 						{children}

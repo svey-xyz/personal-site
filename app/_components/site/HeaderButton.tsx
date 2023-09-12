@@ -2,9 +2,11 @@ import MenuModal from "@components/site/MenuModal";
 import { siteSettings } from "@/lib/sanity.queries";
 
 export default function HeaderButton({
-	preview, settings
+	preview, settings, theme
 }: {
-	preview: { token: string | undefined } | undefined, settings: siteSettings
+	preview: { token: string | undefined } | undefined,
+	settings: siteSettings,
+	theme: string,
 }): React.ReactNode {
 
 	return (
@@ -28,7 +30,7 @@ export default function HeaderButton({
 
 					checked:after:bg-linear-accent-gradient checked:after:-translate-x-1/2 checked:after:-translate-y-1/2 checked:after:scale-[3.0]"/>
 
-			<MenuModal preview={preview} settings={settings} />
+				<MenuModal preview={preview} settings={settings} theme={theme}/>
 
 			</div>
 	)
