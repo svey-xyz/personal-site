@@ -2,14 +2,14 @@
 	--studio-icon-size: 25px;
 }
 
-span[data-testid] {
+span[data-testid="Media"] {
 	svg {
 		max-width: var(--studio-icon-size);
 		min-width: var(--studio-icon-size);
 		width: var(--studio-icon-size);
 	}
 }
-span[data-ui] {
+div[data-ui="Text"] {
 	svg {
 		max-width: var(--studio-icon-size);
 		min-width: var(--studio-icon-size);
