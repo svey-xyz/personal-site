@@ -7,13 +7,41 @@ import { cookies, draftMode } from 'next/headers';
 import { getClient } from '@/lib/sanity.client';
 import { settingsQuery, siteSettings } from '@/lib/sanity.queries';
 import PreviewProvider from '@components/sanity/PreviewProvider';
+import { Metadata, ResolvingMetadata } from 'next';
 
 const inter = Inter({ subsets: ['latin'] })
 
+type Props = {
+	params: { id: string }
+}
+
+export async function generateMetadata(
+	{ params }: Props,
+	parent: ResolvingMetadata,
+): Promise<Metadata> {
+	const preview = draftMode().isEnabled ? { token: process.env.SANITY_API_READ_TOKEN } : undefined
+	const client = getClient(preview)
+	const settings: siteSettings = await client.fetch(settingsQuery)
+	const titleTemplate = `${settings.title} | %s`
+	
+	return {
+		title: {
+			template: titleTemplate,
+			default: settings.title,
+		},
+		description: "Generic description.",
+		keywords: ['Next.js', 'React', 'JavaScript'],
+		authors: [{ name: 'svey', url: 'https://svey.xyz' }],
+		colorScheme: 'dark',
+		creator: 'Hayden Soule',
+		publisher: 'Hayden Soule',
+	}
+}
+
 export default async function RootLayout({
-  children,
+	children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode,
 }) {
 	const preview = draftMode().isEnabled ? { token: process.env.SANITY_API_READ_TOKEN } : undefined
 
