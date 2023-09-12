@@ -1,7 +1,8 @@
 import { siteSettings } from "@/lib/sanity.queries";
 import ReactDOM from "react-dom";
 
-import SanityImage from "@/app/_components/site/sanityImage";
+import SanityImage from "@components/site/sanityImage";
+import BasicFooter from "@components/site/Footer";
 
 
 
@@ -37,6 +38,8 @@ const MenuModal = ({
 					</div>
 				</div>
 			</div>
+			
+			<BasicFooter />
 
 		</div>
 	)

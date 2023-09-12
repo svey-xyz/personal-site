@@ -55,7 +55,6 @@ async function layout({
 						{children}
 					</main>
 				)}
-				<BasicFooter />
 				<Analytics />
 			</body>
 		</html>
