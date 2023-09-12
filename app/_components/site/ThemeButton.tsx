@@ -1,0 +1,23 @@
+'use client'
+
+import { MoonIcon, SunIcon } from "@heroicons/react/24/solid";
+import { useState } from "react";
+
+export function ThemeButton() {
+	const [showModal, setShowModal] = useState(false);
+
+	return (
+		<label className="group cursor-pointer relative flex items-center justify-center text-medium-accent leading-xs w-8 h-8 text-3xl">
+			<input aria-label="Theme Switcher" id="themeSwitcher" type="checkbox" className="absolute left-1/2 -translate-x-1/2 w-full h-full peer appearance-none
+					after:absolute after:overflow-hidden after:-z-1 after:inset-0 after:min-h-full after:w-full
+					after:bg-primary-accent after:rounded-full after:shadow-sm
+					after:duration-100 group-hover:after:scale-[0.8] group-hover:after:shadow-md
+					motion-safe:group-hover:after:animate-pulse
+					checked:after:bg-secondary-accent"/>
+			<MoonIcon className="relative w-[80%] block peer-checked:!hidden duration-100 group-hover:scale-[1.35]"/>
+			<SunIcon className="relative w-[80%] !hidden peer-checked:!block duration-100 group-hover:scale-[1.4]"/>
+		</label>
+	)
+}
+
+export default ThemeButton;

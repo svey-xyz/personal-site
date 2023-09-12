@@ -6,7 +6,8 @@ import Head from '@site/head'
 import { draftMode } from 'next/headers';
 import { getClient } from '@/lib/sanity.client';
 import { settingsQuery, siteSettings } from '@/lib/sanity.queries';
-import PreviewProvider from '@/app/_components/sanity/PreviewProvider';
+import PreviewProvider from '@components/sanity/PreviewProvider';
+import BasicFooter from '@components/site/Footer';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -54,6 +55,7 @@ async function layout({
 						{children}
 					</main>
 				)}
+				<BasicFooter />
 				<Analytics />
 			</body>
 		</html>

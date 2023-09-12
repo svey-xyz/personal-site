@@ -13,7 +13,7 @@ export default async function Home() {
   return (
 		<div className="flex flex-col items-center justify-between h-full-noheader text-center leading-8">
 				<TextBlock>
-					<h1 className=''>Work in progress</h1>
+					<h1 className='mb-8'>Work in progress</h1>
 				<PortableText value={settings.description} />
 			</TextBlock>
     </div>
