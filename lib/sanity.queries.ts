@@ -1,4 +1,5 @@
 import { siteSettings } from "@/sanityStudio/schemas/settings/siteSettings";
+import { PortableTextBlockComponent } from "@portabletext/react";
 import { groq } from "next-sanity";
 import { Image, ImageAsset, ImageMetadata, ImageOptions, ImageSchemaType, PortableTextBlock } from "sanity";
 
@@ -36,7 +37,9 @@ interface basicQuery {
 /** */
 export interface siteSettings extends basicQuery {
 	title: string,
-	description: PortableTextBlock,
+	description: string,
+	summary: PortableTextBlock,
 	logo: sanityImageAsset,
+	keywords: Array<string>,
 	signature: Image
 }

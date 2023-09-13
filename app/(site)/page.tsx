@@ -17,7 +17,7 @@ export default async function Home() {
 		<div className="flex flex-col items-center justify-between h-full-noheader text-center leading-8">
 			<TextBlock>
 				<h1 className='mb-8'>Work in progress</h1>
-				<PortableText value={settings.description} components={portableTextComponents}/>
+				<PortableText value={settings.summary} components={portableTextComponents}/>
 			</TextBlock>
     </div>
   )
