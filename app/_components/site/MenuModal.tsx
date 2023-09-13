@@ -1,16 +1,13 @@
-import { siteSettings } from "@/lib/sanity.queries";
-import ReactDOM from "react-dom";
+import { settingsQuery, siteSettings } from "@/lib/sanity.queries";
 
 import SanityImage from "@components/site/SanityImage";
 import Footer from "@components/site/Footer";
+import { componentParamsType } from "@/lib/types";
 
-export function MenuModal({
-	preview, settings, theme
-}: {
-	preview: { token: string | undefined } | undefined,
-	settings: siteSettings,
-	theme: string,
-}) {
+export async function MenuModal({ componentParams }: { componentParams: componentParamsType }) {
+	const [client, preview, theme] = Object.values(componentParams);
+	const settings: siteSettings = await client.fetch(settingsQuery)
+
 	return (
 		<div className="mt-[--total-header-height] absolute inset-0 w-full z-20 peer-checked:flex hidden md:main-padding
 			after:fixed after:inset-0 after:bg-primary-accent after:-z-10 after:mt-[75px] after:opacity-70">
@@ -37,7 +34,7 @@ export function MenuModal({
 				</div>
 			</div>
 
-			<Footer theme={theme}/>
+			<Footer client={client} theme={theme}/>
 
 		</div>
 	)

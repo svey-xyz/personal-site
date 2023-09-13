@@ -1,13 +1,8 @@
 import MenuModal from "@components/site/MenuModal";
-import { siteSettings } from "@/lib/sanity.queries";
+import { componentParamsType } from "@/lib/types";
 
-export default function HeaderButton({
-	preview, settings, theme
-}: {
-	preview: { token: string | undefined } | undefined,
-	settings: siteSettings,
-	theme: string,
-}): React.ReactNode {
+export default function HeaderButton({ componentParams }: { componentParams: componentParamsType }) {
+	const [client, preview, theme] = Object.values(componentParams);
 
 	return (
 			<div>
@@ -30,7 +25,7 @@ export default function HeaderButton({
 
 					checked:after:bg-linear-accent-gradient checked:after:-translate-x-1/2 checked:after:-translate-y-1/2 checked:after:scale-[3.0]"/>
 
-				<MenuModal preview={preview} settings={settings} theme={theme}/>
+			<MenuModal componentParams={componentParams} />
 
 			</div>
 	)

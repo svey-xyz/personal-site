@@ -8,19 +8,19 @@ import { getClient } from '@/lib/sanity.client';
 import { settingsQuery, siteSettings } from '@/lib/sanity.queries';
 import PreviewProvider from '@components/sanity/PreviewProvider';
 import { Metadata, ResolvingMetadata } from 'next';
+import { SanityClient } from 'next-sanity';
+import { ReactNode } from 'react';
+import { componentParamsType, metadataPropsType, previewType, themeType } from '@/lib/types';
 
 const inter = Inter({ subsets: ['latin'] })
 
-type Props = {
-	params: { id: string }
-}
-
 export async function generateMetadata(
-	{ params }: Props,
+	{ params }: metadataPropsType,
 	parent: ResolvingMetadata,
 ): Promise<Metadata> {
 	const preview = draftMode().isEnabled ? { token: process.env.SANITY_API_READ_TOKEN } : undefined
 	const client = getClient(preview)
+
 	const settings: siteSettings = await client.fetch(settingsQuery)
 	const titleTemplate = `${settings.title} | %s`
 	
@@ -43,41 +43,48 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode,
 }) {
-	const preview = draftMode().isEnabled ? { token: process.env.SANITY_API_READ_TOKEN } : undefined
+	const defaultTheme = "dark";
+	const cookieValue = cookies().get("theme")?.value || "";
+	const isTheme = cookieValue === defaultTheme || cookieValue === "light";
+	const theme: themeType = isTheme ? cookieValue : defaultTheme;
+
+	const preview: previewType = draftMode().isEnabled ? { token: process.env.SANITY_API_READ_TOKEN } : undefined
+	const client = getClient(preview)
+
+	const componentParams: componentParamsType = {
+		client: client,
+		preview: preview,
+		theme: theme
+	}
 
 	if (preview && preview.token) {
 		return (
-			<PreviewProvider token={preview.token} children={layout({children, preview})} />
+			<PreviewProvider token={preview.token} children={layout({ children, componentParams })} />
 		)
 	}
 	return (
-		layout({ children, preview })
+		layout({ children, componentParams })
 	)
 }
 
 async function layout({
-	children, preview
+	children, componentParams
 }: {
 	children: React.ReactNode,
-	preview: { token: string | undefined } | undefined
+	componentParams: componentParamsType,
 }) {
-	const client = getClient(preview)
-	const settings: siteSettings = await client.fetch(settingsQuery)
+	const [client, preview, theme] = Object.values(componentParams);
+	
 	const headerHeightString = preview ?
 		'[--total-header-height:calc(var(--header-height)+var(--preview-header-height))] mt-[--total-header-height]' :
 		'[--total-header-height:var(--header-height)] mt-[--total-header-height]'
 
-	const defaultTheme = "dark";
-	const cookieValue = cookies().get("theme")?.value || "";
-	const isTheme = cookieValue === defaultTheme || cookieValue === "light";
-	const theme = isTheme ? cookieValue : defaultTheme;
-
 	return (
-		<html lang="en" className={theme}>
-			<Head settings={settings} />
+		<html lang="en" className={theme ? theme as string: ''}>
+			<Head componentParams={componentParams} />
 			<body className={headerHeightString}>
 				<div id="modal-root"></div>
-				<Header preview={preview} settings={settings} theme={theme} />
+				<Header componentParams={componentParams} />
 				{preview ? (
 					<main>
 						{children}

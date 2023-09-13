@@ -1,22 +1,19 @@
 import PreviewProvider from '@/app/_components/sanity/PreviewProvider'
 import HeaderButton from '@components/site/HeaderButton'
 
-import { siteSettings } from '@/lib/sanity.queries'
+import { settingsQuery, siteSettings } from '@/lib/sanity.queries'
+import { componentParamsType } from '@/lib/types'
 
-export default function Header({
-	preview, settings, theme
-}: {
-	preview: {token:string|undefined}|undefined,
-	settings: siteSettings,
-	theme: string,
-}) {
+export default function Header({componentParams}:{componentParams:componentParamsType}) {
+	const [client, preview, theme] = Object.values(componentParams)
+
 	if (preview && preview.token) {
 		return (
-			<PreviewProvider token={preview.token} children={HeaderWrapper({ children: [PreviewHeader(), SiteHeader({ preview, settings, theme })]})} />
+			<PreviewProvider token={preview.token} children={HeaderWrapper({ children: [PreviewHeader(), SiteHeader({ componentParams })]})} />
 		)
 	}
 	return (
-		HeaderWrapper({ children: [SiteHeader({ preview, settings, theme })] })
+		HeaderWrapper({ children: [SiteHeader({ componentParams })] })
 	)
 }
 
@@ -28,20 +25,17 @@ function HeaderWrapper({children}:{children: React.ReactNode}) {
 	)
 }
 
-async function SiteHeader({
-	settings, preview, theme
-}:{
-	settings:siteSettings,
-	preview: { token: string | undefined } | undefined,
-	theme: string,
-}) {
+async function SiteHeader({ componentParams }: { componentParams: componentParamsType }) {
+	const [client, preview, theme] = Object.values(componentParams);
+	const settings: siteSettings = await client.fetch(settingsQuery)
+
 	return (
 		<div className="relative h-[--header-height] flex items-center justify-center bg-secondary-bg z-50">
 			<div className="main-padding flex flex-row items-center justify-between">
 				<span className="leading-none font-black text-[25px] text-primary-text">
 					{settings.title}
 				</span>
-				<HeaderButton preview={preview} settings={settings} theme={theme}/>
+				<HeaderButton componentParams={componentParams} />
 			</div>
 		</div>
 	)

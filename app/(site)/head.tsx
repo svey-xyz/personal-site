@@ -1,6 +1,4 @@
-import { siteSettings } from "@/lib/sanity.queries";
-
-export default function Head({settings}:{settings:siteSettings}) {
+export default function Head({ componentParams }: { componentParams: componentParams }) {
 
 	return(
 		<>
