@@ -6,7 +6,7 @@ import { getClient } from "@/lib/sanity.client";
 import { sanityImageAsset } from "@/lib/sanity.queries";
 
 
-export function sanityImage({
+export function SanityImage({
 	image, alt, width, height, preview 
 } : {
 	image: sanityImageAsset,
@@ -29,4 +29,4 @@ export function sanityImage({
 	/>
 }
 
-export default sanityImage;
+export default SanityImage;

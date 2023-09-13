@@ -12,15 +12,15 @@ export default function Header({
 }) {
 	if (preview && preview.token) {
 		return (
-			<PreviewProvider token={preview.token} children={headerWrapper({ children: [previewHeader(), basicHeader({ preview, settings, theme })]})} />
+			<PreviewProvider token={preview.token} children={HeaderWrapper({ children: [PreviewHeader(), SiteHeader({ preview, settings, theme })]})} />
 		)
 	}
 	return (
-		headerWrapper({ children: [basicHeader({ preview, settings, theme })] })
+		HeaderWrapper({ children: [SiteHeader({ preview, settings, theme })] })
 	)
 }
 
-function headerWrapper({children}:{children: React.ReactNode}) {
+function HeaderWrapper({children}:{children: React.ReactNode}) {
 	return (
 		<nav className='fixed top-0 left-0 right-0 max-w-screen z-50 shadow-lg'>
 			{children}
@@ -28,7 +28,7 @@ function headerWrapper({children}:{children: React.ReactNode}) {
 	)
 }
 
-async function basicHeader({
+async function SiteHeader({
 	settings, preview, theme
 }:{
 	settings:siteSettings,
@@ -47,7 +47,7 @@ async function basicHeader({
 	)
 }
 
-function previewHeader() {
+function PreviewHeader() {
 	return (
 		<div className="relative h-[--preview-header-height] flex items-center justify-center">
 			<div className="main-padding m-auto flex flex-row">

@@ -1,6 +1,6 @@
 import ThemeButton from "@components/site/ThemeButton";
 
-export function BasicFooter({
+export function Footer({
 	theme
 }:{
 	theme:string,
@@ -14,4 +14,4 @@ export function BasicFooter({
 	)
 }
 
-export default BasicFooter;
+export default Footer;
