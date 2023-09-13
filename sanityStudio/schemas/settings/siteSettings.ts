@@ -17,21 +17,20 @@ export const siteSettings = defineType({
 		defineField({
 			title: 'Description',
 			name: 'description',
+			type: 'string',
+			description: 'Concise description of the site, used primarily for SEO and metadata.',
+		}),
+		defineField({
+			title: 'Summary',
+			name: 'summary',
 			type: 'basicBlockContent',
-			description: 'Concise description of the site.',
+			description: 'More detailed description, displayed in the frontend.',
 		}),
 		defineField({
 			title: 'Logo',
 			name: 'logo',
 			type: 'image',
 			description: 'Site logo displayed in header. Ideally an SVG. If no logo is provided text of the site name will appear in the header.',
-			// validation: Rule => Rule.required()
-		}),
-		defineField({
-			title: 'Signature',
-			name: 'signature',
-			type: 'image',
-			description: 'Signature used across the site.',
 			// validation: Rule => Rule.required()
 		}),
 	],

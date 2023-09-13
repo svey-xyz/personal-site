@@ -4,7 +4,7 @@ import { StructureBuilder } from "sanity/desk";
 import { types } from "@/sanityStudio/schema";
 import { DocumentActionComponent, DocumentActionsContext, Template } from "sanity";
 
-import { AdjustmentsHorizontalIcon, Cog6ToothIcon } from "@heroicons/react/24/solid";
+import { AdjustmentsHorizontalIcon, Cog6ToothIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set(["publish", "discardChanges", "restore"])
@@ -17,6 +17,13 @@ export const structure = (S: StructureBuilder) =>
 		/* SETTINGS */
 		S.listItem().title('Settings').icon(Cog6ToothIcon).child(
 			S.list().title('Settings Documents').items([
+
+				S.listItem().title('About').icon(UserCircleIcon).child(
+					S.document().schemaType('about').documentId('about')
+				),
+
+				S.divider(),
+
 				/* SITE SETTINGS */
 				S.listItem().title('Settings').icon(AdjustmentsHorizontalIcon).child(
 					S.document().schemaType('siteSettings').documentId('siteSettings')

@@ -1,10 +1,11 @@
 /**
  * Settings
  */
+import { about } from '@schemas/settings/about'
 import { siteSettings } from '@schemas/settings/siteSettings'
 import { mux } from '@schemas/settings/mux.api'
 
-const _settings = [siteSettings, mux]
+const _settings = [about, siteSettings, mux]
 
 /** 
  * Objects
