@@ -21,6 +21,12 @@ export const about = defineType({
 			type: 'string',
 		}),
 		defineField({
+			title: 'Email',
+			name: 'email',
+			type: 'string',
+			validation: (Rule) => Rule.email(),
+		}),
+		defineField({
 			title: 'Socials',
 			name: 'socials',
 			type: 'array',

@@ -2,12 +2,11 @@ import { AtSymbolIcon } from "@heroicons/react/24/solid";
 import { defineType, defineField } from "sanity";
 
 const socialTypes = [
-	{ title: 'Twitter', value: 'twitter' },
 	{ title: 'Instagram', value: 'instagram' },
-	{ title: 'Facebook', value: 'facebook' },
 	{ title: 'Vimeo', value: 'vimeo' },
 	{ title: 'LinkedIn', value: 'linkedin' },
 	{ title: 'GitHub', value: 'github' },
+	{ title: 'Mastodon', value: 'mastodon' },
 ]
 
 export const social = defineType({
@@ -18,19 +17,19 @@ export const social = defineType({
 	type: 'object',
 	fields: [
 		defineField({
-			title: 'Social Title',
-			name: 'socialTitle',
-			type: 'string',
-			description: 'The title associated with the account prefixed with the address sign (e.g. @username)',
-			validation: Rule => Rule.required()
-		}),
-		defineField({
 			title: 'Social Type',
 			name: 'socialType',
 			type: 'string',
 			options: {
-				list: socialTypes
+				list: socialTypes,
 			},
+			validation: Rule => Rule.required()
+		}),
+		defineField({
+			title: 'Social Title',
+			name: 'socialTitle',
+			type: 'string',
+			description: 'The title associated with the account prefixed with the address sign (e.g. @username)',
 			validation: Rule => Rule.required()
 		}),
 		defineField({
