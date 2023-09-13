@@ -1,7 +1,6 @@
 import { siteSettings } from "@/sanityStudio/schemas/settings/siteSettings";
-import { PortableTextBlockComponent } from "@portabletext/react";
 import { groq } from "next-sanity";
-import { Image, ImageAsset, ImageMetadata, ImageOptions, ImageSchemaType, PortableTextBlock } from "sanity";
+import { Image, ImageAsset, PortableTextBlock } from "sanity";
 
 /** QUERIES */
 export const settingsQuery: string = groq`

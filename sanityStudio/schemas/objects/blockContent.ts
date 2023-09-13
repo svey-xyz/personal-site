@@ -1,4 +1,4 @@
-import { defineType, defineArrayMember } from 'sanity'
+import { defineType, defineArrayMember, UrlRule } from 'sanity'
 import { mediaAssetSource } from 'sanity-plugin-media'
 
 /**
@@ -47,6 +47,9 @@ const blockArray = {
 						title: 'URL',
 						name: 'href',
 						type: 'url',
+						validation: (Rule:UrlRule) => Rule.uri({
+							scheme: ['https', 'mailto', 'tel']
+						})
 					},
 				],
 			},
