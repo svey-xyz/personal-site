@@ -1,4 +1,5 @@
 import {
+	defineArrayMember,
 	defineField,
 	defineType,
 } from "sanity";
@@ -19,6 +20,16 @@ export const siteSettings = defineType({
 			name: 'description',
 			type: 'string',
 			description: 'Concise description of the site, used primarily for SEO and metadata.',
+		}),
+		defineField({
+			title: 'Keywords',
+			name: 'keywords',
+			type: 'array',
+			of: [
+				defineArrayMember({
+					type: 'string',
+				})
+			],
 		}),
 		defineField({
 			title: 'Summary',
