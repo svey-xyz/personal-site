@@ -74,12 +74,15 @@ async function layout({
 	componentParams: componentParamsType,
 }) {
 	const [client, preview, theme] = Object.values(componentParams);
-
+	
+	const headerHeightString = preview ?
+		'[--total-header-height:calc(var(--header-height)+var(--preview-header-height))]' :
+		'[--total-header-height:var(--header-height)]'
 
 	return (
 		<html lang="en" className={theme ? theme as string: ''}>
 			<Head componentParams={componentParams} />
-			<body>
+			<body className={headerHeightString}>
 				<Header componentParams={componentParams} />
 				{preview ? (
 					<main>
