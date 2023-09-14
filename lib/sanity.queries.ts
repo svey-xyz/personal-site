@@ -1,4 +1,3 @@
-import { siteSettings } from "@/sanityStudio/schemas/settings/siteSettings";
 import { groq } from "next-sanity";
 import { Image, ImageAsset, PortableTextBlock } from "sanity";
 
@@ -17,8 +16,15 @@ export const settingsQuery: string = groq`
 `
 export const aboutQuery: string = groq`
 	*[_id == "about"] {
-		"curriculumVitaeURL": curriculumVitae.asset->url,
-		...
+		...,
+		signature {
+			...,
+			"imageAsset":asset-> {
+				...,
+				metadata,
+			}
+		},
+		
 	}[0]
 `
 
@@ -26,19 +32,34 @@ export interface sanityImageAsset extends Image {
 	imageAsset: ImageAsset
 }
 
-interface basicQuery {
+export interface basicDocumentData {
 	_updatedAt: string,
 	_createdAt: string,
 	_rev: string,
 	_type: string,
 	_id: string
 }
-/** */
-export interface siteSettings extends basicQuery {
+
+export interface socialData {
+	socialType: string,
+	socialTitle: string,
+	url: string,
+}
+
+export interface settingsData extends basicDocumentData {
 	title: string,
 	description: string,
 	summary: PortableTextBlock,
 	logo: sanityImageAsset,
 	keywords: Array<string>,
 	signature: Image
+}
+
+export interface aboutData extends basicDocumentData {
+	name: string,
+	alias: string,
+	email: string,
+	socials: Array<socialData>,
+	bio: PortableTextBlock,
+	signature: sanityImageAsset,
 }

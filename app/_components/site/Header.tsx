@@ -1,7 +1,7 @@
 import PreviewProvider from '@/app/_components/sanity/PreviewProvider'
 import HeaderButton from '@components/site/HeaderButton'
 
-import { settingsQuery, siteSettings } from '@/lib/sanity.queries'
+import { settingsQuery, settingsData } from '@/lib/sanity.queries'
 import { componentParamsType } from '@/lib/types'
 
 export default function Header({componentParams}:{componentParams:componentParamsType}) {
@@ -27,7 +27,7 @@ function HeaderWrapper({children}:{children: React.ReactNode}) {
 
 async function SiteHeader({ componentParams }: { componentParams: componentParamsType }) {
 	const [client, preview, theme] = Object.values(componentParams);
-	const settings: siteSettings = await client.fetch(settingsQuery)
+	const settings: settingsData = await client.fetch(settingsQuery)
 
 	return (
 		<div className="relative h-[--header-height] flex items-center justify-center bg-secondary-bg z-50">

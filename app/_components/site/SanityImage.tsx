@@ -7,17 +7,17 @@ import { sanityImageAsset } from "@/lib/sanity.queries";
 
 
 export function SanityImage({
-	image, alt, width, height, preview 
+	image, alt, width, height, sizes, preview
 } : {
 	image: sanityImageAsset,
 	alt: string,
 	width: string,
 	height: string,
+	sizes: string,
 	preview: { token: string | undefined } | undefined
 }) {
 	const client = getClient(preview)
 	const imageProps = useNextSanityImage(client, image);
-	const sizes = `(max-width: ${width}) ${width}`
 
 	return <Image
 		{...imageProps}

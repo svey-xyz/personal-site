@@ -13,6 +13,12 @@ module.exports = {
 			xl: "1440px",
 		},
     extend: {
+			height: {
+				'icon': 'var(--icon-size)'
+			},
+			width: {
+				'icon': 'var(--icon-size)'
+			},
 			maxWidth: {
 				'prose-full': '85ch',
 				'prose': '65ch',

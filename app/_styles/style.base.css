@@ -15,6 +15,12 @@
 		--preview-header-height: 40px;
 		--total-header-height: calc(var(--header-height) + var(--preview-header-height));
 
+		--icon-size: 32px;
+		@media(min-width: 768px){
+			--icon-size: 42px;
+
+		}
+
 	}
 
 	.dark {
