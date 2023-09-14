@@ -37,13 +37,6 @@ export const siteSettings = defineType({
 			type: 'basicBlockContent',
 			description: 'More detailed description, displayed in the frontend.',
 		}),
-		defineField({
-			title: 'Logo',
-			name: 'logo',
-			type: 'image',
-			description: 'Site logo displayed in header. Ideally an SVG. If no logo is provided text of the site name will appear in the header.',
-			// validation: Rule => Rule.required()
-		}),
 	],
 	preview: {
 		select: {
