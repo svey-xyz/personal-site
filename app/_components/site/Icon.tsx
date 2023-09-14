@@ -6,15 +6,17 @@ import Icon_Z from '@public/icons/logo/Z.svg'
 
 export function Icon() {
 	return (
-		<div aria-label={`Site Icon`}
-			className="group cursor-pointer relative flex items-center justify-center w-icon h-icon" >
+		<div className="group relative flex items-center justify-center w-icon h-icon">
+			<input aria-label={`Site Icon`} type="checkbox" className="peer cursor-pointer absolute min-w-full min-h-full appearance-none z-10 left-0
+				checked:min-w-[275%]" />
 			<Icon_Z className="absolute min-h-full min-w-full fill-[#837da1] drop-shadow-md
-				duration-300 transition-transform group-hover:rotate-6 group-hover:translate-x-12" />
+				duration-300 transition-transform peer-checked:rotate-6 peer-checked:translate-x-[2.8rem]" />
 			<Icon_X className="absolute min-h-full min-w-full fill-[#333] dark:fill-[#eee] drop-shadow-md
-				duration-300 transition-transform group-hover:rotate-0" />
+				duration-300 transition-transform peer-checked:rotate-0" />
 			<Icon_Y className="absolute min-h-full min-w-full fill-[#d0b6c8] drop-shadow-md
-				duration-300 transition-transform group-hover:-rotate-6 group-hover:translate-x-6" />
+				duration-300 transition-transform peer-checked:-rotate-6 peer-checked:translate-x-6" />
 		</div>
+		
 	)
 }
 
