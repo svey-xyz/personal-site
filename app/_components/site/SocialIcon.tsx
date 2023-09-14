@@ -1,7 +1,7 @@
 import { socialData } from "@/lib/sanity.queries";
 import { capitalize } from "@/lib/stringFunctions";
 import React from "react";
-import MastodonIcon from '@public/socialIcons/mastodon.svg'
+import MastodonIcon from '@public/icons/social/mastodon.svg'
 
 
 export function SocialIcon({ social }: { social: socialData }) {

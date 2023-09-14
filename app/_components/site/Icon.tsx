@@ -1,7 +1,7 @@
 import React from "react";
-import Icon_X from '@public/icon/X.svg'
-import Icon_Y from '@public/icon/Y.svg'
-import Icon_Z from '@public/icon/Z.svg'
+import Icon_X from '@public/icons/logo/X.svg'
+import Icon_Y from '@public/icons/logo/Y.svg'
+import Icon_Z from '@public/icons/logo/Z.svg'
 
 
 export function Icon() {
