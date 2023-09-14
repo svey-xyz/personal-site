@@ -74,16 +74,12 @@ async function layout({
 	componentParams: componentParamsType,
 }) {
 	const [client, preview, theme] = Object.values(componentParams);
-	
-	const headerHeightString = preview ?
-		'[--total-header-height:calc(var(--header-height)+var(--preview-header-height))] mt-[--total-header-height]' :
-		'[--total-header-height:var(--header-height)] mt-[--total-header-height]'
+
 
 	return (
 		<html lang="en" className={theme ? theme as string: ''}>
 			<Head componentParams={componentParams} />
-			<body className={headerHeightString}>
-				<div id="modal-root"></div>
+			<body>
 				<Header componentParams={componentParams} />
 				{preview ? (
 					<main>
