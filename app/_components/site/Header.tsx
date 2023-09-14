@@ -1,8 +1,9 @@
 import PreviewProvider from '@/app/_components/sanity/PreviewProvider'
-import HeaderButton from '@components/site/HeaderButton'
 
 import { settingsQuery, settingsData } from '@/lib/sanity.queries'
 import { componentParamsType } from '@/lib/types'
+import SanityImage from '@/app/_components/site/SanityImage'
+import ThemeButton from '@/app/_components/site/ThemeButton'
 
 export default function Header({componentParams}:{componentParams:componentParamsType}) {
 	const [client, preview, theme] = Object.values(componentParams)
@@ -32,10 +33,22 @@ async function SiteHeader({ componentParams }: { componentParams: componentParam
 	return (
 		<div className="relative h-[--header-height] flex items-center justify-center bg-secondary-bg z-50">
 			<div className="main-padding flex flex-row items-center justify-between">
-				<span className="leading-none font-black text-[25px] text-primary-text">
+				{/* <span className="leading-none font-black text-[25px] text-primary-text">
 					{settings.title}
-				</span>
-				<HeaderButton componentParams={componentParams} />
+				</span> */}
+				<div className="relative block w-10">
+
+					<SanityImage
+						image={settings.logo}
+						alt={'Site logo'}
+						width={'100%'}
+						height={'auto'}
+						sizes={`(max-width: 80px) 80px, 80px`}
+						preview={preview}
+					/>
+				</div>
+				<ThemeButton theme={theme} />
+				{/* <HeaderButton componentParams={componentParams} /> */}
 			</div>
 		</div>
 	)

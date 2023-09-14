@@ -13,11 +13,11 @@ export function ThemeButton({ theme }: { theme: string }) {
 					className="absolute left-1/2 -translate-x-1/2 w-full h-full peer appearance-none
 					after:absolute after:overflow-hidden after:-z-1 after:inset-0 after:min-h-full after:w-full
 					after:bg-primary-accent after:rounded-full after:shadow-sm
-					after:duration-100 group-hover:after:scale-[0.8] group-hover:after:shadow-md
+					after:duration-100 group-hover:after:scale-[0.82] group-hover:after:shadow-md
 					motion-safe:group-hover:after:animate-pulse
 					dark:after:bg-secondary-accent"/>
-				<SunIcon className="relative w-[80%] block peer-checked:!hidden duration-100 group-hover:scale-[1.4]" />
-				<MoonIcon className="relative w-[80%] !hidden peer-checked:!block duration-100 group-hover:scale-[1.35]" />
+				<SunIcon className="relative w-[80%] block peer-checked:!hidden duration-100 group-hover:scale-[1.3]" />
+				<MoonIcon className="relative w-[80%] !hidden peer-checked:!block duration-100 group-hover:scale-[1.2]" />
 			</label >
 		)
 }
