@@ -4,7 +4,7 @@ export function TextBlock({
 	children: React.ReactNode
 }): React.ReactNode {
 	return (
-		<div className='relative w-full min-w-full shadow-inner
+		<div className='relative w-full min-w-full shadow-inner main-padding
 			after:absolute after:inset-0 after:-z-1 after:bg-primary-bg after:bg-gradient-to-br after:from-primary-bg after:to-secondary-bg'>
 			<div className="flex flex-col items-center max-w-prose py-32 mx-auto">
 				{children}
