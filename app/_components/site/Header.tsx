@@ -20,7 +20,7 @@ export default function Header({componentParams}:{componentParams:componentParam
 
 function HeaderWrapper({children}:{children: React.ReactNode}) {
 	return (
-		<nav className='relative top-0 left-0 right-0 max-w-screen border-b border-solid border-primary-accent box-border h-[--header-height]'>
+		<nav className='relative top-0 left-0 right-0 max-w-screen h-[--header-height]'>
 			{children}
 		</nav>
 	)
@@ -31,7 +31,7 @@ async function SiteHeader({ componentParams }: { componentParams: componentParam
 	const settings: settingsData = await client.fetch(settingsQuery)
 
 	return (
-		<div className="relative h-full flex items-center justify-center bg-secondary-bg">
+		<div className="relative h-full flex items-center justify-center">
 			<div className="main-padding flex flex-row items-center justify-between">
 				<div className="relative block w-10">
 					<SanityImage
