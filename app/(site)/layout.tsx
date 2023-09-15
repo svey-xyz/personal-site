@@ -90,11 +90,11 @@ async function layout({
 			<body>
 				<Header componentParams={componentParams} />
 				{preview ? (
-					<main>
+					<main className='mb-24'>
 						{children}
 					</main>
 				) : (
-					<main>
+					<main className='mb-24'>
 						{children}
 					</main>
 				)}

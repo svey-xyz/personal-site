@@ -16,8 +16,8 @@ export function ThemeButton({ theme }: { theme: string }) {
 					after:duration-100 group-hover:after:scale-[0.82] group-hover:after:shadow-md
 					motion-safe:group-hover:after:animate-pulse
 					dark:after:bg-secondary-accent"/>
-				<SunIcon className="relative w-[80%] block peer-checked:!hidden duration-100 group-hover:scale-[1.3]" />
-				<MoonIcon className="relative w-[80%] !hidden peer-checked:!block duration-100 group-hover:scale-[1.2]" />
+				<SunIcon className="text-opposite-bg relative w-[80%] block peer-checked:!hidden duration-100 group-hover:scale-[1.3]" />
+				<MoonIcon className="text-opposite-bg relative w-[80%] !hidden peer-checked:!block duration-100 group-hover:scale-[1.2]" />
 			</label >
 		)
 }

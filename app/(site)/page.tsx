@@ -1,6 +1,6 @@
 import TextBlock from "@/app/_components/site/TextBlock";
 import { getClient } from "@/lib/sanity.client";
-import { settingsQuery, settingsData } from "@/lib/sanity.queries";
+import { settingsQuery, settingsData, aboutData, aboutQuery } from "@/lib/sanity.queries";
 import { draftMode } from "next/headers";
 
 import { PortableText } from '@portabletext/react'
@@ -12,12 +12,16 @@ export default async function Home() {
 
 	const client = getClient(preview)
 	const settings: settingsData = await client.fetch(settingsQuery)
+	const about: aboutData = await client.fetch(aboutQuery);
 
   return (
-		<div className="relative flex flex-col items-center justify-between h-full-noheader min-w-full">
+		<div className="relative flex flex-col h-full-noheader min-w-full">
 			<TextBlock>
-				<h1 className='mb-8'>Work in progress</h1>
 				<PortableText value={settings.summary} components={portableTextComponents}/>
+			</TextBlock>
+			<TextBlock>
+				<h2>about</h2>
+				<PortableText value={about.bio} components={portableTextComponents} />
 			</TextBlock>
     </div>
   )

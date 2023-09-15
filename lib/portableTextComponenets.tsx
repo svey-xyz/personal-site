@@ -10,7 +10,7 @@ export const portableTextComponents: PortableTextComponents = {
     link: ({ value, children }) => {
 			const target = (value?.href || '').startsWith('http') ? '_blank' : undefined
 			return (
-				<a href= { value?.href } target={ target } rel={ target === '_blank' ? 'noindex nofollow' : ''}>
+				<a href= { value?.href } aria-label={`Link to ${children}`} target={ target } rel={ target === '_blank' ? 'noindex nofollow' : ''}>
 					{ children }
 				</a>
       )
