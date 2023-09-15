@@ -41,8 +41,8 @@ module.exports = {
 					'linear-gradient(to right, var(--primary-accent), var(--secondary-accent))',
       },
 			fontFamily: {
-				heading: ['DM Serif Display', 'serif'],
-				body: ['Montserrat', 'sans-serif']
+				heading: ['var(--font-fira-code)'],
+				body: ['var(--font-fira-code)']
 			},
 			animation: {
 				'breathing': 'bounceScale 2s linear infinite',

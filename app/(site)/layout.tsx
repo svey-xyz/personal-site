@@ -8,11 +8,14 @@ import { getClient } from '@/lib/sanity.client';
 import { settingsQuery, settingsData } from '@/lib/sanity.queries';
 import PreviewProvider from '@components/sanity/PreviewProvider';
 import { Metadata, ResolvingMetadata } from 'next';
-import { SanityClient } from 'next-sanity';
-import { ReactNode } from 'react';
+import localFont from "@next/font/local";
 import { componentParamsType, metadataPropsType, previewType, themeType } from '@/lib/types';
 
 const inter = Inter({ subsets: ['latin'] })
+const firaCode = localFont({
+	src: "../_public/fonts/FiraCode/FiraCode-VF.woff2",
+	variable: "--font-fira-code",
+});
 
 export async function generateMetadata(
 	{ params }: metadataPropsType,
@@ -79,10 +82,12 @@ async function layout({
 		'[--total-header-height:calc(var(--header-height)+var(--preview-header-height))]' :
 		'[--total-header-height:var(--header-height)]'
 
+	let documentClasses = `${theme ? theme as string : ''} ${inter.className} ${firaCode.variable} ${headerHeightString}`
+
 	return (
-		<html lang="en" className={theme ? theme as string: ''}>
+		<html lang="en" className={documentClasses}>
 			<Head componentParams={componentParams} />
-			<body className={headerHeightString}>
+			<body>
 				<Header componentParams={componentParams} />
 				{preview ? (
 					<main>
