@@ -8,7 +8,7 @@ import { getClient } from '@/lib/sanity.client';
 import { settingsQuery, settingsData } from '@/lib/sanity.queries';
 import PreviewProvider from '@components/sanity/PreviewProvider';
 import { Metadata, ResolvingMetadata } from 'next';
-import localFont from "@next/font/local";
+import localFont from "next/font/local";
 import { componentParamsType, metadataPropsType, previewType, themeType } from '@/lib/types';
 
 const inter = Inter({ subsets: ['latin'] })
