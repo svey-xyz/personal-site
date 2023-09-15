@@ -32,8 +32,8 @@ async function SiteHeader({ componentParams }: { componentParams: componentParam
 	const settings: settingsData = await client.fetch(settingsQuery)
 
 	return (
-		<div className="relative h-full flex items-center justify-center">
-			<div className="main-padding flex flex-row items-center justify-between">
+		<div className="relative h-full flex flex-col items-center justify-center">
+			<div className="main-padding flex flex-row items-center justify-between z-50">
 				<div className="relative block w-10">
 					<Icon />
 					{/* <SanityImage
@@ -47,6 +47,8 @@ async function SiteHeader({ componentParams }: { componentParams: componentParam
 				</div>
 				<ThemeButton theme={theme} />
 			</div>
+			<div className='fixed top-0 w-full select-none pointer-events-none h-24 z-10 backdrop-blur opacity-95 bg-gradient-to-b from-primary-bg to-transparent gradient-mask
+				after:absolute after:inset-0 after:bg-gradient-to-b after:from-primary-bg after:to-transparent'></div>
 		</div>
 	)
 }

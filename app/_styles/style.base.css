@@ -55,4 +55,8 @@
 	.accent-background {
 		background: linear-gradient(to right, var(--primaryAccent), var(--secondaryAccent));
 	}
+
+	.gradient-mask {
+		mask-image: linear-gradient(to bottom,#000 25%,transparent)
+	}
 }
