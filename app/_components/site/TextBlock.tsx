@@ -4,8 +4,8 @@ export function TextBlock({
 	children: React.ReactNode
 }): React.ReactNode {
 	return (
-		<div className='relative w-full min-w-full main-padding'>
-			<div className="flex flex-col items-center max-w-prose py-32 mx-auto">
+		<div className='main-padding mt-24'>
+			<div className="flex flex-col max-w-prose">
 				{children}
 			</div>
 		</div>

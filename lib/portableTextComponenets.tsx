@@ -4,7 +4,7 @@ import { PortableTextComponents } from '@portabletext/react'
 export const portableTextComponents: PortableTextComponents = {
 	marks: {
 		// Ex. 1: custom renderer for the em / italics decorator
-		em: ({ children }) => <em className="text-gray-600 font-semibold"> { children } </em>,
+		em: ({ children }) => <em className="font-semibold"> { children } </em>,
 
     // Ex. 2: rendering a custom `link` annotation
     link: ({ value, children }) => {

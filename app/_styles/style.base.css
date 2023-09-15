@@ -32,7 +32,7 @@
 	}
 
 	body {
-		@apply font-body;
+		@apply font-body text-left text-sm;
 		color: var(--primary-text);
 		background: linear-gradient(
 				to bottom,
@@ -42,8 +42,9 @@
 			var(--primary-bg);
 	}
 
-	h1 { @apply font-heading text-center text-6xl font-bold; }
+	h1 { @apply font-heading text-3xl font-black; }
 	a { @apply underline underline-offset-2 motion-safe:hover:underline-offset-4 transition-[text-underline-offset] duration-100 visited:text-secondary-accent hover:text-primary-accent; }
+	p { @apply mt-2; }
 
 	.main-padding { @apply max-w-screen-xl w-full mx-auto px-6 sm:px-12 md:px-24; }
 

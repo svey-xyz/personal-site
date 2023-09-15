@@ -14,7 +14,7 @@ export default async function Home() {
 	const settings: settingsData = await client.fetch(settingsQuery)
 
   return (
-		<div className="flex flex-col items-center justify-between h-full-noheader text-center leading-8">
+		<div className="relative flex flex-col items-center justify-between h-full-noheader min-w-full">
 			<TextBlock>
 				<h1 className='mb-8'>Work in progress</h1>
 				<PortableText value={settings.summary} components={portableTextComponents}/>
