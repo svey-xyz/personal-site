@@ -36,18 +36,10 @@ async function SiteHeader({ componentParams }: { componentParams: componentParam
 			<div className="main-padding flex flex-row items-center justify-between z-50">
 				<div className="relative block w-10">
 					<Icon />
-					{/* <SanityImage
-						image={settings.logo}
-						alt={'Site logo'}
-						width={'100%'}
-						height={'auto'}
-						sizes={`(max-width: 80px) 80px, 80px`}
-						preview={preview}
-					/> */}
 				</div>
 				<ThemeButton theme={theme} />
 			</div>
-			<div className='fixed top-0 w-full select-none pointer-events-none h-24 z-10 backdrop-blur opacity-95 bg-gradient-to-b from-primary-bg to-transparent mask-linear
+			<div className='fixed top-0 w-full select-none pointer-events-none h-32 z-10 backdrop-blur bg-gradient-to-b from-primary-bg to-transparent mask-linear mask-via-60
 				after:absolute after:inset-0 after:bg-gradient-to-b after:from-primary-bg after:to-transparent'></div>
 		</div>
 	)

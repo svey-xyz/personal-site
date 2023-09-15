@@ -1,4 +1,6 @@
-export default function Head({ componentParams }: { componentParams: componentParams }) {
+import { componentParamsType } from "@/lib/types";
+
+export default function Head({ componentParams }: { componentParams: componentParamsType }) {
 
 	return(
 		<>
