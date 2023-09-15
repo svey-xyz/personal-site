@@ -1,5 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+	plugins: [
+		require('@pyncz/tailwind-mask-image')
+	],
 	darkMode: 'class',
   content: [
     './app/**/*.{js,ts,jsx,tsx,mdx}',

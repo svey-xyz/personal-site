@@ -15,7 +15,7 @@ export default async function Home() {
 	const about: aboutData = await client.fetch(aboutQuery);
 
   return (
-		<div className="relative flex flex-col h-full-noheader min-w-full">
+		<div className="relative flex flex-col min-w-full">
 			<TextBlock>
 				<PortableText value={settings.summary} components={portableTextComponents}/>
 			</TextBlock>

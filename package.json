@@ -12,6 +12,7 @@
     "@heroicons/react": "^2.0.18",
     "@next/font": "^13.4.19",
     "@portabletext/react": "^3.0.7",
+    "@pyncz/tailwind-mask-image": "^2.0.0",
     "@sanity/color-input": "^3.1.0",
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.14.1",

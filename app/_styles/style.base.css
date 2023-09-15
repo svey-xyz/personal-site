@@ -49,14 +49,4 @@
 	p { @apply mt-2; }
 
 	.main-padding { @apply max-w-screen-xl w-full mx-auto px-6 sm:px-12 md:px-24; }
-
-	.h-full-noheader { min-height: calc(100vh - var(--total-header-height)); }
-
-	.accent-background {
-		background: linear-gradient(to right, var(--primaryAccent), var(--secondaryAccent));
-	}
-
-	.gradient-mask {
-		mask-image: linear-gradient(to bottom,#000 25%,transparent)
-	}
 }

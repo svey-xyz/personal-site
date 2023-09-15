@@ -47,7 +47,7 @@ async function SiteHeader({ componentParams }: { componentParams: componentParam
 				</div>
 				<ThemeButton theme={theme} />
 			</div>
-			<div className='fixed top-0 w-full select-none pointer-events-none h-24 z-10 backdrop-blur opacity-95 bg-gradient-to-b from-primary-bg to-transparent gradient-mask
+			<div className='fixed top-0 w-full select-none pointer-events-none h-24 z-10 backdrop-blur opacity-95 bg-gradient-to-b from-primary-bg to-transparent mask-linear
 				after:absolute after:inset-0 after:bg-gradient-to-b after:from-primary-bg after:to-transparent'></div>
 		</div>
 	)
