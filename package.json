@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@heroicons/react": "^2.0.18",
     "@portabletext/react": "^3.0.7",
     "@pyncz/tailwind-mask-image": "^2.0.0",

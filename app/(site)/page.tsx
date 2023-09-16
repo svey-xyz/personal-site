@@ -5,6 +5,7 @@ import { draftMode } from "next/headers";
 
 import { PortableText } from '@portabletext/react'
 import { portableTextComponents } from "@/lib/portableTextComponenets";
+import SocialIcon from "@/app/_components/site/SocialIcon";
 
 /** Metadata defined in layout for top route page */
 export default async function Home() {
@@ -20,6 +21,12 @@ export default async function Home() {
 				<PortableText value={settings.summary} components={portableTextComponents}/>
 			</TextBlock>
 			<TextBlock>
+				{ about.socials.map((social) => {
+				
+					return <SocialIcon social={social} />
+				}
+
+				)}
 				<h2>about</h2>
 				<PortableText value={about.bio} components={portableTextComponents} />
 			</TextBlock>
