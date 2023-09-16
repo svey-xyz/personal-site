@@ -11,11 +11,18 @@ export default function Header({componentParams}:{componentParams:componentParam
 
 	if (preview && preview.token) {
 		return (
-			<PreviewProvider token={preview.token} children={HeaderWrapper({ children: [PreviewHeader(), SiteHeader({ componentParams })]})} />
+			<PreviewProvider token={preview.token} >
+				<HeaderWrapper>
+					<PreviewHeader/>
+					<SiteHeader componentParams={componentParams} />
+				</HeaderWrapper>
+			</PreviewProvider>
 		)
 	}
 	return (
-		HeaderWrapper({ children: [SiteHeader({ componentParams })] })
+		<HeaderWrapper>
+			<SiteHeader componentParams={componentParams} />
+		</HeaderWrapper>
 	)
 }
 
