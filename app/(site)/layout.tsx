@@ -89,6 +89,10 @@ async function layout({
 			<Head componentParams={componentParams} />
 			<body className='relative min-h-screen'>
 				<Header componentParams={componentParams} />
+				<div className='fixed top-0 w-full select-none pointer-events-none h-24 z-10 bg-gradient-to-b from-primary-bg to-transparent
+					after:absolute after:inset-0 after:bg-gradient-to-b after:from-primary-bg after:to-transparent'></div>
+				<div className='fixed bottom-0 w-full select-none pointer-events-none h-24 z-10 bg-gradient-to-t from-primary-bg to-transparent
+					after:absolute after:inset-0 after:bg-gradient-to-t after:from-primary-bg after:to-transparent'></div>
 				{preview ? (
 					<main className='mb-24 min-h-full'>
 						{children}

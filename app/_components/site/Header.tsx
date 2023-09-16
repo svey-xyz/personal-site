@@ -21,9 +21,9 @@ export default function Header({componentParams}:{componentParams:componentParam
 
 function HeaderWrapper({children}:{children: React.ReactNode}) {
 	return (
-		<nav className='relative top-0 left-0 right-0 max-w-screen h-[--header-height]'>
+		<header className='relative top-0 left-0 right-0 max-w-screen h-[--header-height]'>
 			{children}
-		</nav>
+		</header>
 	)
 }
 
@@ -41,8 +41,7 @@ async function SiteHeader({ componentParams }: { componentParams: componentParam
 			</div>
 			{/* backdrop-filter doesn't play nicely with mask-image in chrome */}
 			{/* otherwise this effect looks great in other browsers with- backdrop-blur mask-linear */}
-			<div className='fixed top-0 w-full select-none pointer-events-none h-32 z-10
-				after:absolute after:inset-0 after:bg-gradient-to-b after:from-primary-bg after:to-transparent'></div>
+
 		</div>
 	)
 }
