@@ -39,7 +39,9 @@ async function SiteHeader({ componentParams }: { componentParams: componentParam
 				</div>
 				<ThemeButton theme={theme} />
 			</div>
-			<div className='fixed top-0 w-full select-none pointer-events-none h-32 z-10 backdrop-blur bg-gradient-to-b from-primary-bg to-transparent mask-linear mask-via-60
+			{/* backdrop-filter doesn't play nicely with mask-image in chrome */}
+			{/* otherwise this effect looks great in other browsers with- backdrop-blur mask-linear */}
+			<div className='fixed top-0 w-full select-none pointer-events-none h-32 z-10
 				after:absolute after:inset-0 after:bg-gradient-to-b after:from-primary-bg after:to-transparent'></div>
 		</div>
 	)

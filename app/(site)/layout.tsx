@@ -87,14 +87,14 @@ async function layout({
 	return (
 		<html lang="en" className={documentClasses}>
 			<Head componentParams={componentParams} />
-			<body>
+			<body className='relative min-h-screen'>
 				<Header componentParams={componentParams} />
 				{preview ? (
-					<main className='mb-24'>
+					<main className='mb-24 min-h-full'>
 						{children}
 					</main>
 				) : (
-					<main className='mb-24'>
+					<main className='mb-24 min-h-full'>
 						{children}
 					</main>
 				)}

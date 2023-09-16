@@ -24,7 +24,7 @@
 		--primary-text: #FFF;
 		--secondary-text: #DDD;
 		--primary-bg: #161214;
-		--secondary-bg: #151617;
+		--secondary-bg: #181617;
 		--opposite-bg: #efeeed;
 		--primary-accent: #ad7f9f;
 		--secondary-accent: #837DA1;
@@ -34,13 +34,13 @@
 	}
 
 	body {
-		@apply font-body text-left text-sm text-secondary-text;
-		background: linear-gradient(
-				to bottom,
+		@apply font-body text-left text-sm text-secondary-text bg-primary-bg;
+		/* background: linear-gradient(
+				to top,
 				transparent,
 				var(--secondary-bg)
 			)
-			var(--primary-bg);
+			var(--primary-bg);*/
 	}
 	h1, h2, h3, h4, h5, h6 { @apply font-heading text-primary-text; }
 	h1 { @apply text-3xl font-black underline underline-offset-4; }
