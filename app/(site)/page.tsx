@@ -21,14 +21,14 @@ export default async function Home() {
 				<PortableText value={settings.summary} components={portableTextComponents}/>
 			</TextBlock>
 			<TextBlock>
-				{ about.socials.map((social) => {
-				
-					return <SocialIcon social={social} />
-				}
-
-				)}
 				<h2>about</h2>
 				<PortableText value={about.bio} components={portableTextComponents} />
+				<div className="flex flex-row space-x-4 mt-8">
+					{about.socials.map((social) => {
+						return <SocialIcon social={social} />
+					}
+					)}
+				</div>
 			</TextBlock>
     </div>
   )
