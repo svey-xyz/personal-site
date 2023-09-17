@@ -58,7 +58,7 @@ function PreviewHeader() {
 		<div className="relative h-[--preview-header-height] flex items-center justify-center z-50">
 			<div className="main-padding m-auto flex flex-row">
 				<span className="w-full text-center">
-					You're viewing the site in preview mode! To view published content click <a href="/api/exit-preview" className='underline'>here</a>.
+					You&apos;re viewing the site in preview mode! To view published content click <a href="/api/exit-preview" className="underline">here</a>.
 				</span>
 			</div>
 		</div>

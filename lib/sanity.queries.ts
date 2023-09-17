@@ -28,8 +28,9 @@ export const aboutQuery: string = groq`
 	}[0]
 `
 
-export interface sanityImageAsset extends Image {
-	imageAsset: ImageAsset
+export interface basicObjectData {
+	_key: string,
+	_type: string,
 }
 
 export interface basicDocumentData {
@@ -40,7 +41,11 @@ export interface basicDocumentData {
 	_id: string
 }
 
-export interface socialData {
+export interface sanityImageAsset extends Image {
+	imageAsset: ImageAsset
+}
+
+export interface socialData extends basicObjectData {
 	socialType: string,
 	socialTitle: string,
 	url: string,

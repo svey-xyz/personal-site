@@ -1,6 +1,6 @@
 import TextBlock from "@/app/_components/site/TextBlock";
 import { getClient } from "@/lib/sanity.client";
-import { settingsQuery, settingsData, aboutData, aboutQuery } from "@/lib/sanity.queries";
+import { settingsQuery, settingsData, aboutData, aboutQuery, socialData } from "@/lib/sanity.queries";
 import { draftMode } from "next/headers";
 
 import { PortableText } from '@portabletext/react'
@@ -24,8 +24,8 @@ export default async function Home() {
 				<h2>about</h2>
 				<PortableText value={about.bio} components={portableTextComponents} />
 				<div className="flex flex-row space-x-4 mt-8">
-					{about.socials.map((social) => {
-						return <SocialIcon social={social} />
+					{about.socials.map((social: socialData) => {
+						return <SocialIcon key={social._key} social={social} />
 					}
 					)}
 				</div>

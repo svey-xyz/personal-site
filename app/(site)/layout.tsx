@@ -62,15 +62,21 @@ export default async function RootLayout({
 
 	if (preview && preview.token) {
 		return (
-			<PreviewProvider token={preview.token} children={layout({ children, componentParams })} />
+			<PreviewProvider token={preview.token}>
+				<Layout componentParams={componentParams} >
+					{children}
+				</Layout>
+			</PreviewProvider>
 		)
 	}
 	return (
-		layout({ children, componentParams })
+		<Layout componentParams={componentParams}>
+			{children}
+		</Layout>
 	)
 }
 
-async function layout({
+async function Layout({
 	children, componentParams
 }: {
 	children: React.ReactNode,
