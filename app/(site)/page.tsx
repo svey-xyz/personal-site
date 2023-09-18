@@ -6,6 +6,7 @@ import { draftMode } from "next/headers";
 import { PortableText } from '@portabletext/react'
 import { portableTextComponents } from "@/lib/portableTextComponenets";
 import SocialIcon from "@/app/_components/site/SocialIcon";
+import EmailInsert from "@/app/_components/site/EmailInsert";
 
 /** Metadata defined in layout for top route page */
 export default async function Home() {
@@ -16,18 +17,20 @@ export default async function Home() {
 	const about: aboutData = await client.fetch(aboutQuery);
 
   return (
-		<div className="relative flex flex-col min-w-full">
+		<div className="relative flex flex-col main-padding">
+			
 			<TextBlock>
 				<PortableText value={settings.summary} components={portableTextComponents}/>
 			</TextBlock>
 			<TextBlock>
 				<h2>about</h2>
 				<PortableText value={about.bio} components={portableTextComponents} />
-				<div className="flex flex-row space-x-4 mt-8">
+				<div className="flex flex-row space-x-4 mt-8 items-center">
 					{about.socials.map((social: socialData) => {
-						return <SocialIcon key={social._key} social={social} />
-					}
+							return <SocialIcon key={social._key} social={social} />
+						}
 					)}
+					<EmailInsert email={about.email} />
 				</div>
 			</TextBlock>
     </div>

@@ -7,7 +7,7 @@ import Icon_Z from '@public/icons/logo/Z.svg'
 export function Icon() {
 	return (
 		<div className="group relative flex items-center justify-center w-icon h-icon">
-			<input aria-label={`Site Icon`} type="checkbox" className="peer cursor-pointer absolute min-w-full min-h-full appearance-none z-10 left-0
+			<input name="Icon interaction" aria-label={`Used to interact with the site icon and ofr animations.`} type="checkbox" className="peer cursor-pointer absolute min-w-full min-h-full appearance-none z-10 left-0
 				checked:min-w-[275%]" />
 			<Icon_Z className="absolute min-h-full min-w-full fill-[#837da1] drop-shadow-md
 				duration-300 transition-transform peer-checked:rotate-6 peer-checked:translate-x-[2.8rem]" />

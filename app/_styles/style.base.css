@@ -1,7 +1,7 @@
 @layer base {
 	:root {
 		--primary-text: #000;
-		--secondary-text: #333;
+		--secondary-text: #444;
 		--primary-bg: #FFF;
 		--secondary-bg: #EEE;
 		--opposite-bg: #1A1A1A;
@@ -22,7 +22,7 @@
 
 	.dark {
 		--primary-text: #FFF;
-		--secondary-text: #DDD;
+		--secondary-text: #CCC;
 		--primary-bg: #161214;
 		--secondary-bg: #181617;
 		--opposite-bg: #efeeed;

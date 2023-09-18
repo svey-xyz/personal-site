@@ -25,6 +25,14 @@ module.exports = {
 				'prose': '65ch',
 				'prose-short': '45ch'
 			},
+			margin: {
+				'1/8': '12%',
+				'1/6': '16%',
+				'1/7': '15%',
+				'1/5': '20%',
+				'1/4': '20%',
+				'1/3': '33%'
+			},
 			colors: {
 				'primary-text': 'var(--primary-text)',
 				'secondary-text': 'var(--secondary-text)',
