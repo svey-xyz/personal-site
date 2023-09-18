@@ -1,13 +1,12 @@
 import Link from "next/link"
-import { MoonIcon } from "@heroicons/react/24/solid"
+import { Icon } from "@components/site/Icon"
 
 function StudioHeader(props: any) {
 	return (
 		<div>
 			<div className="flex items-center justify-between p-5">
-				<Link href="/" target="_blank" className="text-primary-accent flex items-center">
-					<MoonIcon className="h-6 w-6 text-xyz-accent mr-2" />
-					Blog Home
+				<Link href="/" aria-label="Blog Home" target="_blank" className="text-primary-accent flex items-center">
+					<Icon args={{type:'hover'}} />
 				</Link>
 				<Link href="/api/preview" target="_blank" className="text-primary-accent flex items-center">
 					Preview

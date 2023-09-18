@@ -1,18 +1,12 @@
+import Icon from "@/app/_components/site/Icon";
 import Image from "next/image";
+import Link from "next/link";
 
 function StudioLogo(props: any) {
 	const { renderDefault, title } = props;
 
 	return (
-		<div className="flex items-center space-x-2 pl-3">
-			<span>xyz</span>
-			{/* <Image
-				className="rounded-full object-cover"
-				height={50}
-				width={50}
-				src={""}
-				alt="Logo"
-			/> */}
+		<div className="flex items-center">
 			<>{renderDefault(props)}</>
 		</div>
 	)

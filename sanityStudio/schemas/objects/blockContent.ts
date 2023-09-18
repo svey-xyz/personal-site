@@ -49,7 +49,7 @@ const blockArray = {
 						type: 'url',
 						validation: (Rule:UrlRule) => Rule.uri({
 							scheme: ['https', 'mailto', 'tel']
-						})
+						}).warning(`This doesn't look like a url`)
 					},
 				],
 			},
