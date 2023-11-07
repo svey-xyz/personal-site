@@ -2,7 +2,6 @@ import PreviewProvider from '@/app/_components/sanity/PreviewProvider'
 
 import { settingsQuery, settingsData } from '@/lib/sanity.queries'
 import { componentParamsType } from '@/lib/types'
-import SanityImage from '@/app/_components/site/SanityImage'
 import ThemeButton from '@/app/_components/site/ThemeButton'
 import Icon from '@/app/_components/site/Icon'
 

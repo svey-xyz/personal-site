@@ -15,13 +15,10 @@ import { link } from '@schemas/objects/link'
 import { social } from '@schemas/objects/social'
 import { textObject } from '@schemas/objects/text'
 import { projectObjectsList } from '@schemas/documents/project'
-
-import { gallery } from '@schemas/objects/gallery'
-import { video } from '@schemas/objects/video'
 import { basicDate } from '@schemas/objects/basicDate'
 import { basicDocumentOptions } from '@/sanityStudio/lib/basicDocumentOptions'
 
-const _objects = [basicBlockContent, extraBlockContent, link, social, textObject, gallery, video, basicDate, basicDocumentOptions, projectObjectsList]
+const _objects = [basicBlockContent, extraBlockContent, link, social, textObject, basicDate, basicDocumentOptions, projectObjectsList]
 
 /**
  * Documents

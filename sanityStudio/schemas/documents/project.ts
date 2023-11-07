@@ -4,17 +4,13 @@ import { basicDocumentConstructor } from "@/sanityStudio/lib/basicDocumentConstr
 import { BookmarkIcon } from "@heroicons/react/24/solid";
 
 import { textObject } from '@schemas/objects/text'
-import { gallery } from '@schemas/objects/gallery'
-import { video } from '@schemas/objects/video'
 
-export const _projectObjects = [textObject, gallery, video]
+export const _projectObjects = [textObject]
 export const projectObjectsList = defineType({
 	name: 'projectObjectsList',
 	type: 'array',
 	of: [
 		defineArrayMember({ type: textObject.name }),
-		defineArrayMember({ type: gallery.name }),
-		defineArrayMember({ type: video.name }),
 	],
 })
 

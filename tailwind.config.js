@@ -72,6 +72,5 @@ module.exports = {
   },
 	plugins: [
 		require('@tailwindcss/typography'),
-		require('@pyncz/tailwind-mask-image'),
 	],
 }

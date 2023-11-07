@@ -1,4 +1,3 @@
-import { Analytics } from '@vercel/analytics/react';
 import Header from '@components/site/Header'
 import '@styles/globals.css'
 import { Inter } from 'next/font/google'
@@ -108,7 +107,6 @@ async function Layout({
 						{children}
 					</main>
 				)}
-				<Analytics />
 			</body>
 		</html>
 	)

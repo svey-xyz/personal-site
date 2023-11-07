@@ -1,4 +1,3 @@
-import React from "react";
 import Icon_X from '@public/icons/logo/X.svg'
 import Icon_Y from '@public/icons/logo/Y.svg'
 import Icon_Z from '@public/icons/logo/Z.svg'

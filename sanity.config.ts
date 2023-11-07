@@ -9,9 +9,7 @@ import { defineConfig } from 'sanity'
 import {deskTool} from 'sanity/desk'
 
 /** PLUGINS */
-import { muxInput } from 'sanity-plugin-mux-input'
 import { noteField } from 'sanity-plugin-note-field'
-import { colorInput } from '@sanity/color-input'
 import { media, mediaAssetSource } from 'sanity-plugin-media'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
@@ -24,7 +22,7 @@ import { structure, schemaOptions, documentOptions } from '@/sanityStudio/struct
 const defaultDesk = deskTool({
 	structure,
 })
-const deskPlugins = [defaultDesk, visionTool({ defaultApiVersion: apiVersion }), colorInput(), noteField(), media(), muxInput()]
+const deskPlugins = [defaultDesk, visionTool({ defaultApiVersion: apiVersion }), noteField(), media()]
 
 
 const config = defineConfig({
