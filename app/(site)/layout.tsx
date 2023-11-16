@@ -8,6 +8,7 @@ import { settingsQuery, settingsData } from '@/lib/sanity.queries';
 import { Metadata, ResolvingMetadata } from 'next';
 import localFont from "next/font/local";
 import { componentParamsType, metadataPropsType, previewType, themeType } from '@/lib/types';
+import Footer from '@/components/Footer';
 
 const inter = Inter({ subsets: ['latin'] })
 const firaCode = localFont({
