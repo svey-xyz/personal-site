@@ -43,7 +43,7 @@ export default async function Home() {
 				</div>
 			</TextBlock>
 			{( repoList && repoList.data.map((repo) => {
-				if (repo.topics?.indexOf('published') == -1) return
+				if (repo.topics?.indexOf(process.env.PUBLISH_REPO_KEY!) == -1) return
 				return (
 					<ProjectCard key={repo.id} repo={(repo as singleRepoData)} />
 				)
