@@ -1,23 +1,11 @@
-import PreviewProvider from '@/app/_components/sanity/PreviewProvider'
-
 import { settingsQuery, settingsData } from '@/lib/sanity.queries'
 import { componentParamsType } from '@/lib/types'
-import ThemeButton from '@/app/_components/site/ThemeButton'
-import Icon from '@/app/_components/site/Icon'
+import ThemeButton from '@components/ThemeButton'
+import Icon from '@components/Icon'
 
 export default function Header({componentParams}:{componentParams:componentParamsType}) {
 	const [client, preview, theme] = Object.values(componentParams)
 
-	if (preview && preview.token) {
-		return (
-			<PreviewProvider token={preview.token} >
-				<HeaderWrapper>
-					<PreviewHeader/>
-					<SiteHeader componentParams={componentParams} />
-				</HeaderWrapper>
-			</PreviewProvider>
-		)
-	}
 	return (
 		<HeaderWrapper>
 			<SiteHeader componentParams={componentParams} />

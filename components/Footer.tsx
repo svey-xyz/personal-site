@@ -1,7 +1,7 @@
-import SocialIcon from "@components/site/SocialIcon";
+import SocialIcon from "@components/SocialIcon";
 import { aboutData, aboutQuery } from "@/lib/sanity.queries";
 import { componentParamsType } from "@/lib/types";
-import ThemeButton from "@components/site/ThemeButton";
+import ThemeButton from "@components/ThemeButton";
 
 export async function Footer({ componentParams }: { componentParams: componentParamsType }) {
 	const [client, preview, theme] = Object.values(componentParams);

@@ -1,12 +1,14 @@
-import TextBlock from "@/app/_components/site/TextBlock";
+import TextBlock from "@components/TextBlock";
 import { getClient } from "@/lib/sanity.client";
 import { settingsQuery, settingsData, aboutData, aboutQuery, socialData } from "@/lib/sanity.queries";
 import { draftMode } from "next/headers";
 
 import { PortableText } from '@portabletext/react'
 import { portableTextComponents } from "@/lib/portableTextComponenets";
-import SocialIcon from "@/app/_components/site/SocialIcon";
-import EmailInsert from "@/app/_components/site/EmailInsert";
+import SocialIcon from "@components/SocialIcon";
+import EmailInsert from "@components/EmailInsert";
+import { fetchUserData, fetchUserRepos, singleRepoData } from "@/lib/fetch.data";
+import ProjectCard from "@/components/ProjectCard";
 
 /** Metadata defined in layout for top route page */
 export default async function Home() {
@@ -15,6 +17,13 @@ export default async function Home() {
 	const client = getClient(preview)
 	const settings: settingsData = await client.fetch(settingsQuery)
 	const about: aboutData = await client.fetch(aboutQuery);
+
+	const repoList = await fetchUserRepos({username: 'svey-xyz', type: 'owner', sort: 'created'});
+	const userData = await fetchUserData({username: 'svey-xyz'});
+	// data.data.forEach(repo => {
+	// 	console.log(repo.full_name)
+
+	// });
 
   return (
 		<div className="relative flex flex-col main-padding">
@@ -33,6 +42,14 @@ export default async function Home() {
 					<EmailInsert email={about.email} />
 				</div>
 			</TextBlock>
+			{( repoList && repoList.data.map((repo) => {
+				if (repo.topics?.indexOf('published') == -1) return
+				return (
+					<ProjectCard key={repo.id} repo={(repo as singleRepoData)} />
+				)
+			})
+
+			)}
     </div>
   )
 }

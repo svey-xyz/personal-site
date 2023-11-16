@@ -1,4 +1,3 @@
-import Icon from "@/app/_components/site/Icon";
 import Image from "next/image";
 import Link from "next/link";
 

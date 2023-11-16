@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Icon } from "@components/site/Icon"
+import { Icon } from "@components/Icon"
 
 function StudioHeader(props: any) {
 	return (

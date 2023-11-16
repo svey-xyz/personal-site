@@ -1,11 +1,10 @@
-import Header from '@components/site/Header'
+import Header from '@components/Header'
 import '@styles/globals.css'
 import { Inter } from 'next/font/google'
 import Head from '@site/head'
 import { cookies, draftMode } from 'next/headers';
 import { getClient } from '@/lib/sanity.client';
 import { settingsQuery, settingsData } from '@/lib/sanity.queries';
-import PreviewProvider from '@components/sanity/PreviewProvider';
 import { Metadata, ResolvingMetadata } from 'next';
 import localFont from "next/font/local";
 import { componentParamsType, metadataPropsType, previewType, themeType } from '@/lib/types';
@@ -59,15 +58,6 @@ export default async function RootLayout({
 		theme: theme
 	}
 
-	if (preview && preview.token) {
-		return (
-			<PreviewProvider token={preview.token}>
-				<Layout componentParams={componentParams} >
-					{children}
-				</Layout>
-			</PreviewProvider>
-		)
-	}
 	return (
 		<Layout componentParams={componentParams}>
 			{children}

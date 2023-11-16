@@ -28,11 +28,6 @@ export const structure = (S: StructureBuilder) =>
 				S.listItem().title('Settings').icon(AdjustmentsHorizontalIcon).child(
 					S.document().schemaType('siteSettings').documentId('siteSettings')
 				),
-
-				/* MUX */
-				S.listItem().title('Mux API').icon(Cog6ToothIcon).child(
-					S.document().title('Mux API').schemaType('mux.apiKey').documentId('secrets.mux')
-				),
 			])
 		),
 		S.divider(),
