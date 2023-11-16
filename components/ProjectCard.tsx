@@ -8,13 +8,15 @@ export async function ProjectCard({
 	const README = await fetchRepoReadme({owner: 'svey-xyz', repo: repo.name })
 
 	return (
-		<div className="mt-12 flex flex-col max-w-prose">
-			<div>{repo.name}</div>
-			{/* <div>{repo.description}</div> */}
-			{/* <div>{( README &&
-				atob(README.data.content)
-			)}</div> */}
-		</div>
+		<a href={`/projects/${repo.name}`}>
+			<div className="my-4 pt-2 flex flex-col max-w-prose border-t border-primary-text">
+				<div>{repo.name}</div>
+				{/* <div>{repo.description}</div> */}
+				{/* <div>{( README &&
+					atob(README.data.content)
+				)}</div> */}
+			</div>
+		</a>
 	)
 }
 
