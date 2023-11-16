@@ -1,5 +1,5 @@
 import { ReactElement, ReactNode } from "react";
-import { fetchUserData, fetchUserRepos, singleRepoData } from "../../../../lib/fetch.data";
+import { fetchUserData, fetchUserRepos, singleRepoData } from "@lib/fetch.data";
 import React from "react";
 
 
