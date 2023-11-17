@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.0.18",
+    "@next/font": "^14.0.3",
     "@octokit/core": "^5.0.1",
     "@octokit/types": "^12.3.0",
     "@svgr/webpack": "^8.1.0",

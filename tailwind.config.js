@@ -55,8 +55,8 @@ module.exports = {
 					'linear-gradient(to right, var(--primary-accent), var(--secondary-accent))',
       },
 			fontFamily: {
-				heading: ['var(--font-fira-code)'],
-				body: ['var(--font-fira-code)']
+				heading: ['var(--font-mona-space)'],
+				body: ['var(--font-mona-space)']
 			},
 			animation: {
 				'breathing': 'bounceScale 2s linear infinite',

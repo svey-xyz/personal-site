@@ -13,12 +13,7 @@ export default async function Home() {
 
   return (
 		<div className="relative flex flex-col main-padding">
-			<TextBlock>
-				<h2>about</h2>
-				<div className="flex flex-row space-x-4 mt-8 items-center">
-					<EmailInsert email={``} />
-				</div>
-			</TextBlock>
+			<h2>projects</h2>
 			{( repoList && repoList.data.map((repo) => {
 				if (repo.topics?.indexOf(process.env.PUBLISH_REPO_KEY!) == -1) return
 				return (
