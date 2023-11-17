@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -14,7 +14,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-		"types": [ "bun-types" ],
+		"types": [ "bun-types", "web" ],
     "plugins": [
       {
         "name": "next"
@@ -22,14 +22,10 @@
     ],
     "paths": {
       "@/*": ["./*"],
-			"@styles/*": ["./app/_styles/*"],
-			"@public/*": ["./app/_public/*"],
+			"@styles/*": ["./styles/*"],
+			"@public/*": ["./public/*"],
 			"@components/*": ["./components/*"],
-			"@helpers/*": ["./app/_helpers/*"],
 			"@lib/*": ["./lib/*"],
-			"@sanityStudio/*": ["./sanityStudio/*"],
-			"@schemas/*": ["./sanityStudio/schemas/*"],
-			"@studio/*": ["./app/(studio)/*"],
 			"@site/*": ["./app/(site)/*"],
     }
   },

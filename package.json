@@ -1,5 +1,5 @@
 {
-  "name": "next-sanity-blog",
+  "name": "xyz-blog",
   "version": "0.2.0",
   "private": true,
   "scripts": {
@@ -12,24 +12,18 @@
     "@heroicons/react": "^2.0.18",
     "@octokit/core": "^5.0.1",
     "@octokit/types": "^12.3.0",
-    "@portabletext/react": "^3.0.7",
-    "@sanity/image-url": "^1.0.2",
-    "@sanity/vision": "^3.14.1",
     "@svgr/webpack": "^8.1.0",
     "next": "^14.0.0",
-    "next-sanity": "^6.0.0",
-    "next-sanity-image": "^6.1.0",
+    "next-themes": "^0.2.1",
     "react": "^18",
-    "react-dom": "^18",
-    "sanity": "^3.19.0",
-    "sanity-plugin-media": "^2.2.2",
-    "sanity-plugin-note-field": "^2.0.2"
+    "react-dom": "^18"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",
     "@types/node": "^20",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
+    "@types/web": "^0.0.119",
     "autoprefixer": "^10.4.14",
     "bun-types": "^1.0.10",
     "eslint": "^8.0.0",

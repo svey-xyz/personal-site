@@ -2,7 +2,7 @@
 const nextConfig = {
 	reactStrictMode: true,
 	images: {
-		domains: ["cdn.sanity.io", "api.sanity.io"]
+		domains: []
 	},
 	webpack(config) {
 		config.module.rules.push({
