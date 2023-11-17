@@ -1,6 +1,5 @@
-import { componentParamsType } from "@/lib/types";
 
-export default function Head({ componentParams }: { componentParams: componentParamsType }) {
+export default function Head() {
 
 	return(
 		<>
