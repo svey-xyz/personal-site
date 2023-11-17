@@ -7,8 +7,6 @@ module.exports = {
   content: [
     './app/**/*.{js,ts,jsx,tsx,mdx}',
 		'./components/**/*.{js,ts,jsx,tsx,mdx}',
-
-
   ],
   theme: {
 		screens: {
@@ -30,42 +28,20 @@ module.exports = {
 				'prose': '65ch',
 				'prose-short': '45ch'
 			},
-			margin: {
-				'1/8': '12%',
-				'1/6': '16%',
-				'1/7': '15%',
-				'1/5': '20%',
-				'1/4': '20%',
-				'1/3': '33%'
-			},
 			colors: {
 				'primary-text': 'var(--primary-text)',
 				'secondary-text': 'var(--secondary-text)',
 				'primary-bg': 'var(--primary-bg)',
 				'secondary-bg': 'var(--secondary-bg)',
-				'opposite-bg': 'var(--opposite-bg)',
 				'primary-accent': 'var(--primary-accent)',
 				'secondary-accent': 'var(--secondary-accent)',
 				'failure-accent': 'var(--failure-accent)',
 				'warning-accent': 'var(--warning-accent)',
 				'success-accent': 'var(--success-accent)',
 			},
-      backgroundImage: {
-				'linear-accent-gradient':
-					'linear-gradient(to right, var(--primary-accent), var(--secondary-accent))',
-      },
 			fontFamily: {
 				heading: ['var(--font-mona-space)'],
 				body: ['var(--font-mona-space)']
-			},
-			animation: {
-				'breathing': 'bounceScale 2s linear infinite',
-			},
-			keyframes: {
-				bounceScale: {
-					'0%, 100%': { transform: 'scale(1)' },
-					'50%': { transform: 'scale(1.2)' },
-				}
 			},
 			zIndex: {
 				'-1': '-1'
