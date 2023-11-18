@@ -7,7 +7,7 @@
 		--secondary-bg: #d6d3d3;
 
 		--primary-accent: #ad7f9f;
-		--secondary-accent: #837DA1;
+		--secondary-accent: #6d6897;
 
 		--failure-accent: #C43F21;
 		--warning-accent: #C5A922;
@@ -22,11 +22,11 @@
 		--primary-text: #FFF;
 		--secondary-text: #CCC;
 
-		--primary-bg: #202020;
-		--secondary-bg: #101013;
+		--primary-bg: #101013;
+		--secondary-bg: #202020;
 
 		--primary-accent: #ad7f9f;
-		--secondary-accent: #837DA1;
+		--secondary-accent: #6e6597;
 	}
 
 	body {
@@ -41,9 +41,10 @@
 	} 
 
 	h1, h2, h3, h4, h5, h6 { @apply font-heading text-primary-text; }
-	h1 { @apply text-3xl font-black underline underline-offset-4; }
+	h1 { @apply text-xl font-black underline underline-offset-4; }
 	h2 { @apply text-lg font-bold; }
 	p { @apply mt-2; }
+	a { @apply cursor-pointer; }
 
 	@keyframes gradient {
     0% {

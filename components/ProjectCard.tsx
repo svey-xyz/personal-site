@@ -13,8 +13,8 @@ export async function ProjectCard({
 
 	return (
 		<a href={`/projects/${repo.name}`} className="my-2 max-w-prose group">
-			<div className="relative py-2 flex flex-col md:flex-row justify-between w-full border-t border-primary-text
-				after:absolute after:inset-0 after:-z-1 after:backdrop-blur-xl">
+			<div className="relative py-2 flex flex-col md:flex-row justify-between w-full border-t border-primary-text overflow-hidden
+				after:absolute after:inset-0 after:-z-1">
 				<div className="group-hover:text-primary-accent">{repo.name}</div>
 				{( repo.topics && 
 					<div className="relative flex text-right">

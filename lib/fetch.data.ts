@@ -41,8 +41,9 @@ export async function fetchUserData(params: userDataParameters): Promise<userDat
 	return response
 }
 
-export async function fetchRepoContent(params: readmeParameters): Promise<readmeResponse | undefined> {
+export async function fetchReadme(params: readmeParameters): Promise<readmeResponse | undefined> {
 	let response
+
 	try {
 		response = await octokit.request("GET /repos/{owner}/{repo}/readme", {
 			headers: {
@@ -50,9 +51,7 @@ export async function fetchRepoContent(params: readmeParameters): Promise<readme
 			},
 			...params
 		});
-	} catch(e) {
-
-	}
+	} catch(e) { }
 
 	return response 
 }
