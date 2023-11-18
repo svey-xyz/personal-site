@@ -1,8 +1,13 @@
 "use client";
-import { ThemeProvider } from 'next-themes'
+
+import { HexRenderer } from '@lib/theme.bg'
+
+import { ThemeProvider, useTheme } from 'next-themes'
 import React, { ReactNode, useEffect, useState } from 'react';
 
 export const themes = ['light', 'dark'] as const
+let hexs: HexRenderer
+
 
 export default function ThemeHandler({
 	children
@@ -11,10 +16,12 @@ export default function ThemeHandler({
 }) {
 	const [height, setHeight] = useState<number>()
 	const [mounted, setMounted] = useState(false)
+	
 
 	useEffect(() => {
 		setMounted(true);
 		setSize();
+
 		window.addEventListener('resize', () => {
 			setSize();
 		})
@@ -29,11 +36,16 @@ export default function ThemeHandler({
 		document.documentElement.style.setProperty('--vh', `${vh}px`);
 	}
 
+	
+
 	return (
-		<ThemeProvider attribute="class" enableSystem={false} defaultTheme="cur"
+		<ThemeProvider attribute="class" enableSystem={false} defaultTheme="dark"
 			themes={themes.map((theme) => theme)}>
+				<div className='background inset-0 absolute opacity-30 saturate-150'/>
 			{children}
 		</ThemeProvider>
 	)
 }
 
+export function themeRender() {
+}

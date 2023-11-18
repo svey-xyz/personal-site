@@ -3,8 +3,8 @@
 		--primary-text: #000;
 		--secondary-text: #444;
 
-		--primary-bg: #FFF;
-		--secondary-bg: #EEE;
+		--primary-bg: #FFFFFF;
+		--secondary-bg: #d6d3d3;
 
 		--primary-accent: #ad7f9f;
 		--secondary-accent: #837DA1;
@@ -22,19 +22,40 @@
 		--primary-text: #FFF;
 		--secondary-text: #CCC;
 
-		--primary-bg: #161214;
-		--secondary-bg: #181617;
+		--primary-bg: #202020;
+		--secondary-bg: #101013;
 
 		--primary-accent: #ad7f9f;
 		--secondary-accent: #837DA1;
 	}
 
-	body { @apply font-body text-left text-sm text-secondary-text bg-primary-bg; }
+	body {
+		@apply font-body text-left text-sm text-secondary-text bg-primary-bg;
+		
+	}
+
+	.background {
+		background: linear-gradient(-45deg, var(--secondary-accent), var(--primary-accent));
+		background-size: 400% 400%;
+		animation: gradient 15s ease infinite;
+	} 
+
 	h1, h2, h3, h4, h5, h6 { @apply font-heading text-primary-text; }
 	h1 { @apply text-3xl font-black underline underline-offset-4; }
 	h2 { @apply text-lg font-bold; }
-	a { @apply hover:text-primary-accent transition-colors duration-300; }
 	p { @apply mt-2; }
+
+	@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
 
 	.main-padding { @apply max-w-screen-xl w-full mx-auto px-6 sm:px-12 md:px-24; }
 }
