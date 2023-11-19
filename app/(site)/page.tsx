@@ -1,6 +1,6 @@
 import TextBlock from "@components/TextBlock";
 
-import SocialIcon from "@components/SocialIcon";
+import { SocialIcon } from "@components/SocialIcon";
 import EmailInsert from "@components/EmailInsert";
 import { fetchUserData, fetchUserRepos, fetchUserSocials, singleRepoData } from "@/lib/fetch.data";
 import ProjectCard from "@/components/ProjectCard";
@@ -14,7 +14,7 @@ export default async function Home() {
 
   return (
 		<div className="relative flex flex-col main-padding">
-			<h2>projects</h2>
+			<h2 >projects</h2>
 			{( repoList &&
 				repoList.data.map((repo) => {
 					if (repo.topics?.indexOf(process.env.PUBLISH_REPO_KEY!) == -1) return
@@ -23,11 +23,13 @@ export default async function Home() {
 					)
 				})
 			)}
-			({ socials &&
-				socials.data.map((social) => {
-					return <>{social.provider}</>
-				})
-			})
+			<div className="relative flex flex-row gap-2 mt-4">
+				{( socials &&
+					socials.data.map((social) => {
+						return <SocialIcon social={social} />
+					})
+				)}
+			</div>
     </div>
   )
 }
