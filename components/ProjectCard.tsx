@@ -1,6 +1,6 @@
 import { singleRepoData } from "@/lib/fetch.data";
 
-export async function ProjectCard({
+export function ProjectCard({
 	repo
 }: {
 	repo: singleRepoData

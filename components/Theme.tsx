@@ -41,7 +41,7 @@ export default function ThemeHandler({
 	return (
 		<ThemeProvider attribute="class" enableSystem={false} defaultTheme="dark"
 			themes={themes.map((theme) => theme)}>
-				<div className='background inset-0 absolute opacity-25 saturate-200 hidden'/>
+				<div className='background inset-0 absolute opacity-10 saturate-200 -z-1'/>
 			{children}
 		</ThemeProvider>
 	)

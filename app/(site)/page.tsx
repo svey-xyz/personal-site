@@ -2,26 +2,32 @@ import TextBlock from "@components/TextBlock";
 
 import SocialIcon from "@components/SocialIcon";
 import EmailInsert from "@components/EmailInsert";
-import { fetchUserData, fetchUserRepos, singleRepoData } from "@/lib/fetch.data";
+import { fetchUserData, fetchUserRepos, fetchUserSocials, singleRepoData } from "@/lib/fetch.data";
 import ProjectCard from "@/components/ProjectCard";
 
 /** Metadata defined in layout for top route page */
 export default async function Home() {
 
-	const repoList = await fetchUserRepos({username: 'svey-xyz', type: 'owner', sort: 'created'});
-	const userData = await fetchUserData({username: 'svey-xyz'});
+	const repoList = await fetchUserRepos({type: 'owner', sort: 'created'});
+	const userData = await fetchUserData({});
+	const socials = await fetchUserSocials({});
 
   return (
 		<div className="relative flex flex-col main-padding">
 			<h2>projects</h2>
-			{( repoList && repoList.data.map((repo) => {
-				if (repo.topics?.indexOf(process.env.PUBLISH_REPO_KEY!) == -1) return
-				return (
-					<ProjectCard key={repo.id} repo={(repo as singleRepoData)} />
-				)
-			})
-
+			{( repoList &&
+				repoList.data.map((repo) => {
+					if (repo.topics?.indexOf(process.env.PUBLISH_REPO_KEY!) == -1) return
+					return (
+						<ProjectCard key={repo.id} repo={(repo as singleRepoData)} />
+					)
+				})
 			)}
+			({ socials &&
+				socials.data.map((social) => {
+					return <>{social.provider}</>
+				})
+			})
     </div>
   )
 }

@@ -1,15 +1,14 @@
 import React from 'react';
 import Markdown, { ExtraProps } from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { synthwave84 as syntaxStyle } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import slugify from 'slugify'
 
 type MarkdownRendererProps = {
 	children: string;
 };
 
-export async function MarkdownRenderer({ children: markdown }: MarkdownRendererProps) {
-	console.log(markdown)
+export function MarkdownRenderer({ children: markdown }: MarkdownRendererProps) {
 	return (
 		<Markdown
 			components={{
@@ -17,12 +16,12 @@ export async function MarkdownRenderer({ children: markdown }: MarkdownRendererP
 					const match = /language-(\w+)/.exec(className || '');
 
 					return !inline && match ? (
-						<SyntaxHighlighter style={a11yDark} PreTag="div" language={match[1].toLowerCase()}
+						<SyntaxHighlighter style={syntaxStyle} PreTag="div" language={match[1].toLowerCase()}
 							showLineNumbers={true} {...props}>
 							{String(children).replace(/\n$/, '')}
 						</SyntaxHighlighter>
 					) : (
-						<code className={className} {...props}>
+						<code className={className} {...props} >
 							{children}
 						</code>
 					);
@@ -60,8 +59,4 @@ export async function MarkdownRenderer({ children: markdown }: MarkdownRendererP
 			{markdown}
 		</Markdown>
 	);
-}
-
-function headerIDs(header: React.ClassAttributes<HTMLHRElement> & React.HTMLAttributes<HTMLHRElement> & ExtraProps) {
-	return 
 }

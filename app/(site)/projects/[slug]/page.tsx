@@ -5,7 +5,7 @@ import { Base64 } from 'js-base64';
 import { MarkdownRenderer } from "@/lib/Markdown";
 
 export default async function ProjectsPage({ params }: { params: { slug: string } }) {
-	const repoList = await fetchUserRepos({ username: 'svey-xyz', type: 'owner', sort: 'created' });
+	const repoList = await fetchUserRepos({ type: 'owner', sort: 'created' });
 	const slugs = repoList.data.map((repo) => {
 		return repo.name
 	})

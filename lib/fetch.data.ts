@@ -2,17 +2,22 @@ import { Octokit } from '@octokit/core'
 import { Endpoints } from "@octokit/types";
 
 const octokit = new Octokit({
-	auth: process.env.GITHUB_API_KEY
+	auth: process.env.GITHUB_API_KEY,
+	userAgent: 'personal-blog/v0.0.1'
 });
 
 export type listUserReposParameters =
-	Endpoints["GET /users/{username}/repos"]["parameters"];
+	Endpoints["GET /user/repos"]["parameters"];
 export type listUserReposResponse =
-	Endpoints["GET /users/{username}/repos"]["response"];
+	Endpoints["GET /user/repos"]["response"];
 export type userDataParameters = 
-	Endpoints["GET /users/{username}"]["parameters"];
+	Endpoints["GET /user"]["parameters"];
 export type userDataResponse = 
-	Endpoints["GET /users/{username}"]["response"];
+	Endpoints["GET /user"]["response"];
+export type userSocialParameters =
+	Endpoints["GET /user/social_accounts"]["parameters"];
+export type userSocialResponse =
+	Endpoints["GET /user/social_accounts"]["response"];
 export type readmeParameters =
 	Endpoints["GET /repos/{owner}/{repo}/readme"]["parameters"];
 export type readmeResponse =
@@ -22,7 +27,7 @@ export type singleRepoData =
 	Endpoints["GET /repos/{owner}/{repo}"]["response"]["data"]
 
 export async function fetchUserRepos(params: listUserReposParameters): Promise<listUserReposResponse> {
-	const response = await octokit.request("GET /users/{username}/repos", {
+	const response = await octokit.request("GET /user/repos", {
 		headers: {
 			authorization: `token ${process.env.GITHUB_API_KEY}`,
 		},
@@ -32,7 +37,7 @@ export async function fetchUserRepos(params: listUserReposParameters): Promise<l
 }
 
 export async function fetchUserData(params: userDataParameters): Promise<userDataResponse> {
-	const response = await octokit.request("GET /users/{username}", {
+	const response = await octokit.request("GET /user", {
 		headers: {
 			authorization: `token ${process.env.GITHUB_API_KEY}`,
 		},
@@ -54,4 +59,14 @@ export async function fetchReadme(params: readmeParameters): Promise<readmeRespo
 	} catch(e) { }
 
 	return response 
+}
+
+export async function fetchUserSocials(params: userSocialParameters): Promise<userSocialResponse> {
+	const response = await octokit.request("GET /user/social_accounts", {
+		headers: {
+			authorization: `token ${process.env.GITHUB_API_KEY}`,
+		},
+		...params
+	});
+	return response
 }
