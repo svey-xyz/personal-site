@@ -1,15 +1,15 @@
-// markdown.tsx
-
 import React from 'react';
-import Markdown from 'react-markdown';
+import Markdown, { ExtraProps } from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { a11yDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import slugify from 'slugify'
 
 type MarkdownRendererProps = {
 	children: string;
 };
 
-export function MarkdownRenderer({ children: markdown }: MarkdownRendererProps) {
+export async function MarkdownRenderer({ children: markdown }: MarkdownRendererProps) {
+	console.log(markdown)
 	return (
 		<Markdown
 			components={{
@@ -17,7 +17,8 @@ export function MarkdownRenderer({ children: markdown }: MarkdownRendererProps) 
 					const match = /language-(\w+)/.exec(className || '');
 
 					return !inline && match ? (
-						<SyntaxHighlighter style={dracula} PreTag="div" language={match[1].toLowerCase()} {...props}>
+						<SyntaxHighlighter style={a11yDark} PreTag="div" language={match[1].toLowerCase()}
+							showLineNumbers={true} {...props}>
 							{String(children).replace(/\n$/, '')}
 						</SyntaxHighlighter>
 					) : (
@@ -26,9 +27,41 @@ export function MarkdownRenderer({ children: markdown }: MarkdownRendererProps) 
 						</code>
 					);
 				},
+				a(props){
+					const target = props.href?.startsWith('http') ? '_blank' : '_self'
+					return <a href={props.href} target={target}>{props.children}</a>
+				},
+				img(props) {
+					return <img 
+						{...props}
+						className={`h-full w-auto my-2 ${props.className}`}
+					/>
+				},
+				h1:'h2',
+				h2(props) {
+					return <h2 id={slugify(props.children as string, { replacement: '-', lower: true })}>
+						{props.children}
+					</h2>
+				},
+				h3(props) {
+					return <h3 id={slugify(props.children as string, { replacement: '-', lower: true })}>
+						{props.children}
+					</h3>
+				},
+				h4(props) {
+					return <h4 id={slugify(props.children as string, { replacement: '-', lower: true })}>
+						{props.children}
+					</h4>
+				},
+				
 			}}
+			remarkPlugins={[]}
 		>
 			{markdown}
 		</Markdown>
 	);
+}
+
+function headerIDs(header: React.ClassAttributes<HTMLHRElement> & React.HTMLAttributes<HTMLHRElement> & ExtraProps) {
+	return 
 }

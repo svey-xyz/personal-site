@@ -40,7 +40,7 @@
 		animation: gradient 15s ease infinite;
 	} 
 
-	h1, h2, h3, h4, h5, h6 { @apply font-heading text-primary-text; }
+	h1, h2, h3, h4, h5, h6 { @apply font-heading text-primary-text mt-2 leading-relaxed; }
 	h1 { @apply text-xl font-black underline underline-offset-4; }
 	h2 { @apply text-lg font-bold; }
 	p { @apply mt-2; }

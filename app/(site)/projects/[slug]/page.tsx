@@ -12,9 +12,9 @@ export default async function ProjectsPage({ params }: { params: { slug: string 
 
 	if (slugs.indexOf(params.slug) == -1) return;
 	const repo = repoList.data[slugs.indexOf(params.slug)]
-	const readme = await fetchReadme({owner: repo.owner.login, repo: repo.name})
+	const readmeData = await fetchReadme({owner: repo.owner.login, repo: repo.name})
 	// atob doesn't decode emojis properly
-	const markdown: string = Base64.decode(readme ? readme.data.content : ``)
+	const desc = readmeData ? Base64.decode(readmeData.data.content) : repo.description
 	
 	return (
 		<div className="main-padding flex flex-col">
@@ -22,7 +22,12 @@ export default async function ProjectsPage({ params }: { params: { slug: string 
 			<a href='/' aria-label='Return to homepage.' className="relative block w-full h-full py-4">
 				{`<- ${ repo.name }`}
 			</a>
-			<MarkdownRenderer>{markdown}</MarkdownRenderer>
+
+		{( desc && 
+			<MarkdownRenderer>{desc}</MarkdownRenderer>
+		)}
+
+
 		</div>
 	)
 }

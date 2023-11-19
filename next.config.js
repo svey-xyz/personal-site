@@ -2,7 +2,7 @@
 const nextConfig = {
 	reactStrictMode: true,
 	images: {
-		domains: []
+		domains: ['img.shields.io']
 	},
 	webpack(config) {
 		config.module.rules.push({
