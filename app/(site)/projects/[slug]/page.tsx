@@ -17,15 +17,17 @@ export default async function ProjectsPage({ params }: { params: { slug: string 
 	const desc = readmeData ? Base64.decode(readmeData.data.content) : repo.description
 	
 	return (
-		<div className="main-padding flex flex-col">
-			{/* PROJECT TITLE */}
-			<a href='/' aria-label='Return to homepage.' className="relative block w-full h-full py-4">
-				{`<- ${ repo.name }`}
-			</a>
+		<div className="relative main-padding flex flex-col">
+			<div className="max-w-prose">
+				{/* PROJECT TITLE */}
+				<a href='/' aria-label='Return to homepage.' className="relative block w-full h-full py-4">
+					{`<- ${ repo.name }`}
+				</a>
 
-		{( desc && 
-			<MarkdownRenderer>{desc}</MarkdownRenderer>
-		)}
+				{( desc && 
+					<MarkdownRenderer>{desc}</MarkdownRenderer>
+				)}
+			</div>
 
 
 		</div>

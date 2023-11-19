@@ -188,7 +188,7 @@ class HEXAGON {
 	backgroundColour: string
 
 	constructor(renderer: HexRenderer, x: number, y: number) {
-		this.backgroundColour = getComputedStyle(renderer.container).getPropertyValue('--primary-bg');
+		this.backgroundColour = getComputedStyle(renderer.container).getPropertyValue('--secondary-bg');
 
 		this.renderer = renderer;
 		this.x = x;
@@ -206,8 +206,8 @@ class HEXAGON {
 	}
 
 	select() {
-		this.hue = this.renderer.getRandomValue(100, 300);
-		this.selections.push({ count: 0, hue: this.hue });
+		// this.hue = this.renderer.getRandomValue(100, 300);
+		// this.selections.push({ count: 0, hue: this.hue });
 	}
 	relate(sourceIndices: { indices: Array<number>, hue: number, count: number }) {
 		this.sourceIndices.push(sourceIndices);

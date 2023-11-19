@@ -1,5 +1,3 @@
-import TextBlock from "@components/TextBlock";
-
 import { SocialIcon } from "@components/SocialIcon";
 import EmailInsert from "@components/EmailInsert";
 import { fetchUserData, fetchUserRepos, fetchUserSocials, singleRepoData } from "@/lib/fetch.data";

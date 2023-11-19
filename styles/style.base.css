@@ -2,6 +2,8 @@
 	:root {
 		--primary-text: #000;
 		--secondary-text: #444;
+		--primary-text-transparent: #00000040;
+
 
 		--primary-bg: #FFFFFF;
 		--secondary-bg: #d6d3d3;
@@ -20,6 +22,8 @@
 
 	.dark {
 		--primary-text: #FFF;
+		--primary-text-transparent: #ffffff40;
+
 		--secondary-text: #CCC;
 
 		--primary-bg: #101013;

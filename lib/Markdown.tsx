@@ -1,7 +1,7 @@
 import React from 'react';
-import Markdown, { ExtraProps } from 'react-markdown';
+import Markdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { synthwave84 as syntaxStyle } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import style from '@styles/style.highlight'
 import slugify from 'slugify'
 
 type MarkdownRendererProps = {
@@ -16,8 +16,7 @@ export function MarkdownRenderer({ children: markdown }: MarkdownRendererProps) 
 					const match = /language-(\w+)/.exec(className || '');
 
 					return !inline && match ? (
-						<SyntaxHighlighter style={syntaxStyle} PreTag="div" language={match[1].toLowerCase()}
-							showLineNumbers={true} {...props}>
+						<SyntaxHighlighter style={style} PreTag="div" language={match[1].toLowerCase()} wrapLongLines={true} {...props}>
 							{String(children).replace(/\n$/, '')}
 						</SyntaxHighlighter>
 					) : (

@@ -21,6 +21,8 @@ export default function ThemeHandler({
 	useEffect(() => {
 		setMounted(true);
 		setSize();
+		// const hx = new HexRenderer(document.body)
+		// hx.init()
 
 		window.addEventListener('resize', () => {
 			setSize();
@@ -37,11 +39,10 @@ export default function ThemeHandler({
 	}
 
 	
-
 	return (
 		<ThemeProvider attribute="class" enableSystem={false} defaultTheme="dark"
 			themes={themes.map((theme) => theme)}>
-				<div className='background inset-0 absolute opacity-10 saturate-200 -z-1'/>
+				<div className='background inset-0 absolute opacity-20 saturate-200 -z-1'/>
 			{children}
 		</ThemeProvider>
 	)
