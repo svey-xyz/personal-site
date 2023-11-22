@@ -1,6 +1,8 @@
 "use client";
 
 import { HexRenderer } from '@lib/theme.bg'
+import { mountMosaic } from '@lib/interactiveSections/pixelMosaic/pixelMosaic'
+import { mountBlobs } from '@lib/interactiveSections/blobShader/blobShader'
 
 import { ThemeProvider, useTheme } from 'next-themes'
 import React, { ReactNode, useEffect, useState } from 'react';
@@ -19,10 +21,12 @@ export default function ThemeHandler({
 	
 
 	useEffect(() => {
+		if (mounted) return;
 		setMounted(true);
 		setSize();
 		// const hx = new HexRenderer(document.body)
 		// hx.init()
+		mountBlobs(document.body)
 
 		window.addEventListener('resize', () => {
 			setSize();
@@ -37,7 +41,6 @@ export default function ThemeHandler({
 
 		document.documentElement.style.setProperty('--vh', `${vh}px`);
 	}
-
 	
 	return (
 		<ThemeProvider attribute="class" enableSystem={false} defaultTheme="dark"

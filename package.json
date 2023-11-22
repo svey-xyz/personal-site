@@ -20,7 +20,10 @@
     "react-dom": "^18",
     "react-markdown": "^9.0.1",
     "react-syntax-highlighter": "^15.5.0",
-    "slugify": "^1.6.6"
+    "slugify": "^1.6.6",
+    "three": "^0.158.0",
+    "webpack-glsl-loader": "^1.0.1",
+    "webpack-glsl-minify": "^1.5.0"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",
@@ -28,6 +31,7 @@
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "@types/react-syntax-highlighter": "^15.5.10",
+    "@types/three": "^0.158.3",
     "@types/web": "^0.0.119",
     "autoprefixer": "^10.4.14",
     "bun-types": "^1.0.10",
