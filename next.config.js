@@ -17,7 +17,7 @@ const GLSLLoader = [{
 }]
 
 const nextConfig = {
-	reactStrictMode: true,
+	reactStrictMode: false,
 	images: {
 		domains: ['img.shields.io']
 	},

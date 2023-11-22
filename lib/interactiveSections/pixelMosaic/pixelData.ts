@@ -1,4 +1,4 @@
-import { colour, pixel, position, Utils } from "../../utils/utils";
+import { colour, pixel, position, Utils } from "../../utils";
 import { pixelMosaic } from "./pixelMosaic";
 
 /**
@@ -7,7 +7,7 @@ import { pixelMosaic } from "./pixelMosaic";
  * @class pixelData
  */
 export class pixelData {
-	private tempCol: colour = { r: 100, g: 100, b: 100 }
+	private tempCol: colour = Utils.colourUtils.hexConverter(window.getComputedStyle(document.body).getPropertyValue('--secondary-accent'))
 	private pixelColour: colour = this.tempCol
 
 	private pix: pixel = { pos: { x: 0, y: 0 }, col: { r: 0, g: 0, b: 0 } }

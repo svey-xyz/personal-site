@@ -63,4 +63,16 @@
 }
 
 	.main-padding { @apply max-w-screen-xl w-full mx-auto px-6 sm:px-12 md:px-24; }
+
+	canvas {
+		display: block;
+		z-index: 0;
+		right: 0;
+		left: 0;
+
+		image-rendering: crisp-edges;
+		image-rendering: -webkit-optimize-contrast;
+		image-rendering: pixelated;
+		transform-origin: top left;
+	}
 }

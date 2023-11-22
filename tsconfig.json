@@ -1,10 +1,14 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": true,
+    // "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -14,21 +18,46 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-		"types": [ "bun-types", "web" ],
+    "types": [
+      "bun-types",
+      "web"
+    ],
     "plugins": [
       {
         "name": "next"
       }
     ],
     "paths": {
-      "@/*": ["./*"],
-			"@styles/*": ["./styles/*"],
-			"@public/*": ["./public/*"],
-			"@components/*": ["./components/*"],
-			"@lib/*": ["./lib/*"],
-			"@site/*": ["./app/(site)/*"],
-    }
+      "@/*": [
+        "./*"
+      ],
+      "@styles/*": [
+        "./styles/*"
+      ],
+      "@public/*": [
+        "./public/*"
+      ],
+      "@components/*": [
+        "./components/*"
+      ],
+      "@lib/*": [
+        "./lib/*"
+      ],
+      "@site/*": [
+        "./app/(site)/*"
+      ]
+    },
+    "strict": false
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "**/*.d.ts", "lib/theme.bg.ts"],
-  "exclude": ["node_modules"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "**/*.d.ts",
+    "lib/theme.bg.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

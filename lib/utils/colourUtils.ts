@@ -1,4 +1,4 @@
-import { colour, Utils } from "./utils";
+import { colour, Utils } from "../utils";
 
 /**
  * 

@@ -1,7 +1,7 @@
-import { colourUtils } from "./colourUtils";
-import { mathUtils } from './mathUtils'
-import { domUtils } from './domUtils'
-import { scriptUtils } from './scriptUtils'
+import { colourUtils } from "./utils/colourUtils";
+import { mathUtils } from './utils/mathUtils'
+import { domUtils } from './utils/domUtils'
+import { scriptUtils } from './utils/scriptUtils'
 
 
 export type position = {

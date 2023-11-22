@@ -2,7 +2,7 @@
 * Blobby Shader
 */
 import { shader } from "../shaderBase";
-import { Utils } from '@lib/utils/utils'
+import { Utils } from '@/lib/utils'
 
 import * as THREE from 'three';
 

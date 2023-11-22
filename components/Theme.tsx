@@ -5,7 +5,7 @@ import { mountMosaic } from '@lib/interactiveSections/pixelMosaic/pixelMosaic'
 import { mountBlobs } from '@lib/interactiveSections/blobShader/blobShader'
 
 import { ThemeProvider, useTheme } from 'next-themes'
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, { ReactNode, useEffect, useState, useRef } from 'react';
 
 export const themes = ['light', 'dark'] as const
 let hexs: HexRenderer
@@ -18,15 +18,14 @@ export default function ThemeHandler({
 }) {
 	const [height, setHeight] = useState<number>()
 	const [mounted, setMounted] = useState(false)
+	const themeContainer = useRef<HTMLDivElement>(null)
 	
 
 	useEffect(() => {
 		if (mounted) return;
 		setMounted(true);
 		setSize();
-		// const hx = new HexRenderer(document.body)
-		// hx.init()
-		mountBlobs(document.body)
+		mountMosaic(themeContainer.current)
 
 		window.addEventListener('resize', () => {
 			setSize();
@@ -45,7 +44,8 @@ export default function ThemeHandler({
 	return (
 		<ThemeProvider attribute="class" enableSystem={false} defaultTheme="dark"
 			themes={themes.map((theme) => theme)}>
-				<div className='background inset-0 absolute opacity-20 saturate-200 -z-1'/>
+			<div ref={themeContainer} className='absolute inset-0 -z-1 overflow-hidden
+				after:background after:inset-0 after:absolute after:opacity-20 after:saturate-200 after:-z-1'/>
 			{children}
 		</ThemeProvider>
 	)

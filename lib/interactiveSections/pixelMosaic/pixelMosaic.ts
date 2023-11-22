@@ -1,4 +1,4 @@
-import { Utils, position } from "../../utils/utils";
+import { Utils, position } from "../../utils";
 import { canvasBase } from "../canvasBase";
 import { pixelData } from "./pixelData"
 
@@ -12,7 +12,7 @@ export class pixelMosaic extends canvasBase {
 	economicSpeed = 24.5;
 
 	constructor(container: HTMLElement) {
-		super(container, { pixelScale: 32 });
+		super(container, { pixelScale: 48 });
 
 		this.init();
 		this.startLoop(60)

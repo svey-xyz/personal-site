@@ -1,4 +1,4 @@
-import { InteractiveSection } from "./interactiveSectionBase";
+import { advancedBase } from "@/lib/interactiveSections/base";
 import * as THREE from 'three';
 
 /**
@@ -8,7 +8,7 @@ import * as THREE from 'three';
  * @class shader
  * @extends {Section}
  */
-export class shader extends InteractiveSection {
+export class shader extends advancedBase {
 	renderer: THREE.WebGLRenderer;
 	scene: THREE.Scene;
 	camera: THREE.OrthographicCamera;
@@ -27,15 +27,7 @@ export class shader extends InteractiveSection {
 		this.renderer.setPixelRatio(window.devicePixelRatio);
 		this.renderer.setSize(this.sectionSize.width, this.sectionSize.height);
 
-		// Add the renderer to the sketch container
-		this.renderer.domElement.style.position = 'absolute'
-		this.renderer.domElement.style.top = '0'
-		this.renderer.domElement.style.bottom = '0'
-		this.renderer.domElement.style.zIndex = '-1'
-
-
-
-		this.scriptContainer.appendChild(this.renderer.domElement);
+		this.container.appendChild(this.renderer.domElement);
 
 		// Initialize the scene
 		this.scene = new THREE.Scene();

@@ -1,4 +1,4 @@
-import { colour, position } from "./utils";
+import { colour, position } from "../utils";
 
 export class mathUtils {
 

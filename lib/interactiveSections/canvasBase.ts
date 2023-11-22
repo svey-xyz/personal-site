@@ -2,8 +2,8 @@
 * Shader Base Class for interactive shader sections
 */
 
-import { InteractiveSection } from "./interactiveSectionBase";
-import { Utils, pixel } from '../utils/utils'
+import { Utils, pixel } from '../utils'
+import { advancedBase } from "@/lib/interactiveSections/base";
 
 
 /**
@@ -13,7 +13,7 @@ import { Utils, pixel } from '../utils/utils'
  * @class canvasBase
  * @extends {Section}
  */
-export class canvasBase extends InteractiveSection {
+export class canvasBase extends advancedBase {
 
 
 	paintCanvas: HTMLCanvasElement;
@@ -30,15 +30,10 @@ export class canvasBase extends InteractiveSection {
 		this.pixelScale = args.pixelScale
 
 		this.paintCanvas = document.createElement('canvas');
-		this.paintCanvas.style.position = 'absolute'
-		this.paintCanvas.style.top = '0'
-		this.paintCanvas.style.bottom = '0'
 		this.paintContext = this.paintCanvas.getContext("2d")!;
 
-
-
 		this.setCanvasSize();
-		this.scriptContainer.appendChild(this.paintCanvas);
+		this.container.appendChild(this.paintCanvas);
 	}
 
 	loop(): void { }
