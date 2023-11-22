@@ -5,7 +5,7 @@ export default {
 		"color": "hsl(220, 14%, 71%)",
 		"fontFamily": "var(--font-mona-space)",
 		"lineHeight": "1.5",
-		"textShadow": "1px 1px 2px var(--primary-text-transparent)"
+		"textShadow": "1px 1px 2px var(--fg-primary-transparent)"
 	},
 	"pre[class*=\"language-\"]": {
 		"color": "hsl(220, 14%, 71%)",
@@ -17,7 +17,7 @@ export default {
 		"marginTop": "1em",
 		"marginBottom": "1em",
 		"borderLeftWidth": "2px",
-		"borderColor": "var(--primary-text-transparent)",
+		"borderColor": "var(--fg-primary-transparent)",
 		"marginLeft": "12px",
 		"paddingLeft": "12px",
 	},

@@ -1,6 +1,5 @@
 "use client";
 
-import { HexRenderer } from '@lib/theme.bg'
 import { mountMosaic } from '@/components/interactiveSections/pixelMosaic/pixelMosaic'
 import { mountBlobs } from '@/components/interactiveSections/blobShader/blobShader'
 
@@ -8,8 +7,6 @@ import { ThemeProvider, useTheme } from 'next-themes'
 import React, { ReactNode, useEffect, useState, useRef } from 'react';
 
 export const themes = ['light', 'dark'] as const
-let hexs: HexRenderer
-
 
 export default function ThemeHandler({
 	children
@@ -25,7 +22,7 @@ export default function ThemeHandler({
 		if (mounted) return;
 		setMounted(true);
 		setSize();
-		mountMosaic(themeContainer.current)
+		mountBlobs(themeContainer.current)
 
 		window.addEventListener('resize', () => {
 			setSize();
@@ -44,7 +41,7 @@ export default function ThemeHandler({
 	return (
 		<ThemeProvider attribute="class" enableSystem={false} defaultTheme="dark"
 			themes={themes.map((theme) => theme)}>
-			<div ref={themeContainer} className='absolute inset-0 -z-1 overflow-hidden
+			<div ref={themeContainer} className='absolute inset-0 -z-1 overflow-hidden opacity-0 duration-300 transition-opacity saturate-200
 				after:background after:inset-0 after:absolute after:opacity-20 after:saturate-200 after:-z-1'/>
 			{children}
 		</ThemeProvider>

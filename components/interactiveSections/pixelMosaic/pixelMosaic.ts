@@ -12,7 +12,7 @@ export class pixelMosaic extends canvasBase {
 	economicSpeed = 24.5;
 
 	constructor(container: HTMLElement) {
-		super(container, { pixelScale: 48 });
+		super(container, { pixelScale: 24 });
 
 		this.init();
 		this.startLoop(60)
@@ -25,7 +25,7 @@ export class pixelMosaic extends canvasBase {
 		this.pixels = new Map<number, pixelData>();
 
 		let SEED = Math.random() * 10000;
-		let noiseSize = 32;
+		let noiseSize = 24;
 		let intensityFrequency = ((this.canvasSize.width + this.canvasSize.height) / 2) / noiseSize;
 
 

@@ -22,13 +22,13 @@ export function ThemeButton() {
 		themeRender()
 	})
 
-	if (!mounted) return <MoonIcon className="z-10 block text-primary-text relative h-icon w-icon duration-100 hover:scale-[1.2]" />
-	if (!theme) return <MoonIcon className="z-10 block text-primary-text relative h-icon w-icon duration-100 hover:scale-[1.2]" />
+	if (!mounted) return <MoonIcon className="z-10 block text-fg-primary relative h-icon w-icon duration-100 hover:scale-[1.2]" />
+	if (!theme) return <MoonIcon className="z-10 block text-fg-primary relative h-icon w-icon duration-100 hover:scale-[1.2]" />
 
 	return(
 		<button id='themeSwitcher' aria-label="Theme Switcher" ref={refThemeButton}
 			onClick={(e) => { if (mounted) changeTheme(e) }} >
-			<MoonIcon className="z-10 block text-primary-text relative h-icon w-icon duration-100 hover:scale-[1.2]" />
+			<MoonIcon className="z-10 block text-fg-primary relative h-icon w-icon duration-100 hover:scale-[1.2]" />
 		</button>
 	)
 }

@@ -2,7 +2,11 @@
 * Blobby Shader
 */
 import { shader } from "../shaderBase";
-import { Utils } from '@/lib/utils'
+import { Utils, colour } from '@/lib/utils'
+import resolveConfig from 'tailwindcss/resolveConfig'
+import tailwindConfig from '@/tailwind.config.js'
+
+const fullConfig = resolveConfig(tailwindConfig)
 
 import * as THREE from 'three';
 
@@ -15,13 +19,19 @@ export const mountBlobs = (container: Element) => {
 
 class blobShader extends shader {
 	uniforms: any;
-
-	rgbBg = Utils.colourUtils.hexConverter(window.getComputedStyle(this.container).getPropertyValue('--secondary-accent'))
+	computedRGB: Array<string>;
+	rgbBg: colour;
 
 
 	// Initializes the sketch
 	constructor(container: HTMLElement) {
 		super(container);
+		this.computedRGB = (window.getComputedStyle(this.container).getPropertyValue('--secondary-accent')).split(` `)
+		this.rgbBg = {
+			r: Number(this.computedRGB[0]),
+			g: Number(this.computedRGB[1]),
+			b: Number(this.computedRGB[2]),
+		} as colour
 
 		this.uniforms = {
 			u_time: {

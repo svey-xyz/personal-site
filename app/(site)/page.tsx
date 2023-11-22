@@ -12,7 +12,7 @@ export default async function Home() {
 
   return (
 		<div className="relative flex flex-col main-padding">
-			<h2 >projects</h2>
+			<h2>projects</h2>
 			{( repoList &&
 				repoList.data.map((repo) => {
 					if (repo.topics?.indexOf(process.env.PUBLISH_REPO_KEY!) == -1) return
@@ -24,7 +24,7 @@ export default async function Home() {
 			<div className="relative flex flex-row gap-2 mt-4">
 				{( socials &&
 					socials.data.map((social) => {
-						return <SocialIcon social={social} />
+						return <SocialIcon key={social.provider} social={social} />
 					})
 				)}
 			</div>
