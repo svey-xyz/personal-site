@@ -1,8 +1,8 @@
 "use client";
 
 import { HexRenderer } from '@lib/theme.bg'
-import { mountMosaic } from '@lib/interactiveSections/pixelMosaic/pixelMosaic'
-import { mountBlobs } from '@lib/interactiveSections/blobShader/blobShader'
+import { mountMosaic } from '@/components/interactiveSections/pixelMosaic/pixelMosaic'
+import { mountBlobs } from '@/components/interactiveSections/blobShader/blobShader'
 
 import { ThemeProvider, useTheme } from 'next-themes'
 import React, { ReactNode, useEffect, useState, useRef } from 'react';

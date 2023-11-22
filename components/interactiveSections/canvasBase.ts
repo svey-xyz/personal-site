@@ -2,8 +2,8 @@
 * Shader Base Class for interactive shader sections
 */
 
-import { Utils, pixel } from '../utils'
-import { advancedBase } from "@/lib/interactiveSections/base";
+import { Utils, pixel } from '../../lib/utils'
+import { advancedBase } from "@/components/interactiveSections/base";
 
 
 /**

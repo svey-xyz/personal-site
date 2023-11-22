@@ -1,4 +1,4 @@
-import { colour, pixel, position, Utils } from "../../utils";
+import { colour, pixel, position, Utils } from "../../../lib/utils";
 import { pixelMosaic } from "./pixelMosaic";
 
 /**

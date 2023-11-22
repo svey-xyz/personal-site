@@ -1,4 +1,4 @@
-import { advancedBase } from "@/lib/interactiveSections/base";
+import { advancedBase } from "@/components/interactiveSections/base";
 import * as THREE from 'three';
 
 /**

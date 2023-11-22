@@ -1,4 +1,4 @@
-import { Utils } from '../utils'
+import { Utils } from '../../lib/utils'
 
 /**
  * Base for handling all interactive sections.

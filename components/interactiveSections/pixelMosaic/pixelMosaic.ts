@@ -1,4 +1,4 @@
-import { Utils, position } from "../../utils";
+import { Utils, position } from "../../../lib/utils";
 import { canvasBase } from "../canvasBase";
 import { pixelData } from "./pixelData"
 
