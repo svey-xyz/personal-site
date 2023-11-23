@@ -1,6 +1,6 @@
 import { SocialIcon } from "@components/SocialIcon";
 import EmailInsert from "@components/EmailInsert";
-import { fetchUserData, fetchUserRepos, fetchUserSocials, singleRepoData } from "@/lib/fetch.data";
+import { fetchUserData, fetchUserRepos, fetchUserSocials, singleRepoData } from "@/lib/data.fetch";
 import ProjectCard from "@/components/ProjectCard";
 
 /** Metadata defined in layout for top route page */

@@ -1,4 +1,4 @@
-import { singleRepoData } from "@/lib/fetch.data";
+import { singleRepoData } from "@/lib/data.fetch";
 
 export function ProjectCard({
 	repo

@@ -1,9 +1,14 @@
-export function camelCaseToWords(string: string) {
-	var words = string.match(/[A-Za-z][a-z]*/g) || [];
+export class stringUtils {
+	constructor() {
+	}
 
-	return words.map(capitalize).join(" ");
-}
+	camelCaseToWords(string: string) {
+		var words = string.match(/[A-Za-z][a-z]*/g) || [];
 
-export function capitalize(word: string) {
-	return word.charAt(0).toUpperCase() + word.substring(1);
+		return words.map(this.capitalize).join(" ");
+	}		
+
+	capitalize(word: string) {
+		return word.charAt(0).toUpperCase() + word.substring(1);
+	}
 }

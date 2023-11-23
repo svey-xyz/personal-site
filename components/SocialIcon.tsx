@@ -1,4 +1,3 @@
-import { capitalize } from "@lib/utils/stringUtils";
 import React from "react";
 import dynamic from "next/dynamic";
 

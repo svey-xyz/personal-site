@@ -2,7 +2,7 @@ import { colourUtils } from "./utils/colourUtils";
 import { mathUtils } from './utils/mathUtils'
 import { domUtils } from './utils/domUtils'
 import { scriptUtils } from './utils/scriptUtils'
-
+import { stringUtils } from './utils/stringUtils'
 
 export type position = {
 	x: number,
@@ -33,6 +33,7 @@ class utils {
 	private mathUtilsStore: mathUtils | undefined
 	private domUtilsStore: domUtils | undefined
 	private scriptUtilsStore: scriptUtils | undefined
+	private stringUtilsStore: stringUtils| undefined
 
 	constructor() {
 	}
@@ -79,6 +80,17 @@ class utils {
 	 */
 	public get colourUtils(): colourUtils {
 		return this.colourUtilsStore ? this.colourUtilsStore : this.colourUtilsStore = new colourUtils()
+	}
+
+	/**
+	 * Utilities for manipulating strings
+	 *
+	 * @readonly
+	 * @type {stringUtils}
+	 * @memberof utils
+	 */
+	public get stringUtils(): stringUtils {
+		return this.stringUtilsStore ? this.stringUtilsStore : this.stringUtilsStore = new stringUtils()
 	}
 }
 
