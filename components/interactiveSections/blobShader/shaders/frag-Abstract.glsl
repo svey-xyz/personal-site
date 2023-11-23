@@ -1,4 +1,4 @@
-#define GLSLIFY 1
+#define GLSLIFY 4
 // Common uniforms
 uniform float u_time;
 uniform vec2 u_posSeed;
@@ -71,7 +71,7 @@ float cnoise(vec2 P) {
     vec2 fade_xy = fade(Pf.xy);
     vec2 n_x = mix(vec2(n00, n01), vec2(n10, n11), fade_xy.x);
     float n_xy = mix(n_x.x, n_x.y, fade_xy.y);
-    return 5.0 * n_xy; // bigger number = layers closer together
+    return 2.2 * n_xy; // bigger number = layers closer together
 }
 
 // Mix noise val with time
@@ -81,13 +81,13 @@ float mixNoiseVals(float m, vec2 p, vec2 t) {
 
 // The main stuff
 void main() {
-	float t = u_time * 0.012;
-	float scale = 0.000055;
-	float m = 0.8; // amount of movement between phases
+	float t = u_time * 0.0012;
+	float scale = 0.000125;
+	float m = 1.8; // amount of movement between phases
 
-	float noise = mixNoiseVals(m, vec2((gl_FragCoord.xy + u_posSeed.xy) * scale), vec2(cos(t)));
+	float noise = mixNoiseVals(m, vec2((gl_FragCoord.xy + u_posSeed.xy) * scale), vec2(t));
 
-	float steps = 2.0; // how many layers
+	float steps = 3.0; // how many layers
 	float brightness = 2.2; // controls how much of the canvas is white
 
 	float layer = floor(noise * steps + brightness) / steps;

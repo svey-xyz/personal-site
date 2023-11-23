@@ -37,7 +37,6 @@ export class shader extends advancedBase {
 
 		// Initialize the clock
 		this.clock = new THREE.Clock(true);
-
 	}
 
 	initializeShader(uniforms: any, shaders: any) {
@@ -46,7 +45,7 @@ export class shader extends advancedBase {
 		this.fragShader = shaders.frag;
 
 		// Create the plane geometry
-		var geometry = new THREE.PlaneGeometry(2, 2);
+		var geometry = new THREE.PlaneGeometry(2,2);
 
 		// Create the shader material
 		var material = new THREE.ShaderMaterial({

@@ -3,10 +3,6 @@
 */
 import { shader } from "../shaderBase";
 import { Utils, colour } from '@/lib/utils'
-import resolveConfig from 'tailwindcss/resolveConfig'
-import tailwindConfig from '@/tailwind.config.js'
-
-const fullConfig = resolveConfig(tailwindConfig)
 
 import * as THREE from 'three';
 
@@ -21,7 +17,8 @@ class blobShader extends shader {
 	uniforms: any;
 	computedRGB: Array<string>;
 	rgbBg: colour;
-
+	period: number = 8
+	amplitude: number = 2
 
 	// Initializes the sketch
 	constructor(container: HTMLElement) {
@@ -63,7 +60,14 @@ class blobShader extends shader {
 	render() {
 		super.render();
 
-		this.uniforms.u_time.value = this.clock.getElapsedTime();
+		this.uniforms.u_time.value = Math.cos(this.clock.getElapsedTime() / this.period) * this.amplitude;
+		// this.uniforms.u_time.value = Math.cos(Date.now())
+		// const x = this.clock.getElapsedTime()
+		// const a = 8
+		// const p = 50
+		// this.uniforms.u_time.value = 4 * a / p * Math.abs((((x - p / 4) % p) + p) % p - p / 2) - a
+
+		console.log(this.uniforms.u_time.value)
 		this.uniforms.u_bgColour.value = new THREE.Vector3(this.rgbBg.r / 255, this.rgbBg.g / 255, this.rgbBg.b / 255);
 	}
 
@@ -71,7 +75,7 @@ class blobShader extends shader {
 		super.touchStart(e);
 	}
 
-	randomBetween(min = -100000, max = 100000) { // min and max included 
+	randomBetween(min = 0, max = 100000) { // min and max included 
 		var randBetween = Math.floor(Math.random() * (max - min + 1) + min);
 		return (Math.random() > 0.5 ? randBetween : -randBetween);
 	}
