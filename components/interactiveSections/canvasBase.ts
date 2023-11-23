@@ -61,7 +61,6 @@ export class canvasBase extends advancedBase {
 		let height = Math.ceil(this.sectionSize.height / this.pixelScale);
 
 		this.canvasSize = { width, height }
-		console.log(this.canvasSize)
 
 		this.paintCanvas.width = this.canvasSize.width;
 		this.paintCanvas.height = this.canvasSize.height;

@@ -61,13 +61,7 @@ class blobShader extends shader {
 		super.render();
 
 		this.uniforms.u_time.value = Math.cos(this.clock.getElapsedTime() / this.period) * this.amplitude;
-		// this.uniforms.u_time.value = Math.cos(Date.now())
-		// const x = this.clock.getElapsedTime()
-		// const a = 8
-		// const p = 50
-		// this.uniforms.u_time.value = 4 * a / p * Math.abs((((x - p / 4) % p) + p) % p - p / 2) - a
 
-		console.log(this.uniforms.u_time.value)
 		this.uniforms.u_bgColour.value = new THREE.Vector3(this.rgbBg.r / 255, this.rgbBg.g / 255, this.rgbBg.b / 255);
 	}
 

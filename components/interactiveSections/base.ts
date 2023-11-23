@@ -64,7 +64,7 @@ export class advancedBase {
 	}
 
 	resize(e: Event): void {
-		this.setSize();
+		
 	};
 
 	setSize(): void {
@@ -170,4 +170,5 @@ advancedBase.prototype.handleInput = function (e: Event) {
 };
 
 advancedBase.prototype.resize = function (e: Event) {
+	this.setSize();
 };
