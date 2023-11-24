@@ -22,6 +22,10 @@ export default async function Home() {
 				})
 			)}
 			<div className="relative flex flex-row gap-2 mt-4">
+				<SocialIcon social={{
+					url: userData.data.html_url,
+					provider: 'github'
+				}}/>
 				{( socials &&
 					socials.data.map((social) => {
 						return <SocialIcon key={social.provider} social={social} />

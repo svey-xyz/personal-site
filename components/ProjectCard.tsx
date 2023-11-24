@@ -1,5 +1,5 @@
 import { singleRepoData } from "@/lib/data.fetch";
-
+import { Utils } from '@lib/utils'
 export function ProjectCard({
 	repo
 }: {

@@ -1,5 +1,5 @@
 import React from "react";
-import { FaMastodon, FaGithub } from "react-icons/fa6";
+import { FaMastodon, FaGithub, FaLink } from "react-icons/fa6";
 import { IconType } from "react-icons";
 
 export function SocialIcon({social } : { social:{url: string, provider: string}}) {
@@ -10,7 +10,7 @@ export function SocialIcon({social } : { social:{url: string, provider: string}}
 			case('github'):
 				return FaGithub;
 			default:
-				break;
+				return FaLink;
 		}
 	})()
 
