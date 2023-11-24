@@ -1,5 +1,6 @@
 import React from 'react';
 import Markdown from 'react-markdown';
+import rehypeRaw from "rehype-raw";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import style from '@styles/style.highlight'
 import slugify from 'slugify'
@@ -54,6 +55,7 @@ export function MarkdownRenderer({ children: markdown }: MarkdownRendererProps) 
 				
 			}}
 			remarkPlugins={[]}
+			rehypePlugins={[rehypeRaw]}
 		>
 			{markdown}
 		</Markdown>
