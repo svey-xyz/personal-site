@@ -41,7 +41,7 @@ export default function ThemeHandler({
 	return (
 		<ThemeProvider attribute="class" enableSystem={false} defaultTheme="dark"
 			themes={themes.map((theme) => theme)}>
-			<div ref={themeContainer} className='absolute inset-0 -z-1 overflow-hidden opacity-0 duration-300 transition-opacity saturate-200
+			<div ref={themeContainer} className='hidden absolute inset-0 -z-1 overflow-hidden opacity-0 duration-300 transition-opacity saturate-200
 				after:inset-0 after:absolute after:opacity-20 after:saturate-200 after:-z-1'/>
 			{children}
 		</ThemeProvider>

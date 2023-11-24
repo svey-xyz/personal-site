@@ -7,7 +7,7 @@ export default function Header() {
 			<div className="relative h-full flex flex-col items-center justify-center">
 				<div className="main-padding flex flex-row items-center justify-between z-50">
 					<div className="relative block w-10">
-						<Icon args={{ type: 'toggle' }} />
+						<Icon />
 					</div>
 					<ThemeButton />
 				</div>

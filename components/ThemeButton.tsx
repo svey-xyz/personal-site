@@ -2,7 +2,7 @@
 
 import { useTheme } from 'next-themes'
 import { themeRender, themes } from '@components/Theme'
-import { MoonIcon, SunIcon } from "@heroicons/react/24/solid";
+import { BiSolidMoon, BiSolidSun } from "react-icons/bi";
 import React, { useEffect, useRef, useState } from "react";
 
 export function ThemeButton() {
@@ -22,13 +22,14 @@ export function ThemeButton() {
 		themeRender()
 	})
 
-	if (!mounted) return <MoonIcon className="z-10 block text-fg-primary relative h-icon w-icon duration-100 hover:scale-[1.2]" />
-	if (!theme) return <MoonIcon className="z-10 block text-fg-primary relative h-icon w-icon duration-100 hover:scale-[1.2]" />
+	if (!mounted) return <BiSolidMoon className="z-10 block text-fg-primary relative h-icon w-icon duration-100 hover:scale-[1.2]" />
+	if (!theme) return <BiSolidMoon className="z-10 block text-fg-primary relative h-icon w-icon duration-100 hover:scale-[1.2]" />
 
 	return(
 		<button id='themeSwitcher' aria-label="Theme Switcher" ref={refThemeButton}
 			onClick={(e) => { if (mounted) changeTheme(e) }} >
-			<MoonIcon className="z-10 block text-fg-primary relative h-icon w-icon duration-100 hover:scale-[1.2]" />
+			<BiSolidSun className="hidden dark:block z-10 text-fg-primary relative h-icon w-icon duration-100 hover:scale-[1.1]" />
+			<BiSolidMoon className="block dark:hidden z-10 text-fg-primary relative h-icon w-icon duration-100 hover:scale-[1.1]" />
 		</button>
 	)
 }
