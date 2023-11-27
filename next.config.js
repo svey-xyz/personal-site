@@ -1,7 +1,5 @@
 /** @type {import('next').NextConfig} */
 
-const withMDX = require('@next/mdx')()
-
 const GLSLMinifyLoader = [{
 	loader: 'webpack-glsl-minify',
 	options: {
@@ -23,7 +21,6 @@ const nextConfig = {
 	images: {
 		domains: ['img.shields.io']
 	},
-	pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
 	webpack(config) {
 		config.module.rules.push(
 			{
@@ -36,4 +33,4 @@ const nextConfig = {
 	},
 }
 
-module.exports = withMDX(nextConfig)
+module.exports = nextConfig
