@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 
+const withMDX = require('@next/mdx')()
+
 const GLSLMinifyLoader = [{
 	loader: 'webpack-glsl-minify',
 	options: {
@@ -21,13 +23,9 @@ const nextConfig = {
 	images: {
 		domains: ['img.shields.io']
 	},
+	pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
 	webpack(config) {
 		config.module.rules.push(
-			{
-				test: /\.svg$/,
-				// issuer: /\.[jt]sx?$/,
-				use: ['@svgr/webpack']
-			},
 			{
 				test: /\.glsl$/,
 				use: (process.env.NODE_ENV === 'production' ? GLSLMinifyLoader : GLSLLoader),
@@ -38,4 +36,4 @@ const nextConfig = {
 	},
 }
 
-module.exports = nextConfig
+module.exports = withMDX(nextConfig)

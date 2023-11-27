@@ -2,7 +2,7 @@ import { fetchReadme, fetchUserData, fetchUserRepos, singleRepoData } from "@/li
 import React from "react";
 
 import { Base64 } from 'js-base64';
-import { MarkdownRenderer } from "@/lib/Markdown";
+import { MarkdownRenderer } from "@/lib/MarkdownRenderer";
 
 export default async function ProjectsPage({ params }: { params: { slug: string } }) {
 	const repoList = await fetchUserRepos({ type: 'owner', sort: 'created' });
