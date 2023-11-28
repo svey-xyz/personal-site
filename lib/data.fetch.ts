@@ -30,20 +30,20 @@ export type contentPathResponse =
 export type singleRepoData =
 	Endpoints["GET /repos/{owner}/{repo}"]["response"]["data"]
 
-export const OCTO_USER = await (async () => { return await fetchUserData({}) })()
+export const OCTO_USER = await (async () => { 
+	return await octokit.request("GET /user", {
+		headers: { authorization: `token ${process.env.GITHUB_API_KEY}` }
+	});
+})()
+
+export const OCTO_USER_SOCIALS = await (async () => { 
+	return await octokit.request("GET /user/social_accounts", {
+		headers: { authorization: `token ${process.env.GITHUB_API_KEY}` }
+	});
+})()
 
 export async function fetchUserRepos(params: listUserReposParameters): Promise<listUserReposResponse> {
 	const response = await octokit.request("GET /user/repos", {
-		headers: {
-			authorization: `token ${process.env.GITHUB_API_KEY}`,
-		},
-		...params
-	});
-	return response
-}
-
-async function fetchUserData(params: userDataParameters): Promise<userDataResponse> {
-	const response = await octokit.request("GET /user", {
 		headers: {
 			authorization: `token ${process.env.GITHUB_API_KEY}`,
 		},
@@ -82,15 +82,5 @@ export async function fetchPathContent(params: contentPathParameters): Promise<c
 		console.log(`Path: ${params.path}, not found on repo: ${params.repo} with owner: ${params.owner}`)
 	}
 
-	return response
-}
-
-export async function fetchUserSocials(params: userSocialParameters): Promise<userSocialResponse> {
-	const response = await octokit.request("GET /user/social_accounts", {
-		headers: {
-			authorization: `token ${process.env.GITHUB_API_KEY}`,
-		},
-		...params
-	});
 	return response
 }

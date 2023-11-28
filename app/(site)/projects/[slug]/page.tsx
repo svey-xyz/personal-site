@@ -1,4 +1,4 @@
-import { fetchReadme, fetchUserData, fetchUserRepos, singleRepoData } from "@/lib/data.fetch";
+import { fetchReadme, fetchUserRepos } from "@/lib/data.fetch";
 import React from "react";
 
 import { Base64 } from 'js-base64';

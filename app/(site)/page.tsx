@@ -1,16 +1,14 @@
 import { SocialIcon } from "@components/SocialIcon";
 import EmailInsert from "@components/EmailInsert";
-import { fetchPathContent, OCTO_USER, fetchUserRepos, fetchUserSocials, singleRepoData } from "@/lib/data.fetch";
+import { fetchPathContent, OCTO_USER, OCTO_USER_SOCIALS, fetchUserRepos, singleRepoData } from "@/lib/data.fetch";
 import ProjectCard from "@/components/ProjectCard";
 import { MarkdownRenderer } from "@lib/MarkdownRenderer";
 import { Base64 } from "js-base64";
-// import about from '@data/about.mdx'
-/** Metadata defined in layout for top route page */
+
 export default async function Home() {
 
 	const repoList = await fetchUserRepos({type: 'owner', sort: 'created'});
-	const socials = await fetchUserSocials({});
-	const aboutData = await fetchPathContent({ owner: OCTO_USER.data.login, repo: OCTO_USER.data.login, path:'/data/abut.md'})
+	const aboutData = await fetchPathContent({ owner: OCTO_USER.data.login, repo: OCTO_USER.data.login, path:'/data/about.md'})
 	const about = aboutData ? Base64.decode(aboutData.data['content']) : ``
 
   return (
@@ -45,8 +43,8 @@ export default async function Home() {
 					url: OCTO_USER.data.html_url,
 					provider: 'github'
 				}}/>
-				{( socials &&
-					socials.data.map((social) => {
+				{( OCTO_USER_SOCIALS &&
+					OCTO_USER_SOCIALS.data.map((social) => {
 						return <SocialIcon key={social.provider} social={social} />
 					})
 				)}
