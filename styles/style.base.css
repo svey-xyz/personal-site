@@ -40,7 +40,7 @@
 	h1 { @apply text-xl font-black underline underline-offset-4; }
 	h2 { @apply text-lg font-bold; }
 	p { @apply mt-2; }
-	a { @apply cursor-pointer; }
+	a { @apply cursor-pointer opacity-70 hover:opacity-100 transition-opacity duration-300 hover:duration-100; }
 
 	@keyframes gradient {
     0% {

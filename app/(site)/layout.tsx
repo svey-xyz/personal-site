@@ -22,7 +22,7 @@ export default async function RootLayout({ children } : { children: React.ReactN
 			<body className='relative min-h-screen'>
 				<ThemeHandler>
 					<Header />
-					<main className='pb-24 min-h-full'>
+					<main className='pb-24 min-h-full '>
 						{children}
 					</main>
 				</ThemeHandler>

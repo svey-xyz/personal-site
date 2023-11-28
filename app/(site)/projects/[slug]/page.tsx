@@ -6,12 +6,12 @@ import { MarkdownRenderer } from "@/lib/MarkdownRenderer";
 
 export default async function ProjectsPage({ params }: { params: { slug: string } }) {
 	const repoList = await fetchUserRepos({ type: 'owner', sort: 'created' });
-	const slugs = repoList.data.map((repo) => {
+	const slugs = repoList.map((repo) => {
 		return repo.name
 	})
 
 	if (slugs.indexOf(params.slug) == -1) return;
-	const repo = repoList.data[slugs.indexOf(params.slug)]
+	const repo = repoList[slugs.indexOf(params.slug)]
 	const readmeData = await fetchReadme({owner: repo.owner.login, repo: repo.name})
 	// atob doesn't decode emojis properly
 	const desc = readmeData ? Base64.decode(readmeData.data.content) : repo.description

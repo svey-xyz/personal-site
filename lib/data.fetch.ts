@@ -42,14 +42,23 @@ export const OCTO_USER_SOCIALS = await (async () => {
 	});
 })()
 
-export async function fetchUserRepos(params: listUserReposParameters): Promise<listUserReposResponse> {
+export async function fetchUserRepos(params: listUserReposParameters): Promise<Array<singleRepoData>> {
 	const response = await octokit.request("GET /user/repos", {
 		headers: {
 			authorization: `token ${process.env.GITHUB_API_KEY}`,
 		},
 		...params
 	});
-	return response
+	const repos = response.data.filter((repo)=>
+		(repo.topics?.indexOf(process.env.PUBLISH_REPO_KEY!) !== -1)
+	).map((repo) => {
+		if (repo.topics) repo.topics.splice(
+			repo.topics.indexOf(process.env.PUBLISH_REPO_KEY!), 1
+		)
+		return repo as singleRepoData
+	})
+
+	return repos 
 }
 
 export async function fetchReadme(params: readmeParameters): Promise<readmeResponse | undefined> {

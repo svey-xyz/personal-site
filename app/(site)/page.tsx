@@ -1,9 +1,9 @@
 import { SocialIcon } from "@components/SocialIcon";
 import EmailInsert from "@components/EmailInsert";
-import { fetchPathContent, OCTO_USER, OCTO_USER_SOCIALS, fetchUserRepos, singleRepoData } from "@/lib/data.fetch";
-import ProjectCard from "@/components/ProjectCard";
+import { fetchPathContent, OCTO_USER, OCTO_USER_SOCIALS, fetchUserRepos } from "@/lib/data.fetch";
 import { MarkdownRenderer } from "@lib/MarkdownRenderer";
 import { Base64 } from "js-base64";
+import { RepoList } from "@/components/RepoList";
 
 export default async function Home() {
 
@@ -13,32 +13,27 @@ export default async function Home() {
 
   return (
 		<div className="relative flex flex-col main-padding">
-			{(OCTO_USER && 
-				<span className="block font-black">
-					{OCTO_USER.data.name}
-				</span>
-			)}
-			{(OCTO_USER.data.bio &&
-				<span className="block my-2">
-					{OCTO_USER.data.bio}
-				</span>
-			)}
-			{(about &&
-				<MarkdownRenderer className={'pb-4'}>
-					{about}
-				</MarkdownRenderer>
-			)}
+			<div className="max-w-prose">
+				{(OCTO_USER && 
+					<span className="block font-black">
+						{OCTO_USER.data.name}
+					</span>
+				)}
+				{(OCTO_USER.data.bio &&
+					<span className="block my-2">
+						{OCTO_USER.data.bio}
+					</span>
+				)}
+				{(about &&
+					<MarkdownRenderer className={'pb-4'}>
+						{about}
+					</MarkdownRenderer>
+				)}
+			</div>
 	
-			<h2>projects</h2>
-			{( repoList &&
-				repoList.data.map((repo) => {
-					if (repo.topics?.indexOf(process.env.PUBLISH_REPO_KEY!) == -1) return
-					return (
-						<ProjectCard key={repo.id} repo={(repo as singleRepoData)} />
-					)
-				})
-			)}
-			<div className="relative flex flex-row gap-2 mt-4">
+			<RepoList repos={repoList}/>
+
+			<div className="relative flex flex-row gap-2 mt-4 max-w-prose">
 				<SocialIcon social={{
 					url: OCTO_USER.data.html_url,
 					provider: 'github'
