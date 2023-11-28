@@ -7,9 +7,10 @@ import slugify from 'slugify'
 
 type MarkdownRendererProps = {
 	children: string;
+	className?: string;
 };
 
-export function MarkdownRenderer({ children: markdown }: MarkdownRendererProps) {
+export function MarkdownRenderer({ children: markdown, className }: MarkdownRendererProps) {
 	return (
 		<Markdown
 			components={{
@@ -56,6 +57,7 @@ export function MarkdownRenderer({ children: markdown }: MarkdownRendererProps) 
 			}}
 			remarkPlugins={[]}
 			rehypePlugins={[rehypeRaw]}
+			className={className}
 		>
 			{markdown}
 		</Markdown>

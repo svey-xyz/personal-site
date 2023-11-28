@@ -22,9 +22,15 @@ export type readmeParameters =
 	Endpoints["GET /repos/{owner}/{repo}/readme"]["parameters"];
 export type readmeResponse =
 	Endpoints["GET /repos/{owner}/{repo}/readme"]["response"];
+export type contentPathParameters =
+	Endpoints["GET /repos/{owner}/{repo}/contents/{path}"]["parameters"];
+export type contentPathResponse =
+	Endpoints["GET /repos/{owner}/{repo}/contents/{path}"]["response"];
 
 export type singleRepoData =
 	Endpoints["GET /repos/{owner}/{repo}"]["response"]["data"]
+
+export const OCTO_USER = await (async () => { return await fetchUserData({}) })()
 
 export async function fetchUserRepos(params: listUserReposParameters): Promise<listUserReposResponse> {
 	const response = await octokit.request("GET /user/repos", {
@@ -36,7 +42,7 @@ export async function fetchUserRepos(params: listUserReposParameters): Promise<l
 	return response
 }
 
-export async function fetchUserData(params: userDataParameters): Promise<userDataResponse> {
+async function fetchUserData(params: userDataParameters): Promise<userDataResponse> {
 	const response = await octokit.request("GET /user", {
 		headers: {
 			authorization: `token ${process.env.GITHUB_API_KEY}`,
@@ -47,8 +53,7 @@ export async function fetchUserData(params: userDataParameters): Promise<userDat
 }
 
 export async function fetchReadme(params: readmeParameters): Promise<readmeResponse | undefined> {
-	let response
-
+	let response: readmeResponse | undefined
 	try {
 		response = await octokit.request("GET /repos/{owner}/{repo}/readme", {
 			headers: {
@@ -56,9 +61,28 @@ export async function fetchReadme(params: readmeParameters): Promise<readmeRespo
 			},
 			...params
 		});
-	} catch(e) { }
-
+	} catch(e) {
+		if (process.env.VERBOSE) console.log(e)
+		console.log(`README.md not found on repo: ${params.repo} with owner: ${params.owner}`)
+	}
 	return response 
+}
+
+export async function fetchPathContent(params: contentPathParameters): Promise<contentPathResponse | undefined> {
+	let response: contentPathResponse | undefined
+	try {
+		response = await octokit.request("GET /repos/{owner}/{repo}/contents/{path}", {
+			headers: {
+				authorization: `token ${process.env.GITHUB_API_KEY}`,
+			},
+			...params
+		});
+	} catch(e) {
+		if (process.env.VERBOSE) console.log(e)
+		console.log(`Path: ${params.path}, not found on repo: ${params.repo} with owner: ${params.owner}`)
+	}
+
+	return response
 }
 
 export async function fetchUserSocials(params: userSocialParameters): Promise<userSocialResponse> {
