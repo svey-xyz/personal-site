@@ -1,18 +1,10 @@
+import { user } from '@lib/types/data.types'
 import fragments from '@lib/graphql/fragments.gql'
+import { User, UserQuery } from '@lib/types/generated/graphql'
+import { features } from 'process'
 
-export interface taxonomy {
-	title: string,
-}
+import userQuery from '@lib/graphql/user.gql'
 
-export interface project {
-	title: string,
-	description: string,
-	created: string,
-	updated: string,
-	website: string,
-	taxonomies: Array<taxonomy>,
-	gitHubURL: string
-}
 
 export async function query(query: string, queryVars?: Array<{var:string,val:string}>) {
 	const variables = queryVars?.map((obj) => {
@@ -24,9 +16,35 @@ export async function query(query: string, queryVars?: Array<{var:string,val:str
 			"Content-Type": "application/json",
 			Authorization: `bearer ${process.env.GITHUB_API_KEY}`,
 		},
-		body: JSON.stringify({ query: `${fragments} ${query}`, variables: { ...variables } })
+		body: JSON.stringify({ query: query, variables: { ...variables } })
 	})
-	const data = await response.json()
-	console.log(data.data.viewer.repositories)
-	return data
+	const data = (await response.json()).data
+	return data 
+}
+
+export async function getUserData(): Promise<user> {
+	return mutateUserData(await query(userQuery))
+}
+
+function mutateUserData(data:UserQuery): user {
+	console.log(data)
+	return {
+		name: data.viewer.name,
+		bio: data.viewer.bio,
+		about: '',
+		// socials: [
+		// 	...data.socialAccounts?.nodes.map((social) => {
+		// 		return { provider: social.provider, url: social.url }
+		// 	})
+		// ],
+		// email: data.viewer.email,
+		// featured: [
+		// 	...data.pinnedItems.nodes.map((feature)) => {
+		// 		return {
+		// 			title: ``
+		// 		}
+		// 	}
+		// ]
+
+	}
 }

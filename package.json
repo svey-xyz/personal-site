@@ -6,12 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
     "@graphql-tools/webpack-loader": "^7.0.0",
     "@octokit/core": "^5.0.1",
     "@octokit/types": "^12.3.0",
+    "graphql": "^16.8.1",
     "js-base64": "^3.7.5",
     "next": "latest",
     "next-themes": "^0.2.1",
@@ -27,6 +29,7 @@
     "webpack-glsl-minify": "^1.5.0"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "5.0.0",
     "@tailwindcss/typography": "^0.5.10",
     "@types/node": "^20",
     "@types/react": "latest",
@@ -40,6 +43,8 @@
     "eslint-config-next": "^14.0.0",
     "postcss": "^8.4.29",
     "tailwindcss": "^3.3.2",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "@graphql-codegen/introspection": "^4.0.0",
+    "@graphql-codegen/client-preset": "^4.1.0"
   }
 }

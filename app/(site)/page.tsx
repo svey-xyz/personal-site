@@ -1,6 +1,6 @@
 import { SocialIcon } from "@components/SocialIcon";
 import EmailInsert from "@components/EmailInsert";
-import { fetchPathContent, OCTO_USER, OCTO_USER_SOCIALS, fetchUserRepos } from "@/lib/data.fetch";
+import { fetchPathContent, OCTO_USER, OCTO_USER_SOCIALS, fetchUserRepos, UserData } from "@lib/data.fetch";
 import { MarkdownRenderer } from "@lib/MarkdownRenderer";
 import { Base64 } from "js-base64";
 import { RepoList } from "@/components/RepoList";
@@ -14,14 +14,14 @@ export default async function Home() {
   return (
 		<div className="relative flex flex-col main-padding">
 			<div className="max-w-prose">
-				{(OCTO_USER && 
+				{(UserData && 
 					<span className="block font-black">
-						{OCTO_USER.data.name}
+						{UserData.name}
 					</span>
 				)}
-				{(OCTO_USER.data.bio &&
+				{(UserData.bio &&
 					<span className="block my-2">
-						{OCTO_USER.data.bio}
+						{UserData.bio}
 					</span>
 				)}
 				{(about &&
