@@ -1,0 +1,11 @@
+query repoContent($repoName:String!, $path:String!) {
+	viewer {
+		repository(name: $repoName) {
+			object(expression: $path) {
+				... on Blob {
+					text
+				}
+			}
+		}
+	}
+}

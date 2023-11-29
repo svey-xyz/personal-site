@@ -13,6 +13,7 @@ export interface project {
 }
 
 export interface user {
+	login: string,
 	name: string,
 	bio: string, /** A short description */
 	email?: string,

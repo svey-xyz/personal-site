@@ -1,8 +1,12 @@
-import { getUserData, query } from '@/lib/data.query';
+import { getUserData } from '@lib/data.query';
 import { Octokit } from '@octokit/core'
-import { Endpoints, GetResponseTypeFromEndpointMethod } from "@octokit/types";
+import { Endpoints } from "@octokit/types";
 
-export const UserData = await (async () => { return await getUserData() })()
+export const UserData = await (async () => { return await getUserData('data/about.md') })()
+console.log(UserData)
+
+// console.log(`hi`, await (async () => { return await getRepoContentData(UserData.login, 'data/about.md') })())
+
 
 const octokit = new Octokit({
 	auth: process.env.GITHUB_API_KEY,
@@ -45,7 +49,6 @@ export const OCTO_USER_SOCIALS = await (async () => {
 	});
 })()
 
-console.log(await (async () => { return await getUserData() })())
 
 
 export async function fetchUserRepos(params: listUserReposParameters): Promise<Array<singleRepoData>> {

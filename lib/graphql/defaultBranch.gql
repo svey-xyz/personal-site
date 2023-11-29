@@ -1,0 +1,9 @@
+query defaultBranch($repoName:String!) {
+  viewer {
+    repository(name: $repoName) {
+      defaultBranchRef {
+      	name
+    	}
+		}
+	}
+}

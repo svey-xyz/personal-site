@@ -3,6 +3,7 @@ query user {
     login,
     name,
     bio,
+		email,
     pinnedItems(first:6) {
 			nodes {
 				... on Repository {

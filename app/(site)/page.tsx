@@ -8,8 +8,6 @@ import { RepoList } from "@/components/RepoList";
 export default async function Home() {
 
 	const repoList = await fetchUserRepos({type: 'owner', sort: 'created'});
-	const aboutData = await fetchPathContent({ owner: OCTO_USER.data.login, repo: OCTO_USER.data.login, path:'/data/about.md'})
-	const about = aboutData ? Base64.decode(aboutData.data['content']) : ``
 
   return (
 		<div className="relative flex flex-col main-padding">
@@ -24,9 +22,9 @@ export default async function Home() {
 						{UserData.bio}
 					</span>
 				)}
-				{(about &&
+				{(UserData.about &&
 					<MarkdownRenderer className={'pb-4'}>
-						{about}
+						{UserData.about}
 					</MarkdownRenderer>
 				)}
 			</div>
@@ -38,13 +36,13 @@ export default async function Home() {
 					url: OCTO_USER.data.html_url,
 					provider: 'github'
 				}}/>
-				{( OCTO_USER_SOCIALS &&
-					OCTO_USER_SOCIALS.data.map((social) => {
+				{( UserData.socials &&
+					UserData.socials.map((social) => {
 						return <SocialIcon key={social.provider} social={social} />
 					})
 				)}
-				{(OCTO_USER.data.email &&
-					<EmailInsert email={OCTO_USER.data.email} />
+				{(UserData.email &&
+					<EmailInsert email={UserData.email} />
 				)}
 			</div>
     </div>
