@@ -1,5 +1,6 @@
+import { query } from '@/lib/data.query';
 import { Octokit } from '@octokit/core'
-import { Endpoints } from "@octokit/types";
+import { Endpoints, GetResponseTypeFromEndpointMethod } from "@octokit/types";
 
 const octokit = new Octokit({
 	auth: process.env.GITHUB_API_KEY,
@@ -41,6 +42,9 @@ export const OCTO_USER_SOCIALS = await (async () => {
 		headers: { authorization: `token ${process.env.GITHUB_API_KEY}` }
 	});
 })()
+
+import repos from '@lib/graphql/repos.gql'
+query(repos)
 
 export async function fetchUserRepos(params: listUserReposParameters): Promise<Array<singleRepoData>> {
 	const response = await octokit.request("GET /user/repos", {

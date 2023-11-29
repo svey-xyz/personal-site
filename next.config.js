@@ -28,6 +28,11 @@ const nextConfig = {
 				use: (process.env.NODE_ENV === 'production' ? GLSLMinifyLoader : GLSLLoader),
 				exclude: /node_modules/,
 			},
+			{
+				test: /\.(graphql|gql)$/,
+				exclude: /node_modules/,
+				type: "asset/source",
+			}
 		)
 		return config
 	},

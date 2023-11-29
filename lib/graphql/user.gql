@@ -1,0 +1,20 @@
+query user {
+  viewer {
+    login,
+    name,
+    bio,
+    pinnedItems(first:6) {
+			nodes {
+				... on Repository {
+					name
+				}
+			}
+    },
+    socialAccounts(first:3) {
+			nodes {
+				provider,
+				url
+			}
+    },
+  }
+}

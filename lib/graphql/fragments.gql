@@ -1,0 +1,15 @@
+fragment repo on Repository {
+	name,
+	createdAt,
+	pushedAt,
+	description,
+	homepageUrl,
+	url,
+	repositoryTopics(first: 10) {
+		nodes {
+			topic {
+				name
+			}
+		}
+	},
+}

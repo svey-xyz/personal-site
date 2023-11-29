@@ -1,0 +1,10 @@
+query repos($endCursor:String) {
+  viewer {
+    repositories(first:10, after: $endCursor) {
+			pageInfo { endCursor hasNextPage },
+      nodes {
+        ...repo
+      }
+    }
+  }
+}

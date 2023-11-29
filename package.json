@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@graphql-tools/webpack-loader": "^7.0.0",
     "@octokit/core": "^5.0.1",
     "@octokit/types": "^12.3.0",
     "js-base64": "^3.7.5",
