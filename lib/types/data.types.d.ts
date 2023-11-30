@@ -8,6 +8,7 @@ export interface project {
 	created: string,
 	updated: string,
 	website?: string,
+	about?: string,
 	taxonomies?: Array<taxonomy>,
 	githubURL: string
 }

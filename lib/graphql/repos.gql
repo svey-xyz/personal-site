@@ -1,6 +1,6 @@
 query repos($endCursor:String) {
   viewer {
-    repositories(first:10, after: $endCursor) {
+    repositories(first:100, after: $endCursor) {
 			pageInfo { endCursor hasNextPage },
       nodes {
         ...repo
