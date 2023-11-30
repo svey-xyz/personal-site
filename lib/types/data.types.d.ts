@@ -4,12 +4,12 @@ export interface taxonomy {
 
 export interface project {
 	title: string,
-	description: string,
+	description?: string,
 	created: string,
 	updated: string,
-	website: string,
-	taxonomies: Array<taxonomy>,
-	gitHubURL: string
+	website?: string,
+	taxonomies?: Array<taxonomy>,
+	githubURL: string
 }
 
 export interface user {

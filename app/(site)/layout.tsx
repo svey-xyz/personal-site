@@ -5,7 +5,7 @@ import { Inter } from 'next/font/google'
 import localFont from "next/font/local";
 import ThemeHandler from '@/components/Theme';
 import { Metadata, ResolvingMetadata, Viewport } from 'next/types';
-import { OCTO_USER } from '@/lib/data.fetch';
+import { UserData } from '@lib/data';
 
 type Props = {
 	params: { id: string }
@@ -20,14 +20,14 @@ export async function generateMetadata(
 
 	return {
 		title: {
-			template: `%s | ${OCTO_USER.data.name}`,
-			default: `${OCTO_USER.data.name}`
+			template: `%s | ${UserData.name}`,
+			default: `${UserData.name}`
 		},
-		description: OCTO_USER.data.bio,
+		description: UserData.bio,
 		generator: 'Next.js',
 		applicationName: 'Next.js',
 		referrer: 'origin-when-cross-origin',
-		authors: [{ name: `${OCTO_USER.data.name}`, url: '/' }],
+		authors: [{ name: `${UserData.name}`, url: '/' }],
 	}
 }
 

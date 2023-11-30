@@ -1,7 +1,5 @@
-import { fetchReadme, fetchUserRepos } from "@/lib/data.fetch";
 import React from "react";
 
-import { Base64 } from 'js-base64';
 import { MarkdownRenderer } from "@/lib/MarkdownRenderer";
 
 export default async function ProjectsPage({ params }: { params: { slug: string } }) {
@@ -12,9 +10,6 @@ export default async function ProjectsPage({ params }: { params: { slug: string 
 
 	if (slugs.indexOf(params.slug) == -1) return;
 	const repo = repoList[slugs.indexOf(params.slug)]
-	const readmeData = await fetchReadme({owner: repo.owner.login, repo: repo.name})
-	// atob doesn't decode emojis properly
-	const desc = readmeData ? Base64.decode(readmeData.data.content) : repo.description
 	
 	return (
 		<div className="relative main-padding flex flex-col">
