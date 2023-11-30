@@ -4,9 +4,9 @@ import { project } from "@/lib/types/data.types";
 import ProjectCard from "@components/ProjectCard";
 import { useEffect, useState } from "react";
 
-export function RepoList({ projects, title='projects' }: { projects: Array<project>, title?:string }) {
+export function ProjectsList({ projects, title='projects', className }: { projects: Array<project>, title?:string, className?: string }) {
 	const [repoData, setRepoData] = useState<Array<project>>([]);
-	const [sortType, setSortType] = useState('created_at');
+	const [sortType, setSortType] = useState('created');
 	const [mounted, setMounted] = useState(false);
 
 	useEffect(()=>{
@@ -20,6 +20,7 @@ export function RepoList({ projects, title='projects' }: { projects: Array<proje
 				updated: 'updated',
 			};
 			const sortProperty = types[type];
+
 			const sorted = [...projects].sort((a, b) => Date.parse(b[sortProperty]) - Date.parse(a[sortProperty]));
 			setRepoData(sorted);
 		};
@@ -28,7 +29,7 @@ export function RepoList({ projects, title='projects' }: { projects: Array<proje
 	}, [sortType]);
 
 	return (
-		<div className="max-w-prose-full">
+		<div className={`${className} max-w-prose-full`}>
 			<div className="flex flex-row justify-between mb-4">
 				<h2>{title}</h2>
 				<select className='p-2 cursor-pointer border border-bg-primary/40 rounded
