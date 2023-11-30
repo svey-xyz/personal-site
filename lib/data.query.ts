@@ -95,6 +95,7 @@ async function getRepoContentData(repo: string, path: string): Promise<string | 
 		queryVars: { 'repoName': repo, 'path': repoPath }
 	}))
 	const REPO_CONTENT: RepoContentQuery = validateFetchWithViewer(REPO_DATA)
+
 	const CONTEXT_TEXT = REPO_CONTENT.viewer.repository.object?.__typename == "Blob" ?
 		REPO_CONTENT.viewer.repository.object.text :
 		undefined
