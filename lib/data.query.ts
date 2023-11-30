@@ -20,61 +20,93 @@ export async function query({query, queryVars, fragment}:{query:string, queryVar
 		body: JSON.stringify({ query: combinedQuery, variables: queryVars })
 	})
 
-	const data = (await response.json()).data
-	if (data) return data
-	else throw new Error(await response.json());
+	const { data, errors } = await response.json()
+	if (response.ok) return data
+	else return Promise.reject(new Error(errors?.map(e => e.message).join('\n') ?? 'unknown'))
 }
 
 export async function getProjectData() {
-	const data = await query({ query: queryRepos, fragment: fragmentRepo }) as ReposQuery
 
-	const projectData: Array<project> = await reposToProjects(data.viewer.repositories.nodes as Array<RepoFragment>)
+	/** Fetch data & validate fetch */
+
+	const DATA = await query({ query: queryRepos, fragment: fragmentRepo })
+	const REPOS: ReposQuery = validateFetchWithViewer(DATA)
+
+	const FRAGMENTS = REPOS.viewer.repositories.nodes.map((obj) => {
+		if (obj.__typename == "Repository") return obj as RepoFragment
+	}).filter((repo) => repo !== undefined)
+
+	/** Cast fetched data to internal type */
+
+	const projectData: Array<project> = await reposToProjects(FRAGMENTS)
 
 	return projectData
 }
 
 export async function getUserData(aboutPath?:string): Promise<user> {
-	const about = await getRepoContentData(`svey-xyz`, aboutPath)
-	const data = await query({ query: queryUser, fragment: fragmentRepo }) as UserQuery
-	const featured = await reposToProjects(data.viewer.pinnedItems.nodes as Array<RepoFragment>)
 
-	const userData: user = {
-		login: data.viewer.login,
-		name: data.viewer.name,
-		bio: data.viewer.bio,
-		about: about,
+	/** Fetch data & validate fetch */
+
+	const ABOUT = await getRepoContentData(`svey-xyz`, aboutPath)
+	const DATA = await query({ query: queryUser, fragment: fragmentRepo })
+	const USER: UserQuery = validateFetchWithViewer(DATA)
+
+	/** Cast fetched data to internal type */
+
+	const FRAGMENTS = USER.viewer.pinnedItems.nodes.map((obj) => {
+		if (obj.__typename == "Repository") return obj as RepoFragment
+	}).filter((repo) => repo !== undefined)
+
+	const FEATURED = await reposToProjects(FRAGMENTS)
+
+	const USER_DATA: user = {
+		login: USER.viewer.login,
+		name: USER.viewer.name,
+		bio: USER.viewer.bio,
+		about: ABOUT,
 		socials: [
-			{ provider: 'github', url: data.viewer.url },
-			...data.viewer.socialAccounts?.nodes.map((social) => {
+			{ provider: 'github', url: USER.viewer.url },
+			...USER.viewer.socialAccounts?.nodes.map((social) => {
 				return { provider: social.provider.toLowerCase(), url: social.url }
 			})
 		],
-		email: data.viewer.email,
-		featured: featured
+		email: USER.viewer.email,
+		featured: FEATURED
 	}
 
-	return userData
+	return USER_DATA
 }
 
 async function getRepoContentData(repo: string, path: string): Promise<string | undefined> {
-	const defaultBranch = (await query({
+
+	/** Fetch data & validate fetch */
+
+	const BRANCH_DATA = (await query({
 		query: queryDefaultBranch,
 		queryVars: { 'repoName': repo }
-	})) as DefaultBranchQuery
-	if (!defaultBranch.viewer.repository) return
+	}))
+	const DEFAULT_BRANCH: DefaultBranchQuery = validateFetchWithViewer(BRANCH_DATA)
+	if (!DEFAULT_BRANCH.viewer.repository) return
 
-	const repoPath = `${(defaultBranch.viewer.repository.defaultBranchRef.name)}:${path}`
+	const repoPath = `${(DEFAULT_BRANCH.viewer.repository.defaultBranchRef.name)}:${path}`
 
-	const repoContent = (await query({
+	const REPO_DATA = (await query({
 		query: queryRepoContent,
 		queryVars: { 'repoName': repo, 'path': repoPath }
-	})) as RepoContentQuery
-
-	return repoContent.viewer.repository.object ?
-		repoContent.viewer.repository.object[`text`] :
+	}))
+	const REPO_CONTENT: RepoContentQuery = validateFetchWithViewer(REPO_DATA)
+	const CONTEXT_TEXT = REPO_CONTENT.viewer.repository.object?.__typename == "Blob" ?
+		REPO_CONTENT.viewer.repository.object.text :
 		undefined
+
+	return CONTEXT_TEXT
 }
 
+function validateFetchWithViewer(data: any) {
+	const VIEWER = data?.viewer
+	if (!VIEWER) return Promise.reject(new Error(`Failed type casting`))
+	else return data
+}
 
 async function reposToProjects(repos: Array<RepoFragment>): Promise<Array<project>> {
 

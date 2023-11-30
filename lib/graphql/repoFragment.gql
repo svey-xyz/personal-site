@@ -1,4 +1,5 @@
 fragment repo on Repository {
+	__typename,
 	name,
 	createdAt,
 	pushedAt,
