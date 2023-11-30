@@ -1,5 +1,5 @@
 import React from 'react';
-import Markdown from 'react-markdown';
+import Markdown, { ExtraProps } from 'react-markdown';
 import rehypeRaw from "rehype-raw";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import style from '@styles/style.highlight'
@@ -39,17 +39,17 @@ export function MarkdownRenderer({ children: markdown, className }: MarkdownRend
 				},
 				h1:'h2',
 				h2(props) {
-					return <h2 id={slugify(props.children as string, { replacement: '-', lower: true })}>
+					return <h2 id={slugID(props)}>
 						{props.children}
 					</h2>
 				},
 				h3(props) {
-					return <h3 id={slugify(props.children as string, { replacement: '-', lower: true })}>
+					return <h3 id={slugID(props)}>
 						{props.children}
 					</h3>
 				},
 				h4(props) {
-					return <h4 id={slugify(props.children as string, { replacement: '-', lower: true })}>
+					return <h4 id={slugID(props)}>
 						{props.children}
 					</h4>
 				},
@@ -62,4 +62,10 @@ export function MarkdownRenderer({ children: markdown, className }: MarkdownRend
 			{markdown}
 		</Markdown>
 	);
+}
+
+function slugID(props: React.ClassAttributes<HTMLHeadingElement> & React.HTMLAttributes<HTMLHeadingElement> & ExtraProps): string {
+	console.log(props.children)
+	if (typeof props.children !== `string`) return
+	return slugify(props.children as string, { replacement: '-', lower: true })
 }

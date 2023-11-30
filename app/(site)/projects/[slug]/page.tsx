@@ -1,7 +1,7 @@
 import React from "react";
 import { ProjectData } from "@lib/data";
 
-import { MarkdownRenderer } from "@/lib/MarkdownRenderer";
+import { MarkdownRenderer } from "@/components/MarkdownRenderer";
 
 export default async function ProjectsPage({ params }: { params: { slug: string } }) {
 	const slugs = ProjectData.map((project) => {

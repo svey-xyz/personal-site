@@ -1,7 +1,7 @@
 import { SocialIcon } from "@components/SocialIcon";
 import EmailInsert from "@components/EmailInsert";
 import { UserData } from "@lib/data";
-import { MarkdownRenderer } from "@lib/MarkdownRenderer";
+import { MarkdownRenderer } from "@/components/MarkdownRenderer";
 import { RepoList } from "@components/RepoList";
 
 export default async function Home() {

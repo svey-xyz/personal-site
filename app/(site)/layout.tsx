@@ -3,7 +3,7 @@ import '@styles/style.globals.css'
 import Header from '@components/Header'
 import { Inter } from 'next/font/google'
 import localFont from "next/font/local";
-import ThemeHandler from '@/components/Theme';
+import ThemeHandler from '@components/ThemeHandler';
 import { Metadata, ResolvingMetadata, Viewport } from 'next/types';
 import { UserData } from '@lib/data';
 

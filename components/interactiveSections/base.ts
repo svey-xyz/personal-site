@@ -69,7 +69,6 @@ export class advancedBase {
 
 	setSize(): void {
 		this.sectionSize.height = this.container.offsetHeight
-		// console.log(`huh`, this.sectionSize)
 		this.sectionSize.width = document.documentElement.clientWidth || document.body.clientWidth;
 	}
 

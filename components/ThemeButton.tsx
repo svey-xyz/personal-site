@@ -1,7 +1,7 @@
 "use client"; // Required to set the onClick.
 
 import { useTheme } from 'next-themes'
-import { themeRender, themes } from '@components/Theme'
+import { themeRender, themes } from '@components/ThemeHandler'
 import { BiSolidMoon, BiSolidSun } from "react-icons/bi";
 import React, { useEffect, useRef, useState } from "react";
 

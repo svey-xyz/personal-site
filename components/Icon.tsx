@@ -1,4 +1,4 @@
-import SVGConstructor from '@lib/SVGConstructor'
+import SVGConstructor from '@components/SVGConstructor'
 
 export function Icon() {
 
