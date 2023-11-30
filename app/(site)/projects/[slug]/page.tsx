@@ -8,8 +8,6 @@ export default async function ProjectsPage({ params }: { params: { slug: string 
 		return project.title.toLowerCase()
 	})
 
-	console.log(slugs)
-
 	if (slugs.indexOf(params.slug) == -1) return;
 	const project = ProjectData[slugs.indexOf(params.slug)]
 	

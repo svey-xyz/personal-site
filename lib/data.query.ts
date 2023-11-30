@@ -27,10 +27,8 @@ export async function query({query, queryVars, fragment}:{query:string, queryVar
 
 export async function getProjectData() {
 	const data = await query({ query: queryRepos, fragment: fragmentRepo }) as ReposQuery
-	const repoArray = data.viewer.repositories.nodes as Array<RepoFragment>
-	const projectData: Array<project> = await Promise.all(repoArray.map((repo) => {
-		return repoToProject(repo)
-	}))
+
+	const projectData: Array<project> = await reposToProjects(data.viewer.repositories.nodes as Array<RepoFragment>)
 
 	return projectData
 }
@@ -38,10 +36,8 @@ export async function getProjectData() {
 export async function getUserData(aboutPath?:string): Promise<user> {
 	const about = await getRepoContentData(`svey-xyz`, aboutPath)
 	const data = await query({ query: queryUser, fragment: fragmentRepo }) as UserQuery
-	const featured = await Promise.all(data.viewer.pinnedItems.nodes.map((repo) => {
-		const proj = repoToProject(repo as RepoFragment)
-		return proj
-	}))
+	const featured = await reposToProjects(data.viewer.pinnedItems.nodes as Array<RepoFragment>)
+
 	const userData: user = {
 		login: data.viewer.login,
 		name: data.viewer.name,
@@ -80,25 +76,35 @@ async function getRepoContentData(repo: string, path: string): Promise<string | 
 }
 
 
-async function repoToProject(repo: RepoFragment): Promise<project> {
-	const taxonomies = repo.repositoryTopics.nodes.map((repoTopic) => {
-		return { title: repoTopic.topic.name }
-	})
-	const about = await getRepoContentData(repo.name, 'README.md')
-	const proj = {
-		title: repo.name,
-		about: about,
-		created: repo.createdAt,
-		updated: repo.pushedAt,
-		description: repo.description,
-		githubURL: repo.url,
-		taxonomies: [
-			...trimTaxonomies(taxonomies)
-		]
-	}
-	return proj
-}
+async function reposToProjects(repos: Array<RepoFragment>): Promise<Array<project>> {
 
-function trimTaxonomies(taxonomies: Array<taxonomy>) {
-	return taxonomies.filter((value: taxonomy, index: number, array: taxonomy[]) => value.title !== process.env.PUBLISH_REPO_KEY)
+	const projects = await Promise.all(repos.map(async (repo)=>{
+		const taxonomies = repo.repositoryTopics.nodes.map((repoTopic) => {
+			return { title: repoTopic.topic.name }
+		})
+		const slugs = taxonomies.map((tax) => {
+			return tax.title
+		})
+		if (slugs.indexOf(process.env.PUBLISH_REPO_KEY) == -1) return
+
+		const about = await getRepoContentData(repo.name, 'README.md')
+
+		const trimmedTaxonomies = taxonomies.filter((value: taxonomy, index: number, array: taxonomy[]) =>
+			value.title !== process.env.PUBLISH_REPO_KEY)
+
+		const proj = {
+			title: repo.name,
+			about: about,
+			created: repo.createdAt,
+			updated: repo.pushedAt,
+			description: repo.description,
+			githubURL: repo.url,
+			taxonomies: trimmedTaxonomies
+		}
+
+		return proj
+	}))
+
+	const trimmedProjects = projects.filter((project:project)=> project !== undefined)
+	return trimmedProjects
 }

@@ -5,8 +5,6 @@ import ProjectCard from "@components/ProjectCard";
 import { useEffect, useState } from "react";
 
 export function RepoList({ projects, title='projects' }: { projects: Array<project>, title?:string }) {
-	if (!projects) return;
-
 	const [repoData, setRepoData] = useState<Array<project>>([]);
 	const [sortType, setSortType] = useState('created_at');
 	const [mounted, setMounted] = useState(false);
