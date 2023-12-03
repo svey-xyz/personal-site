@@ -50,10 +50,10 @@ export default async function RootLayout({ children } : { children: React.ReactN
 	return (
 		<html lang="en" className={`${inter.className} ${monaSpace.variable}`} suppressHydrationWarning>
 			<link rel="icon" href="/favicon.ico" sizes="any" />
-			<body className='relative min-h-screen'>
+			<body className='relative min-h-screen flex flex-col'>
 				<ThemeHandler>
 					<Header />
-					<main className='pb-24 min-h-full '>
+					<main className='relative flex flex-col flex-grow'>
 						{children}
 					</main>
 				</ThemeHandler>

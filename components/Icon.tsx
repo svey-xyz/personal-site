@@ -8,11 +8,11 @@ export function Icon() {
 			<input name="Icon interaction" aria-label={`Used to interact with the site icon and ofr animations.`} type="checkbox"
 				className="peer absolute cursor-pointer min-w-full min-h-full appearance-none z-10 left-0 checked:min-w-[275%]" />
 
-			<IconZ className={`absolute min-h-full min-w-full fill-[#837da1] drop-shadow-md
+			<IconZ className={`absolute min-h-full min-w-full fill-[#837da1] drop-shadow
 				duration-1000 transition-transform peer-checked:rotate-6 peer-checked:translate-x-[2.8rem] peer-checked:duration-500`} />
-			<IconX className={`absolute min-h-full min-w-full fill-[#333] dark:fill-[#eee] drop-shadow-md
+			<IconX className={`absolute min-h-full min-w-full fill-[#333] dark:fill-[#eee] drop-shadow
 				duration-1000 transition-transform peer-checked:rotate-0 peer-checked:duration-500`}/>
-			<IconY className={`absolute min-h-full min-w-full fill-[#d0b6c8] drop-shadow-md
+			<IconY className={`absolute min-h-full min-w-full fill-[#d0b6c8] drop-shadow
 				duration-1000 transition-transform peer-checked:-rotate-6 peer-checked:translate-x-6 peer-checked:duration-500`} />
 
 		</div>

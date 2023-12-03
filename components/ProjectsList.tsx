@@ -4,7 +4,17 @@ import { project } from "@/lib/types/data.types";
 import ProjectCard from "@components/ProjectCard";
 import { useEffect, useState } from "react";
 
-export function ProjectsList({ projects, title='projects', className }: { projects: Array<project>, title?:string, className?: string }) {
+export function ProjectsList({
+	projects,
+	filterable=true,
+	title='projects',
+	className=''
+}: {
+	projects: Array<project>,
+	filterable?: boolean,
+	title?:string,
+	className?: string
+}) {
 	const [repoData, setRepoData] = useState<Array<project>>([]);
 	const [sortType, setSortType] = useState('created');
 	const [mounted, setMounted] = useState(false);
@@ -32,12 +42,14 @@ export function ProjectsList({ projects, title='projects', className }: { projec
 		<div className={`${className} max-w-prose-full`}>
 			<div className="flex flex-row justify-between mb-4">
 				<h2>{title}</h2>
-				<select className='p-2 cursor-pointer border border-bg-primary/40 rounded
-				backdrop-blur-xl bg-bg/70 hover:bg-bg/40 transition-colors duration-300' 
-					onChange={(e) => { if (mounted) setSortType(e.target.value)}}>
-					<option value="created">Created</option>
-					<option value="updated">Pushed</option>
-				</select>
+				{( filterable &&
+					<select className='p-2 cursor-pointer border border-bg-primary/40 rounded
+						backdrop-blur-xl bg-bg/70 hover:bg-bg/40 transition-colors duration-300'
+						onChange={(e) => { if (mounted) setSortType(e.target.value) }}>
+							<option value="created">Created</option>
+							<option value="updated">Pushed</option>
+					</select>
+				)}
 			</div>
 
 			<div className="flex flex-col gap-1">
