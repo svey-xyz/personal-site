@@ -42,8 +42,8 @@ return (
 
 			
     </div>
-		<div className="relative mt-12 flex flex-col flex-grow border-t border-accent-secondary/40 dark:shadow-xl shadow-lg
-				after:inset-0 after:absolute after:-z-1 after:bg-bg-primary/80 after:backdrop-blur-2xl">
+		<div className="relative mt-12 flex flex-col flex-grow border-t border-accent-secondary/40 dark:shadow-xl shadow-lg -mb-[--bottom-spacing] pb-[--bottom-spacing]
+				after:inset-0 after:absolute after:-z-1 after:bg-bg-primary/60 dark:after:bg-bg-primary/75 after:backdrop-blur-2xl">
 				<div className="main-padding mt-8">
 					<h2 className="opacity-75">about</h2>
 
@@ -51,15 +51,13 @@ return (
 						{UserData.about}
 					</MarkdownRenderer>
 
-					{/* <div className="relative rounded-full h-icon w-icon bg-slate-300
-">
-
-					</div> */}
-					<div className="flex flex-col md:flex-row gap-16 mt-6">
-					<RadialProgress size={60} progress={79} title='performance' />
-					<RadialProgress size={60} progress={100} animationDelay={500} title='accessibility' />
-					<RadialProgress size={60} progress={92} animationDelay={1000} title='best practices' />
-					<RadialProgress size={60} progress={100} animationDelay={1500} title='seo' />
+					<h2 className="opacity-75 mt-8">website</h2>
+					<h3>scores</h3>
+					<div className="flex flex-row gap-16 mt-6">
+						<RadialProgress size={60} progress={97} title='performance' />
+						<RadialProgress size={60} progress={100} animationDelay={500} title='accessibility' />
+						<RadialProgress size={60} progress={96} animationDelay={1000} title='best practices' />
+						<RadialProgress size={60} progress={100} animationDelay={1500} title='seo' />
 
 					</div>
 

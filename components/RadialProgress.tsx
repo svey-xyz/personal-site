@@ -52,7 +52,7 @@ export function RadialProgress({
 				<svg className="w-[--size] h-[--size] overflow-visible line" viewBox="0 0 120 120">
 					<circle className="origin-center fill-fg-primary opacity-10" r="56" cx="60" cy="60" strokeWidth="8" strokeLinecap="round" />
 					<circle className="brightness-75 dark:brightness-150 origin-center fill-none text-[--colour]" r="56" cx="60" cy="60" strokeWidth="8" strokeLinecap="round" ref={progressBar}
-						style={{ transform: 'rotate(-88deg)', strokeDasharray: `${currentProgress * 3.6}, 360`, stroke: `currentColor` }} >
+						style={{ transform: 'rotate(-88deg)', strokeDasharray: `${currentProgress * 3.47}, 360`, stroke: `currentColor` }} >
 					</circle>
 				</svg>
 			</div>
