@@ -16,14 +16,26 @@ export default function ThemeHandler({
 	const [height, setHeight] = useState<number>()
 	const [mounted, setMounted] = useState(false)
 	const themeContainer = useRef<HTMLDivElement>(null)
+	let sections: NodeListOf<HTMLElement>
 	
-
 	useEffect(() => {
 		if (mounted) return;
 		setMounted(true);
 		setSize();
 		mountBlobs(themeContainer.current)
 
+		sections = document.querySelectorAll('section')
+		sections.forEach((section, i, arr) => {
+			const observer = new IntersectionObserver(entries => {
+				entries.forEach(entry => {
+						if (entry.isIntersecting) section.classList.add('is-visible')
+					}
+				)	
+			});
+			observer.observe(section);
+			return () => observer.unobserve(section);
+		})
+		
 		window.addEventListener('resize', () => {
 			setSize();
 		})

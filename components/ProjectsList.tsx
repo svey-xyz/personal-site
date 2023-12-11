@@ -39,7 +39,7 @@ export function ProjectsList({
 	}, [sortType]);
 
 	return (
-		<div className={`${className} max-w-prose-full`}>
+		<section className={`${className} max-w-prose-full`}>
 			<div className="flex flex-row justify-between mb-4">
 				<h2>{title}</h2>
 				{( filterable &&
@@ -64,6 +64,6 @@ export function ProjectsList({
 					})()
 				)}
 			</div>
-		</div>
+		</section>
 	)
 }

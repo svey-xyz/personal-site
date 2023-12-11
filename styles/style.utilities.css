@@ -20,4 +20,19 @@
 	.shadow-lg {
 		box-shadow: 0 0px 8px -6px rgba(0,0,0,0.6), 0 0px 6px -1px rgba(0,0,0,.04);
 	}
+
+
+	section {
+		opacity: 0;
+		transform: translateY(10vh);
+		visibility: hidden;
+		transition: opacity 1.2s ease-out, transform 0.8s ease-out;
+		will-change: opacity, visibility;
+	}
+	section.is-visible {
+		opacity: 1;
+		transform: none;
+		visibility: visible;
+	}
+
 }

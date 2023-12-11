@@ -8,6 +8,7 @@ import React, { useEffect, useRef, useState } from "react";
 export function RadialProgress({
 	progress,
 	title,
+	className,
 	size=50,
 	animationSpeed=100,
 	colour='rgb(var(--secondary-accent))',
@@ -15,6 +16,7 @@ export function RadialProgress({
 }:{
 	progress:number,
 	title:string,
+	className?:string,
 	size?:number,
 	animationSpeed?:number,
 	colour?:string,
@@ -26,15 +28,19 @@ export function RadialProgress({
 	const progressBar = useRef<SVGCircleElement>(null)
 	const [currentProgress, setCurrentProgress] = useState<number>(0)
 	const [mounted, setMounted] = useState(false)
+	const [visible, setVisible] = useState(false)
 
-	if (delay > 0) {
+	const container = useRef<HTMLDivElement>(null)
+
+
+	if (delay > 0 && visible) {
 		setTimeout(() => {
 			setDelay(0)
 		}, delay)
 	}
 	
 
-	if ((currentProgress < progress) && mounted && delay == 0) {
+	if ((currentProgress < progress) && delay == 0) {
 		setTimeout(() => {
 			setCurrentProgress(currentProgress + 1);
 		}, 1000 / animationSpeed)
@@ -43,11 +49,21 @@ export function RadialProgress({
 	useEffect(() => {
 		if (mounted) return
 		setMounted(true)
+
+		const observer = new IntersectionObserver(entries => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) setVisible(true)
+			}
+			)
+		});
+		observer.observe(container.current);
+		return () => observer.unobserve(container.current);
 		// animate();
 	}, [])
 
 	return (
-		<div style={componentStyle} className="w-[--size] group cursor-pointer relative flex items-center flex-col" onMouseEnter={() => { setCurrentProgress(0) }}>
+		<div style={componentStyle} onMouseEnter={() => { setCurrentProgress(0) }} ref={container}
+			className={`${className} w-[--size] group cursor-pointer relative flex items-center flex-col`} >
 			<div className="relative block h-[--size]">
 				<svg className="w-[--size] h-[--size] overflow-visible line" viewBox="0 0 120 120">
 					<circle className="origin-center fill-fg-primary opacity-10" r="56" cx="60" cy="60" strokeWidth="8" strokeLinecap="round" />
