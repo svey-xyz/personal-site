@@ -1,6 +1,6 @@
 import { SocialIcon } from "@components/SocialIcon";
 import EmailInsert from "@components/EmailInsert";
-import { UserData } from "@lib/data";
+import { UserData, WebsiteData } from "@lib/data";
 import { MarkdownRenderer } from "@/components/MarkdownRenderer";
 import { ProjectsList } from "@components/ProjectsList";
 import RadialProgress from "@/components/RadialProgress";
@@ -46,22 +46,26 @@ return (
 				after:inset-0 after:absolute after:-z-1 after:bg-bg-primary/60 dark:after:bg-bg-primary/75 after:backdrop-blur-2xl">
 				<div className="main-padding mt-8">
 					<section id="about" className="max-w-prose">
-						<h2 className="opacity-75">about</h2>
-
+						<h2 className="">person</h2>
+						<h3>about</h3>
 						<MarkdownRenderer>
 							{UserData.about}
 						</MarkdownRenderer>
 					</section>
 					
 					<section id="site_info" className="max-w-prose">
-						<h2 className="opacity-75 mt-8">website</h2>
+						<h2 className="mt-8">website</h2>
 						<h3>scores</h3>
-						<div className="flex flex-row w-full mt-6 flex-wrap gap-y-8">
-							<RadialProgress size={60} progress={97} animationDelay={300} title='performance' className="basis-1/2 md:basis-1/4"/>
-							<RadialProgress size={60} progress={100} animationDelay={600} title='accessibility' className="basis-1/2 md:basis-1/4" />
-							<RadialProgress size={60} progress={96} animationDelay={900} title='best practices' className="basis-1/2 md:basis-1/4" />
-							<RadialProgress size={60} progress={100} animationDelay={1200} title='seo' className="basis-1/2 md:basis-1/4"/>
+						<div className="flex flex-row w-full my-6 flex-wrap gap-y-12">
+							<RadialProgress size={60} progress={97} animationDelay={300} title='performance' className="basis-1/2 sm:basis-1/4"/>
+							<RadialProgress size={60} progress={100} animationDelay={500} title='accessibility' className="basis-1/2 sm:basis-1/4" />
+							<RadialProgress size={60} progress={96} animationDelay={700} title='best practices' className="basis-1/2 sm:basis-1/4" />
+							<RadialProgress size={60} progress={100} animationDelay={1000} title='seo' className="basis-1/2 sm:basis-1/4"/>
 						</div>
+						<h3>about</h3>
+						<MarkdownRenderer>
+							{WebsiteData.about}
+						</MarkdownRenderer>
 					</section>
 				</div>
 		</div>

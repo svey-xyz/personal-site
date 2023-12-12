@@ -23,6 +23,10 @@ export interface user {
 	featured?: Array<project>,
 }
 
+export interface website {
+	about: string
+}
+
 export interface social {
 	provider: string,
 	url: string

@@ -16,38 +16,37 @@ export function ProjectsList({
 	className?: string
 }) {
 	const [repoData, setRepoData] = useState<Array<project>>([]);
-	const [sortType, setSortType] = useState('created');
+	const [currentSortingProperty, setCurrentSortingProperty] = useState('created');
 	const [mounted, setMounted] = useState(false);
 
-	useEffect(()=>{
-		if (!mounted) setMounted(true)
-	})
+	const sortingProperties = {
+		created: 'created',
+		updated: 'updated',
+	};
 
 	useEffect(() => {
-		const sortArray = (type: string) => {
-			const types = {
-				created: 'created',
-				updated: 'updated',
-			};
-			const sortProperty = types[type];
+		if (!mounted) setMounted(true)
+		const sortArray = (property: string) => {
+			const sortProperty = sortingProperties[property];
 
 			const sorted = [...projects].sort((a, b) => Date.parse(b[sortProperty]) - Date.parse(a[sortProperty]));
 			setRepoData(sorted);
 		};
 
-		sortArray(sortType);
-	}, [sortType]);
+		sortArray(currentSortingProperty);
+	}, [currentSortingProperty]);
 
 	return (
 		<section className={`${className} max-w-prose-full`}>
 			<div className="flex flex-row justify-between mb-4">
-				<h2>{title}</h2>
+				<span className="font-bold text-lg">{title}</span>
 				{( filterable &&
 					<select className='p-2 cursor-pointer border border-bg-primary/40 rounded
 						backdrop-blur-xl bg-bg/70 hover:bg-bg/40 transition-colors duration-300'
-						onChange={(e) => { if (mounted) setSortType(e.target.value) }}>
-							<option value="created">Created</option>
-							<option value="updated">Pushed</option>
+						onChange={(e) => { if (mounted) setCurrentSortingProperty(e.target.value) }}>
+							{ Object.values(sortingProperties).map((property) => {
+								return <option value={property}>{property}</option>
+							}) }
 					</select>
 				)}
 			</div>

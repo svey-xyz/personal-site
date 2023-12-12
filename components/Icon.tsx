@@ -11,7 +11,8 @@ export function Icon({checked=false}:{checked?:boolean}) {
 		const listener = () => {
 			window.scrollY > 140 ? setState(true) : setState(false)
 		};
-		window.addEventListener("scroll", listener); return () => {
+		window.addEventListener("scroll", listener, { passive: true });
+		return () => {
 			window.removeEventListener("scroll", listener);
 		};
 	}, []);

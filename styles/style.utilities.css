@@ -22,10 +22,10 @@
 	}
 
 
-	section {
-		@apply motion-safe:opacity-0 motion-safe:translate-y-[10vh] motion-safe:invisible motion-safe:transition-all motion-safe:duration-1000 motion-safe:ease-out will-change-auto;
+	/* section {
+		@apply motion-safe:translate-y-[10vh] motion-safe:invisible motion-safe:transition-transform motion-safe:duration-1000 motion-safe:ease-out will-change-transform;
 	}
 	section.is-visible {
-		@apply motion-safe:opacity-100 motion-safe:transform-none motion-safe:visible;
-	}
+		@apply motion-safe:transform-none motion-safe:visible;
+	} */
 }

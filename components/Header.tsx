@@ -12,7 +12,8 @@ export default function Header() {
 				setAnimateHeader(true);
 			} else setAnimateHeader(false);
 		};
-		window.addEventListener("scroll", listener); return () => {
+		window.addEventListener("scroll", listener, { passive: true });
+		return () => {
 			window.removeEventListener("scroll", listener);
 		};
 	}, []);

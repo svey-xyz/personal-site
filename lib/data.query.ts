@@ -1,4 +1,4 @@
-import { user, project, taxonomy } from '@lib/types/data.types'
+import { user, project, taxonomy, website } from '@lib/types/data.types'
 import { DefaultBranchQuery, RepoContentQuery, RepoFragment, ReposQuery, User, UserQuery } from '@lib/types/generated/graphql'
 import queryUser from '@lib/graphql/user.gql'
 import queryDefaultBranch from '@lib/graphql/defaultBranch.gql'
@@ -41,6 +41,21 @@ export async function getProjectData() {
 	const projectData: Array<project> = await reposToProjects(FRAGMENTS)
 
 	return projectData
+}
+
+export async function getWebsiteData(aboutPath?: string): Promise<website> {
+
+	/** Fetch data & validate fetch */
+
+	const ABOUT = await getRepoContentData(`svey-xyz`, aboutPath)
+
+	/** Cast fetched data to internal type */
+
+	const WEBSITE_DATA: website = {
+		about: ABOUT,
+	}
+
+	return WEBSITE_DATA
 }
 
 export async function getUserData(aboutPath?:string): Promise<user> {

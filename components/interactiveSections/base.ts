@@ -27,21 +27,21 @@ export class advancedBase {
 		// initialize listeners
 		this.inputHandler = this.handleInput.bind(this);
 
-		this.container.addEventListener('click', this.inputHandler);
+		this.container.addEventListener('click', this.inputHandler, { passive: true });
 
-		this.container.addEventListener('mousedown', this.inputHandler);
-		this.container.addEventListener('mouseup', this.inputHandler);
-		this.container.addEventListener('mouseleave', this.inputHandler);
-		this.container.addEventListener('mouseenter', this.inputHandler);
+		this.container.addEventListener('mousedown', this.inputHandler, { passive: true });
+		this.container.addEventListener('mouseup', this.inputHandler, { passive: true });
+		this.container.addEventListener('mouseleave', this.inputHandler, { passive: true });
+		this.container.addEventListener('mouseenter', this.inputHandler, { passive: true });
 
-		this.container.addEventListener('mousemove', this.inputHandler);
-		this.container.addEventListener('touchstart', this.inputHandler);
-		this.container.addEventListener('touchend', this.inputHandler);
+		this.container.addEventListener('mousemove', this.inputHandler, { passive: true });
+		this.container.addEventListener('touchstart', this.inputHandler, { passive: true });
+		this.container.addEventListener('touchend', this.inputHandler, { passive: true });
 
-		this.container.addEventListener('touchmove', this.inputHandler);
+		this.container.addEventListener('touchmove', this.inputHandler, { passive: true });
 
 		this.resizeHandler = this.resize.bind(this);
-		window.addEventListener('resize', Utils.domUtils.debounce(this.resizeHandler));
+		window.addEventListener('resize', Utils.domUtils.debounce(this.resizeHandler), { passive: true });
 
 		this.container.classList.add('loaded');
 		this.setSize();
