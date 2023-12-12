@@ -13,7 +13,8 @@
 		--warning-accent: 197 169 34;
 		--success-accent: 34 197 94;
 
-		--header-height: 75px;
+		--header-height: 70px;
+		--header-height-max: 80px;
 		--header-item: 25px;
 		--icon-size: 28px;
 		--bottom-spacing: 120px;

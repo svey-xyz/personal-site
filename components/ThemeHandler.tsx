@@ -28,14 +28,14 @@ export default function ThemeHandler({
 		sections.forEach((section, i, arr) => {
 			const observer = new IntersectionObserver(entries => {
 				entries.forEach(entry => {
-						if (entry.isIntersecting) section.classList.add('is-visible')
+					entry.isIntersecting ? section.classList.add('is-visible') : section.classList.remove('is-visible')
 					}
 				)	
 			});
 			observer.observe(section);
 			return () => observer.unobserve(section);
 		})
-		
+
 		window.addEventListener('resize', () => {
 			setSize();
 		})

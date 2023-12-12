@@ -1,20 +1,29 @@
-import SVGConstructor from '@components/SVGConstructor'
+'use client'
 
-export function Icon() {
+import SVGConstructor from '@components/SVGConstructor'
+import { ChangeEvent, useEffect, useState } from 'react';
+
+export function Icon({checked=false}:{checked?:boolean}) {
+	const [state, setState] = useState<boolean>(checked)
+	useEffect(() => {
+		window.scrollY > 140 ? setState(true) : setState(false)
+
+		const listener = () => {
+			window.scrollY > 140 ? setState(true) : setState(false)
+		};
+		window.addEventListener("scroll", listener); return () => {
+			window.removeEventListener("scroll", listener);
+		};
+	}, []);
 
 	return (
-		<div className="group relative flex items-center justify-center w-icon h-icon cursor-pointer">
-
-			<input name="Icon interaction" aria-label={`Used to interact with the site icon and ofr animations.`} type="checkbox"
-				className="peer absolute cursor-pointer min-w-full min-h-full appearance-none z-10 left-0 checked:min-w-[275%]" />
-
+		<div className="group relative flex items-center justify-center w-icon h-icon">
 			<IconZ className={`absolute min-h-full min-w-full fill-[#837da1] drop-shadow
-				duration-1000 transition-transform peer-checked:rotate-6 peer-checked:translate-x-[2.8rem] peer-checked:duration-500`} />
+				duration-1000 delay-200 transition-transform ${state && "rotate-6 translate-x-[2.8rem] duration-500"}`} />
 			<IconX className={`absolute min-h-full min-w-full fill-[#333] dark:fill-[#eee] drop-shadow
-				duration-1000 transition-transform peer-checked:rotate-0 peer-checked:duration-500`}/>
+				duration-1000 delay-200 transition-transform ${state && "rotate-0 duration-500"}`}/>
 			<IconY className={`absolute min-h-full min-w-full fill-[#d0b6c8] drop-shadow
-				duration-1000 transition-transform peer-checked:-rotate-6 peer-checked:translate-x-6 peer-checked:duration-500`} />
-
+				duration-1000 delay-200 transition-transform ${state && "-rotate-6 translate-x-6 duration-500"}`} />
 		</div>
 	)
 }

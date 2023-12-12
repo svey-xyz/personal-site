@@ -52,7 +52,13 @@ export function RadialProgress({
 
 		const observer = new IntersectionObserver(entries => {
 			entries.forEach(entry => {
-				if (entry.isIntersecting) setVisible(true)
+				if (entry.isIntersecting) {
+					setVisible(true)
+				} else {
+					setVisible(false)
+					setDelay(animationDelay)
+					setCurrentProgress(0)
+				}
 			}
 			)
 		});
