@@ -23,8 +23,27 @@ export async function query({query, queryVars, fragment}:{query:string, queryVar
 
 	const { data, errors } = await response.json()
 	if (response.ok) return data
-	else return Promise.reject(new Error(errors?.map(e => e.message).join('\n') ?? 'unknown'))
+	else return Promise.reject(new Error(errors?.map((e: Error) => e.message).join('\n') ?? 'unknown'))
 }
+
+enum DataFileNames {
+	aboutUser = 'about.me.md',
+	aboutSite = 'about.site.md',
+	aboutScores = 'scores.notes.md',
+	scores = 'scores.final.json',
+}
+
+const GIST_DATA: GistQuery = validateFetchWithViewer(
+	await (async () => {
+		return await query({ query: queryGist, queryVars: { 'gistName': 'de3ae926f3912b83586843e680dc9665' } })
+	})()
+)
+const USER_DATA: UserQuery = validateFetchWithViewer(
+	await (async () => {
+		return await query({ query: queryUser, fragment: fragmentRepo })
+	})()
+)
+
 
 export async function getProjectData() {
 
@@ -44,80 +63,51 @@ export async function getProjectData() {
 	return projectData
 }
 
-export async function getWebsiteData(aboutPath: string, gistID: string): Promise<website> {
-
-	/** Fetch data & validate fetch */
-
-	const ABOUT = await getRepoContentData(`svey-xyz`, aboutPath)
-	const DATA = await query({ query: queryGist, queryVars: { 'gistName': gistID } })
-	const SCORES: GistQuery = validateFetchWithViewer(DATA)
-
-	let info: { scores?: string, aboutMe?: string, aboutSite?: string, aboutScores?: string} = {}
-
-	SCORES.viewer.gist.files.forEach(file => {
-		switch(file.name){
-			case ('about.me.md'):
-				info.aboutMe = file.text
-				break;
-			case ('about.site.md'):
-				info.aboutSite = file.text
-				break;
-			case ('scores.notes.md'):
-				info.scores = file.text
-				break;
-			case ('scores.final.json'):
-				info.aboutScores = file.text
-				break;
-			default:
-				console.log('Unused file: ', file.name)
-				break;
-		}
-	});
-
-	/** Cast fetched data to internal type */
-
+/**
+ *
+ * Casts fetched data to internal type
+ * @export
+ * @return {*}  {Promise<website>}
+ */
+export async function getWebsiteData(): Promise<website> {
 	const WEBSITE_DATA: website = {
-		about: ABOUT,
-		// scores: JSON.parse(info.scores)
-		aboutScores: info.aboutScores
+		about: GIST_DATA.viewer.gist.files.filter(file => file.name == DataFileNames.aboutSite)[0].text,
+		scores: JSON.parse(GIST_DATA.viewer.gist.files.filter(file => file.name == DataFileNames.scores)[0].text),
+		aboutScores: GIST_DATA.viewer.gist.files.filter(file => file.name == DataFileNames.aboutScores)[0].text
 	}
-	console.log(WEBSITE_DATA.aboutScores)
 
 	return WEBSITE_DATA
 }
 
-export async function getUserData(aboutPath?:string): Promise<user> {
-
-	/** Fetch data & validate fetch */
-
-	const ABOUT = await getRepoContentData(`svey-xyz`, aboutPath)
-	const DATA = await query({ query: queryUser, fragment: fragmentRepo })
-	const USER: UserQuery = validateFetchWithViewer(DATA)
-
-	/** Cast fetched data to internal type */
-
-	const FRAGMENTS = USER.viewer.pinnedItems.nodes.map((obj) => {
+/**
+ *
+ * Casts fetched data to internal type
+ * @export
+ * @return {*}  {Promise<user>}
+ */
+export async function getUserData(): Promise<user> {
+	const FRAGMENTS = USER_DATA.viewer.pinnedItems.nodes.map((obj) => {
 		if (obj.__typename == "Repository") return obj as RepoFragment
 	}).filter((repo) => repo !== undefined)
 
 	const FEATURED = await reposToProjects(FRAGMENTS)
 
-	const USER_DATA: user = {
-		login: USER.viewer.login,
-		name: USER.viewer.name,
-		bio: USER.viewer.bio,
-		about: ABOUT,
+	const USER: user = {
+		login: USER_DATA.viewer.login,
+		name: USER_DATA.viewer.name,
+		bio: USER_DATA.viewer.bio,
+		about: GIST_DATA.viewer.gist.files.filter(file => file.name == DataFileNames.aboutUser)[0].text,
 		socials: [
-			{ provider: 'github', url: USER.viewer.url },
-			...USER.viewer.socialAccounts?.nodes.map((social) => {
+			{ provider: 'github', url: USER_DATA.viewer.url },
+			...USER_DATA.viewer.socialAccounts?.nodes.map((social) => {
 				return { provider: social.provider.toLowerCase(), url: social.url }
 			})
 		],
-		email: USER.viewer.email,
+		email: USER_DATA.viewer.email,
 		featured: FEATURED
 	}
 
-	return USER_DATA
+	return USER
 }
 
 async function getRepoContentData(repo: string, path: string): Promise<string | undefined> {

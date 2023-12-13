@@ -25,8 +25,15 @@ export interface user {
 
 export interface website {
 	about?: string,
-	scores?: {},
+	scores?: scores,
 	aboutScores?: string,
+}
+
+export interface scores {
+	"performance"?: number,
+	"accessibility"?: number,
+	"best-practices"?: number,
+	"seo"?: number
 }
 
 export interface social {
