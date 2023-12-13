@@ -1,6 +1,6 @@
 @layer base {
 	:root {
-		--primary-text: #000;
+		--primary-text: 0 0 0;
 		--secondary-text: #444;
 
 		--primary-bg: 255 255 255;

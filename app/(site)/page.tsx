@@ -4,6 +4,7 @@ import { UserData, WebsiteData } from "@lib/data";
 import { MarkdownRenderer } from "@/components/MarkdownRenderer";
 import { ProjectsList } from "@components/ProjectsList";
 import RadialProgress from "@/components/RadialProgress";
+import NoteCard from "@/components/NoteCard";
 
 export default async function Home() {
 const initialAnimationDelay = 300
@@ -11,6 +12,7 @@ const animationDelayIncrease = 200
 return (
 	<div className="relative flex flex-col flex-grow">
 		<div className="relative flex flex-col main-padding">
+			<NoteCard markdown={`This site is still in active development`} />
 			<section id="user_data" className="">
 				{(UserData && 
 					<span className="block font-black max-w-prose">

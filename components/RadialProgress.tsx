@@ -69,7 +69,7 @@ export function RadialProgress({
 
 	return (
 		<div style={componentStyle} onMouseEnter={() => { setCurrentProgress(0) }} ref={container}
-			className={`${className} w-[--size] group cursor-pointer relative flex items-center flex-col`} >
+			className={`${className} w-[--size] group relative flex items-center flex-col`} >
 			<div className="relative block h-[--size]">
 				<svg className="w-[--size] h-[--size] overflow-visible line" viewBox="0 0 120 120">
 					<circle className="origin-center fill-fg-primary opacity-10" r="56" cx="60" cy="60" strokeWidth="8" strokeLinecap="round" />

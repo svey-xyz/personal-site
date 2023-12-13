@@ -53,7 +53,7 @@ export default async function RootLayout({ children } : { children: React.ReactN
 			<body className='relative min-h-screen flex flex-col'>
 				<ThemeHandler>
 					<Header />
-					<main className='relative flex flex-col flex-grow pb-[--bottom-spacing] pt-[calc(var(--header-height-max)+20px)]'>
+					<main className='relative flex flex-col flex-grow pb-[--bottom-spacing] pt-[calc(var(--header-height-max)+8px)]'>
 						{children}
 					</main>
 				</ThemeHandler>
