@@ -1,6 +1,7 @@
 import { user, project, taxonomy, website } from '@lib/types/data.types'
-import { DefaultBranchQuery, RepoContentQuery, RepoFragment, ReposQuery, User, UserQuery } from '@lib/types/generated/graphql'
+import { DefaultBranchQuery, GistQuery, RepoContentQuery, RepoFragment, ReposQuery, User, UserQuery } from '@lib/types/generated/graphql'
 import queryUser from '@lib/graphql/user.gql'
+import queryGist from '@lib/graphql/gist.gql'
 import queryDefaultBranch from '@lib/graphql/defaultBranch.gql'
 import queryRepoContent from '@lib/graphql/repoContent.gql'
 import fragmentRepo from '@lib/graphql/repoFragment.gql'
@@ -43,17 +44,44 @@ export async function getProjectData() {
 	return projectData
 }
 
-export async function getWebsiteData(aboutPath?: string): Promise<website> {
+export async function getWebsiteData(aboutPath: string, gistID: string): Promise<website> {
 
 	/** Fetch data & validate fetch */
 
 	const ABOUT = await getRepoContentData(`svey-xyz`, aboutPath)
+	const DATA = await query({ query: queryGist, queryVars: { 'gistName': gistID } })
+	const SCORES: GistQuery = validateFetchWithViewer(DATA)
+
+	let info: { scores?: string, aboutMe?: string, aboutSite?: string, aboutScores?: string} = {}
+
+	SCORES.viewer.gist.files.forEach(file => {
+		switch(file.name){
+			case ('about.me.md'):
+				info.aboutMe = file.text
+				break;
+			case ('about.site.md'):
+				info.aboutSite = file.text
+				break;
+			case ('scores.notes.md'):
+				info.scores = file.text
+				break;
+			case ('scores.final.json'):
+				info.aboutScores = file.text
+				break;
+			default:
+				console.log('Unused file: ', file.name)
+				break;
+		}
+	});
 
 	/** Cast fetched data to internal type */
 
 	const WEBSITE_DATA: website = {
 		about: ABOUT,
+		// scores: JSON.parse(info.scores)
+		aboutScores: info.aboutScores
 	}
+	console.log(WEBSITE_DATA.aboutScores)
 
 	return WEBSITE_DATA
 }

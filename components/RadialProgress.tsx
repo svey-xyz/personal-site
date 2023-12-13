@@ -55,9 +55,9 @@ export function RadialProgress({
 				if (entry.isIntersecting) {
 					setVisible(true)
 				} else {
+					setCurrentProgress(0)
 					setVisible(false)
 					setDelay(animationDelay)
-					setCurrentProgress(0)
 				}
 			}
 			)

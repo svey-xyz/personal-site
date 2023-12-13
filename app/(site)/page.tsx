@@ -62,6 +62,7 @@ return (
 							<RadialProgress size={60} progress={96} animationDelay={700} title='best practices' className="basis-1/2 sm:basis-1/4" />
 							<RadialProgress size={60} progress={100} animationDelay={1000} title='seo' className="basis-1/2 sm:basis-1/4"/>
 						</div>
+						<p className="pb-4">Performance tests are run on every new build. <br/> See more about <a target="_blank" referrerPolicy="no-referrer" href="https://developer.chrome.com/docs/lighthouse" aria-label="Link to lighthouse score information">how scores are calculated</a>.</p>
 						<h3>about</h3>
 						<MarkdownRenderer>
 							{WebsiteData.about}

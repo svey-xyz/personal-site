@@ -1,0 +1,15 @@
+query gist($gistName:String!) {
+  viewer {
+    gist(name:$gistName) {
+      __typename,
+      name,
+      createdAt,
+      files {
+      	__typename,
+        name,
+        encoding,
+        text
+      }
+    }
+  }
+}

@@ -24,7 +24,9 @@ export interface user {
 }
 
 export interface website {
-	about: string
+	about?: string,
+	scores?: {},
+	aboutScores?: string,
 }
 
 export interface social {
