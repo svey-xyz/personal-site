@@ -76,8 +76,7 @@ export default function ThemeHandler({
 	return (
 		<ThemeProvider attribute="class" enableSystem={false} defaultTheme="dark"
 			themes={themes.map((theme) => theme)}>
-			<div ref={themeContainer} className='absolute inset-0 -z-1 overflow-hidden opacity-0 duration-500 transition-opacity saturate-200
-				after:inset-0 after:absolute after:opacity-20 after:saturate-200 after:-z-1'/>
+			<div ref={themeContainer} className='absolute inset-0 -z-1 overflow-hidden opacity-0 duration-500 transition-opacity saturate-200'/>
 				<div ref={topChevron} className='reveal-section fixed bottom-8 w-full z-50'>
 					<div className='relative main-padding flex flex-col justify-end items-end'>
 						<FaChevronUp className="absolute w-icon h-icon cursor-pointer transition-transform duration-100 hover:scale-[1.1]"

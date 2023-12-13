@@ -10,8 +10,8 @@ export function ProjectCard({
 
 	return (
 		<a href={`/projects/${project.title}`} className="my-2 max-w-full group opacity-100">
-			<div className="relative py-4 px-2 flex flex-col md:flex-row justify-between w-full border border-bg-primary/40 rounded
-				after:absolute after:inset-0 after:-z-1 after:backdrop-blur-3xl after:bg-bg/5 group-hover:after:bg-bg/30
+			<div className="relative py-4 px-2 flex flex-col md:flex-row justify-between w-full border border-accent-secondary/40 rounded
+				after:absolute after:inset-0 after:-z-1 after:backdrop-blur-3xl after:bg-accent-secondary/5 group-hover:after:bg-accent-secondary/10
 				after:duration-[1500ms] after:transition-colors group-hover:after:duration-100">
 				<div className="text-fg-primary opacity-80 group-hover:opacity-100
 					duration-[1500ms] transition-opacity group-hover:duration-100">

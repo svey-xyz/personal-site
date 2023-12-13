@@ -18,7 +18,7 @@ export default function Header() {
 		};
 	}, []);
 	return (
-		<header className={`fixed top-0 left-0 right-0 max-w-screen z-50 border-b border-accent-secondary/40
+		<header className={`fixed top-[-1px] left-0 right-0 max-w-screen z-50 border-b border-accent-secondary/40
 				after:inset-0 after:absolute after:-z-1 after:bg-bg-primary/60 dark:after:bg-bg-primary/75 after:backdrop-blur-2xl mb-6
 				transition-all ease-in-out duration-500 h-[--header-height] ${animateHeader && "shadow-md dark:shadow-lg border-accent-secondary/60 !h-[--header-height-max]"}
 				`}>

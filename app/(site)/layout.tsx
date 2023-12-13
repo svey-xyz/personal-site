@@ -32,9 +32,9 @@ export async function generateMetadata(
 }
 
 export const viewport: Viewport = {
-	themeColor: 'black',
+	themeColor: { color: "#3d3e63" },
 	width: 'device-width',
-	initialScale: 1
+	initialScale: 1,
 }
 
 const inter = Inter({

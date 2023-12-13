@@ -29,7 +29,7 @@
 	}
 
 	body {
-		@apply font-body text-left text-sm text-fg-secondary bg-bg-primary;
+		@apply font-body text-left text-sm text-fg-secondary;
 	}
 
 	.background {

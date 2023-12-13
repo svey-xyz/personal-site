@@ -28,11 +28,11 @@ function NoteCard({ markdown, tone = tones.normal }: { markdown: string, tone?: 
 
 	return (
 		<div className={`relative flex flex-row items-center px-6 py-4 gap-4 my-8 w-auto max-w-fit rounded-md border pointer-events-none select-none
-			after:bg-bg-primary/10 border-bg-primary/40 after:absolute after:inset-0 after:backdrop-blur-xl after:-z-1`}>
+			after:bg-accent-secondary/20 border-accent-secondary/60 after:absolute after:inset-0 after:backdrop-blur-xl after:-z-1`}>
 			<div className="">
-				<CardTone.icon className="w-icon h-icon text-accent-secondary saturate-150"/>
+				<CardTone.icon className="w-icon h-icon text-fg"/>
 			</div>
-			<MarkdownRenderer className="font-bold text-fg-primary">
+			<MarkdownRenderer className="font-bold text-fg">
 				{markdown}
 			</MarkdownRenderer>
 		</div>
