@@ -21,6 +21,12 @@
 		box-shadow: 0 0px 8px -6px rgba(0,0,0,0.6), 0 0px 6px -1px rgba(0,0,0,.04);
 	}
 
+	.reveal-section {
+		@apply motion-safe:translate-y-[-5vh] motion-safe:invisible motion-safe:transition-all motion-safe:duration-1000 motion-safe:ease-out motion-safe:opacity-0 will-change-auto;
+	}
+	.reveal-section.is-visible {
+		@apply motion-safe:transform-none motion-safe:visible motion-safe:opacity-100;
+	}
 
 	/* section {
 		@apply motion-safe:translate-y-[10vh] motion-safe:invisible motion-safe:transition-transform motion-safe:duration-1000 motion-safe:ease-out will-change-transform;
