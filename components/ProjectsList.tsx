@@ -1,16 +1,23 @@
 'use client';
 
 import { project } from "@/lib/types/data.types";
-import ProjectCard from "@components/ProjectCard";
+import FeaturedProjectCard from "@/components/FeaturedProjectCard";
 import { useEffect, useState } from "react";
+
+enum cardType {
+	standard,
+	featured,
+}
 
 export function ProjectsList({
 	projects,
+	card=cardType.standard,
 	filterable=true,
 	title='projects',
-	className=''
+	className='',
 }: {
 	projects: Array<project>,
+	card?: cardType,
 	filterable?: boolean,
 	title?:string,
 	className?: string
@@ -57,7 +64,7 @@ export function ProjectsList({
 						const repoList = mounted ? repoData : projects
 						return repoList.map((project) => {
 							return (
-								<ProjectCard key={project.title} project={project} />
+								<FeaturedProjectCard key={project.title} project={project} />
 							)
 						})
 					})()

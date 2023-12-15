@@ -46,7 +46,9 @@ const monaSpace = localFont({
 	variable: "--font-mona-space",
 });
 
+
 export default async function RootLayout({ children } : { children: React.ReactNode }) {
+
 	return (
 		<html lang="en" className={`${inter.className} ${monaSpace.variable}`} suppressHydrationWarning>
 			<link rel="icon" href="/favicon.ico" sizes="any" />

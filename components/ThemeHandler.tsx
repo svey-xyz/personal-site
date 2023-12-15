@@ -4,6 +4,7 @@ import { mountMosaic } from '@/components/interactiveSections/pixelMosaic/pixelM
 import { mountBlobs } from '@/components/interactiveSections/blobShader/blobShader'
 
 import { ThemeProvider, useTheme } from 'next-themes'
+import { usePathname } from 'next/navigation';
 import React, { ReactNode, useEffect, useState, useRef } from 'react';
 import { FaChevronUp } from "react-icons/fa6";
 
@@ -18,13 +19,16 @@ export default function ThemeHandler({
 	const [mounted, setMounted] = useState(false)
 	const themeContainer = useRef<HTMLDivElement>(null)
 	const topChevron = useRef<HTMLDivElement>(null)
-	
+
+	const pathname = usePathname();
+	const homePage = pathname == "/"
+
 	useEffect(() => {
 		if (mounted) return;
 		setMounted(true);
 		setSize();
 		(async () => {
-			mountBlobs(themeContainer.current)
+			if (homePage) mountBlobs(themeContainer.current)
 			// initSectionFadeIn()
 			const listener = () => {
 				if (window.scrollY > 140) {

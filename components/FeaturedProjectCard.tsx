@@ -2,7 +2,7 @@ import { project } from "@/lib/types/data.types";
 
 
 
-export function ProjectCard({
+export function FeaturedProjectCard({
 	project
 }: {
 	project: project
@@ -18,7 +18,7 @@ export function ProjectCard({
 					{project.title}
 				</div>
 				{(project.taxonomies && 
-					<div className="relative flex text-right">
+					<div className="relative flex text-right flex-wrap">
 						{project.taxonomies.map((tax, i, arr) => {
 							return <span key={`${project.title}-${tax.title}`} className="text-fg-primary opacity-50">
 								{ tax.title }{ i < arr.length - 1 ? <span>,&nbsp;</span> : '' }
@@ -31,4 +31,4 @@ export function ProjectCard({
 	)
 }
 
-export default ProjectCard;
+export default FeaturedProjectCard;

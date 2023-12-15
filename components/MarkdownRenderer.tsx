@@ -65,7 +65,6 @@ export function MarkdownRenderer({ children: markdown, className }: MarkdownRend
 }
 
 function slugID(props: React.ClassAttributes<HTMLHeadingElement> & React.HTMLAttributes<HTMLHeadingElement> & ExtraProps): string {
-	console.log(props.children)
 	if (typeof props.children !== `string`) return
 	return slugify(props.children as string, { replacement: '-', lower: true })
 }
