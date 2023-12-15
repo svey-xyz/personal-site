@@ -64,7 +64,7 @@ export function ProjectsList({
 				<div className="flex flex-row flex-wrap gap-x-4 mb-4">
 					{ taxonomiesFromProjects(projects).map((taxonomy, i, arr) => {
 						return (
-							<a className="text-fg/60 hover:text-fg/80">
+							<a key={taxonomy.title} className="text-fg/60 hover:text-fg/80">
 								{taxonomy.title}
 							</a>
 						)
