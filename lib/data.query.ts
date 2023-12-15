@@ -6,6 +6,7 @@ import queryDefaultBranch from '@lib/graphql/defaultBranch.gql'
 import queryRepoContent from '@lib/graphql/repoContent.gql'
 import fragmentRepo from '@lib/graphql/repoFragment.gql'
 import queryRepos from '@lib/graphql/repos.gql'
+import { taxonomiesFromProjects } from '@lib/taxonomiesFromProjects'
 
 export async function query({query, queryVars, fragment}:{query:string, queryVars?:{}, fragment?:string}) {
 	const combinedQuery = fragment ? 
@@ -45,7 +46,10 @@ const USER_DATA: UserQuery = validateFetchWithViewer(
 )
 
 
-export async function getProjectData() {
+export async function getProjectData(): Promise<{
+	projects: project[];
+	taxonomies: taxonomy[];
+}> {
 
 	/** Fetch data & validate fetch */
 
@@ -58,9 +62,14 @@ export async function getProjectData() {
 
 	/** Cast fetched data to internal type */
 
-	const projectData: Array<project> = await reposToProjects(FRAGMENTS)
+	const projects: Array<project> = await reposToProjects(FRAGMENTS)
 
-	return projectData
+
+
+	return {
+		projects: projects,
+		taxonomies: taxonomiesFromProjects(projects)
+	}
 }
 
 /**

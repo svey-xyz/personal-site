@@ -4,8 +4,8 @@ import { ProjectData } from "@lib/data";
 import { MarkdownRenderer } from "@/components/MarkdownRenderer";
 import NoteCard from "@/components/NoteCard";
 
-export default async function ProjectsPage({ params }: { params: { slug: string } }) {
-	const slugs = ProjectData.map((project) => {
+export default async function ProjectPage({ params }: { params: { slug: string } }) {
+	const slugs = ProjectData.projects.map((project) => {
 		return project.title.toLowerCase()
 	})
 
@@ -24,7 +24,7 @@ export default async function ProjectsPage({ params }: { params: { slug: string 
 					<MarkdownRenderer>{project.about}</MarkdownRenderer>
 				)}
 				{( !project.about &&
-					<NoteCard markdown={`Uh Oh! This project doesn't have any documentation yet. Don't worry I'm working on it. Take a look around the rest of the site in the meantime, or reach out to inquire more about this project.`} />
+					<NoteCard markdown={`Uh Oh! This project doesn't have any documentation yet. Don't worry, I'm working on it. Take a look around the rest of the site in the meantime, or reach out to inquire more about this project.`} />
 				)}
 			</div>
 

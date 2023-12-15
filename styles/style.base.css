@@ -1,9 +1,8 @@
 @layer base {
 	:root {
 		--primary-text: 0 0 0;
-		--secondary-text: #444;
 
-		--primary-bg: 255 255 255;
+		--primary-bg: 250 248 255;
 		--secondary-bg: 214 211 211;
 
 		--primary-accent: 173 127 159;
@@ -22,14 +21,13 @@
 
 	.dark {
 		--primary-text: 255 255 255;
-		--secondary-text: 204 204 204;
 
-		--primary-bg: 16 16 19;
+		--primary-bg: 18 16 20;
 		--secondary-bg: 32 32 32;
 	}
 
 	body {
-		@apply font-body text-left text-sm text-fg-secondary;
+		@apply font-body text-left text-sm text-fg-primary bg-bg;
 	}
 
 	.background {
@@ -43,7 +41,8 @@
 	h2 { @apply text-lg font-bold; }
 	h3 { @apply font-bold; }
 	p { @apply mt-2; }
-	a { @apply cursor-pointer opacity-70 hover:opacity-100 transition-opacity duration-300 hover:duration-100; }
+	a { @apply cursor-pointer; }
+	p a { @apply opacity-70 hover:opacity-100 transition-opacity duration-300 hover:duration-100; }
 
 	@keyframes gradient {
     0% {

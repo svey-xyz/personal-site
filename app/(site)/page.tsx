@@ -1,8 +1,8 @@
 import { SocialIcon } from "@components/SocialIcon";
 import EmailInsert from "@components/EmailInsert";
-import { UserData, WebsiteData } from "@lib/data";
+import { UserData, WebsiteData, ProjectData } from "@lib/data";
 import { MarkdownRenderer } from "@/components/MarkdownRenderer";
-import { ProjectsList } from "@components/ProjectsList";
+import { ProjectsList, cardType } from "@components/ProjectsList";
 import RadialProgress from "@/components/RadialProgress";
 import NoteCard from "@/components/NoteCard";
 
@@ -12,7 +12,7 @@ const animationDelayIncrease = 200
 return (
 	<div className="relative flex flex-col flex-grow">
 		<div className="relative flex flex-col main-padding">
-			<NoteCard markdown={`This site is still in active development`} />
+			<NoteCard markdown={`Please be aware this site is still in active development, some content may be missing.`} className="max-w-prose" />
 			<section id="user_data" className="">
 				{(UserData && 
 					<span className="block font-black max-w-prose">
@@ -41,7 +41,7 @@ return (
 				)} */}
 			</section>
 	
-			<ProjectsList projects={UserData.featured} title='featured' className='mt-8' filterable={false} />			
+			<ProjectsList projects={UserData.featured} title='featured' className='mt-8' sort={false} cardSelection={1}/>			
     </div>
 		<div className="relative mt-12 flex flex-col flex-grow border-t border-accent-secondary/40 dark:shadow-xl shadow-lg -mb-[--bottom-spacing] pb-[--bottom-spacing] z-10
 				after:inset-0 after:absolute after:-z-1 after:bg-bg-primary/60 dark:after:bg-bg-primary/75 after:backdrop-blur-2xl">

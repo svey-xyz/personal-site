@@ -3,7 +3,7 @@ export function EmailInsert({ email } : {email:string}) {
 		<a href={`mailto:${email}`} className="group inline-flex flex-col no-underline">
 			{emailSplitter(email).map((part) => {
 				return (
-					<span key={part} className="relative leading-none uppercase font-black text-fg-secondary group-hover:text-fg-primary transition-colors duration-300">
+					<span key={part} className="relative leading-none uppercase font-black text-fg/70 group-hover:text-fg/100 transition-colors duration-300 ">
 						{ part }
 					</span>
 				)

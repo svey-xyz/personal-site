@@ -23,11 +23,11 @@ const defaultTones = [
 	warning
 ]
 
-function NoteCard({ markdown, tone = tones.normal }: { markdown: string, tone?: tones | tone }) {
+function NoteCard({ markdown, tone = tones.normal, className }: { markdown: string, tone?: tones | tone, className?:string }) {
 	const CardTone = (tone as any).icon ? tone as tone : defaultTones[(tone as tones)]
 
 	return (
-		<div className={`relative flex flex-row items-center px-6 py-4 gap-4 my-8 w-auto max-w-fit rounded-md border pointer-events-none select-none
+		<div className={`${className} relative flex flex-row items-center px-6 py-4 gap-4 my-8 w-auto max-w-fit rounded-md border pointer-events-none select-none
 			after:bg-accent-secondary/20 border-accent-secondary/60 after:absolute after:inset-0 after:backdrop-blur-xl after:-z-1`}>
 			<div className="">
 				<CardTone.icon className="w-icon h-icon text-fg"/>

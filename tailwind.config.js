@@ -39,7 +39,6 @@ module.exports = {
 				fg: {
 					primary: `rgb(var(--primary-text) / <alpha-value>)`,
 					DEFAULT: `rgb(var(--primary-text) / <alpha-value>)`,
-					secondary: `rgb(var(--secondary-text) / <alpha-value>)`,
 				},
 				accent: {
 					primary: `rgb(var(--primary-accent) / <alpha-value>)`,
