@@ -1,8 +1,8 @@
 'use client';
 
-import { project } from "@lib/types/data.types";
+import { project, taxonomy } from "@lib/types/data.types";
 import FeaturedProjectCard from "@components/FeaturedProjectCard";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import ProjectCard from "@components/ProjectCard";
 import { taxonomiesFromProjects } from "@/lib/taxonomiesFromProjects";
 
@@ -10,6 +10,11 @@ export enum cardType {
 	standard,
 	featured,
 }
+
+const sortingProperties = {
+	created: 'created',
+	updated: 'updated',
+};
 
 export function ProjectsList({
 	projects,
@@ -30,10 +35,15 @@ export function ProjectsList({
 	const [currentSortingProperty, setCurrentSortingProperty] = useState('created');
 	const [mounted, setMounted] = useState(false);
 
-	const sortingProperties = {
-		created: 'created',
-		updated: 'updated',
-	};
+	const allTag: taxonomy = {
+		title: 'all'
+	}
+
+	const taxonomies = taxonomiesFromProjects(projects, allTag.title)
+	taxonomies.unshift(allTag)
+
+	const [filteredTaxonomyTitle, setFilteredTaxonomyTitle] = useState<string>(allTag.title)
+	const allTagRef = useRef<HTMLInputElement>(null)
 
 	useEffect(() => {
 		if (!mounted) setMounted(true)
@@ -45,7 +55,19 @@ export function ProjectsList({
 		};
 
 		sortArray(currentSortingProperty);
+		allTagRef.current ? allTagRef.current.checked = true : null
+
+		/** Insert all tag into all projects for filtering */
+		projects.forEach((project: project) => {
+			if (!project.taxonomies) project.taxonomies = []
+			project.taxonomies?.unshift(allTag)
+		});
+
 	}, [currentSortingProperty]);
+
+	const handleFilterChange = (event: ChangeEvent<HTMLInputElement>) => {
+		setFilteredTaxonomyTitle(event.target?.value);
+	}
 
 	return (
 		<section className={`${className} max-w-prose-full`}>
@@ -55,31 +77,39 @@ export function ProjectsList({
 					<select className='p-2 cursor-pointer border border-accent-secondary/40 rounded bg-accent-secondary/20'
 						onChange={(e) => { if (mounted) setCurrentSortingProperty(e.target.value) }}>
 							{ Object.values(sortingProperties).map((property) => {
-								return <option value={property}>{property}</option>
+								return <option key={property} value={property}>{property}</option>
 							}) }
 					</select>
 				}
 			</div>
 			{ filter &&
-				<div className="flex flex-row flex-wrap gap-x-4 mb-4">
-					{ taxonomiesFromProjects(projects).map((taxonomy, i, arr) => {
-						return (
-							<a key={taxonomy.title} className="text-fg/60 hover:text-fg/80">
-								{taxonomy.title}
-							</a>
-						)
-					})
-					}
-				</div>
+				<fieldset className="flex flex-row flex-wrap gap-x-4 gap-y-2 mb-4">
+					{(taxonomies &&
+						taxonomies.map((taxonomy: taxonomy) => {
+							return (
+								<div key={taxonomy.title} className="group relative flex cursor-pointer w-auto h-full flex-col items-center justify-center">
+									<input type="radio" name="taxonomies" value={taxonomy.title} aria-label='Set the archive filter.'
+										className="absolute left-1/2 -translate-x-1/2 h-full w-full appearance-none cursor-pointer"
+										checked={filteredTaxonomyTitle == taxonomy.title} onChange={handleFilterChange} ref={(() => { if (filteredTaxonomyTitle == taxonomy.title) return allTagRef })()} />
+									<label className="leading-none text-sm">{taxonomy.title}</label>
+								</div>
+							)
+						})
+					)}
+				</fieldset>
 			}
 
 			<div className="flex flex-col gap-1">
 				{ (() => {
 					const projectsList = mounted ? repoData : projects
 					return projectsList.map((project) => {
+						let tagInFilter: boolean = false;
+						project.taxonomies?.forEach((taxonomy: taxonomy) => {
+							if (taxonomy.title == filteredTaxonomyTitle) tagInFilter = true;
+						});
 						const card: JSX.Element = cardSelection == cardType.featured ?
-							<FeaturedProjectCard key={`${project.title}-${cardSelection}`} project={project} /> :
-							<ProjectCard key={`${project.title}-${cardSelection}`} project={project} />
+							<FeaturedProjectCard key={`${project.title}-${cardSelection}`} project={project} filtered={tagInFilter} allTagTitle={allTag.title} /> :
+							<ProjectCard key={`${project.title}-${cardSelection}`} project={project} filtered={tagInFilter} allTagTitle={allTag.title} />
 						return card
 					})
 				})() }

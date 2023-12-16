@@ -1,11 +1,11 @@
 import { project, taxonomy } from "@lib/types/data.types";
 
-export function taxonomiesFromProjects(projects: Array<project>): Array<taxonomy> {
+export function taxonomiesFromProjects(projects: Array<project>, allTagTitle:string=null): Array<taxonomy> {
 	let taxonomyTitles: Array<string> = []
 	let taxonomies: Array<taxonomy> = []
 	projects.forEach((project) => {
 		project.taxonomies.forEach((taxonomy) => {
-			if (taxonomyTitles.indexOf(taxonomy.title) == -1) {
+			if (taxonomyTitles.indexOf(taxonomy.title) == -1 && taxonomy.title !== allTagTitle) {
 				taxonomyTitles.push(taxonomy.title)
 				taxonomies.push(taxonomy)
 			}
