@@ -83,15 +83,15 @@ export function ProjectsList({
 				}
 			</div>
 			{ filter &&
-				<fieldset className="flex flex-row flex-wrap gap-x-4 gap-y-2 mb-4">
+				<fieldset className="flex flex-row flex-wrap gap-x-4 gap-y-2 my-6">
 					{(taxonomies &&
 						taxonomies.map((taxonomy: taxonomy) => {
 							return (
 								<div key={taxonomy.title} className="group relative flex cursor-pointer w-auto h-full flex-col items-center justify-center">
 									<input type="radio" name="taxonomies" value={taxonomy.title} aria-label='Set the archive filter.'
-										className="absolute left-1/2 -translate-x-1/2 h-full w-full appearance-none cursor-pointer"
+										className="peer absolute left-1/2 -translate-x-1/2 h-full w-full appearance-none cursor-pointer"
 										checked={filteredTaxonomyTitle == taxonomy.title} onChange={handleFilterChange} ref={(() => { if (filteredTaxonomyTitle == taxonomy.title) return allTagRef })()} />
-									<label className="leading-none text-sm">{taxonomy.title}</label>
+									<label className="leading-none text-sm peer-checked:font-bold">{taxonomy.title}</label>
 								</div>
 							)
 						})
@@ -101,15 +101,15 @@ export function ProjectsList({
 
 			<div className="flex flex-col gap-1">
 				{ (() => {
-					const projectsList = mounted ? repoData : projects
+					const projectsList = mounted ? repoData : projects.reverse()
 					return projectsList.map((project) => {
 						let tagInFilter: boolean = false;
 						project.taxonomies?.forEach((taxonomy: taxonomy) => {
 							if (taxonomy.title == filteredTaxonomyTitle) tagInFilter = true;
 						});
 						const card: JSX.Element = cardSelection == cardType.featured ?
-							<FeaturedProjectCard key={`${project.title}-${cardSelection}`} project={project} filtered={tagInFilter} allTagTitle={allTag.title} /> :
-							<ProjectCard key={`${project.title}-${cardSelection}`} project={project} filtered={tagInFilter} allTagTitle={allTag.title} />
+							<FeaturedProjectCard key={`${project.title}-${cardSelection}`} project={project} filtered={mounted ? tagInFilter : true} allTagTitle={allTag.title} /> :
+							<ProjectCard key={`${project.title}-${cardSelection}`} project={project} filtered={mounted ? tagInFilter : true} allTagTitle={allTag.title} />
 						return card
 					})
 				})() }

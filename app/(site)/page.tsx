@@ -44,7 +44,8 @@ return (
 			<ProjectsList projects={UserData.featured} title='featured' className='mt-8' sort={false} cardSelection={1}/>			
     </div>
 		<div className="relative mt-12 flex flex-col flex-grow border-t border-accent-secondary/40 dark:shadow-xl shadow-lg -mb-[--bottom-spacing] pb-[--bottom-spacing] z-10
-				after:inset-0 after:absolute after:-z-1 after:bg-bg-primary/60 dark:after:bg-bg-primary/75 after:backdrop-blur-2xl">
+				after:inset-0 after:absolute after:-z-1 after:backdrop-blur-2xl after:bg-gradient-to-b
+				after:from-bg/50 after:to-bg after:to-75% dark:after:from-bg/70 dark:after:to-bg">
 				<div className="main-padding mt-8">
 					<section id="about" className="max-w-prose">
 						<h2 className="">person</h2>

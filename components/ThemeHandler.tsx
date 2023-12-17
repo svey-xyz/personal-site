@@ -28,7 +28,7 @@ export default function ThemeHandler({
 		setMounted(true);
 		setSize();
 		(async () => {
-			if (homePage) mountBlobs(themeContainer.current)
+			mountBlobs(themeContainer.current)
 			// initSectionFadeIn()
 			const listener = () => {
 				if (window.scrollY > 140) {
