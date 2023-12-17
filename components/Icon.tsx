@@ -18,11 +18,11 @@ export function Icon({checked=false}:{checked?:boolean}) {
 	}, []);
 
 	return (
-		<a href="/" aria-label='Link to home page.'
+		<a href="/" aria-label='Link to home page.' onMouseEnter={() => { setState(true) }} onMouseLeave={() => { setState(false) }}
 			className="group relative flex items-center justify-center w-icon h-icon">
 			<IconZ className={`absolute min-h-full min-w-full fill-[#837da1] drop-shadow
 				duration-1000 delay-200 transition-transform ${state && "rotate-6 translate-x-[2.8rem] duration-500"}`} />
-		<IconX className={`absolute min-h-full min-w-full fill-[#333] dark:fill-[#eee] drop-shadow
+			<IconX className={`absolute min-h-full min-w-full fill-[#333] dark:fill-[#eee] drop-shadow
 				duration-1000 delay-200 transition-transform ${state && "rotate-0 duration-500"}`}/>
 			<IconY className={`absolute min-h-full min-w-full fill-[#d0b6c8] drop-shadow
 				duration-1000 delay-200 transition-transform ${state && "-rotate-6 translate-x-6 duration-500"}`} />

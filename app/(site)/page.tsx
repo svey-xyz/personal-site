@@ -5,6 +5,7 @@ import { MarkdownRenderer } from "@/components/MarkdownRenderer";
 import { ProjectsList, cardType } from "@components/ProjectsList";
 import RadialProgress from "@/components/RadialProgress";
 import NoteCard from "@/components/NoteCard";
+import { IoLibrary } from "react-icons/io5";
 
 export default async function Home() {
 const initialAnimationDelay = 300
@@ -41,7 +42,14 @@ return (
 				)} */}
 			</section>
 	
-			<ProjectsList projects={UserData.featured} title='featured' className='mt-8' sort={false} cardSelection={1}/>			
+			<ProjectsList projects={UserData.featured} title='featured' className='mt-8' sort={false} cardSelection={1}/>
+			<div className="mt-8 ">
+				<a href="/projects" aria-label='Link to projects archive.'
+					className='group flex flex-row gap-4 items-center cursor-pointer max-w-fit'>
+					<h2 className="text-fg/60 group-hover:text-fg/100 transition-colors duration-300">archive</h2>
+					<IoLibrary className="w-icon h-icon text-fg/80" />
+				</a>
+			</div>
     </div>
 		<div className="relative mt-12 flex flex-col flex-grow border-t border-accent-secondary/40 dark:shadow-xl shadow-lg -mb-[--bottom-spacing] pb-[--bottom-spacing] z-10
 				after:inset-0 after:absolute after:-z-1 after:backdrop-blur-2xl after:bg-gradient-to-b

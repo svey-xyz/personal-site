@@ -1,6 +1,7 @@
 'use client'
 
 import ThemeButton from '@components/ThemeButton'
+import { IoLibrary } from "react-icons/io5";
 import Icon from '@components/Icon'
 import { useState, useEffect } from 'react';
 
@@ -27,7 +28,14 @@ export default function Header() {
 					<div className="relative block w-10">
 						<Icon />
 					</div>
-					<ThemeButton />
+					<div className='relative flex flex-row gap-4'>
+						<a href="/projects" aria-label='Link to projects archive.' className='group'>
+							<IoLibrary className="w-icon h-icon cursor-pointer text-accent-secondary/80 transition-colors duration-300 group-hover:text-accent-secondary/100 dark:brightness-150 dark:saturate-[0.8] saturate-[1.2] brightness-75" />
+						</a>
+						{/* <ThemeButton /> */}
+
+					</div>
+					
 				</div>
 				{/* backdrop-filter doesn't play nicely with mask-image in chrome */}
 				{/* otherwise this effect looks great in other browsers with- backdrop-blur mask-linear */}

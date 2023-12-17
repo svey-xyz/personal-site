@@ -3,6 +3,7 @@ import { ProjectData } from "@lib/data";
 
 import { MarkdownRenderer } from "@components/MarkdownRenderer";
 import NoteCard from "@components/NoteCard";
+import dateConverter from "@lib/dateConverter";
 
 export default async function ProjectPage({ params }: { params: { slug: string } }) {
 	const slugs = ProjectData.projects.map((project) => {
@@ -11,8 +12,6 @@ export default async function ProjectPage({ params }: { params: { slug: string }
 
 	if (slugs.indexOf(params.slug) == -1) return;
 	const project = ProjectData.projects[slugs.indexOf(params.slug)]
-
-	console.log('hey there')
 	
 	return (
 		<div className="after:inset-0 after:absolute after:-z-1 after:backdrop-blur-2xl after:bg-gradient-to-b
@@ -23,6 +22,13 @@ export default async function ProjectPage({ params }: { params: { slug: string }
 					<a href='/projects' aria-label='Return to projects archive.' className="relative block w-full h-full py-4">
 						{`<- ${project.title }`}
 					</a>
+
+					<div>
+						Created: { dateConverter(new Date(Date.parse(project.created))) }<br/>
+						Updated: { dateConverter(new Date(Date.parse(project.updated)))}<br/>
+						<a href={ project.githubURL } target="_blank" aria-label="Link to project repo.">Repo</a><br/>
+						<a href={ project.website } target="_blank" aria-label="Link to project website.">Project site</a>
+					</div>
 
 					{( project.about && 
 						<MarkdownRenderer>{project.about}</MarkdownRenderer>

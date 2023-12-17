@@ -22,8 +22,7 @@ export function ThemeButton() {
 		themeRender()
 	})
 
-	if (!mounted) return <BiSolidMoon className="z-10 block text-fg-primary relative h-icon w-icon duration-100 hover:scale-[1.2]" />
-	if (!theme) return <BiSolidMoon className="z-10 block text-fg-primary relative h-icon w-icon duration-100 hover:scale-[1.2]" />
+	if (!mounted || !theme) return <BiSolidMoon className="z-10 block text-fg-primary relative h-icon w-icon duration-100 hover:scale-[1.2]" />
 
 	return(
 		<button id='themeSwitcher' aria-label="Theme Switcher" ref={refThemeButton}
