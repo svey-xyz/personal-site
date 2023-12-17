@@ -6,11 +6,13 @@ import NoteCard from "@components/NoteCard";
 
 export default async function ProjectPage({ params }: { params: { slug: string } }) {
 	const slugs = ProjectData.projects.map((project) => {
-		return project.title.toLowerCase()
+		return project.slug
 	})
 
 	if (slugs.indexOf(params.slug) == -1) return;
 	const project = ProjectData.projects[slugs.indexOf(params.slug)]
+
+	console.log('hey there')
 	
 	return (
 		<div className="after:inset-0 after:absolute after:-z-1 after:backdrop-blur-2xl after:bg-gradient-to-b

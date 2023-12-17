@@ -7,6 +7,16 @@ import queryRepoContent from '@lib/graphql/repoContent.gql'
 import fragmentRepo from '@lib/graphql/repoFragment.gql'
 import queryRepos from '@lib/graphql/repos.gql'
 import { taxonomiesFromProjects } from '@lib/taxonomiesFromProjects'
+import slugify from 'slugify'
+
+export const slugifyOptions = {
+	replacement: '-',  // replace spaces with replacement character, defaults to `-`
+	remove: undefined, // remove characters that match regex, defaults to `undefined`
+	lower: true,      // convert to lower case, defaults to `false`
+	strict: true,     // strip special characters except replacement, defaults to `false`
+	locale: 'en',      // language code of the locale to use
+	trim: true         // trim leading and trailing replacement chars, defaults to `true`
+}
 
 export async function query({query, queryVars, fragment}:{query:string, queryVars?:{}, fragment?:string}) {
 	const combinedQuery = fragment ? 
@@ -169,6 +179,7 @@ async function reposToProjects(repos: Array<RepoFragment>): Promise<Array<projec
 
 		const proj = {
 			title: repo.name,
+			slug: slugify(repo.name, slugifyOptions),
 			about: about,
 			created: repo.createdAt,
 			updated: repo.pushedAt,

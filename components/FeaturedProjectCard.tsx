@@ -1,5 +1,5 @@
 import { project } from "@/lib/types/data.types";
-
+import slugify from "slugify";
 
 
 export function FeaturedProjectCard({
@@ -13,7 +13,7 @@ export function FeaturedProjectCard({
 }) {
 
 	return (
-		<a href={`/projects/${project.title}`} className={`${filtered ? 'block' : "hidden"} my-2 max-w-full group opacity-100`}>
+		<a href={`/projects/${project.slug}`} className={`${filtered ? 'block' : "hidden"} my-2 max-w-full group opacity-100`}>
 			<div className="relative py-4 px-2 flex flex-col md:flex-row justify-between w-full border border-accent-secondary/40 rounded
 				after:absolute after:inset-0 after:-z-1 after:backdrop-blur-3xl after:bg-accent-secondary/5 group-hover:after:bg-accent-secondary/10
 				after:duration-[1500ms] after:transition-colors group-hover:after:duration-100">

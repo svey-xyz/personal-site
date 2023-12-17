@@ -4,6 +4,7 @@ export interface taxonomy {
 
 export interface project {
 	title: string,
+	slug: string,
 	description?: string,
 	created: string,
 	updated: string,

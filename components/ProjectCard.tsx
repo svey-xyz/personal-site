@@ -13,7 +13,7 @@ export function ProjectCard({
 	return (
 		<div className={`${filtered ? 'block' : "hidden"} my-2 max-w-full group opacity-100 border-b border-accent-secondary/50 pb-1`}>
 			<div className="relative flex flex-col">
-				<a href={`/projects/${project.title}`} aria-label={`Link to project: ${project.title}`}
+				<a href={`/projects/${project.slug}`} aria-label={`Link to project: ${project.title}`}
 					className="mb-1 w-auto max-w-fit text-fg hover:text-fg/80">
 					{project.title}
 				</a>
