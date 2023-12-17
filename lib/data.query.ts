@@ -42,6 +42,7 @@ enum DataFileNames {
 	aboutSite = 'about.site.md',
 	aboutScores = 'scores.notes.md',
 	scores = 'scores.final.json',
+	tools = 'about.tools.md',
 }
 
 const GIST_DATA: GistQuery = validateFetchWithViewer(
@@ -90,9 +91,10 @@ export async function getProjectData(): Promise<{
  */
 export async function getWebsiteData(): Promise<website> {
 	const WEBSITE_DATA: website = {
-		about: GIST_DATA.viewer.gist.files.filter(file => file.name == DataFileNames.aboutSite)[0].text,
-		scores: JSON.parse(GIST_DATA.viewer.gist.files.filter(file => file.name == DataFileNames.scores)[0].text),
-		aboutScores: GIST_DATA.viewer.gist.files.filter(file => file.name == DataFileNames.aboutScores)[0].text
+		about: GIST_DATA.viewer.gist.files.filter(file => file.name == DataFileNames.aboutSite)[0]?.text,
+		scores: JSON.parse(GIST_DATA.viewer.gist.files.filter(file => file.name == DataFileNames.scores)[0]?.text),
+		aboutScores: GIST_DATA.viewer.gist.files.filter(file => file.name == DataFileNames.aboutScores)[0]?.text,
+		tools: GIST_DATA.viewer.gist.files.filter(file => file.name == DataFileNames.tools)[0]?.text
 	}
 
 	return WEBSITE_DATA

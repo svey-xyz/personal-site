@@ -28,6 +28,7 @@ export interface website {
 	about?: string,
 	scores?: scores,
 	aboutScores?: string,
+	tools?: string,
 }
 
 export interface scores {

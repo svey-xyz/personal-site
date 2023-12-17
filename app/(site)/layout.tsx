@@ -6,6 +6,7 @@ import localFont from "next/font/local";
 import ThemeHandler from '@components/ThemeHandler';
 import { Metadata, ResolvingMetadata, Viewport } from 'next/types';
 import { UserData } from '@lib/data';
+import Footer from '@components/Footer';
 
 type Props = {
 	params: { id: string }
@@ -58,6 +59,7 @@ export default async function RootLayout({ children } : { children: React.ReactN
 					<main className='relative flex flex-col flex-grow pb-[--bottom-spacing] pt-[calc(var(--header-height-max)+8px)]'>
 						{children}
 					</main>
+					<Footer />
 				</ThemeHandler>
 			</body>
 		</html>
