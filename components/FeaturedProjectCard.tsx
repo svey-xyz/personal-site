@@ -22,11 +22,11 @@ export function FeaturedProjectCard({
 					{project.title}
 				</div>
 				{(project.taxonomies && 
-					<div className="relative flex text-right flex-wrap">
+					<div className="relative flex text-right flex-wrap gap-x-2 md:justify-end">
 						{project.taxonomies.map((tax, i, arr) => {
 							if (tax.title == allTagTitle) return
 							return <span key={`${project.title}-${tax.title}`} className="text-fg-primary opacity-50">
-								{ tax.title }{ i < arr.length - 1 ? <span>,&nbsp;</span> : '' }
+								{ tax.title }{ i < arr.length - 1 ? ',' : '' }
 							</span>
 						}) }
 					</div>
