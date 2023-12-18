@@ -23,14 +23,14 @@ export async function query({query, queryVars, fragment}:{query:string, queryVar
 		`${query} ${fragment}` :
 		query
 
-	const response = await fetch("https://api.github.com/graphql", {
+	const response: Response = await fetch("https://api.github.com/graphql", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
 			Authorization: `bearer ${process.env.GITHUB_API_KEY}`,
 		},
 		body: JSON.stringify({ query: combinedQuery, variables: queryVars })
-	})
+	}) as Response
 
 	const { data, errors } = await response.json()
 	if (response.ok) return data

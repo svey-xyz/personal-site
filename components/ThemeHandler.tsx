@@ -15,7 +15,6 @@ export default function ThemeHandler({
 }: {
 	children: ReactNode
 }) {
-	const [height, setHeight] = useState<number>()
 	const [mounted, setMounted] = useState(false)
 	const themeContainer = useRef<HTMLDivElement>(null)
 	const topChevron = useRef<HTMLDivElement>(null)
@@ -44,7 +43,7 @@ export default function ThemeHandler({
 		})()
 
 	
-	}, [])
+	}, [mounted])
 
 	/** HUGELY impacts page performance */
 	async function initSectionFadeIn() {
@@ -62,15 +61,6 @@ export default function ThemeHandler({
 		window.addEventListener('resize', () => {
 			setSize();
 		}, { passive: true })
-	}
-
-	function setSize() {
-		const isMobile = (/Mobi|Android/i.test(navigator.userAgent)) ? true : false;
-
-		if (!isMobile) setHeight(window.innerHeight);
-		const vh = height ? setHeight(height * 0.01) : 0;
-
-		document.documentElement.style.setProperty('--vh', `${vh}px`);
 	}
 
 	const chevronClick = ((e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -93,4 +83,14 @@ export default function ThemeHandler({
 }
 
 export function themeRender() {
+}
+
+function setSize() {
+	const isMobile = (/Mobi|Android/i.test(navigator.userAgent)) ? true : false;
+
+	let height: number
+	if (!isMobile) height = window.innerHeight;
+	const vh = height ? height * 0.01 : 0;
+
+	document.documentElement.style.setProperty('--vh', `${vh}px`);
 }

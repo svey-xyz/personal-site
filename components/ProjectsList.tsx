@@ -16,6 +16,10 @@ const sortingProperties = {
 	updated: 'updated',
 };
 
+const allTag: taxonomy = {
+	title: 'all'
+}
+
 export function ProjectsList({
 	projects,
 	cardSelection=cardType.standard,
@@ -34,10 +38,6 @@ export function ProjectsList({
 	const [repoData, setRepoData] = useState<Array<project>>([]);
 	const [currentSortingProperty, setCurrentSortingProperty] = useState('created');
 	const [mounted, setMounted] = useState(false);
-
-	const allTag: taxonomy = {
-		title: 'all'
-	}
 
 	const taxonomies = taxonomiesFromProjects(projects, allTag.title)
 	taxonomies.unshift(allTag)
@@ -63,7 +63,7 @@ export function ProjectsList({
 			project.taxonomies?.unshift(allTag)
 		});
 
-	}, [currentSortingProperty]);
+	}, [currentSortingProperty, mounted, projects]);
 
 	const handleFilterChange = (event: ChangeEvent<HTMLInputElement>) => {
 		setFilteredTaxonomyTitle(event.target?.value);

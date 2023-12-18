@@ -63,9 +63,7 @@ export function RadialProgress({
 			)
 		});
 		observer.observe(container.current);
-		return () => observer.unobserve(container.current);
-		// animate();
-	}, [])
+	}, [mounted, animationDelay])
 
 	return (
 		<div style={componentStyle} onMouseEnter={() => { setCurrentProgress(0) }} ref={container}
