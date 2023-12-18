@@ -6,10 +6,9 @@ import { MarkdownRenderer } from "@components/MarkdownRenderer";
 import NoteCard from "@components/NoteCard";
 import dateConverter from "@lib/dateConverter";
 import { FaLink, FaGithub } from "react-icons/fa6";
-import { taxonomy } from "@/lib/types/data.types";
-import Icon from "@/components/Icon";
+import { project, taxonomy } from "@/lib/types/data.types";
 
-export default async function ProjectPage({ params }: { params: { slug: string } }) {
+export default function ProjectPage({ params }: { params: { slug: string } }) {
 	const slugs = ProjectData.projects.map((project) => {
 		return project.slug
 	})
@@ -106,4 +105,10 @@ function ProjectInfoSection({title,children,className}:{title: string, children?
 			</div>
 		</div>
 	)
+}
+
+export async function generateStaticParams() {
+	return ProjectData.projects.map((project: project)=>({
+		slug:project.slug
+	}))
 }
