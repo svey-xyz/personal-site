@@ -63,7 +63,7 @@ export default function ThemeHandler({
 		}, { passive: true })
 	}
 
-	const chevronClick = ((e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+	const chevronClick = ((e: React.MouseEvent<Element, MouseEvent>) => {
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	})
 	
@@ -74,7 +74,7 @@ export default function ThemeHandler({
 				<div ref={topChevron} className='reveal-section fixed bottom-8 w-full z-50'>
 					<div className='relative main-padding flex flex-col justify-end items-end'>
 						<FaChevronUp className="absolute w-icon h-icon cursor-pointer transition-transform duration-100 hover:scale-[1.1]"
-							onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => { if (mounted) chevronClick(e) }} />
+						onClick={(e: React.MouseEvent<Element, MouseEvent>) => { if (mounted) chevronClick(e) }} />
 					</div>
 				</div>
 			{children}
