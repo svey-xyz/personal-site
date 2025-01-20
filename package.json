@@ -2,6 +2,9 @@
   "name": "personal-site",
   "version": "1.0.0",
   "private": true,
+	"engines": {
+		"node": ">=20"
+	},
   "scripts": {
     "dev": "graphql-codegen --config codegen.ts && next dev",
     "build": "graphql-codegen --config codegen.ts && next build",
