@@ -1,6 +1,15 @@
-name = "personal-site"
+name = "personal-site" # Optional for Pages
+type = "javascript"        # Optional for Pages (can also be "rust" or "webpack")
 
+[site]
+bucket = "./out"           # Path to the output directory
+entry-point = "workers-site" # Defaults to "workers-site" for Workers Sites
+
+# Pages-specific configuration
+[pages]
+pages_build_output_dir = "out" # Replace "out" with your build output directory
+
+# Optional Node.js settings if you're using Workers
 [node]
-compatibility_date = "2025-01-20"  # Update this to the date you're deploying
-compatibility_flags = []          # Optional, additional compatibility flags
-node_version = "20.10.0"           # Specify the Node.js version you want
+compatibility_date = "2025-01-20" # Date of compatibility for the runtime
+node_version = "20.10.0"           # Node.js version
