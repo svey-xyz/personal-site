@@ -2,7 +2,7 @@
 
 import { project, taxonomy } from "@lib/types/data.types";
 import FeaturedProjectCard from "@components/FeaturedProjectCard";
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, JSX, useEffect, useRef, useState } from "react";
 import ProjectCard from "@components/ProjectCard";
 import { taxonomiesFromProjects } from "@/lib/taxonomiesFromProjects";
 

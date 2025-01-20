@@ -8,13 +8,15 @@ import dateConverter from "@lib/dateConverter";
 import { FaLink, FaGithub } from "react-icons/fa6";
 import { project, taxonomy } from "@/lib/types/data.types";
 
-export default function ProjectPage({ params }: { params: { slug: string } }) {
+export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
+	const slug = (await params).slug
+
 	const slugs = ProjectData.projects.map((project) => {
 		return project.slug
 	})
 
-	if (slugs.indexOf(params.slug) == -1) return;
-	const project = ProjectData.projects[slugs.indexOf(params.slug)]
+	if (slugs.indexOf(slug) == -1) return;
+	const project = ProjectData.projects[slugs.indexOf(slug)]
 	
 	return (
 		<div className="after:inset-0 after:absolute after:-z-1 after:backdrop-blur-2xl after:bg-gradient-to-b
