@@ -34,7 +34,7 @@ export function MarkdownRenderer({ children: markdown, className }: MarkdownRend
 				img(props) {
 					return <img 
 						{...props}
-						className={`h-full w-auto my-2 ${props.className}`}
+						className={`h-auto w-auto my-2 ${props.className}`}
 						alt='Image inside markdown text.'
 					/>
 				},
